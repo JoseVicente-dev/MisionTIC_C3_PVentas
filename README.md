@@ -3,4 +3,6 @@ Repositorio para el proyecto del ciclo 3 de MisionTIC2022: Plataforma para contr
 
 <<<<<<< HEAD
 #Editando acá el repositorio xd
+
+>La vida es muy corta para no aprender a programar xd.
 =======

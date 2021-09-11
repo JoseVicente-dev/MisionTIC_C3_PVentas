@@ -53,7 +53,10 @@ empecé a tener relación con Front-end, pero con mucho deseo de aprender más e
 
 - **José Vicente Velasco López:**
 
-- **William Steven Tavera:**
+- **William Steven Tavera:
+Ingeniero electrónico, especialista en seguridad informática, trabajador independiente enfocado en la
+analítica de datos, inteligencia de negocios y desarrollo de software a la medida, Tripulante de 
+MisionTIC2022 con deseo de aprender cosas nuevas cada día.
 
 - **Samuel Leandro Jimémez Jiménez:** Estudiante de ingeniera eléctrica y actual tripulante de misión tic 2022, amante de la tecnologia, los deportes y de las mascotas.
 

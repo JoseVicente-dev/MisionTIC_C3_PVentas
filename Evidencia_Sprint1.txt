@@ -1,0 +1,19 @@
+Proyecto aplicacion WEB 
+
+Grupo Nightmare
+
+Integrantes 
+
+1007374153 Stiven Suárez M   ferbohi@outlook.com
+
+1023946391 Cristian Gonzalo Sarmiento Castro sarmientocastrocris@gmail.com
+
+1062282697 - José Vicente Velasco López - velasco.josevicente@gmail.com
+
+1033337835 William Steven Tavera ws.tavera@gmail.com
+
+1014277865 Samuel Leandro Jimémez Jiménez - Salejiji@gmail.com
+
+
+Descripción:
+Proyecto para aplicacion web de gestion y control de ventas de una empresa de manufactura

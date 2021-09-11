@@ -1,0 +1,56 @@
+Proyecto aplicacion WEB 
+
+
+Grupo: Nightmare
+
+
+Integrantes: 
+
+1007374153 - Stiven Suárez M - ferbohi@outlook.com
+
+1023946391 - Cristian Gonzalo Sarmiento Castro - sarmientocastrocris@gmail.com
+
+1062282697 - José Vicente Velasco López - velasco.josevicente@gmail.com
+
+1033337835 - William Steven Tavera - ws.tavera@gmail.com
+
+1014277865 - Samuel Leandro Jimémez Jiménez - Salejiji@gmail.com
+
+
+Asignacion de roles:
+
+>Scrum Master: Samuel Jimenez
+>Product Owner: William Tavera
+>Administrador BD: Stiven Suarez
+>Analista: Cristian Sarmiento
+>Desarrollador: Jose Velasco
+
+Descripción:
+Proyecto para aplicacion web de gestion y control de ventas de una empresa de manufactura
+
+
+
+Sprint 1. Creación de repositorio/asignación de roles.
+
+Criterios de valoración de la evidencia Sprint 1: 
+Deben entregar la URL del repositorio que se crea en GitHub y mostrar evidencia de los aportes 
+de los diferentes integrantes del equipo sobre los objetos depositados en GitHub, dicho objeto 
+debe de ser un archivo de texto que se describa el proyecto y una presentación de cada miembro 
+del equipo. Esta actividad tiene un valor del 20 % y deben entregarla en la semana 2.
+
+
+
+
+
+Presentación de los integrantes:
+
+
+- Cristian Gonzalo Sarmiento Castro:
+
+- José Vicente Velasco López:
+
+- William Steven Tavera:
+
+- Samuel Leandro Jimémez Jiménez:
+
+- Stiven Suárez Marín:

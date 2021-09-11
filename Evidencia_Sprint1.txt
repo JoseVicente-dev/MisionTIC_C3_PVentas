@@ -38,3 +38,19 @@ de los diferentes integrantes del equipo sobre los objetos depositados en GitHub
 debe de ser un archivo de texto que se describa el proyecto y una presentación de cada miembro 
 del equipo. Esta actividad tiene un valor del 20 % y deben entregarla en la semana 2.
 
+
+
+
+
+Presentación de los integrantes:
+
+
+- Cristian Gonzalo Sarmiento Castro:
+
+- José Vicente Velasco López:
+
+- William Steven Tavera:
+
+- Samuel Leandro Jimémez Jiménez:
+
+- Stiven Suárez Marín:

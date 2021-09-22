@@ -1,12 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vendedores</title><!--Página de gestión de vendedores-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Vendedores</title>
+    <link rel="icon" href="/images/ico_Mercurio.ico">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+
+   
+
 </head>
+
 <body>
-    
+    <header >
+        <div class="container-fluid bg-color">
+            <div class="row">
+                <div class="col-10"></div>
+                <div class="col-1 color-texto">
+                    <img src="/images/user.png" alt="logo-usuario" height="50px">
+                </div>
+            </div>
+            <div class="row  align-items-center capa">
+                <div class="col-2">
+                    <nav class="navbar navbar-light">
+                        <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle transparente" type="button"
+                                id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                <img src="/images/menu@4x-blanco.png" alt="menu_bar" width="30"
+                                    height="24">
+                            </button>
+
+                            <ul class="dropdown-menu " aria-labelledby="dropdownMenuLink">
+                                <li><a class="dropdown-item color-texto" href="#">Ventas</a></li>
+                                <li><a class="dropdown-item color-texto" href="#">Vendedores</a></li>
+                                <li><a class="dropdown-item color-texto" href="#">Usuarios</a></li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+                <div class="col color-texto">
+                    <h1 style="text-align: right; font-family: aldrich,sans-serif;">Vendedores</h1>
+                </div>
+                <div class="col-2 color-texto">
+                    <img src="/images/groups@4x-blanco.png" class="img-fluid" alt="logo-vendedores"
+                        width=".8em">
+                </div>
+            </div>
+        </div>
+    </header>
+    <br>
+    <section class="main">
+        <div class="container-fluid table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Nombres</th>
+                        <th scope="col">Apellidos</th>
+                        <th scope="col">Especialidad</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Celular</th>
+                        <th scope="col">Fecha ingreso</th>
+                        <th scope="col">Estado</th>
+                        <th scope="col">Modificar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>12345</td>
+                        <td>Mark</td>
+                        <td>Twain</td>
+                        <td>Libros</td>
+                        <td>@gov.co</td>
+                        <td>3001112233</td>
+                        <td>01/01/0001</td>
+                        <td>Activo</td>
+                        <td>+</td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </section>
+    <br>
+    <footer style="text-align: center;">        
+        <img src="/images/logo2.png" alt="logo-nightmare" width="30%">
+    </footer>
+
 </body>
+
 </html>

@@ -1,0 +1,15 @@
+
+
+.abs-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+   /*  min-height: 80vh; */
+  }
+
+  form{
+    max-width: 400px;
+    min-width: 300px;
+    height: 200px ;
+  }
+

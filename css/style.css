@@ -1,4 +1,36 @@
-button.color{
+
+html{
+    height: 100%;
+}
+
+body{
+    font-family: 'Aldrich', sans-serif;
+    /* font-variant: small-caps; */
+}
+
+
+
+
+.icono{
+color: red;
+size: 9x;
+
+}
+
+
+
+@media (min-width: 990px ) {
+    .navbarNG{
+        min-height: 20vh;
+    }
+    .menuNG-titulo{
+        font-size: 40px;
+    }   
+ }
+
+
+
+.color{
     background-color: #060b73;
     border-color: #060b73;
 }
@@ -6,7 +38,14 @@ button.color{
 /* .dropdown:hover .dropdown-menu {
     display: block;
     background: #060b73;
-} */
+
+    /* -webkit-transition: all 0.8s ease;
+    -moz-transition: all 0.8s ease;
+    -ms-transition: all 0.8s ease;
+    -o-transition: all 0.8s ease;
+    transition: all 0.8s ease; */
+
+}
 
 .bg-color{
     background: rgb(6,11,115);

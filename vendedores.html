@@ -8,50 +8,72 @@
     <title>Vendedores</title>
     <link rel="icon" href="/images/ico_Mercurio.ico">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="/css/style.css">
 
-   
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Aldrich&display=swap" rel="stylesheet">
+
+
 
 </head>
 
 <body>
-    <header >
-        <div class="container-fluid bg-color">
-            <div class="row">
-                <div class="col-10"></div>
-                <div class="col-1 color-texto">
-                    <img src="/images/user.png" alt="logo-usuario" height="50px">
-                </div>
-            </div>
-            <div class="row  align-items-center capa">
-                <div class="col-2">
-                    <nav class="navbar navbar-light">
-                        <div class="dropdown">
-                            <button class="btn btn-secondary dropdown-toggle" type="button"
-                                id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                                <img src="/images/menu@4x-blanco.png" alt="menu_bar" width="30"
-                                    height="24">
-                            </button>
 
-                            <ul class="dropdown-menu " aria-labelledby="dropdownMenuLink">
-                                <li><a class="dropdown-item color-texto" href="#">Ventas</a></li>
-                                <li><a class="dropdown-item color-texto" href="#">Vendedores</a></li>
-                                <li><a class="dropdown-item color-texto" href="#">Usuarios</a></li>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-color navbarNG" id="menu" >
+        <div class="container-fluid">
+          
+            <div class="container">
+                <div class="row">
+                    <div class="col-6" style="padding-top: 15px;" >
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                            <img src="/images/logo_mercurio.png" alt="" style="width: 30px;">
+                            <span class="navbar-toggler-icon"></span>
+                          </button>
+                
+                          
+                          
+                          <div class="collapse navbar-collapse" id="navbarNav">
+                            <ul class="navbar-nav ">
+                              <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="#">Ventas</a>
+                              </li>
+                              <li class="nav-item">
+                                <a class="nav-link" href="#" >Vendedores</a>
+                              </li>
+                              <li class="nav-item">
+                                <a class="nav-link" href="#">Usuarios</a>
+                              </li>
+                              <li class="nav-item">
+                                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                              </li>
                             </ul>
-                        </div>
-                    </nav>
+                          </div>
+                    </div>
+
+                    <div class="col-6"  style="text-align: end;" >
+                        <a class="navbar-brand menuNG-titulo" href="#">
+                            Vendedores&nbsp;&nbsp; <i class="fas fa-users" style="font-size: 50px;"></i>           
+                         </a>
+                    </div>
+
                 </div>
-                <div class="col color-texto">
-                    <h1 style="text-align: right; font-family: aldrich,sans-serif;">Vendedores</h1>
-                </div>
-                <div class="col-2 color-texto">
-                    <img src="/images/groups@4x-blanco.png" class="img-fluid" alt="logo-vendedores"
-                        width=".8em">
-                </div>
+
             </div>
+          
+            
+          
+
+          
+
         </div>
-    </header>
+      </nav>
     <br>
+<!-- <div class="container"> -->
+
+
     <section class="main">
         <div class="container-fluid table-responsive">
             <table class="table">
@@ -85,13 +107,21 @@
             </table>
         </div>
     </section>
+
+<!-- </div> -->
+
     <br>
+
     <footer style="text-align: center;">        
         <img src="/images/logo2.png" alt="logo-nightmare" width="30%">
     </footer>
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
 
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 
 </html>

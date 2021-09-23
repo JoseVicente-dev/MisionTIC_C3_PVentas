@@ -3,10 +3,10 @@ button.color{
     border-color: #060b73;
 }
 
-.dropdown:hover .dropdown-menu {
+/* .dropdown:hover .dropdown-menu {
     display: block;
     background: #060b73;
-}
+} */
 
 .bg-color{
     background: rgb(6,11,115);

@@ -2,17 +2,18 @@
   body {
     font-size: 0.9rem;
   }
-  .page-wrapper .sidebar-wrapper,
-  .sidebar-wrapper .sidebar-brand > a,
-  .sidebar-wrapper .sidebar-dropdown > a:after,
-  .sidebar-wrapper .sidebar-menu .sidebar-dropdown .sidebar-submenu li a:before,
-  .sidebar-wrapper ul li a i,
-  .page-wrapper .page-content,
-  .sidebar-wrapper .sidebar-search input.search-menu,
-  .sidebar-wrapper .sidebar-search .input-group-text,
-  .sidebar-wrapper .sidebar-menu ul li a,
-  #show-sidebar,
-  #close-sidebar {
+
+  .page-wrapper .menu-lateral-wrapper,
+  .menu-lateral-wrapper .menu-lateral-brand > a,
+  .menu-lateral-wrapper .menu-lateral-dropdown > a:after,
+  .menu-lateral-wrapper .menu-lateral-menu .menu-lateral-dropdown .menu-lateral-submenu li a:before,
+  .menu-lateral-wrapper ul li a i,
+  .page-wrapper .page-contenido,
+  .menu-lateral-wrapper .menu-lateral-search input.search-menu,
+  .menu-lateral-wrapper .menu-lateral-search .input-group-text,
+  .menu-lateral-wrapper .menu-lateral-menu ul li a,
+  #show-menu-lateral,
+  #close-menu-lateral {
     -webkit-transition: all 0.3s ease;
     -moz-transition: all 0.3s ease;
     -ms-transition: all 0.3s ease;
@@ -22,18 +23,18 @@
   
   /*----------------page-wrapper----------------*/
   
-  .page-wrapper .theme.livenup-theme {
+  .page-wrapper .theme.mercurio-theme {
     background: #26327e;
   }
   
-  /*----------------toggeled sidebar----------------*/
+  /*----------------toggeled menu-lateral----------------*/
   
-  .page-wrapper.toggled .sidebar-wrapper {
+  .page-wrapper.toggled .menu-lateral-wrapper {
     left: 0px;
   }
   
-  /*----------------show sidebar button----------------*/
-  #show-sidebar {
+  /*----------------show menu-lateral button----------------*/
+  #show-menu-lateral {
     position: fixed;
     left: 0;
     top: 10px;
@@ -44,9 +45,9 @@
     text-align: left;
 
   }
-  /*----------------sidebar-wrapper----------------*/
+  /*----------------menu-lateral-wrapper----------------*/
   
-  .sidebar-wrapper {
+  .menu-lateral-wrapper {
     width: 260px;
     height: 100%;
     max-height: 100%;
@@ -56,19 +57,19 @@
     z-index: 999;
   }
   
-  .sidebar-wrapper ul {
+  .menu-lateral-wrapper ul {
     list-style-type: none;
     padding: 0;
     margin: 0;
   }
   
-  .sidebar-wrapper a {
+  .menu-lateral-wrapper a {
     text-decoration: none;
   }
   
-  /*----------------sidebar-content----------------*/
+  /*----------------menu-lateral-contenido----------------*/
   
-  .sidebar-content {
+  .menu-lateral-contenido {
     max-height: calc(100% - 30px);
     height: calc(100% - 30px);
     overflow-y: auto;
@@ -76,33 +77,33 @@
   }
 
   
-  /*--------------------sidebar-brand----------------------*/
+  /*--------------------menu-lateral-brand----------------------*/
   
-  .sidebar-wrapper .sidebar-brand {
+  .menu-lateral-wrapper .menu-lateral-brand {
     padding: 20px 20px;
     display: flex;
     align-items: center;
     height: 71px;
   }
   
-  .sidebar-wrapper .sidebar-brand > a {
+  .menu-lateral-wrapper .menu-lateral-brand > a {
     text-transform: uppercase;
     font-weight: bold;
     flex-grow: 1;
   }
   
-  .sidebar-wrapper .sidebar-brand #close-sidebar {
+  .menu-lateral-wrapper .menu-lateral-brand #close-menu-lateral {
     cursor: pointer;
     font-size: 20px;
   }
-  /*--------------------sidebar-header----------------------*/
+  /*--------------------menu-lateral-header----------------------*/
   
-  .sidebar-wrapper .sidebar-header {
+  .menu-lateral-wrapper .menu-lateral-header {
     padding: 20px;
     overflow: hidden;
   }
   
-  .sidebar-wrapper .sidebar-header .user-pic {
+  .menu-lateral-wrapper .menu-lateral-header .user-pic {
     float: left;
     width: 60px;
     padding: 2px;
@@ -111,50 +112,50 @@
     overflow: hidden;
   }
   
-  .sidebar-wrapper .sidebar-header .user-pic img {
+  .menu-lateral-wrapper .menu-lateral-header .user-pic img {
     object-fit: cover;
     height: 100%;
     width: 100%;
   }
   
-  .sidebar-wrapper .sidebar-header .user-info {
+  .menu-lateral-wrapper .menu-lateral-header .user-info {
     float: left;
   }
   
-  .sidebar-wrapper .sidebar-header .user-info > span {
+  .menu-lateral-wrapper .menu-lateral-header .user-info > span {
     display: block;
   }
   
-  .sidebar-wrapper .sidebar-header .user-info .user-role {
+  .menu-lateral-wrapper .menu-lateral-header .user-info .user-role {
     font-size: 12px;
   }
   
-  .sidebar-wrapper .sidebar-header .user-info .user-status {
+  .menu-lateral-wrapper .menu-lateral-header .user-info .user-status {
     font-size: 11px;
     margin-top: 4px;
   }
   
-  .sidebar-wrapper .sidebar-header .user-info .user-status i {
+  .menu-lateral-wrapper .menu-lateral-header .user-info .user-status i {
     font-size: 8px;
     margin-right: 4px;
     color: #5cb85c;
   }
 
   
-  /*----------------------sidebar-menu-------------------------*/
+  /*----------------------menu-lateral-menu-------------------------*/
   
-  .sidebar-wrapper .sidebar-menu {
+  .menu-lateral-wrapper .menu-lateral-menu {
     padding-bottom: 10px;
   }
   
-  .sidebar-wrapper .sidebar-menu .header-menu span {
+  .menu-lateral-wrapper .menu-lateral-menu .header-menu span {
     font-weight: bold;
     font-size: 14px;
     padding: 15px 20px 5px 20px;
     display: inline-block;
   }
   
-  .sidebar-wrapper .sidebar-menu ul li a {
+  .menu-lateral-wrapper .menu-lateral-menu ul li a {
     display: inline-block;
     width: 100%;
     text-decoration: none;
@@ -162,7 +163,7 @@
     padding: 8px 30px 8px 20px;
   }
   
-  .sidebar-wrapper .sidebar-menu ul li a i {
+  .menu-lateral-wrapper .menu-lateral-menu ul li a i {
     margin-right: 10px;
     font-size: 12px;
     width: 30px;
@@ -172,12 +173,12 @@
     border-radius: 4px;
   }
   
-  .sidebar-wrapper .sidebar-menu ul li a:hover > i::before {
+  .menu-lateral-wrapper .menu-lateral-menu ul li a:hover > i::before {
     display: inline-block;
     animation: swing ease-in-out 0.5s 1 alternate;
   }
   
-  .sidebar-wrapper .sidebar-menu .sidebar-dropdown > a:after {
+  .menu-lateral-wrapper .menu-lateral-menu .menu-lateral-dropdown > a:after {
     font-family: "Font Awesome 5 Free";
     font-weight: 900;
     content: "\f105";
@@ -195,16 +196,16 @@
     top: 14px;
   }
   
-  .sidebar-wrapper .sidebar-menu .sidebar-dropdown .sidebar-submenu ul {
+  .menu-lateral-wrapper .menu-lateral-menu .menu-lateral-dropdown .menu-lateral-submenu ul {
     padding: 5px 0;
   }
   
-  .sidebar-wrapper .sidebar-menu .sidebar-dropdown .sidebar-submenu li {
+  .menu-lateral-wrapper .menu-lateral-menu .menu-lateral-dropdown .menu-lateral-submenu li {
     padding-left: 25px;
     font-size: 13px;
   }
   
-  .sidebar-wrapper .sidebar-menu .sidebar-dropdown .sidebar-submenu li a:before {
+  .menu-lateral-wrapper .menu-lateral-menu .menu-lateral-dropdown .menu-lateral-submenu li a:before {
     content: "\f111";
     font-family: "Font Awesome 5 Free";
     font-weight: 400;
@@ -218,38 +219,38 @@
     font-size: 8px;
   }
   
-  .sidebar-wrapper .sidebar-menu ul li a span.label,
-  .sidebar-wrapper .sidebar-menu ul li a span.badge {
+  .menu-lateral-wrapper .menu-lateral-menu ul li a span.label,
+  .menu-lateral-wrapper .menu-lateral-menu ul li a span.badge {
     float: right;
     margin-top: 8px;
     margin-left: 5px;
   }
   
-  .sidebar-wrapper .sidebar-menu .sidebar-dropdown .sidebar-submenu li a .badge,
-  .sidebar-wrapper .sidebar-menu .sidebar-dropdown .sidebar-submenu li a .label {
+  .menu-lateral-wrapper .menu-lateral-menu .menu-lateral-dropdown .menu-lateral-submenu li a .badge,
+  .menu-lateral-wrapper .menu-lateral-menu .menu-lateral-dropdown .menu-lateral-submenu li a .label {
     float: right;
     margin-top: 0px;
   }
   
-  .sidebar-wrapper .sidebar-menu .sidebar-submenu {
+  .menu-lateral-wrapper .menu-lateral-menu .menu-lateral-submenu {
     display: none;
   }
   
-  .sidebar-wrapper .sidebar-menu .sidebar-dropdown.active > a:after {
+  .menu-lateral-wrapper .menu-lateral-menu .menu-lateral-dropdown.active > a:after {
     transform: rotate(90deg);
     right: 17px;
   }
   
-  /*--------------------------side-footer------------------------------*/
+  /*--------------------------menu lateral-footer------------------------------*/
   
-  .sidebar-footer {
+  .menu-lateral-footer {
     position: absolute;
     width: 100%;
     bottom: 0;
     display: flex;
   }
   
-  .sidebar-footer > a {
+  .menu-lateral-footer > a {
     flex-grow: 1;
     text-align: center;
     height: 30px;
@@ -257,74 +258,66 @@
     position: relative;
   }
 
+  /*-----------------------------mercurio-theme-------------------------------------------------*/
   
-  /*-----------------------------livenup-theme-------------------------------------------------*/
-  
-  .livenup-theme .sidebar-wrapper {
+  .mercurio-theme .menu-lateral-wrapper {
       /* background: #26327e; */
       background: linear-gradient(to bottom, #26327eee, #000000c7);
   }
   
-  .livenup-theme .sidebar-wrapper .sidebar-header,
-  .livenup-theme .sidebar-wrapper .sidebar-search,
-  .livenup-theme .sidebar-wrapper .sidebar-menu {
+  .mercurio-theme .menu-lateral-wrapper .menu-lateral-header,
+  .mercurio-theme .menu-lateral-wrapper .menu-lateral-search,
+  .mercurio-theme .menu-lateral-wrapper .menu-lateral-menu {
       border-top: 1px solid #fcfcfc;
   }
   
-  .livenup-theme .sidebar-wrapper .sidebar-search input.search-menu,
-  .livenup-theme .sidebar-wrapper .sidebar-search .input-group-text {
+  .mercurio-theme .menu-lateral-wrapper .menu-lateral-search input.search-menu,
+  .mercurio-theme .menu-lateral-wrapper .menu-lateral-search .input-group-text {
       border-color: transparent;
       box-shadow: none;
   }
   
-  .livenup-theme .sidebar-wrapper .sidebar-header .user-info .user-role,
-  .livenup-theme .sidebar-wrapper .sidebar-header .user-info .user-status,
-  .livenup-theme .sidebar-wrapper .sidebar-search input.search-menu,
-  .livenup-theme .sidebar-wrapper .sidebar-search .input-group-text,
-  .livenup-theme .sidebar-wrapper .sidebar-brand>a,
-  .livenup-theme .sidebar-wrapper .sidebar-menu ul li a,
-  .livenup-theme .sidebar-footer>a {
+  .mercurio-theme .menu-lateral-wrapper .menu-lateral-header .user-info .user-role,
+  .mercurio-theme .menu-lateral-wrapper .menu-lateral-header .user-info .user-status,
+  .mercurio-theme .menu-lateral-wrapper .menu-lateral-search input.search-menu,
+  .mercurio-theme .menu-lateral-wrapper .menu-lateral-search .input-group-text,
+  .mercurio-theme .menu-lateral-wrapper .menu-lateral-brand>a,
+  .mercurio-theme .menu-lateral-wrapper .menu-lateral-menu ul li a,
+  .mercurio-theme .menu-lateral-footer>a {
       color: #818896;
   }
   
-  .livenup-theme .sidebar-wrapper .sidebar-menu ul li:hover>a,
-  .livenup-theme .sidebar-wrapper .sidebar-menu .sidebar-dropdown.active>a,
-  .livenup-theme .sidebar-wrapper .sidebar-header .user-info,
-  .livenup-theme .sidebar-wrapper .sidebar-brand>a:hover,
-  .livenup-theme .sidebar-footer>a:hover i {
+  .mercurio-theme .menu-lateral-wrapper .menu-lateral-menu ul li:hover>a,
+  .mercurio-theme .menu-lateral-wrapper .menu-lateral-menu .menu-lateral-dropdown.active>a,
+  .mercurio-theme .menu-lateral-wrapper .menu-lateral-header .user-info,
+  .mercurio-theme .menu-lateral-wrapper .menu-lateral-brand>a:hover,
+  .mercurio-theme .menu-lateral-footer>a:hover i {
       color: white;
   }
   
-  .livenup-theme .sidebar-wrapper ul li:hover a i,
-  .livenup-theme .sidebar-wrapper .sidebar-dropdown .sidebar-submenu li a:hover:before,
-  .livenup-theme .sidebar-wrapper .sidebar-search input.search-menu:focus+span,
-  .livenup-theme .sidebar-wrapper .sidebar-menu .sidebar-dropdown.active a i {
+  .mercurio-theme .menu-lateral-wrapper ul li:hover a i,
+  .mercurio-theme .menu-lateral-wrapper .menu-lateral-dropdown .menu-lateral-submenu li a:hover:before,
+  .mercurio-theme .menu-lateral-wrapper .menu-lateral-search input.search-menu:focus+span,
+  .mercurio-theme .menu-lateral-wrapper .menu-lateral-menu .menu-lateral-dropdown.active a i {
       color: #16c7ff;
       text-shadow:0px 0px 10px rgba(22, 199, 255, 0.5);
   }
   
-  .livenup-theme .sidebar-wrapper .sidebar-menu ul li a i,
-  .livenup-theme .sidebar-wrapper .sidebar-menu .sidebar-dropdown div,
-  .livenup-theme .sidebar-wrapper .sidebar-search input.search-menu,
-  .livenup-theme .sidebar-wrapper .sidebar-search .input-group-text {
+  .mercurio-theme .menu-lateral-wrapper .menu-lateral-menu ul li a i,
+  .mercurio-theme .menu-lateral-wrapper .menu-lateral-menu .menu-lateral-dropdown div,
+  .mercurio-theme .menu-lateral-wrapper .menu-lateral-search input.search-menu,
+  .mercurio-theme .menu-lateral-wrapper .menu-lateral-search .input-group-text {
       background: #3a3f48;
   }
   
-  .livenup-theme .sidebar-wrapper .sidebar-menu .header-menu span {
+  .mercurio-theme .menu-lateral-wrapper .menu-lateral-menu .header-menu span {
       color: #6c7b88;
   }
   
-  .livenup-theme .sidebar-footer {
+  .mercurio-theme .menu-lateral-footer {
       background: #3a3f48;
-      box-shadow: 0px -1px 5px #282c33;
+      box-shadow: 0px -1px 5px #f3f3f3;
       border-top: 1px solid #dddddd;
   }
-  
-  .livenup-theme .sidebar-footer>a:first-child {
-      border-left: none;
-  }
-  
-  .livenup-theme .sidebar-footer>a:last-child {
-      border-right: none;
-  }
+
   

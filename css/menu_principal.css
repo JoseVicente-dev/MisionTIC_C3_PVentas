@@ -1,0 +1,15 @@
+.card {
+    background-color: #8aa7ff;
+
+}
+
+.imagen{
+    text-align: center;
+    align-items: center;
+    
+}
+
+.tamano_imagen{
+    width: 192px;
+    height: 192px;
+}

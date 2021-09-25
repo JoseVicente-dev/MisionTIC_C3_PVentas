@@ -69,3 +69,14 @@ footer{
     position: absolute;
     bottom: 5px;
 }
+/* Codigo para permitir que el menu dropdown de la tabla de productos no se pierda en el interior de la tabla. Tomado de: https://stackoverflow.com/questions/26018756/bootstrap-button-drop-down-inside-responsive-table-not-visible-because-of-scroll */
+@media (max-width: 768px) {
+    .table-responsive .dropdown-menu {
+        position: static !important;
+    }
+}
+@media (min-width: 767px) {
+    .table-responsive {        
+        overflow: visible;
+    }
+}

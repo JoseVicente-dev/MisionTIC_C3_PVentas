@@ -63,7 +63,7 @@ header{
 }
 
 footer{
-    background-color: white;
+    background-color: #ffffff93;
     width: 100%;
     margin: auto;
     display: block;
@@ -71,4 +71,7 @@ footer{
     bottom: 0px;
 }
 
+.ct-login{
+   border-radius: 2px;
+}
 

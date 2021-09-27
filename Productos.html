@@ -134,7 +134,7 @@
                             </div> -->
                         </li>
                         <li class="menu-lateral-dropdown">
-                            <a href="#" style="color: white;">
+                            <a href="Productos.html" style="color: white;">
                                 <!-- Icono cajas -->
                                 <!-- <i class="fas fa-boxes" style="color: #16c7ff;"></i> -->
 
@@ -374,14 +374,13 @@
     </section>
     <!-- Tabla con datos -->
 
-    <!-- Modal Ingresar Datos -->
-    <!-- Vertically centered modal -->
+    <!-- Modal Ingresar Datos -->    
     <div class="modal fade" id="Adicionar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        aria-labelledby="staticBackdropLabel1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
             <div class="modal-content">
                 <div class="modal-header" style="background-color: #26327e;">
-                    <h5 class="modal-title" id="staticBackdropLabel" style="color: white;">Adicionar productos</h5>
+                    <h5 class="modal-title" id="staticBackdropLabel1" style="color: white;">Adicionar productos</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
                         style="background-color: #7a87bb;"></button>
                 </div>
@@ -415,22 +414,69 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Understood</button>
+                    
+                    <button type="button" class="btn btn-primary" style=" background-color: #26327e;">Adicionar</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                 </div>
             </div>
         </div>
     </div>
-
     <!-- Modal Ingresar Datos -->
 
+    <!-- Modal Modificar Datos -->   
+    <div class="modal fade " id="Modificar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel2" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable ">
+            <div class="modal-content ">
+                <div class="modal-header" style="background-color: #26327e;">
+                    <h5 class="modal-title" id="staticBackdropLabel2" style="color: white;">Adicionar productos</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                        style="background-color: #7a87bb;"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="container">
+                        
 
+                            <div class="col">
+                                <input type="text" class="form-control" id="" placeholder="Código de producto" style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
+                        background-color: gainsboro; text-align: center;" disabled>
+
+                            </div>
+                        
+                            <div class="col">
+                                <input type="text" class="form-control" id="" placeholder="Descripción del producto" style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
+                        background-color: #d8e5fe; text-align: center;">
+
+                            </div>
+                            <div class="col">
+                                <input type="text" class="form-control" id="" placeholder="Valor unitario ($)" style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
+                        background-color: #d8e5fe; text-align: center;">
+
+                            </div>
+                            <div class="col">
+                                <input type="text" class="form-control" id="" placeholder="Estado" style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
+                        background-color: #d8e5fe; text-align: center;">
+
+                            </div>
+                        
+
+                    </div>
+                </div>
+                <div class="modal-footer" >
+                    <button type="button" class="btn btn-primary" style=" background-color: #26327e;">Modificar</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal Modificar Datos -->
 
     <!-- Botones adicion, modificacion de productos -->
     <div class="container" style="text-align: center;">
         <a href="#" class="btn btn-primary" style=" background-color: #26327e;" data-bs-toggle="modal"
             data-bs-target="#Adicionar">Adicionar</a>
-        <a href="#" class="btn btn-primary" style=" background-color: #26327e;">Modificar</a>
+        <a href="#" class="btn btn-primary" style=" background-color: #26327e;" data-bs-toggle="modal"
+            data-bs-target="#Modificar">Modificar</a>
 
     </div>
     <!-- Botones adicion, modificacion de productos -->

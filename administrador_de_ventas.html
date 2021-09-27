@@ -147,7 +147,160 @@
         </nav>
     </div>
     <!-- Menú lateral -->
+  
+    <!-- Prueba JS -->
+    <script type="text/javascript">
+        function getP() {
+            var nbP = +document.getElementById("nombreP").value;
+            var inputContainer = document.getElementById("inutContainer");
+        
+            for (var i = 0; i < nbP; i++) {
+                var newForm = document.createElement("input");
+                newForm.setAttribute("type", "text");
+                newForm.setAttribute("id", "form"+i);
+                inputContainer.appendChild(newForm);
+                inputContainer.appendChild(document.createElement("br"));
+            }
+        }
+        </script>
+        <form>
+            <input type="number" name="nombrePlat" id="nombreP">
+            <input type="button" value="Envoyer" id="ok" onclick="getP()">
+            <div id="inutContainer">
+        </div>
+        </form>
 
+
+        <!-- Nueva Tabla -->
+    
+    <form>
+        <section class="main">
+            <div class="container-fluid table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col"> </th>
+                            <th scope="col">Id</th>
+                            <th scope="col">Articulo</th>
+                            <th scope="col">Cliente</th>
+                            <th scope="col">Valor $</th>
+                            <th scope="col">Fecha Venta</th>
+                            <th scope="col">Fecha Pago</th>
+                            <th scope="col">Vendedor</th>
+                            <th scope="col">Estado</th>
+                                                
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="ingresoDatos" id="inutContainer">
+                            <input type="checkbox" id="check">
+                            </td>
+                            <td class="ingresoDatos">
+                                <input tipe="text", id="Id" class="ingresoDatos"> 
+                            </td>
+                          
+                        </tr>
+                        <tr>
+                            <td>
+                            <input type="checkbox" id="check" class="ingresoDatos">
+                            </td>
+                          
+                        </tr>
+                        <tr>
+                            <td>
+                            <input type="checkbox" id="check" class="ingresoDatos">
+                            </td>
+                           
+                        </tr>
+                        <tr>
+                            <td>
+                            <input type="checkbox" id="check" class="ingresoDatos">
+                            </td>
+                            
+                        </tr>
+                    </tbody>
+                    </table>
+                    <input type="button" value="Nueva Venta" id="ok" onclick="nuevaFila()">
+                    
+                    </div>
+        </section>
+        
+       
+    </form>
+    <script>
+        function nuevaFila(){
+            var inputContainer = document.getElementById("inutContainer");
+            var Check = document.createElement("input");
+            Check.setAttribute("type", "text");
+            Check.setAttribute("id", "form"+1);
+            var Id = document.createElement("input");
+            Id.setAttribute("type", "text");
+            Id.setAttribute("id", "form"+2);
+            var Articulo = document.createElement("input");
+            Articulo.setAttribute("type", "text");
+            Articulo.setAttribute("id", "form"+3);
+            var Cliente = document.createElement("input");
+            Cliente.setAttribute("type", "text");
+            Cliente.setAttribute("id", "form");
+            var Valor = document.createElement("input");
+            Valor.setAttribute("type", "text");
+            Valor.setAttribute("id", "form");
+            var FechaVenta = document.createElement("input");
+            FechaVenta.setAttribute("type", "text");
+            FechaVenta.setAttribute("id", "form");
+            var FechaPago = document.createElement("input");
+            FechaPago.setAttribute("type", "text");
+            FechaPago.setAttribute("id", "form");
+            var Vendedor= document.createElement("input");
+            Vendedor.setAttribute("type", "text");
+            Vendedor.setAttribute("id", "form");
+            var Estado = document.createElement("input");
+            Estado.setAttribute("type", "text");
+            Estado.setAttribute("id", "form");
+          
+            document.createElement("able");
+                 
+                    document.createElement("tr");
+                          document.createElement("td");
+                                inputContainer.appendChild(Check);
+                                document.createElement("/td");
+                                document.createElement("td");
+                                inputContainer.appendChild(Id);
+                                document.createElement("/td");
+                                document.createElement("td");
+                                inputContainer.appendChild(Articulo);
+                                document.createElement("/td");
+                                document.createElement("td");
+                                inputContainer.appendChild(Cliente);
+                                document.createElement("/td");
+                                document.createElement("td");
+                                inputContainer.appendChild(Valor);
+                                document.createElement("/td");
+                                document.createElement("td");
+                                inputContainer.appendChild(FechaVenta);
+                                document.createElement("/td");
+                                document.createElement("td");
+                                inputContainer.appendChild(FechaPago);
+                                document.createElement("/td");
+                                document.createElement("td");
+                                inputContainer.appendChild(Vendedor);
+                                document.createElement("/td");
+                                document.createElement("td");
+                                inputContainer.appendChild(Estado);
+                                document.createElement("/td");
+                             document.createElement("td");
+                                inputContainer.appendChild(Articulo);
+                                document.createElement("/td");
+                             document.createElement("/tr");
+                        document.createElement("br");
+                        
+                    document.createElement("/table");
+                
+            
+
+
+        }
+    </script>
     <!-- Tabla con datos -->
     <section class="main">
         <div class="container-fluid table-responsive">
@@ -294,8 +447,8 @@
     <!-- Tabla con datos -->
 
     <!-- Bottones -->
-    <button type="reset" class="buttonAdVen">Nueva Venta</button>
-    <button type="reset" class="buttonAdVen">Estado</button>
+    <button type="reset" class="buttonAdVen">Agregar Nueva Venta</button>
+    <button type="reset" class="buttonAdVen">Modificar Estado</button>
 
     <!-- Footer -->
     <footer style="text-align: center;">
@@ -303,7 +456,7 @@
     </footer>
     <!-- Footer -->
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></scrip>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/esm/popper.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"

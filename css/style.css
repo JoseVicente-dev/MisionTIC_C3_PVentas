@@ -91,7 +91,7 @@ textarea:focus, input:focus {
     margin: 10 auto;
     position:relative;
     top:50%; 
-    left:30%;
+    left:20%;
     background: #070e8c86;
     border-radius: 20px;
 }

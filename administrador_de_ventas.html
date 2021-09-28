@@ -58,7 +58,7 @@
         </a>
         <nav id="menu-lateral" class="menu-lateral-wrapper">
             <div class="menu-lateral-contenido">
-                
+
                 <!-- encabezado menu -->
                 <div class="menu-lateral-brand" style="background-color: #2d35a7a4;;">
                     <img src="/images/logo_mercurio.png" alt="" style="width: 30px; ">
@@ -134,7 +134,8 @@
             </div>
 
             <!-- Footer menu -->
-            <div class="menu-lateral-footer" style="bottom: 32px; background-color: transparent; border-top: transparent;">
+            <div class="menu-lateral-footer"
+                style="bottom: 32px; background-color: transparent; border-top: transparent;">
                 <img src="/images/logo2b.png" alt="..." class="img-rounded" style="width: 250px;">
             </div>
             <div class="menu-lateral-footer">
@@ -146,191 +147,92 @@
 
         </nav>
     </div>
-    <!-- Menú lateral -->
-  
-    <!-- Prueba JS -->
-    <!-- <script type="text/javascript">
-        function getP() {
-            var nbP = +document.getElementById("nombreP").value;
+
+
+    <script>
+        function nuevaFila() {
+
             var inputContainer = document.getElementById("initContainer");
-        
-            for (var i = 0; i < nbP; i++) {
-                var newForm = document.createElement("input");
-                newForm.setAttribute("type", "text");
-                newForm.setAttribute("id", "form"+i);
-                inputContainer.appendChild(newForm);
-                inputContainer.appendChild(document.createElement("br"));
-            }
+
+            // se Crean los imputs
+            var Check = document.createElement("input");
+            Check.setAttribute("type", "checkbox");
+            Check.setAttribute("id", "form" + 1);
+           
+            var Id = document.createElement("input");
+            Id.setAttribute("type", "text");
+            Id.setAttribute("id", "form" + 2);
+            var Articulo = document.createElement("input");
+            Articulo.setAttribute("type", "text");
+            Articulo.setAttribute("id", "form" + 3);
+            var Cliente = document.createElement("input");
+            Cliente.setAttribute("type", "text");
+            Cliente.setAttribute("id", "form");
+            var Valor = document.createElement("input");
+            Valor.setAttribute("type", "text");
+            Valor.setAttribute("id", "form");
+            var FechaVenta = document.createElement("input");
+            FechaVenta.setAttribute("type", "text");
+            FechaVenta.setAttribute("id", "form");
+            var FechaPago = document.createElement("input");
+            FechaPago.setAttribute("type", "text");
+            FechaPago.setAttribute("id", "form");
+            var Vendedor = document.createElement("input");
+            Vendedor.setAttribute("type", "text");
+            Vendedor.setAttribute("id", "form");
+            var Estado = document.createElement("input");
+            Estado.setAttribute("type", "text");
+            Estado.setAttribute("id", "form");
+
+            tabla = document.createElement("table");
+            tabla.setAttribute("class","container-fluid table-responsive")
+            Fila = document.createElement("tr");
+            col1 = document.createElement("td");
+            col1.appendChild(Check);
+
+            col2 = document.createElement("td");
+            col2.appendChild(Id);
+
+            col3 = document.createElement("td");
+            col3.appendChild(Articulo);
+
+            col4 = document.createElement("td");
+            col4.appendChild(Cliente);
+
+            col5 = document.createElement("td");
+            col5.appendChild(Valor);
+
+            col6 = document.createElement("td");
+            col6.appendChild(FechaVenta);
+
+            col7 = document.createElement("td");
+            col7.appendChild(FechaPago);
+
+            col8 = document.createElement("td");
+            col8.appendChild(Vendedor);
+
+            col9 = document.createElement("td");
+            col9.appendChild(Estado);
+            col10 = document.createElement("td");
+            col10.appendChild(Articulo);
+            Fila.appendChild(col1)
+            Fila.appendChild(col2)
+            Fila.appendChild(col3)
+            Fila.appendChild(col4)
+            Fila.appendChild(col5)
+            Fila.appendChild(col6)
+            Fila.appendChild(col7)
+            Fila.appendChild(col8)
+            Fila.appendChild(col9)
+            Fila.appendChild(col10)
+            tabla.appendChild(Fila)
+            inputContainer.appendChild(tabla)
         }
-        </script>
-        <form>
-            <input type="number" name="nombrePlat" id="nombreP">
-            <input type="button" value="Envoyer" id="ok" onclick="getP()">
-            <div id="initContainer">
-        </div>
-        </form> -->
+    </script>
 
-
-        <!-- Nueva Tabla -->
-<!-- <script>
-    function tableCreate() {
-  //body reference 
-  var body = document.getElementsByTagName("body")[0];
-
-  // create elements <table> and a <tbody>
-  var tbl = document.createElement("table");
-  var tblBody = document.createElement("tbody");
-
-  // cells creation
-  for (var j = 0; j <= 2; j++) {
-    // table row creation
-    var row = document.createElement("tr");
-
-    for (var i = 0; i < 2; i++) {
-      // create element <td> and text node 
-      //Make text node the contents of <td> element
-      // put <td> at end of the table row
-      var cell = document.createElement("td");
-      var cellText = document.createTextNode("cell is row " + j + ", column " + i);
-
-      cell.appendChild(cellText);
-      row.appendChild(cell);
-    }
-
-    //row added to end of table body
-    tblBody.appendChild(row);
-  }
-
-  // append the <tbody> inside the <table>
-  tbl.appendChild(tblBody);
-  // put <table> in the <body>
-  body.appendChild(tbl);
-  // tbl border attribute to 
-  tbl.setAttribute("border", "2");
-}
-    </script> -->
-        
-  <!--           <table width="100%" border="1">
-                <tr>
-                  <td>&nbsp;</td>
-                  <td>&nbsp;</td>
-                </tr>
-                <tr>
-                  <td>&nbsp;</td>
-                  <td rowspan="2">&nbsp;</td>
-                </tr>
-                <tr>
-                  <td>&nbsp;</td>
-                </tr>
-              </table>
-              <input type="button" value="Nueva Venta" id="ok" onclick="tableCreate()"> -->
-
-              <script>
-                function nuevaFila(){
-        
-                    var inputContainer = document.getElementById("initContainer");
-                    var Check = document.createElement("input");
-                    Check.setAttribute("type", "text");
-                    Check.setAttribute("id", "form"+1);
-                    var Id = document.createElement("input");
-                    Id.setAttribute("type", "text");
-                    Id.setAttribute("id", "form"+2);
-                    var Articulo = document.createElement("input");
-                    Articulo.setAttribute("type", "text");
-                    Articulo.setAttribute("id", "form"+3);
-                    var Cliente = document.createElement("input");
-                    Cliente.setAttribute("type", "text");
-                    Cliente.setAttribute("id", "form");
-                    var Valor = document.createElement("input");
-                    Valor.setAttribute("type", "text");
-                    Valor.setAttribute("id", "form");
-                    var FechaVenta = document.createElement("input");
-                    FechaVenta.setAttribute("type", "text");
-                    FechaVenta.setAttribute("id", "form");
-                    var FechaPago = document.createElement("input");
-                    FechaPago.setAttribute("type", "text");
-                    FechaPago.setAttribute("id", "form");
-                    var Vendedor= document.createElement("input");
-                    Vendedor.setAttribute("type", "text");
-                    Vendedor.setAttribute("id", "form");
-                    var Estado = document.createElement("input");
-                    Estado.setAttribute("type", "text");
-                    Estado.setAttribute("id", "form");
-                  tabla=  document.createElement("table");
-                            Fila= document.createElement("tr");
-                                 col1= document.createElement("td");
-                                        col1.appendChild(Check);
-                                       
-                                      col2 =  document.createElement("td");
-                                        col2.appendChild(Id);
-                                        
-                                        col3 = document.createElement("td");
-                                        col3.appendChild(Articulo);
-                                       
-                                       col4= document.createElement("td");
-                                        col4.appendChild(Cliente);
-                                       
-                                        col5 = document.createElement("td");
-                                        col5.appendChild(Valor);
-                                        
-                                        col6=document.createElement("td");
-                                        col6.appendChild(FechaVenta);
-                                        
-                                        col7=document.createElement("td");
-                                        col7.appendChild(FechaPago);
-                                        
-                                       col8= document.createElement("td");
-                                        col8.appendChild(Vendedor);
-                                        
-                                       col9= document.createElement("td");
-                                        col9.appendChild(Estado);
-                                     col10=document.createElement("td");
-                                        col10.appendChild(Articulo);
-                                        Fila.appendChild(col1)
-                                        Fila.appendChild(col2)
-                                        Fila.appendChild(col3)
-                                        Fila.appendChild(col4)
-                                        Fila.appendChild(col5)
-                                        Fila.appendChild(col6)
-                                        Fila.appendChild(col7)
-                                        Fila.appendChild(col8)
-                                        Fila.appendChild(col9)
-                                        Fila.appendChild(col10)
-                                        tabla.appendChild(Fila)
-                                        inputContainer.appendChild(tabla)
-                }
-           </script>    
-    <!-- <form>
-        <section class="main">
-            <div class="container-fluid table-responsive">
-                <table class="table" >
-                     <tr> 
-                    
-                        <tr>
-                            <th scope="col"> </th>
-                            <th scope="col">Id</th>
-                            <th scope="col">Articulo</th>
-                            <th scope="col">Cliente</th>
-                            <th scope="col">Valor $</th>
-                            <th scope="col">Fecha Venta</th>
-                            <th scope="col">Fecha Pago</th>
-                            <th scope="col">Vendedor</th>
-                            <th scope="col">Estado</th>
-                        </tr>
-                        <div >
-                        </div>
-                        </tr>
-                    </table>
-                    
-                    </div>
-        </section>
-        
-    </form> -->
-    
-
-<!-- Tabla con datos -->
+    <!-- Tabla con datos -->
     <section class="main">
-        <div class="container-fluid table-responsive"  id="initContainer">
+        <div class="container-fluid table-responsive" id="initContainer">
             <table class="table">
                 <thead>
                     <tr>
@@ -343,144 +245,24 @@
                         <th scope="col">Fecha Pago</th>
                         <th scope="col">Vendedor</th>
                         <th scope="col">Estado</th>
-                    
+
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- <tr>
-                        <td class="ingresoDatos">
-                        <input type="checkbox" id="check">
-                        </td>
-                        <td class="ingresoDatos">
-                            <input tipe="text", id="Id" class="ingresoDatos"> 
-                        </td>
-                        <td>
-                            <input tipe="text", id="Articulo" class="ingresoDatos"> 
-                        </td>
-                        <td>
-                            <input tipe="text", id="Cliente" class="ingresoDatos"> 
-                        </td>
-                        <td>
-                            <input tipe="text", id="Valor" class="ingresoDatos"> 
-                        </td>
-                        <td>
-                            <input tipe="text", id="Fecha_Venta" class="ingresoDatos"> 
-                        </td>
-                        <td>
-                            <input tipe="text", id="Fecha_Pago" class="ingresoDatos"> 
-                        </td>
-                        <td>
-                            <input tipe="text", id="Vendedor" class="ingresoDatos"> 
-                        </td>
-                        <td>
-                            <input tipe="text", id="Estado" class="ingresoDatos"> 
-                        </td>
-                        <td>+</td>
                     </tr>
-                    <tr>
-                        <td>
-                        <input type="checkbox" id="check" class="ingresoDatos">
-                        </td>
-                        <td>
-                            <input tipe="text", id="Id" class="ingresoDatos"> 
-                        </td>
-                        <td>
-                            <input tipe="text", id="Articulo" class="ingresoDatos"> 
-                        </td>
-                        <td>
-                            <input tipe="text", id="Cliente" class="ingresoDatos"> 
-                        </td>
-                        <td>
-                            <input tipe="text", id="Valor" class="ingresoDatos"> 
-                        </td>
-                        <td>
-                            <input tipe="text", id="Fecha_Venta" class="ingresoDatos"> 
-                        </td>
-                        <td>
-                            <input tipe="text", id="Fecha_Pago" class="ingresoDatos"> 
-                        </td>
-                        <td>
-                            <input tipe="text", id="Vendedor" class="ingresoDatos"> 
-                        </td>
-                        <td>
-                            <input tipe="text", id="Estado" class="ingresoDatos"> 
-                        </td>
-                        <td>+</td>
+                    <div>
+                    </div>
                     </tr>
-                    <tr>
-                        <td>
-                        <input type="checkbox" id="check" class="ingresoDatos">
-                        </td>
-                        <td>
-                            <input tipe="text", id="Id" class="ingresoDatos"> 
-                        </td>
-                        <td>
-                            <input tipe="text", id="Articulo" class="ingresoDatos"> 
-                        </td>
-                        <td>
-                            <input tipe="text", id="Cliente" class="ingresoDatos"> 
-                        </td>
-                        <td>
-                            <input tipe="text", id="Valor" class="ingresoDatos"> 
-                        </td>
-                        <td>
-                            <input tipe="text", id="Fecha_Venta" class="ingresoDatos"> 
-                        </td>
-                        <td>
-                            <input tipe="text", id="Fecha_Pago" class="ingresoDatos"> 
-                        </td>
-                        <td>
-                            <input tipe="text", id="Vendedor" class="ingresoDatos"> 
-                        </td>
-                        <td>
-                            <input tipe="text", id="Estado" class="ingresoDatos"> 
-                        </td>
-                        <td>+</td>
-                    </tr>
-                    <tr>
-                        <td>
-                        <input type="checkbox" id="check" class="ingresoDatos">
-                        </td>
-                        <td>
-                            <input tipe="text", id="Id" class="ingresoDatos"> 
-                        </td>
-                        <td>
-                            <input tipe="text", id="Articulo" class="ingresoDatos"> 
-                        </td>
-                        <td>
-                            <input tipe="text", id="Cliente" class="ingresoDatos"> 
-                        </td>
-                        <td>
-                            <input tipe="text", id="Valor" class="ingresoDatos"> 
-                        </td>
-                        <td>
-                            <input tipe="text", id="Fecha_Venta" class="ingresoDatos"> 
-                        </td>
-                        <td>
-                            <input tipe="text", id="Fecha_Pago" class="ingresoDatos"> 
-                        </td>
-                        <td>
-                            <input tipe="text", id="Vendedor" class="ingresoDatos"> 
-                        </td>
-                        <td>
-                            <input tipe="text", id="Estado" class="ingresoDatos"> 
-                        </td>
-                        <td>+</td>
-                    </tr> -->
-                </tr>
-                <div >
-                </div>
-                </tr>
                 </tbody>
             </table>
-           
+
         </div>
     </section>
     <!-- Tabla con datos -->
 
     <!-- Bottones -->
     <button type="reset" class="buttonAdVen" onclick="nuevaFila()">Agregar Nueva Venta</button>
-    <button type="reset" class="buttonAdVen" >Guardar Nueva Venta</button>
+    <button type="reset" class="buttonAdVen">Guardar Nueva Venta</button>
     <button type="reset" class="buttonAdVen">Modificar Estado</button>
 
     <!-- Footer -->
@@ -489,7 +271,7 @@
     </footer>
     <!-- Footer -->
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></scrip>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/esm/popper.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"

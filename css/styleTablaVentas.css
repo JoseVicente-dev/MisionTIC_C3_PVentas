@@ -97,10 +97,11 @@ textarea:focus, input:focus {
 }
 
 footer{
+    background-color: white;
     width: 100%;
     margin: auto;
     display: block;
-    position: absolute;
-    bottom: 5px;
+    position: fixed;
+    bottom: 0px;
 }
 

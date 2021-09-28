@@ -152,7 +152,7 @@
     <!-- <script type="text/javascript">
         function getP() {
             var nbP = +document.getElementById("nombreP").value;
-            var inputContainer = document.getElementById("inutContainer");
+            var inputContainer = document.getElementById("initContainer");
         
             for (var i = 0; i < nbP; i++) {
                 var newForm = document.createElement("input");
@@ -166,7 +166,7 @@
         <form>
             <input type="number" name="nombrePlat" id="nombreP">
             <input type="button" value="Envoyer" id="ok" onclick="getP()">
-            <div id="inutContainer">
+            <div id="initContainer">
         </div>
         </form> -->
 
@@ -228,8 +228,7 @@
               <script>
                 function nuevaFila(){
         
-                    var inputContainer = document.getElementById("inutContainer");
-        
+                    var inputContainer = document.getElementById("initContainer");
                     var Check = document.createElement("input");
                     Check.setAttribute("type", "text");
                     Check.setAttribute("id", "form"+1);
@@ -257,10 +256,8 @@
                     var Estado = document.createElement("input");
                     Estado.setAttribute("type", "text");
                     Estado.setAttribute("id", "form");
-                  
-                  tabla=  document.createElement("able");
-                         
-                           Fila= document.createElement("tr");
+                  tabla=  document.createElement("table");
+                            Fila= document.createElement("tr");
                                  col1= document.createElement("td");
                                         col1.appendChild(Check);
                                        
@@ -287,11 +284,8 @@
                                         
                                        col9= document.createElement("td");
                                         col9.appendChild(Estado);
-                                        
                                      col10=document.createElement("td");
                                         col10.appendChild(Articulo);
-                                        
-        
                                         Fila.appendChild(col1)
                                         Fila.appendChild(col2)
                                         Fila.appendChild(col3)
@@ -306,10 +300,11 @@
                                         inputContainer.appendChild(tabla)
                 }
            </script>    
-    <form>
+    <!-- <form>
         <section class="main">
             <div class="container-fluid table-responsive">
                 <table class="table" >
+                     <tr> 
                     
                         <tr>
                             <th scope="col"> </th>
@@ -322,27 +317,20 @@
                             <th scope="col">Vendedor</th>
                             <th scope="col">Estado</th>
                         </tr>
-                        <tr>
-                        <div id="inutContainer">
-
+                        <div >
                         </div>
                         </tr>
-                      
-                                                
-                  
                     </table>
-                    <input type="button" value="Nueva Venta" id="ok" onclick="nuevaFila()">
                     
                     </div>
         </section>
         
-       
-    </form>
+    </form> -->
     
 
 <!-- Tabla con datos -->
     <section class="main">
-        <div class="container-fluid table-responsive">
+        <div class="container-fluid table-responsive"  id="initContainer">
             <table class="table">
                 <thead>
                     <tr>
@@ -359,7 +347,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
+                    <!-- <tr>
                         <td class="ingresoDatos">
                         <input type="checkbox" id="check">
                         </td>
@@ -478,15 +466,21 @@
                             <input tipe="text", id="Estado" class="ingresoDatos"> 
                         </td>
                         <td>+</td>
-                    </tr>
+                    </tr> -->
+                </tr>
+                <div >
+                </div>
+                </tr>
                 </tbody>
             </table>
+           
         </div>
     </section>
     <!-- Tabla con datos -->
 
     <!-- Bottones -->
-    <button type="reset" class="buttonAdVen">Agregar Nueva Venta</button>
+    <button type="reset" class="buttonAdVen" onclick="nuevaFila()">Agregar Nueva Venta</button>
+    <button type="reset" class="buttonAdVen" >Guardar Nueva Venta</button>
     <button type="reset" class="buttonAdVen">Modificar Estado</button>
 
     <!-- Footer -->

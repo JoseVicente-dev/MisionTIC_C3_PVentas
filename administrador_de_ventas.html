@@ -10,7 +10,7 @@
     <meta property="og:image" contenido="https://" />
     <meta name="google-site-verification" contenido="" />
 
-    <title>Nightmare | WebApp MT-2021</title>
+    <title>Admintrador Ventas</title>
 
     <link rel="icon" href="images/logo_mercurio.png" type="image/png" />
 
@@ -148,11 +148,13 @@
         </nav>
     </div>
 
+<!-- CREACIÓN DE LAS FILAS DE LA TABLA DE ADMINISTRADOR DE VENTAS POR MEDIO DE CODIGO JS -->
 
     <script>
+        // Funcion para crear una nueva fila he insertarla en una tabla ya creada
         function nuevaFila() {
-
-            var inputContainer = document.getElementById("initContainer");
+            // se crea input container el cual busca el elemento con el id="AquiVaLaFila"
+            var dondeInsertar = document.getElementById("AquiVaLaFila");
 
             // se Crean los imputs
             var Check = document.createElement("input");
@@ -172,39 +174,43 @@
             Valor.setAttribute("id", "Valor");
             var FechaVenta = document.createElement("input");
             FechaVenta.setAttribute("type", "text");
-            FechaVenta.setAttribute("id", "form");
+            FechaVenta.setAttribute("id", "FechaVenta");
             var FechaPago = document.createElement("input");
             FechaPago.setAttribute("type", "text");
-            FechaPago.setAttribute("id", "form");
+            FechaPago.setAttribute("id", "FechaPago");
             var Vendedor = document.createElement("input");
             Vendedor.setAttribute("type", "text");
-            Vendedor.setAttribute("id", "form");
+            Vendedor.setAttribute("id", "Vendedor");
             var Estado = document.createElement("input");
             Estado.setAttribute("type", "text");
-            Estado.setAttribute("id", "form");
-            tabla = document.createElement("table");
-            tabla.setAttribute("class","container-fluid table-responsive")
+            Estado.setAttribute("id", "Estado");
+            // no es necesario crear la tabla solo las filas
+            // los estilos se le aplicaran automaticamente a esta fila cuando sean
+            // insertados en la tabla
+            // se crea la fila
             Fila = document.createElement("tr");
-            col1 = document.createElement("td");
-            col1.appendChild(Check);
-            col2 = document.createElement("td");
-            col2.appendChild(Id);
-            col3 = document.createElement("td");
-            col3.appendChild(Articulo);
-            col4 = document.createElement("td");
-            col4.appendChild(Cliente);
-            col5 = document.createElement("td");
-            col5.appendChild(Valor);
-            col6 = document.createElement("td");
-            col6.appendChild(FechaVenta);
-            col7 = document.createElement("td");
-            col7.appendChild(FechaPago);
-            col8 = document.createElement("td");
-            col8.appendChild(Vendedor);
-            col9 = document.createElement("td");
-            col9.appendChild(Estado);
-            col10 = document.createElement("td");
-            col10.appendChild(Articulo);
+                // se crea la primer columnita de la fila y se le agrega el check
+                col1 = document.createElement("td");
+                     col1.appendChild(Check);
+                // se crea la segunda columnita de la fila y se le agrega Id
+                col2 = document.createElement("td");
+                     col2.appendChild(Id);
+                col3 = document.createElement("td");
+                     col3.appendChild(Articulo);
+                col4 = document.createElement("td");
+                     col4.appendChild(Cliente);
+                col5 = document.createElement("td");
+                     col5.appendChild(Valor);
+                col6 = document.createElement("td");
+                     col6.appendChild(FechaVenta);
+                col7 = document.createElement("td");
+                     col7.appendChild(FechaPago);
+                col8 = document.createElement("td");
+                     col8.appendChild(Vendedor);
+                col9 = document.createElement("td");
+                     col9.appendChild(Estado);
+          
+            // luego agregamos cada columnita a la fila
             Fila.appendChild(col1)
             Fila.appendChild(col2)
             Fila.appendChild(col3)
@@ -214,19 +220,19 @@
             Fila.appendChild(col7)
             Fila.appendChild(col8)
             Fila.appendChild(col9)
-            Fila.appendChild(col10)
-            tabla.appendChild(Fila)
-            inputContainer.appendChild(tabla)
+          
+            // por ultimo le decimos a la fila donde aparecer agregandola a dondeInsertar
+            dondeInsertar.appendChild(Fila)
         }
     </script>
 
-    <!-- Tabla con datos -->
+    <!-- Tabla done se insertaran las filas -->
     <section class="main">
-        <div class="container-fluid table-responsive" id="initContainer">
+        <div class="container-fluid table-responsive">
             <table class="table">
                 <thead>
                     <tr>
-                        <th scope="col"> </th>
+                        <th scope="col">Seleccionar </th>
                         <th scope="col">Id</th>
                         <th scope="col">Articulo</th>
                         <th scope="col">Cliente</th>
@@ -235,22 +241,107 @@
                         <th scope="col">Fecha Pago</th>
                         <th scope="col">Vendedor</th>
                         <th scope="col">Estado</th>
-
+    
                     </tr>
                 </thead>
-                <tbody>
-                  
+                <!-- agregamos el id="AquiVaLaFila" en el body porque solo creamos las filas -->
+                <!-- se mantiene la estructura original de la tabla -->
+                <tbody id="AquiVaLaFila">
+    
                 </tbody>
             </table>
-
+    
         </div>
     </section>
-    <!-- Tabla con datos -->
+    <!-- /Tabla con datos -->
+    <!--  Modal Modificar Estado -->
+    <div class="modal fade" id="ModificarEstado" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #26327e;">
+                    <h5 class="modal-title" id="staticBackdropLabel1" style="color: white;">Modificar Estado</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                        style="background-color: #7a87bb;"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="container">
+                        <div class="col">
+                            <input type="text" class="form-control" id="" placeholder="Id Venta" style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
+                        background-color: #d8e5fe; text-align: center;">
+                        </div>
+                        <select class="form-select" id="" style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
+                        background-color: #d8e5fe; text-align: center;" aria-label="Default select example">
+                            <option value="1">Disponible</option>
+                            <option value="2">No disponible</option>
+                        </select>
+                        <div class="col">
+    
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" style=" background-color: #26327e;">Modificar</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!--  Modal Buscar Ventas -->
+    <div class="modal fade" id="Buscar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #26327e;">
+                    <h5 class="modal-title" id="staticBackdropLabel1" style="color: white;">Buscar Venta</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                        style="background-color: #7a87bb;"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="container">
+    
+    
+                        <div class="col">
+                            <input type="text" class="form-control" id="" placeholder="Id Venta" style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
+                            background-color: #d8e5fe; text-align: center;">
+    
+                        </div>
+    
+                        <div class="col">
+                            <input type="text" class="form-control" id="" placeholder="Cliente" style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
+                            background-color: #d8e5fe; text-align: center;">
+    
+                        </div>
+                        <div class="col">
+                            <input type="text" class="form-control" id="" placeholder="Fecha Venta" style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
+                            background-color: #d8e5fe; text-align: center;">
+    
+                        </div>
+                        <div class="col">
+    
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" style=" background-color: #26327e;">Buscar</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Bottones -->
-    <button type="reset" class="buttonAdVen" onclick="nuevaFila()">Agregar Nueva Venta</button>
-    <button type="reset" class="buttonAdVen">Guardar Nueva Venta</button>
-    <button type="reset" class="buttonAdVen">Modificar Estado</button>
+    <!-- boton con el que se crea una nueva fila -->
+    <!-- en el voton de agregar nueva venta llamamos la función de crear una nueva fila -->
+    <div class="modal-footer buttonAdVen" >
+        <button type="button" class="btn btn-primary" style=" background-color: #26327e;" onclick="nuevaFila()">Agregar
+            Nueva Venta</button>
+        <button type="button" class="btn btn-primary" style=" background-color: #26327e;">Guardar Nueva Venta</button>
+        <button type="button" class="btn btn-primary" style=" background-color: #26327e;" data-bs-toggle="modal"  data-bs-target="#ModificarEstado">Modificar Estado</button>
+        <button type="button" class="btn btn-primary" style=" background-color: #26327e;" data-bs-toggle="modal"  data-bs-target="#Buscar">Buscar Venta</button>
+    </div>
+
 
     <!-- Footer -->
     <footer style="text-align: center;">

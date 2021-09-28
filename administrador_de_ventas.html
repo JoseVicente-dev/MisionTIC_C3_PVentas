@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" contenido="width=device-width">
+    <meta name="description" contenido="Aplicativo prueba MisionTic2021">
+    <meta name="keywords" contenido="Aplicación web, desarrollo de software, pruebas Misiontic" />
+    <meta property="og:image" contenido="https://" />
+    <meta name="google-site-verification" contenido="" />
+
+    <title>Nightmare | WebApp MT-2021</title>
+
+    <link rel="icon" href="images/logo_mercurio.png" type="image/png" />
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <!-- Bootstrap -->
+
+    <!-- css Nightmare -->
+    <link rel="stylesheet" href="/css/styleTablaVentas.css">
+    <link href="/css/menu.css" rel="stylesheet">
+    <!-- css Nightmare -->
+
+    <!-- Iconos fontAwesome -->
+    <link href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" rel="stylesheet">
+    <!-- Iconos fontAwesome -->
+
+    <!-- Fuente -->
+    <link href="https://fonts.googleapis.com/css2?family=Aldrich&display=swap" rel="stylesheet">
+    <!-- Fuente -->
+
+</head>
+
+<body>
+
+    <!-- NavBar superior-->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-color " id="menu">
+        <div class="container-fluid">
+            <div class="col-12" style="text-align: end;">
+                <a class="navbar-brand menuNG-titulo" href="#" style="font-size: 25px;">
+                    Administrador de Ventas&nbsp;&nbsp; <i class="fas fa-users" style="font-size: 50px;"></i>
+                </a>
+            </div>
+        </div>
+    </nav>
+    <!-- NavBar Superior-->
+
+
+    <!-- menu-lateral Menú lateral-->
+    <div class="page-wrapper mercurio-theme toggled">
+        <a id="show-menu-lateral" class="btn btn-sm btn-dark " href="#">
+            <i class="fas fa-bars" style=" font-size: 30px;margin-left: 5px;"> &nbsp;
+                <img src="/images/logo_mercurio.png" alt="" style="width: 30px; position:absolute;">
+            </i>
+        </a>
+        <nav id="menu-lateral" class="menu-lateral-wrapper">
+            <div class="menu-lateral-contenido">
+
+                <!-- encabezado menu -->
+                <div class="menu-lateral-brand" style="background-color: #2d35a7a4;;">
+                    <img src="/images/logo_mercurio.png" alt="" style="width: 30px; ">
+                    &nbsp;
+                    <a href="#" style="color: whitesmoke; ">Mercurio </a>
+                    <div id="close-menu-lateral">
+                        <i class="fas fa-times" style="color: white; "></i>
+                    </div>
+                </div>
+                <!-- encabezado menu -->
+
+                <!-- Sección de usuario -->
+                <div class="menu-lateral-header">
+                    <div class="user-pic">
+                        <img class="img-responsive img-rounded" src="/images/user2.png" alt="User picture">
+                    </div>
+                    <div class="user-info">
+                        <span class="user-name"><strong>Nightmare User</strong></span>
+                        <span class="user-role">Administrador</span>
+                        <span class="user-status">
+                            <i class="fa fa-circle"></i>
+                            <span>Online</span>
+                        </span>
+                    </div>
+                </div>
+                <!-- Sección de usuario -->
+
+                <!-- Opciones disponible lista de paginas -->
+                <div class="menu-lateral-menu">
+                    <ul>
+                        <li class="header-menu">
+                            <span>Opciones disponibles</span>
+                        </li>
+                        <li class="menu-lateral-dropdown">
+                            <a href="#">
+                                <i class="fa fa-chart-pie"></i>
+                                <span>Dashboard</span>
+                            </a>
+                        </li>
+                        <li class="menu-lateral-dropdown">
+                            <a href="#">
+                                <i class="fa fa-shopping-cart"></i>
+                                <span>Módulo de Ventas</span>
+                            </a>
+                            <div class="menu-lateral-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="#">Productos
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Pedidos</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="menu-lateral-dropdown">
+                            <a href="#" style="color: white;">
+                                <i class="fas fa-user-tie" style="color: #16c7ff;"></i>
+                                <span>Vendedores</span>
+                            </a>
+                        </li>
+                        <li class="menu-lateral-dropdown">
+                            <a href="#">
+                                <i class="fas fa-users-cog"></i>
+                                <span>Usuarios</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Opciones disponible lista de paginas -->
+
+            </div>
+
+            <!-- Footer menu -->
+            <div class="menu-lateral-footer"
+                style="bottom: 32px; background-color: transparent; border-top: transparent;">
+                <img src="/images/logo2b.png" alt="..." class="img-rounded" style="width: 250px;">
+            </div>
+            <div class="menu-lateral-footer">
+                <a href="login.html">
+                    <i class="fa fa-power-off"></i>
+                </a>
+            </div>
+            <!-- Footer menu -->
+
+        </nav>
+    </div>
+
+
+    <script>
+        function nuevaFila() {
+
+            var inputContainer = document.getElementById("initContainer");
+
+            // se Crean los imputs
+            var Check = document.createElement("input");
+            Check.setAttribute("type", "checkbox");
+            Check.setAttribute("id", "Checkbox");
+            var Id = document.createElement("input");
+            Id.setAttribute("type", "text");
+            Id.setAttribute("id", "Id");
+            var Articulo = document.createElement("input");
+            Articulo.setAttribute("type", "text");
+            Articulo.setAttribute("id", "Articulo");
+            var Cliente = document.createElement("input");
+            Cliente.setAttribute("type", "text");
+            Cliente.setAttribute("id", "Cliente");
+            var Valor = document.createElement("input");
+            Valor.setAttribute("type", "text");
+            Valor.setAttribute("id", "Valor");
+            var FechaVenta = document.createElement("input");
+            FechaVenta.setAttribute("type", "text");
+            FechaVenta.setAttribute("id", "form");
+            var FechaPago = document.createElement("input");
+            FechaPago.setAttribute("type", "text");
+            FechaPago.setAttribute("id", "form");
+            var Vendedor = document.createElement("input");
+            Vendedor.setAttribute("type", "text");
+            Vendedor.setAttribute("id", "form");
+            var Estado = document.createElement("input");
+            Estado.setAttribute("type", "text");
+            Estado.setAttribute("id", "form");
+            tabla = document.createElement("table");
+            tabla.setAttribute("class","container-fluid table-responsive")
+            Fila = document.createElement("tr");
+            col1 = document.createElement("td");
+            col1.appendChild(Check);
+            col2 = document.createElement("td");
+            col2.appendChild(Id);
+            col3 = document.createElement("td");
+            col3.appendChild(Articulo);
+            col4 = document.createElement("td");
+            col4.appendChild(Cliente);
+            col5 = document.createElement("td");
+            col5.appendChild(Valor);
+            col6 = document.createElement("td");
+            col6.appendChild(FechaVenta);
+            col7 = document.createElement("td");
+            col7.appendChild(FechaPago);
+            col8 = document.createElement("td");
+            col8.appendChild(Vendedor);
+            col9 = document.createElement("td");
+            col9.appendChild(Estado);
+            col10 = document.createElement("td");
+            col10.appendChild(Articulo);
+            Fila.appendChild(col1)
+            Fila.appendChild(col2)
+            Fila.appendChild(col3)
+            Fila.appendChild(col4)
+            Fila.appendChild(col5)
+            Fila.appendChild(col6)
+            Fila.appendChild(col7)
+            Fila.appendChild(col8)
+            Fila.appendChild(col9)
+            Fila.appendChild(col10)
+            tabla.appendChild(Fila)
+            inputContainer.appendChild(tabla)
+        }
+    </script>
+
+    <!-- Tabla con datos -->
+    <section class="main">
+        <div class="container-fluid table-responsive" id="initContainer">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col"> </th>
+                        <th scope="col">Id</th>
+                        <th scope="col">Articulo</th>
+                        <th scope="col">Cliente</th>
+                        <th scope="col">Valor $</th>
+                        <th scope="col">Fecha Venta</th>
+                        <th scope="col">Fecha Pago</th>
+                        <th scope="col">Vendedor</th>
+                        <th scope="col">Estado</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                  
+                </tbody>
+            </table>
+
+        </div>
+    </section>
+    <!-- Tabla con datos -->
+
+    <!-- Bottones -->
+    <button type="reset" class="buttonAdVen" onclick="nuevaFila()">Agregar Nueva Venta</button>
+    <button type="reset" class="buttonAdVen">Guardar Nueva Venta</button>
+    <button type="reset" class="buttonAdVen">Modificar Estado</button>
+
+    <!-- Footer -->
+    <footer style="text-align: center;">
+        <img src="/images/logo2.png" alt="logo-nightmare" style="height: 50px;">
+    </footer>
+    <!-- Footer -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/esm/popper.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <script src="/js/menu.js"></script>
+
+</body>
+
+
+</html>

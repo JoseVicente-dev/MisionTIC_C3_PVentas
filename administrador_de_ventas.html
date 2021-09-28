@@ -10,7 +10,7 @@
     <meta property="og:image" contenido="https://" />
     <meta name="google-site-verification" contenido="" />
 
-    <title>Nightmare | WebApp MT-2021</title>
+    <title>Admintrador Ventas</title>
 
     <link rel="icon" href="images/logo_mercurio.png" type="image/png" />
 
@@ -158,8 +158,11 @@
 
             // se Crean los imputs
             var Check = document.createElement("input");
-            Check.setAttribute("type", "checkbox");
-            Check.setAttribute("id", "Checkbox");
+            Check.setAttribute("class", "form-check-input")
+            Check.setAttribute("type", "radio");
+            Check.setAttribute("name", "flexRadioDefault")
+            Check.setAttribute("id", "flexRadioDefault");
+            
             var Id = document.createElement("input");
             Id.setAttribute("type", "text");
             Id.setAttribute("id", "Id");
@@ -189,10 +192,14 @@
             // insertados en la tabla
             // se crea la fila
             Fila = document.createElement("tr");
+            div = document.createElement("div")
+            div.setAttribute("class","form-check")
+            
                 // se crea la primer columnita de la fila y se le agrega el check
-                col1 = document.createElement("td");
-                     col1.appendChild(Check);
-                // se crea la segunda columnita de la fila y se le agrega Id
+                col1 = document.createElement("th");
+                     div.appendChild(Check)
+                     col1.appendChild(div);
+                // se crea la segunda columnita he la fila y se le agrega Id
                 col2 = document.createElement("td");
                      col2.appendChild(Id);
                 col3 = document.createElement("td");
@@ -229,8 +236,8 @@
     <!-- Tabla done se insertaran las filas -->
     <section class="main">
         <div class="container-fluid table-responsive">
-            <table class="table">
-                <thead>
+            <table class="table table-hover">
+                <thead style="text-align: center;">
                     <tr>
                         <th scope="col">Seleccionar </th>
                         <th scope="col">Id</th>
@@ -246,8 +253,8 @@
                 </thead>
                 <!-- agregamos el id="AquiVaLaFila" en el body porque solo creamos las filas -->
                 <!-- se mantiene la estructura original de la tabla -->
-                <tbody id="AquiVaLaFila">
-    
+                <tbody id="AquiVaLaFila" style="text-align: center;">
+                        
                 </tbody>
             </table>
     

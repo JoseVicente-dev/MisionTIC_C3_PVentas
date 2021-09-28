@@ -20,7 +20,7 @@
     <!-- Bootstrap -->
 
     <!-- css Nightmare -->
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/styleTablaVentas.css">
     <link href="/css/menu.css" rel="stylesheet">
     <!-- css Nightmare -->
 
@@ -157,20 +157,19 @@
             // se Crean los imputs
             var Check = document.createElement("input");
             Check.setAttribute("type", "checkbox");
-            Check.setAttribute("id", "form" + 1);
-           
+            Check.setAttribute("id", "Checkbox");
             var Id = document.createElement("input");
             Id.setAttribute("type", "text");
-            Id.setAttribute("id", "form" + 2);
+            Id.setAttribute("id", "Id");
             var Articulo = document.createElement("input");
             Articulo.setAttribute("type", "text");
-            Articulo.setAttribute("id", "form" + 3);
+            Articulo.setAttribute("id", "Articulo");
             var Cliente = document.createElement("input");
             Cliente.setAttribute("type", "text");
-            Cliente.setAttribute("id", "form");
+            Cliente.setAttribute("id", "Cliente");
             var Valor = document.createElement("input");
             Valor.setAttribute("type", "text");
-            Valor.setAttribute("id", "form");
+            Valor.setAttribute("id", "Valor");
             var FechaVenta = document.createElement("input");
             FechaVenta.setAttribute("type", "text");
             FechaVenta.setAttribute("id", "form");
@@ -183,34 +182,25 @@
             var Estado = document.createElement("input");
             Estado.setAttribute("type", "text");
             Estado.setAttribute("id", "form");
-
             tabla = document.createElement("table");
             tabla.setAttribute("class","container-fluid table-responsive")
             Fila = document.createElement("tr");
             col1 = document.createElement("td");
             col1.appendChild(Check);
-
             col2 = document.createElement("td");
             col2.appendChild(Id);
-
             col3 = document.createElement("td");
             col3.appendChild(Articulo);
-
             col4 = document.createElement("td");
             col4.appendChild(Cliente);
-
             col5 = document.createElement("td");
             col5.appendChild(Valor);
-
             col6 = document.createElement("td");
             col6.appendChild(FechaVenta);
-
             col7 = document.createElement("td");
             col7.appendChild(FechaPago);
-
             col8 = document.createElement("td");
             col8.appendChild(Vendedor);
-
             col9 = document.createElement("td");
             col9.appendChild(Estado);
             col10 = document.createElement("td");
@@ -249,10 +239,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    </tr>
-                    <div>
-                    </div>
-                    </tr>
+                  
                 </tbody>
             </table>
 

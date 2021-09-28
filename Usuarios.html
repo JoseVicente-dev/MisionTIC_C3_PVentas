@@ -21,21 +21,19 @@
 
     <!-- css Nightmare -->
     <link rel="stylesheet" href="/css/style.css">
-    <link href="/css/menu.css" rel="stylesheet">
+    <link href="/css/menu.css" rel="stylesheet"> 
     <!-- css Nightmare -->
 
     <!-- Iconos fontAwesome -->
     <link href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" rel="stylesheet">
-    <!-- Iconos fontAwesome -->
-
+   
     <!-- Fuente -->
     <link href="https://fonts.googleapis.com/css2?family=Aldrich&display=swap" rel="stylesheet">
-    <!-- Fuente -->
+  
 
 </head>
 
 <body>
-
 
     <!-- NavBar superior-->
     <nav class="navbar navbar-expand-lg navbar-dark bg-color " id="menu">
@@ -44,7 +42,7 @@
                 <a class="navbar-brand menuNG-titulo" href="#" style="font-size: 25px;">
                 
 
-                    <!-- ICONO CESTA DE COMPRAS -->
+                    <!-- ICONO USUARIOS -->
                     Usuarios&nbsp;&nbsp; <i class="fas fa-users" style="font-size: 50px;"></i>
                 </a>
             </div>
@@ -109,17 +107,7 @@
                                 <i class="fa fa-shopping-cart"></i>
                                 <span>Módulo de Ventas</span>
                             </a>
-                            <!-- <div class="menu-lateral-submenu">
-                                <ul>
-                                    <li>
-                                        <a href="#">Productos
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Pedidos</a>
-                                    </li>
-                                </ul>
-                            </div> -->
+                        
                         </li>
                         <li class="menu-lateral-dropdown">
                             <a href="Productos.html" style="color: white;">
@@ -160,10 +148,32 @@
     </div>
     <!-- Menú lateral -->
 
+    <!--Botones -->
+    <section> 
+        <table class="table">
+            <div class="row float-center">
+                <div class="col-6 float-center">
+                 <button type="button" class="btn btn-secondary bg-color "  style="background-color: #2d35a7a4">
+                <span> Agregar filtro</span>
+                </button>
+                </div>
+                <div class="col-6 ">
+                <button type="button" class="btn btn-secondary bg-color float-center" style="background-color: #2d35a7a4" >
+                <span> Agregar usuario</span>
+                </button>
+                </div>
+            </div>
+            
+        </table>
+    </section>
+
+
+
+
     <!-- Tabla con datos -->
     <section class="main">
         <div class="container-fluid table-responsive">
-            <table class="table table-hover" id="initContainer">
+            <table class="table table-hover">
                 <thead style="text-align: center;">
                     <tr>
                         <th scope="col"></th>
@@ -181,16 +191,24 @@
                             <div class="form-check">
                                 <input class="form-check-input" type="radio" name="flexRadioDefault"
                                     id="flexRadioDefault1">
-                                <!-- <label class="form-check-label" for="flexRadioDefault1">                              
-                            </label> -->
                             </div>
                         </th>
-                        <th scope="row">1</th>
+                        <th scope="row">522135</th>
                         <td>Pepito</td>
                         <td> Perez</td>
                         <td>Vendendor</td>
-                        <td> <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
-                            style="background-color: #7a87bb;">Modificar </button></td>
+                        <td>
+                            <div class="dropdown">
+                                <button class="btn btn-secondary dropdown-toggle bg-color" type="button" id="dropdownMenuButton"
+                                  data-bs-toggle="dropdown" aria-expanded="false">
+                                  +
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                  <li><a class="dropdown-item" href="#">Ver perfil</a></li>
+                                  <li><a class="dropdown-item" href="#">Modificar</a></li>
+                                </ul>
+                              </div>
+                        </td>
 
                     </tr>
 
@@ -199,16 +217,24 @@
                             <div class="form-check">
                                 <input class="form-check-input" type="radio" name="flexRadioDefault"
                                     id="flexRadioDefault2">
-                                <!-- <label class="form-check-label" for="flexRadioDefault1">                              
-                            </label> -->
                             </div>
                         </th>
-                        <th scope="row">2</th>
+                        <th scope="row">522135</th>
                         <td>Pepito</td>
                         <td> Perez</td>
                         <td>Vendendor</td>
-                        <td> <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
-                            style="background-color: #7a87bb;">Modificar </button></td>
+                        <td>
+                            <div class="dropdown">
+                                <button class="btn btn-secondary dropdown-toggle bg-color" type="button" id="dropdownMenuButton"
+                                  data-bs-toggle="dropdown" aria-expanded="false">
+                                  +
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                  <li><a class="dropdown-item" href="#">Ver perfil</a></li>
+                                  <li><a class="dropdown-item" href="#">Modificar</a></li>
+                                </ul>
+                              </div>
+                        </td>
 
                     </tr>
 
@@ -217,16 +243,24 @@
                             <div class="form-check">
                                 <input class="form-check-input" type="radio" name="flexRadioDefault"
                                     id="flexRadioDefault3">
-                                <!-- <label class="form-check-label" for="flexRadioDefault1">                              
-                            </label> -->
                             </div>
                         </th>
-                        <th scope="row">3</th>
+                        <th scope="row">522135</th>
                         <td>Pepito</td>
                         <td> Perez</td>
                         <td>Vendendor</td>
-                        <td> <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
-                            style="background-color: #7a87bb;">Modificar </button></td>
+                        <td>
+                            <div class="dropdown">
+                                <button class="btn btn-secondary dropdown-toggle bg-color" type="button" id="dropdownMenuButton"
+                                  data-bs-toggle="dropdown" aria-expanded="false">
+                                  +
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                  <li><a class="dropdown-item" href="#">Ver perfil</a></li>
+                                  <li><a class="dropdown-item" href="#">Modificar</a></li>
+                                </ul>
+                              </div>
+                        </td>
 
                     </tr>
 
@@ -235,16 +269,25 @@
                             <div class="form-check">
                                 <input class="form-check-input" type="radio" name="flexRadioDefault"
                                     id="flexRadioDefault4">
-                                <!-- <label class="form-check-label" for="flexRadioDefault1">                              
-                            </label> -->
                             </div>
                         </th>
-                        <th scope="row">4</th>
+                        <th scope="row">522135</th>
                         <td>Pepito</td>
                         <td> Perez</td>
                         <td>Vendendor</td>
-                        <td> <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
-                            style="background-color: #7a87bb;">Modificar </button></td>
+                        <td> 
+                            <div class="dropdown">
+                                <button class="btn btn-secondary dropdown-toggle bg-color" type="button" id="dropdownMenuButton"
+                                  data-bs-toggle="dropdown" aria-expanded="false">
+                                  +
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
+                                  <li><a class="dropdown-item" href="#">Ver perfil</a></li>
+                                  <li><a class="dropdown-item" href="#">Modificar</a></li>
+                                </ul>
+                              </div>
+                            
+                        </td>
 
                     </tr>
 
@@ -253,32 +296,48 @@
                             <div class="form-check">
                                 <input class="form-check-input" type="radio" name="flexRadioDefault"
                                     id="flexRadioDefault5">
-                                <!-- <label class="form-check-label" for="flexRadioDefault1">                              
-                            </label> -->
                             </div>
                         </th>
-                        <th scope="row">5</th>
+                        <th scope="row">522135</th>
                         <td>Pepito</td>
                         <td> Perez</td>
                         <td>Vendendor</td>
-                        <td> <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
-                            style="background-color: #7a87bb;">Modificar </button></td>
+                        <td>
+                            <div class="dropdown">
+                                <button class="btn btn-secondary dropdown-toggle bg-color" type="button" id="dropdownMenuButton"
+                                  data-bs-toggle="dropdown" aria-expanded="false">
+                                  +
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                  <li><a class="dropdown-item" href="#">Ver perfil</a></li>
+                                  <li><a class="dropdown-item" href="#">Modificar</a></li>
+                                </ul>
+                              </div>
+                        </td>
                     </tr>
                     <tr>
                         <th>
                             <div class="form-check">
                                 <input class="form-check-input" type="radio" name="flexRadioDefault"
                                     id="flexRadioDefault6">
-                                <!-- <label class="form-check-label" for="flexRadioDefault1">                              
-                            </label> -->
                             </div>
                         </th>
-                        <th scope="row">6</th>
+                        <th scope="row">522135</th>
                         <td>Pepito</td>
                         <td> Perez</td>
                         <td>Vendendor</td>
-                        <td> <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
-                            style="background-color: #7a87bb;">Modificar </button></td>
+                        <td>
+                            <div class="dropdown">
+                                <button class="btn btn-secondary dropdown-toggle bg-color" type="button" id="dropdownMenuButton"
+                                  data-bs-toggle="dropdown" aria-expanded="false">
+                                  +
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                  <li><a class="dropdown-item" href="#">Ver perfil</a></li>
+                                  <li><a class="dropdown-item" href="#">Modificar</a></li>
+                                </ul>
+                              </div>
+                        </td>
 
                     </tr>
                    
@@ -289,23 +348,20 @@
             </table>
         </div>
     </section>
-    <!--Botones -->
 
-    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </button>
-   
+
+
+    
+
+    
+    <!-------------------------------------------------------------------------->
 
 
     <!-- Footer -->
     <footer style="text-align: center;">
         <img src="/images/logo2.png" alt="logo-nightmare" style="height: 50px;">
     </footer>
-    <!-- Footer -->
-
-
-
-
+    <!-------------------------------------------------------------------------->
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/esm/popper.js"></script>
@@ -316,10 +372,6 @@
     <script>
         src = "/js/modal.js"
     </script>
-
-
-
-
 </body>
 
 

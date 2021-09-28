@@ -11,7 +11,7 @@ input{
     background-color: rgb(82, 110, 235);
     background: #6367a678;
     border-radius: 20px;
-    /* margin:2px; */
+    margin:2px;
     
 }
 
@@ -86,14 +86,14 @@ textarea:focus, input:focus {
 }
 
 .buttonAdVen{
-    width: 20%;
-    padding: 20px;
-    margin: 10 auto;
+    /* width: 20%; */
+    /* padding: 20px; */
+    /* margin: 10 auto; */
     position:relative;
     top:50%; 
-    left:20%;
-    background: #070e8c86;
-    border-radius: 20px;
+    left:-30%;
+    /* background: #070e8c86; */
+    /* border-radius: 20px; */
 }
 
 footer{

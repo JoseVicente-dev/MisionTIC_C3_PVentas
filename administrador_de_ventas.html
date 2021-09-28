@@ -258,9 +258,14 @@
     <!-- Bottones -->
     <!-- boton con el que se crea una nueva fila -->
     <!-- en el voton de agregar nueva venta llamamos la función de crear una nueva fila -->
-    <button type="reset" class="buttonAdVen" onclick="nuevaFila()">Agregar Nueva Venta</button>
-    <button type="reset" class="buttonAdVen">Guardar Nueva Venta</button>
-    <button type="reset" class="buttonAdVen">Modificar Estado</button>
+    <div class="modal-footer buttonAdVen" >
+        <button type="button" class="btn btn-primary" style=" background-color: #26327e;" onclick="nuevaFila()">Agregar
+            Nueva Venta</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Guardar Nueva Venta</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Modificar Estado</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Buscar Venta</button>
+    </div>
+
 
     <!-- Footer -->
     <footer style="text-align: center;">

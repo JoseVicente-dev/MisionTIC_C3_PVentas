@@ -8,9 +8,9 @@ let FechaVenta = ['1/01/2021', '2/01/2021', '3/02/2021', '4/02/2021', '5/04/2021
 let FechaPago = ['1/01/2021', '2/01/2021', '-', '4/02/2021', '5/04/2021', '6/05/2021', '7/06/2021', '8/06/2021', '9/08/2021', '10/09/2021'];
 let Vendedor = ['Juan Rulfo', 'Juan Rulfo', 'Juan Rulfo', 'Juan Rulfo', 'Juan Rulfo', 'Juan Rulfo', 'Juan Rulfo', 'Juan Rulfo', 'Juan Rulfo', 'Juan Rulfo'];
 let Estado = ['Cancelada', 'Cancelada', 'Pendiente', 'Cancelada', 'Cancelada', 'Cancelada', 'Cancelada', 'Cancelada', 'Cancelada', 'Cancelada'];
-var filasDB = Id.length;
+var filasDB = Id.at(-1)+1;
 
-console.log('hola')
+console.log(filasDB)
 
 function nuevaFila() {
      var dondeInsertar = document.getElementById("AquiVaLaFila");

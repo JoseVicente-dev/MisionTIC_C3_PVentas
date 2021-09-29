@@ -154,6 +154,7 @@
     <script src="/js/TablaMostrarVentas.js"></script>
     <script src="/js/VentaBuscada.js"></script>
     <script src="/js/BuscarVenta.js"></script>
+    <script src="/js/NuevaVenta.js"></script>
 
 
     <!-- Tabla done se insertaran las filas -->
@@ -184,6 +185,7 @@
         </div>
     </section>
     <!-- /Tabla con datos -->
+
         <!--  Modal Nueva Venta -->
         <div class="modal fade" id="NuevaVenta" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
         aria-labelledby="staticBackdropLabel1" aria-hidden="true">
@@ -197,37 +199,37 @@
                 <div class="modal-body">
                     <div class="container">
                         <div class="col">
-                            <input type="text" class="form-control" id="" placeholder="Id Venta" style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
+                            <label type="text" class="form-control" id="IdNuevo" placeholder="Id Venta" style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
+                        background-color: #d8e5fe; text-align: center;">0</label>
+                        </div>
+                        <div class="col">
+                            <input type="text" class="form-control" id="ArticuloNuevo" placeholder="Articulo" style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
                         background-color: #d8e5fe; text-align: center;">
                         </div>
                         <div class="col">
-                            <input type="text" class="form-control" id="" placeholder="Articulo" style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
+                            <input type="text" class="form-control" id="ClienteNuevo" placeholder="Cliente" style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
                         background-color: #d8e5fe; text-align: center;">
                         </div>
                         <div class="col">
-                            <input type="text" class="form-control" id="" placeholder="Cliente" style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
+                            <input type="text" class="form-control" id="ValorNuevo" placeholder="Valor" style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
                         background-color: #d8e5fe; text-align: center;">
                         </div>
                         <div class="col">
-                            <input type="text" class="form-control" id="" placeholder="Valor" style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
+                            <input type="text" class="form-control" id="FechaVentaNuevo" placeholder="Fecha Venta" style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
                         background-color: #d8e5fe; text-align: center;">
                         </div>
                         <div class="col">
-                            <input type="text" class="form-control" id="" placeholder="Fecha Venta" style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
+                            <input type="text" class="form-control" id="FechaPagoNuevo" placeholder="Fecha Pago" style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
                         background-color: #d8e5fe; text-align: center;">
                         </div>
                         <div class="col">
-                            <input type="text" class="form-control" id="" placeholder="Fecha Pago" style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
+                            <input type="text" class="form-control" id="VendedorNuevo" placeholder="Vendedor" style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
                         background-color: #d8e5fe; text-align: center;">
                         </div>
-                        <div class="col">
-                            <input type="text" class="form-control" id="" placeholder="Vendedor" style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
-                        background-color: #d8e5fe; text-align: center;">
-                        </div>
-                        <select class="form-select" id="" style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
+                        <select class="form-select" id="EstadoNuevo" style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
                         background-color: #d8e5fe; text-align: center;" aria-label="Default select example">
-                            <option value="1">Cancelada</option>
-                            <option value="2">Pendiente de Pago</option>
+                            <option>Cancelada</option>
+                            <option>Pendiente</option>
                         </select>
                         <div class="col">
 
@@ -235,12 +237,18 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" style=" background-color: #26327e;">Agregar</button>
+                    <button type="button" class="btn btn-primary" style=" background-color: #26327e;" onclick="NuevaVenta()" data-bs-dismiss="modal">Agregar</button>
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                 </div>
             </div>
         </div>
     </div>
+    <script>
+        const NuevoId = document.getElementById("IdNuevo")
+        const UltimoIdVenta = Id.at(-1)
+        console.log(UltimoIdVenta)
+        NuevoId.textContent = UltimoIdVenta+1
+    </script>
 
     <!--  Modal Modificar Venta -->
     <div class="modal fade" id="ModificarVenta" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"

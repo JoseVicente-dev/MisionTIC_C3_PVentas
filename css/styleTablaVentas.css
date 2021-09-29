@@ -89,9 +89,9 @@ textarea:focus, input:focus {
     /* width: 20%; */
     /* padding: 20px; */
     /* margin: 10 auto; */
-    position:relative;
+    /* position:relative; */
     top:50%; 
-    left:-30%;
+    /* left:-10%; */
     /* background: #070e8c86; */
     /* border-radius: 20px; */
 }
@@ -103,5 +103,22 @@ footer{
     display: block;
     position: fixed;
     bottom: 0px;
+}
+
+.checkbox-round {
+    width: 1.3em;
+    height: 1.3em;
+    background-color: white;
+    border-radius: 50%;
+    vertical-align: middle;
+    border: 1px solid #ddd;
+    appearance: none;
+    -webkit-appearance: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.checkbox-round:checked {
+    background-color: rgb(49, 47, 148);
 }
 

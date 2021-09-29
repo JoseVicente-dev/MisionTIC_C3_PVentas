@@ -7,7 +7,7 @@ let Valor = [10000, 2000, 30000, 4000, 15000, 6000, 17000, 8000, 19000, 10000];
 let FechaVenta = ['1/01/2021', '2/01/2021', '3/02/2021', '4/02/2021', '5/04/2021', '6/05/2021', '7/06/2021', '8/06/2021', '9/08/2021', '10/09/2021'];
 let FechaPago = ['1/01/2021', '2/01/2021', '-', '4/02/2021', '5/04/2021', '6/05/2021', '7/06/2021', '8/06/2021', '9/08/2021', '10/09/2021'];
 let Vendedor = ['Juan Rulfo', 'Juan Rulfo', 'Juan Rulfo', 'Juan Rulfo', 'Juan Rulfo', 'Juan Rulfo', 'Juan Rulfo', 'Juan Rulfo', 'Juan Rulfo', 'Juan Rulfo'];
-let Estado = ['Cancelada', 'Cancelada', 'Pendiente de Pago', 'Cancelada', 'Cancelada', 'Cancelada', 'Cancelada', 'Cancelada', 'Cancelada', 'Cancelada'];
+let Estado = ['Cancelada', 'Cancelada', 'Pendiente', 'Cancelada', 'Cancelada', 'Cancelada', 'Cancelada', 'Cancelada', 'Cancelada', 'Cancelada'];
 var filasDB = Id.length;
 
 console.log('hola')
@@ -19,7 +19,9 @@ function nuevaFila() {
           Check.setAttribute("class", "form-check-input")
           Check.setAttribute("type", "radio");
           Check.setAttribute("name", "flexRadioDefault")
-          Check.setAttribute("id", "flexRadioDefault");
+          Check.setAttribute("id", i);
+
+          Check.setAttribute("onClick","MostrarBotones();InsertarDatosModalVentaBuscada(id)")
           var Id = document.createElement("label");
           Id.setAttribute("id", "Id" + i);
           var Articulo = document.createElement("label");

@@ -153,6 +153,7 @@
 
     <script src="/js/TablaMostrarVentas.js"></script>
     <script src="/js/VentaBuscada.js"></script>
+    <script src="/js/BuscarVenta.js"></script>
 
 
     <!-- Tabla done se insertaran las filas -->
@@ -313,34 +314,34 @@
                 <div class="modal-body">
                     <div class="container">
                         <div class="col">
-                            <label type="text" class="form-control" id="" placeholder="Id Venta" style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
+                            <label type="text" class="form-control" id="IdResultado" placeholder="Id Venta" style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
                         background-color: #d8e5fe; text-align: center;"> Id Venta</label>
                         </div>
                         <div class="col">
-                            <input type="text" class="form-control" id="" placeholder="Articulo" style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
+                            <input type="text" class="form-control" id="ArticuloResultado" placeholder="Articulo" style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
                         background-color: #d8e5fe; text-align: center;">
                         </div>
                         <div class="col">
-                            <input type="text" class="form-control" id="" placeholder="Cliente" style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
+                            <input type="text" class="form-control" id="ClienteResultado" placeholder="Cliente" style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
                         background-color: #d8e5fe; text-align: center;">
                         </div>
                         <div class="col">
-                            <input type="text" class="form-control" id="" placeholder="Valor" style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
+                            <input type="text" class="form-control" id="ValorResultado" placeholder="Valor" style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
                         background-color: #d8e5fe; text-align: center;">
                         </div>
                         <div class="col">
-                            <input type="text" class="form-control" id="" placeholder="Fecha Venta" style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
+                            <input type="text" class="form-control" id="FechaVentaResultado" placeholder="Fecha Venta" style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
                         background-color: #d8e5fe; text-align: center;">
                         </div>
                         <div class="col">
-                            <input type="text" class="form-control" id="" placeholder="Fecha Pago" style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
+                            <input type="text" class="form-control" id="FechaPagoResultado" placeholder="Fecha Pago" style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
                         background-color: #d8e5fe; text-align: center;">
                         </div>
                         <div class="col">
-                            <input type="text" class="form-control" id="" placeholder="Vendedor" style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
+                            <input type="text" class="form-control" id="VendedorResultado" placeholder="Vendedor" style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
                         background-color: #d8e5fe; text-align: center;">
                         </div>
-                        <select class="form-select" id="" style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
+                        <select class="form-select" id="EstadoResultado" style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
                         background-color: #d8e5fe; text-align: center;">
                             <option index=0>Cancelada</option>
                             <option index=1>Pendiente</option>
@@ -374,13 +375,13 @@
 
 
                         <div class="col">
-                            <input type="text" class="form-control" id="" placeholder="Id Venta" style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
+                            <input type="text" class="form-control" id="IdVentaBuscada" placeholder="Id Venta" style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
                             background-color: #d8e5fe; text-align: center;">
 
                         </div>
 
                         <div class="col">
-                            <input type="text" class="form-control" id="" placeholder="Id o Nombre Cliente" style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
+                            <input type="text" class="form-control" id="NombreVentaBuscada" placeholder="Id o Nombre Cliente" style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
                             background-color: #d8e5fe; text-align: center;">
 
                         </div>
@@ -391,7 +392,9 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" style=" background-color: #26327e;" data-bs-toggle="modal"  data-bs-target="#ResultadoBusqueda" data-bs-dismiss="modal">Buscar</button>
+                    <button type="button" class="btn btn-primary" style=" background-color: #26327e;" data-bs-toggle="modal"  data-bs-target="#ResultadoBusqueda" data-bs-dismiss="modal" onclick="InsertarDatosModalResultadoBusquedaId()">Buscar por Id Venta</button>
+                    <button type="button" class="btn btn-primary" style=" background-color: #26327e;" data-bs-toggle="modal"  data-bs-target="#ResultadoBusqueda" data-bs-dismiss="modal" onclick="InsertarDatosModalResultadoBusquedaNombre()">Buscar por Nombre Cliente</button>
+                   
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                 </div>
             </div>

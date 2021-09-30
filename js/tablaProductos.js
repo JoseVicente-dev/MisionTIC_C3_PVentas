@@ -1,6 +1,8 @@
 function insertarFila() {
 
-    let insertarFila = document.getElementById("tablaProductos").getElementsByTagName("tbody")
+    let insertarFila = document.getElementById("cuerpoTablaProductos")
+    
+    // .getElementsByTagName("tbody")
 
     var i = insertarFila.getElementsByTagName("tr").length
 
@@ -23,22 +25,29 @@ function insertarFila() {
 
     numeroProducto = document.createElement("th")
     numeroProducto.setAttribute("scope", "row")
-    numeroProducto.textContent(i + 1)
+    numeroProducto.textContent=i + 1
 
     codigo = document.createElement("td")
-    codigo.textContent(101 + i)
+    codigo.textContent = document.getElementById("inputCodigo").value
 
     descripcion = document.createElement("td")
-    descripcion.textContent("Linaza")
+    descripcion.textContent = document.getElementById("inputDescripcion").value
 
-    valorUnitario = document.
+    valorUnitario = document.createElement("td")
+    valorUnitario.textContent=document.getElementById("inputValorUnitario").value
+
+    estado = document.createElement("td")
+    let e=document.getElementById("inputEstado")
+    estado.textContent=e.options[e.selectedIndex].text
 
 
     filaTabla.appendChild(numeroProducto)
     filaTabla.appendChild(codigo)
     filaTabla.appendChild(descripcion)
     filaTabla.appendChild(valorUnitario)
-    filaTabla.appendChild(Estado)
+    filaTabla.appendChild(estado)
+
+    insertarFila.appendChild(filaTabla)
 
 
 

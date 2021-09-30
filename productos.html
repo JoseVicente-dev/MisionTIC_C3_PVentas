@@ -201,7 +201,7 @@
 
                     </tr>
                 </thead>
-                <tbody style="text-align: center;" >
+                <tbody style="text-align: center;" id="cuerpoTablaProductos">
                     <tr>
                         <th>
                             <div class="form-check">
@@ -422,7 +422,7 @@
                 </div>
                 <div class="modal-footer">
 
-                    <button type="button" class="btn btn-primary" style=" background-color: #26327e;">Adicionar</button>
+                    <button type="button" class="btn btn-primary" onclick="insertarFila()" data-bs-dismiss="modal" style=" background-color: #26327e;">Adicionar</button>
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                 </div>
             </div>
@@ -515,6 +515,8 @@
     <script>
         src = "/js/modal.js"
     </script>
+    <script src="/js/tablaProductos.js"></script>
+    
 
 
 

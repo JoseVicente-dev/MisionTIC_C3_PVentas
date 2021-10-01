@@ -524,7 +524,7 @@
                     </div>
                     <div class="modal-footer">
 
-                        <button type="button" class="btn btn-primary" onclick="buscarProducto()"
+                        <button type="button" class="btn btn-primary" id="btnBuscarModalBuscar" onclick="buscarProducto()"
                             style=" background-color: #26327e;">Buscar</button>
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                     </div>
@@ -541,7 +541,7 @@
         <a href="#" class="btn btn-primary" style=" background-color: #26327e;" onclick="modificarProducto()"
             data-bs-toggle="modal" data-bs-target="#Modificar">Modificar</a>
         <a href="#" class="btn btn-primary" style=" background-color: #26327e;" data-bs-toggle="modal"
-            data-bs-target="#Buscar">Buscar</a>
+            data-bs-target="#Buscar" onclick="limpiarBusqueda()">Buscar</a>
 
     </div>
     <!-- Botones adicion, modificacion de productos -->

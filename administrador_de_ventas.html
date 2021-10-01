@@ -220,9 +220,14 @@
     <!-- Script para que el id de cada nueva venta aumente -->
     <script>
         const NuevoId = document.getElementById("IdNuevo")
-        const UltimoIdVenta = Id.at(-1)
-        console.log(UltimoIdVenta)
-        NuevoId.textContent = UltimoIdVenta + 1
+        let numerosFila = document.getElementById("AquiVaLaFila")
+        
+        let UltimoIdVenta = numerosFila.getElementsByTagName("tr").length
+        // const UltimoIdVenta = Id.at(-1)
+
+         console.log(UltimoIdVenta)
+
+        NuevoId.textContent = (UltimoIdVenta + 1)
     </script>
     <!--  Modal Modificar Venta -->
     <div class="modal fade" id="ModificarVenta" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"

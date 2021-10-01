@@ -23,8 +23,6 @@ function nuevaFila() {
     cell4.innerHTML = apellidosInput ;
     cell5.innerHTML = rolInput;
     cell6.innerHTML = estadoInput;
-   
-
 
 }
 

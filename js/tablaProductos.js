@@ -1,13 +1,13 @@
 function insertarProducto() {
 
     let insertarFila = document.getElementById("cuerpoTablaProductos")
-    
+
     // .getElementsByTagName("tbody")
 
-    var i = insertarFila.getElementsByTagName("tr").length
+    let i = insertarFila.getElementsByTagName("tr").length
 
     filaTabla = document.createElement("tr")
-    filaTabla.setAttribute("id","row"+(i+1))
+    filaTabla.setAttribute("id", "row" + (i + 1))
     seleccionar = document.createElement("th")
 
     div = document.createElement("div")
@@ -26,7 +26,7 @@ function insertarProducto() {
 
     numeroProducto = document.createElement("th")
     numeroProducto.setAttribute("scope", "row")
-    numeroProducto.textContent=i + 1
+    numeroProducto.textContent = i + 1
 
     codigo = document.createElement("td")
     codigo.textContent = document.getElementById("inputCodigo").value
@@ -35,11 +35,11 @@ function insertarProducto() {
     descripcion.textContent = document.getElementById("inputDescripcion").value
 
     valorUnitario = document.createElement("td")
-    valorUnitario.textContent=document.getElementById("inputValorUnitario").value
+    valorUnitario.textContent = document.getElementById("inputValorUnitario").value
 
     estado = document.createElement("td")
-    let e=document.getElementById("inputEstado")
-    estado.textContent=e.options[e.selectedIndex].text
+    let e = document.getElementById("inputEstado")
+    estado.textContent = e.options[e.selectedIndex].text
 
 
     filaTabla.appendChild(numeroProducto)
@@ -51,10 +51,43 @@ function insertarProducto() {
     insertarFila.appendChild(filaTabla)
 }
 
-function modificarProducto(){
+function modificarProducto() {
+
+    let cuerpoTabla = document.getElementById("cuerpoTablaProductos")
+    let radios = cuerpoTabla.getElementsByTagName("input")
+    let filas = cuerpoTabla.getElementsByTagName("tr")
+    let totalFilas = radios.length
+
+
+    for (i = 0; i < totalFilas; i++) {
+        if (radios[i].checked) {
+
+            // console.log((i + 1) + "-ésima fila seleccionada")
+            filaSeleccionada = filas[i]
+            document.getElementById("modifyCodigo").value = filaSeleccionada.cells[2].innerText
+            document.getElementById("modifyDescripcion").value = filaSeleccionada.cells[3].innerText
+            document.getElementById("modifyValorUnitario").value = filaSeleccionada.cells[4].innerText
+            if (filaSeleccionada.cells[5].innerText == "Disponible") {
+                document.getElementById("modifyEstado").value = 1
+
+            }
+            else {
+                document.getElementById("modifyEstado").value = 2
+            }
+
+            return filaSeleccionada
+        }
+    }
+}
+
+function actualizarProducto() {
     
+    filaSeleccionada = modificarProducto()
     
-    
+
+
+
+
 
 
 }

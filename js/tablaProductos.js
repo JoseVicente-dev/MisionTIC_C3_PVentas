@@ -1,4 +1,4 @@
-function insertarFila() {
+function insertarProducto() {
 
     let insertarFila = document.getElementById("cuerpoTablaProductos")
     
@@ -7,6 +7,7 @@ function insertarFila() {
     var i = insertarFila.getElementsByTagName("tr").length
 
     filaTabla = document.createElement("tr")
+    filaTabla.setAttribute("id","row"+(i+1))
     seleccionar = document.createElement("th")
 
     div = document.createElement("div")
@@ -48,13 +49,12 @@ function insertarFila() {
     filaTabla.appendChild(estado)
 
     insertarFila.appendChild(filaTabla)
+}
 
-
-
-
-
-
-
+function modificarProducto(){
+    
+    
+    
 
 
 }

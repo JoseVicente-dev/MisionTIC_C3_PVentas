@@ -389,18 +389,21 @@
 
 
                         <div class="col">
-                            <input type="text" class="form-control" id="inputCodigo" placeholder="Código de producto" style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
+                            <input type="text" class="form-control" id="inputCodigo" placeholder="Código de producto"
+                                style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
                         background-color: #d8e5fe; text-align: center;">
 
                         </div>
 
                         <div class="col">
-                            <input type="text" class="form-control" id="inputDescripcion" placeholder="Descripción del producto" style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
+                            <input type="text" class="form-control" id="inputDescripcion"
+                                placeholder="Descripción del producto" style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
                         background-color: #d8e5fe; text-align: center;">
 
                         </div>
                         <div class="col">
-                            <input type="text" class="form-control" id="inputValorUnitario" placeholder="Valor unitario ($)" style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
+                            <input type="text" class="form-control" id="inputValorUnitario"
+                                placeholder="Valor unitario ($)" style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
                         background-color: #d8e5fe; text-align: center;">
 
                         </div>
@@ -409,10 +412,10 @@
                         background-color: #d8e5fe; text-align: center;"> -->
                             <select class="form-select" id="inputEstado" placeholder="Estado" style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
                         background-color: #d8e5fe; text-align: center;" aria-label="Default select example">
-                                
+
                                 <option value="1">Disponible</option>
                                 <option value="2">No disponible</option>
-                                
+
                             </select>
 
                         </div>
@@ -422,7 +425,8 @@
                 </div>
                 <div class="modal-footer">
 
-                    <button type="button" class="btn btn-primary" onclick="insertarProducto()" data-bs-dismiss="modal" style=" background-color: #26327e;">Adicionar</button>
+                    <button type="button" class="btn btn-primary" onclick="insertarProducto()" data-bs-dismiss="modal"
+                        style=" background-color: #26327e;">Adicionar</button>
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                 </div>
             </div>
@@ -445,30 +449,33 @@
 
 
                         <div class="col">
-                            <input type="text" class="form-control" id="modifyCodigo" placeholder="Código de producto" style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
+                            <input type="text" class="form-control" id="modifyCodigo" placeholder="Código de producto"
+                                style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
                         background-color: gainsboro; text-align: center;" disabled>
 
                         </div>
 
                         <div class="col">
-                            <input type="text" class="form-control" id="modifyDescripcion" placeholder="Descripción del producto" style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
+                            <input type="text" class="form-control" id="modifyDescripcion"
+                                placeholder="Descripción del producto" style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
                         background-color: #d8e5fe; text-align: center;">
 
                         </div>
                         <div class="col">
-                            <input type="text" class="form-control" id="modifyValorUnitario" placeholder="Valor unitario ($)" style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
+                            <input type="text" class="form-control" id="modifyValorUnitario"
+                                placeholder="Valor unitario ($)" style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
                         background-color: #d8e5fe; text-align: center;">
 
                         </div>
                         <div class="col">
                             <!-- <input type="text" class="form-control" id="" placeholder="Estado" style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
                         background-color: #d8e5fe; text-align: center;"> -->
-                        <select class="form-select" id="modifyEstado" style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
+                            <select class="form-select" id="modifyEstado" style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
                         background-color: #d8e5fe; text-align: center;" aria-label="Default select example">
-                                
+
                                 <option value="1">Disponible</option>
                                 <option value="2">No disponible</option>
-                                
+
                             </select>
 
                         </div>
@@ -477,7 +484,8 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" onclick="actualizarProducto()" data-bs-dismiss="modal" style=" background-color: #26327e;">Modificar</button>
+                    <button type="button" class="btn btn-primary" onclick="actualizarProducto()" data-bs-dismiss="modal"
+                        style=" background-color: #26327e;">Modificar</button>
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                 </div>
             </div>
@@ -485,12 +493,55 @@
     </div>
     <!-- Modal Modificar Datos -->
 
+    <!-- Modal Buscar Producto -->
+    <div class="modal fade" id="Buscar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #26327e;">
+                    <h5 class="modal-title" id="staticBackdropLabel3" style="color: white;">Buscar producto</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                        style="background-color: #7a87bb;"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="container" id="contenedorBuscar">
+
+
+                        <div class="col">
+                            <input type="text" class="form-control" id="buscarCodigo" placeholder="Código de producto"
+                                style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
+                        background-color: #d8e5fe; text-align: center;" >
+
+                        </div>
+
+                        <div class="col">
+                            <input type="text" class="form-control" id="buscarDescripcion"
+                                placeholder="Descripción del producto" style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
+                        background-color: #d8e5fe; text-align: center;" >
+
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+
+                        <button type="button" class="btn btn-primary" onclick="buscarProducto()"
+                            style=" background-color: #26327e;">Buscar</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal Buscar Producto -->
+
     <!-- Botones adicion, modificacion de productos -->
     <div class="container" style="text-align: center;">
         <a href="#" class="btn btn-primary" style=" background-color: #26327e;" data-bs-toggle="modal"
             data-bs-target="#Adicionar">Adicionar</a>
-        <a href="#" class="btn btn-primary" style=" background-color: #26327e;" onclick="modificarProducto()" data-bs-toggle="modal"
-            data-bs-target="#Modificar">Modificar</a>
+        <a href="#" class="btn btn-primary" style=" background-color: #26327e;" onclick="modificarProducto()"
+            data-bs-toggle="modal" data-bs-target="#Modificar">Modificar</a>
+        <a href="#" class="btn btn-primary" style=" background-color: #26327e;" data-bs-toggle="modal"
+            data-bs-target="#Buscar">Buscar</a>
 
     </div>
     <!-- Botones adicion, modificacion de productos -->
@@ -516,7 +567,7 @@
         src = "/js/modal.js"
     </script>
     <script src="/js/tablaProductos.js"></script>
-    
+
 
 
 

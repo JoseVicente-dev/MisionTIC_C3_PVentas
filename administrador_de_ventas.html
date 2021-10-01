@@ -283,7 +283,8 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary" style=" background-color: #26327e;"
-                        onclick="InsertarDatosModalVentaBuscada(),actualizarProducto(), limpiarBusqueda()"data-bs-dismiss="modal">Modificar</button>
+                        onclick="InsertarDatosModalVentaBuscada(),actualizarProducto(), limpiarBusqueda()" data-bs-toggle="modal" data-bs-target="#AlertaModificacionVenta" data-bs-dismiss="modal"
+                        >Modificar</button>
                     <button type="button" class="btn btn-secondary" onclick="limpiarBusqueda()" data-bs-dismiss="modal">Cancelar</button>
                 </div>
             </div>
@@ -342,7 +343,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" style=" background-color: #26327e;" onclick="actualizarProductoBuscarVenta(),limpiarBusqueda()"data-bs-dismiss="modal">Modificar</button>
+                    <button type="button" class="btn btn-primary" style=" background-color: #26327e;" onclick="actualizarProductoBuscarVenta(),limpiarBusqueda()"data-bs-toggle="modal" data-bs-target="#AlertaModificacionVenta"data-bs-dismiss="modal">Modificar</button>
                     <button type="button" class="btn btn-primary" style=" background-color: #26327e;" onclick="limpiarBusqueda()">Eliminar</button>
                     <button type="button" class="btn btn-secondary" onclick="limpiarBusqueda()" data-bs-dismiss="modal">Cancelar</button>
                 </div>
@@ -388,6 +389,26 @@
         </div>
     </div>
     <!--  /Modal Buscar Ventas -->
+
+  <!-- Modal Alerta Actualización Venta -->
+  <div class="modal fade" id="AlertaModificacionVenta" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Actualización Venta</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            Venta Actualizada Correctamente
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- /Modal Alerta Actualización Venta  -->
     <!-- Bottones -->
     <div class="container" style="text-align: end;">
         <div id="Muestrame" style="display:none">

@@ -126,6 +126,7 @@
     <script src="/js/AdminVentas-NuevaVenta.js"></script>
     <script src="js/AdminVentas-ocultarbotones.js"></script>
     <script src="js/AdminVentas-LimpiarModales.js"></script>
+    <script src="js/AdminVentas-ModificarVentas.js"></script>
     <!-- /Archivos JS -->
     <!-- Tabla done se insertaran las filas -->
     <section class="main">
@@ -282,7 +283,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary" style=" background-color: #26327e;"
-                        onclick="InsertarDatosModalVentaBuscada(), limpiarBusqueda()">Modificar</button>
+                        onclick="InsertarDatosModalVentaBuscada(),actualizarProducto(), limpiarBusqueda()"data-bs-dismiss="modal">Modificar</button>
                     <button type="button" class="btn btn-secondary" onclick="limpiarBusqueda()" data-bs-dismiss="modal">Cancelar</button>
                 </div>
             </div>
@@ -307,41 +308,41 @@
                         </div>
                         <div class="col">
                             <input type="text" class="form-control" id="ArticuloResultado" placeholder="Articulo" style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
-                        background-color: #d8e5fe; text-align: center;">
+                        background-color: #d8e5fe; text-align: center;"> </input>
                         </div>
                         <div class="col">
                             <input type="text" class="form-control" id="ClienteResultado" placeholder="Cliente" style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
-                        background-color: #d8e5fe; text-align: center;">
+                        background-color: #d8e5fe; text-align: center;"></input>
                         </div>
                         <div class="col">
                             <input type="text" class="form-control" id="ValorResultado" placeholder="Valor" style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
-                        background-color: #d8e5fe; text-align: center;">
+                        background-color: #d8e5fe; text-align: center;"></input>
                         </div>
                         <div class="col">
                             <input type="text" class="form-control" id="FechaVentaResultado" placeholder="Fecha Venta"
                                 style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
-                        background-color: #d8e5fe; text-align: center;">
+                        background-color: #d8e5fe; text-align: center;"></input>
                         </div>
                         <div class="col">
                             <input type="text" class="form-control" id="FechaPagoResultado" placeholder="Fecha Pago"
                                 style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
-                        background-color: #d8e5fe; text-align: center;">
+                        background-color: #d8e5fe; text-align: center;"></input>
                         </div>
                         <div class="col">
                             <input type="text" class="form-control" id="VendedorResultado" placeholder="Vendedor" style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
-                        background-color: #d8e5fe; text-align: center;">
+                        background-color: #d8e5fe; text-align: center;"></input>
                         </div>
                         <select class="form-select" id="EstadoResultado" style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
                         background-color: #d8e5fe; text-align: center;">
-                            <option index=0>Cancelada</option>
-                            <option index=1>Pendiente</option>
+                            <option>Cancelada</option>
+                            <option>Pendiente</option>
                         </select>
                         <div class="col">
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" style=" background-color: #26327e;" onclick="limpiarBusqueda()">Modificar</button>
+                    <button type="button" class="btn btn-primary" style=" background-color: #26327e;" onclick="actualizarProductoBuscarVenta(),limpiarBusqueda()"data-bs-dismiss="modal">Modificar</button>
                     <button type="button" class="btn btn-primary" style=" background-color: #26327e;" onclick="limpiarBusqueda()">Eliminar</button>
                     <button type="button" class="btn btn-secondary" onclick="limpiarBusqueda()" data-bs-dismiss="modal">Cancelar</button>
                 </div>
@@ -391,7 +392,7 @@
     <div class="container" style="text-align: end;">
         <div id="Muestrame" style="display:none">
             <button type="button" class="btn btn-primary" style=" background-color: #7e2626;" data-bs-toggle="modal"
-                data-bs-target="#ModificarVenta">Modificar Venta</button>
+                data-bs-target="#ModificarVenta"  onclick="modificarProducto()">Modificar Venta</button>
             <button type="button" class="btn btn-primary" style=" background-color: #7e2626;">Eliminar Venta</button>
         </div>
     </div>

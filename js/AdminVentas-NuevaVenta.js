@@ -27,7 +27,7 @@ function NuevaVenta() {
     // y se enviará la información para rellenar los modales necesarios
     Check.setAttribute("onClick","MostrarBotones();InsertarDatosModalVentaBuscada(id)")
     var IdInsertado = document.createElement("label");
-    IdInsertado.setAttribute("id", "Id" + (numerodeFilas + 1));
+    IdInsertado.setAttribute("id", "Id" + (numerodeFilas));
     IdInsertado.textContent = (numerodeFilas + 1)
 
     console.log(IdInsertado.value)
@@ -37,27 +37,27 @@ function NuevaVenta() {
     ArticuloInsertado.textContent = NuevoArticulo.value
 
     var ClienteInsertado = document.createElement("label");
-    ClienteInsertado.setAttribute("id", "Cliente" + (numerodeFilas + 1));
+    ClienteInsertado.setAttribute("id", "Cliente" + (numerodeFilas));
     ClienteInsertado.textContent = NuevoCliente.value
 
     var ValorInsertado = document.createElement("label");
-    ValorInsertado.setAttribute("id", "Valor" + (numerodeFilas + 1));
+    ValorInsertado.setAttribute("id", "Valor" + (numerodeFilas));
     ValorInsertado.textContent = NuevoValor.value
 
     var FechaVentaInsertado = document.createElement("label");
-    FechaVentaInsertado.setAttribute("id", "FechaVenta" + (numerodeFilas + 1));
+    FechaVentaInsertado.setAttribute("id", "FechaVenta" + (numerodeFilas));
     FechaVentaInsertado.textContent = NuevoFechaVenta.value
 
     var FechaPagoInsertado = document.createElement("label");
-    FechaPagoInsertado.setAttribute("id", "FechaPago" + (numerodeFilas + 1));
+    FechaPagoInsertado.setAttribute("id", "FechaPago" + (numerodeFilas));
     FechaPagoInsertado.textContent = NuevoFechaPago.value
 
     var VendedorInsertado = document.createElement("label");
-    VendedorInsertado.setAttribute("id", "Vendedor" + (numerodeFilas + 1));
+    VendedorInsertado.setAttribute("id", "Vendedor" + (numerodeFilas));
     VendedorInsertado.textContent = NuevoVendedor.value
 
     var EstadoInsertado = document.createElement("label");
-    EstadoInsertado.setAttribute("id", "Estado" + (numerodeFilas + 1));
+    EstadoInsertado.setAttribute("id", "Estado" + (numerodeFilas));
     EstadoInsertado.textContent = NuevoEstado.value
 
     Fila = document.createElement("tr");

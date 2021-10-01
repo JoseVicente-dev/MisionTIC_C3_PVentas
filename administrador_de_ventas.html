@@ -125,6 +125,7 @@
     <script src="/js/AdminVentas-BuscarVenta.js"></script>
     <script src="/js/AdminVentas-NuevaVenta.js"></script>
     <script src="js/AdminVentas-ocultarbotones.js"></script>
+    <script src="js/AdminVentas-LimpiarModales.js"></script>
     <!-- /Archivos JS -->
     <!-- Tabla done se insertaran las filas -->
     <section class="main">
@@ -204,8 +205,8 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary" style=" background-color: #26327e;"
-                        onclick="NuevaVenta()" data-bs-dismiss="modal">Agregar</button>
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        onclick="NuevaVenta(), limpiarBusqueda()" data-bs-dismiss="modal">Agregar</button>
+                    <button type="button" class="btn btn-secondary" onclick="limpiarBusqueda()" data-bs-dismiss="modal">Cancelar</button>
                 </div>
             </div>
         </div>
@@ -219,15 +220,14 @@
     </script>
     <!-- Script para que el id de cada nueva venta aumente -->
     <script>
+        function addNuevaFila(){
         const NuevoId = document.getElementById("IdNuevo")
         let numerosFila = document.getElementById("AquiVaLaFila")
-        
         let UltimoIdVenta = numerosFila.getElementsByTagName("tr").length
         // const UltimoIdVenta = Id.at(-1)
-
          console.log(UltimoIdVenta)
-
         NuevoId.textContent = (UltimoIdVenta + 1)
+        }
     </script>
     <!--  Modal Modificar Venta -->
     <div class="modal fade" id="ModificarVenta" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
@@ -282,8 +282,8 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary" style=" background-color: #26327e;"
-                        onclick="InsertarDatosModalVentaBuscada()">Modificar</button>
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        onclick="InsertarDatosModalVentaBuscada(), limpiarBusqueda()">Modificar</button>
+                    <button type="button" class="btn btn-secondary" onclick="limpiarBusqueda()" data-bs-dismiss="modal">Cancelar</button>
                 </div>
             </div>
         </div>
@@ -341,9 +341,9 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" style=" background-color: #26327e;">Modificar</button>
-                    <button type="button" class="btn btn-primary" style=" background-color: #26327e;">Eliminar</button>
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" style=" background-color: #26327e;" onclick="limpiarBusqueda()">Modificar</button>
+                    <button type="button" class="btn btn-primary" style=" background-color: #26327e;" onclick="limpiarBusqueda()">Eliminar</button>
+                    <button type="button" class="btn btn-secondary" onclick="limpiarBusqueda()" data-bs-dismiss="modal">Cancelar</button>
                 </div>
             </div>
         </div>
@@ -377,11 +377,11 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary" style=" background-color: #26327e;"
                         data-bs-toggle="modal" data-bs-target="#ResultadoBusqueda" data-bs-dismiss="modal"
-                        onclick="InsertarDatosModalResultadoBusquedaId()">Buscar por Id Venta</button>
+                        onclick="InsertarDatosModalResultadoBusquedaId(),limpiarBusqueda()">Buscar por Id Venta</button>
                     <button type="button" class="btn btn-primary" style=" background-color: #26327e;"
                         data-bs-toggle="modal" data-bs-target="#ResultadoBusqueda" data-bs-dismiss="modal"
-                        onclick="InsertarDatosModalResultadoBusquedaNombre()">Buscar por Nombre Cliente</button>
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        onclick="InsertarDatosModalResultadoBusquedaNombre(),limpiarBusqueda()">Buscar por Nombre Cliente</button>
+                    <button type="button" class="btn btn-secondary" onclick="limpiarBusqueda()" data-bs-dismiss="modal">Cancelar</button>
                 </div>
             </div>
         </div>
@@ -396,7 +396,7 @@
         </div>
     </div>
     <div class="container" style="text-align: center;">
-        <button type="button" class="btn btn-primary" style=" background-color: #26327e;" data-bs-toggle="modal"
+        <button type="button" class="btn btn-primary" style=" background-color: #26327e;" onclick="addNuevaFila()" data-bs-toggle="modal"
             data-bs-target="#NuevaVenta">Nueva Venta</button>
 
         <button type="button" class="btn btn-primary" style=" background-color: #26327e;" data-bs-toggle="modal"

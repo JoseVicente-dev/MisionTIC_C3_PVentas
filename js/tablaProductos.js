@@ -1,3 +1,5 @@
+let filaObjetivo;
+
 function insertarProducto() {
 
     let insertarFila = document.getElementById("cuerpoTablaProductos")
@@ -22,7 +24,6 @@ function insertarProducto() {
     seleccionar.appendChild(div)
 
     filaTabla.appendChild(seleccionar)
-
 
     numeroProducto = document.createElement("th")
     numeroProducto.setAttribute("scope", "row")
@@ -67,27 +68,33 @@ function modificarProducto() {
             document.getElementById("modifyCodigo").value = filaSeleccionada.cells[2].innerText
             document.getElementById("modifyDescripcion").value = filaSeleccionada.cells[3].innerText
             document.getElementById("modifyValorUnitario").value = filaSeleccionada.cells[4].innerText
-            if (filaSeleccionada.cells[5].innerText == "Disponible") {
-                document.getElementById("modifyEstado").value = 1
 
+            if (filaSeleccionada.cells[5].innerText == "Disponible") {
+                
+                document.getElementById("modifyEstado").value = 1
             }
             else {
+                
                 document.getElementById("modifyEstado").value = 2
-            }
+            }           
 
-            return filaSeleccionada
+            filaObjetivo = filaSeleccionada            
         }
     }
 }
 
-function actualizarProducto() {
+function actualizarProducto() {   
+
+    // filaObjetivo.cells[2].innerText = document.getElementById("modifyCodigo").value
+    filaObjetivo.cells[3].innerText = document.getElementById("modifyDescripcion").value
+    filaObjetivo.cells[4].innerText = document.getElementById("modifyValorUnitario").value
     
-    filaSeleccionada = modificarProducto()
-    
-
-
-
-
-
-
+    if (document.getElementById("modifyEstado").value==1){
+        
+        filaObjetivo.cells[5].innerText = "Disponible"
+    }
+    else{
+        
+        filaObjetivo.cells[5].innerText = "No disponible"
+    }
 }

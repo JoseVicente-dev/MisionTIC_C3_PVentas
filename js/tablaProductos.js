@@ -24,6 +24,7 @@ function insertarProducto() {
     radio.setAttribute("type", "radio")
     radio.setAttribute("name", "flexRadioDefault")
     radio.setAttribute("id", "flexRadioDefault" + i + 1)
+    radio.checked=true
     div.appendChild(radio)
     seleccionar.appendChild(div)
 
@@ -90,6 +91,7 @@ function modificarProducto() {
 function actualizarProducto() {
 
     // filaObjetivo.cells[2].innerText = document.getElementById("modifyCodigo").value
+    filaObjetivo.cells[0].getElementsByTagName("input")[0].checked=true
     filaObjetivo.cells[3].innerText = document.getElementById("modifyDescripcion").value
     filaObjetivo.cells[4].innerText = document.getElementById("modifyValorUnitario").value
 
@@ -177,9 +179,7 @@ function buscarProducto() {
             }
         }
 
-
     }
-
     
     // Modificacion del modal con los atributos del producto buscado
     
@@ -242,17 +242,17 @@ function buscarProducto() {
     document.getElementById("modifyCodigo").value = codigoBuscado
     document.getElementById("modifyDescripcion").value = descripcionBuscado
     document.getElementById("modifyValorUnitario").value = valorUnitarioBuscado
-    document.getElementById("modifyEstado").value = estadoBuscado
-    
-    
-
-    
+    document.getElementById("modifyEstado").value = estadoBuscado 
 
 }
 
 function limpiarBusqueda(){
 
-    let contenedor = document.getElementById("contenedorBuscar")
+    document.getElementById("inputCodigo").value =""
+    document.getElementById("inputDescripcion").value=""
+    document.getElementById("inputValorUnitario").value=""
+    document.getElementById("inputEstado").value= 1
+    
     document.getElementById("buscarEstado").parentNode.removeChild(document.getElementById("buscarEstado"))
     document.getElementById("buscarValorUnitario").parentNode.removeChild(document.getElementById("buscarValorUnitario"))
     document.getElementById("buscarCodigo").value=""
@@ -261,6 +261,8 @@ function limpiarBusqueda(){
     document.getElementById("buscarDescripcion").removeAttribute("disabled","")
     document.getElementById("buscarCodigo").setAttribute("style", "margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px; background-color: #d8e5fe; text-align: center;")
     document.getElementById("buscarDescripcion").setAttribute("style", "margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px; background-color: #d8e5fe; text-align: center;")
+
+    
     
 
 }

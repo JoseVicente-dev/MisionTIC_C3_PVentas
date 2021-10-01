@@ -325,7 +325,7 @@
         </div>
     </section>
     <!-- /Tabla con datos -->
-    <!-- Modal Ingresar Datos -->
+    <!-- Modal Adicionar Datos -->
     <div class="modal fade" id="Adicionar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
         aria-labelledby="staticBackdropLabel1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
@@ -371,7 +371,8 @@
             </div>
         </div>
     </div>
-    <!-- /Modal Ingresar Datos -->
+    <!-- /Modal Adicionar Datos -->
+    
     <!-- Modal Modificar Datos -->
     <div class="modal fade " id="Modificar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
         aria-labelledby="staticBackdropLabel2" aria-hidden="true">
@@ -441,6 +442,7 @@
                                 placeholder="Descripción del producto" style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
                         background-color: #d8e5fe; text-align: center;">
                         </div>
+                        
                     </div>
                     <div class="modal-footer">
 
@@ -456,7 +458,7 @@
     <!-- Botones adicion, modificacion de productos -->
     <div class="container" style="text-align: center;">
         <a href="#" class="btn btn-primary" style=" background-color: #26327e;" data-bs-toggle="modal"
-            data-bs-target="#Adicionar">Adicionar</a>
+            data-bs-target="#Adicionar" onclick="limpiarBusqueda()">Adicionar</a>
         <a href="#" class="btn btn-primary" style=" background-color: #26327e;" onclick="modificarProducto()"
             data-bs-toggle="modal" data-bs-target="#Modificar">Modificar</a>
         <a href="#" class="btn btn-primary" style=" background-color: #26327e;" data-bs-toggle="modal"

@@ -187,7 +187,7 @@
               <th scope="col">Estado</th>
             </tr>
           </thead>
-          <tbody style="text-align: center">
+          <tbody style="text-align: center" id="cuerpoTablaUsuarios">
             <tr>
               <th>
                 <div class="form-check">
@@ -199,8 +199,8 @@
                   />
                 </div>
               </th>
-              <th scope="row">522135</th>
-              <td>Pepito</td>
+              <th scope="row">1</th>
+              <td>Pepito1</td>
               <td>Perez</td>
               <td>Vendendor</td>
               <td>pendiente</td>
@@ -217,8 +217,8 @@
                   />
                 </div>
               </th>
-              <th scope="row">522135</th>
-              <td>Pepito</td>
+              <th scope="row">2</th>
+              <td>Pepito2</td>
               <td>Perez</td>
               <td>Vendendor</td>
               <td>pendiente</td>
@@ -235,8 +235,8 @@
                   />
                 </div>
               </th>
-              <th scope="row">522135</th>
-              <td>Pepito</td>
+              <th scope="row">3</th>
+              <td>Pepito3</td>
               <td>Perez</td>
               <td>Vendendor</td>
               <td>autorizado</td>
@@ -253,8 +253,8 @@
                   />
                 </div>
               </th>
-              <th scope="row">522135</th>
-              <td>Pepito</td>
+              <th scope="row">4</th>
+              <td>Pepito4</td>
               <td>Perez</td>
               <td>Vendendor</td>
               <td>no autorizado</td>
@@ -271,8 +271,8 @@
                   />
                 </div>
               </th>
-              <th scope="row">522135</th>
-              <td>Pepito</td>
+              <th scope="row">5</th>
+              <td>Pepito5</td>
               <td>Perez</td>
               <td>Vendendor</td>
               <td>no autorizado</td>
@@ -288,8 +288,8 @@
                   />
                 </div>
               </th>
-              <th scope="row">522135</th>
-              <td>Pepito</td>
+              <th scope="row">6</th>
+              <td>Pepito6</td>
               <td>Perez</td>
               <td>Vendendor</td>
               <td>autorizado</td>
@@ -299,78 +299,162 @@
       </div>
     </section>
 
-    <!--Botones -->
-    <section style="padding-bottom: 60px;">
-    <div class="container">
-        <div class="row ">
-             <div class="col-6" style="text-align: end;"> 
-            <button
-              type="button"
-              class="btn btn-secondary bg-color"
-              style="background-color: #2d35a7a4"
-              data-bs-toggle="modal" data-bs-target="#exampleModal" 
-            >
-              <span> Agregar usuario</span>
-            </button>
-          </div>
+    <!-- Modal Adicionar Datos ---------------------------------------------------------------------------->
+    <div class="modal fade" id="Adicionar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel1" aria-hidden="true" >
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #26327e;">
+                    <h5 class="modal-title" id="staticBackdropLabel1" style="color: white;">Adicionar Usuario</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                        style="background-color: #7a87bb;"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="container">
+                        <div class="col">
+                            <input type="text" class="form-control" id="inputCodigo" placeholder="Código del usuario"
+                                style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
+                        background-color: #d8e5fe; text-align: center;">
+                        </div>
+                        <div class="col">
+                            <input type="text" class="form-control" id="inputnombre"
+                                placeholder="Nombres" style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
+                        background-color: #d8e5fe; text-align: center;">
+                        </div>
+                        <div class="col">
+                          <input type="text" class="form-control" id="inputApellido"
+                              placeholder="Apellidos" style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
+                        background-color: #d8e5fe; text-align: center;">
+                        </div>
+                        <div class="col">
+                            <input type="text" class="form-control" id="inputRol"
+                                placeholder="Cargo" style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
+                        background-color: #d8e5fe; text-align: center;">
+                        </div>
+                        <div class="col">
+
+                            <select class="form-select" id="inputEstado" placeholder="Estado" style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
+                        background-color: #d8e5fe; text-align: center;" aria-label="Default select example">
+                                <option value="Pendiente">Pendiente</option>
+                                <option value="Autorizado">Autorizado</option>
+                                <option value="No autorizado">No autorizado</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" onclick="nuevaFila()" data-bs-dismiss="modal"
+                        style=" background-color: #26327e;">Adicionar</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                </div>
+            </div>
         </div>
     </div>
-    </section>
+    <!-- Modal Modificar Datos  ---------------------------------------------------------------------------->
+    <div class="modal fade " id="Modificar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel2" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable ">
+            <div class="modal-content ">
+                <div class="modal-header" style="background-color: #26327e;">
+                    <h5 class="modal-title" id="staticBackdropLabel2" style="color: white;">Modificar usuario</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                        style="background-color: #7a87bb;"></button>
+                </div>
+                <div class="modal-body">
 
+                  <div class="modal-body">
+                    <div class="container">
+                        <div class="col">
+                            <input type="text" class="form-control" id="MinputCodigo" placeholder="Código del usuario"
+                                style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;background-color:gainsboro ; 
+                                text-align: center;" disabled>
+                        </div>
+                        <div class="col">
+                            <input type="text" class="form-control" id="Minputnombre"
+                                placeholder="Nombres" style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
+                        background-color: #d8e5fe; text-align: center;">
+                        </div>
+                        <div class="col">
+                          <input type="text" class="form-control" id="MinputApellido"
+                              placeholder="Apellidos" style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
+                        background-color: #d8e5fe; text-align: center;">
+                        </div>
+                        <div class="col">
+                            <input type="text" class="form-control" id="MinputRol"
+                                placeholder="Cargo" style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
+                        background-color: #d8e5fe; text-align: center;">
+                        </div>
+                        <div class="col">
 
-<!-- Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-
-    <div class="modal-dialog">
-    <form>
-    <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Nuevo usuario</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-            
-                <div class="mb-3">
-                  <label for="ID_input" class="form-label"> ID</label>
-                  <input type="text" class="form-control" id="ID_input" >
-                  
+                            <select class="form-select" id="MinputEstado" placeholder="Estado" style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
+                        background-color: #d8e5fe; text-align: center;" aria-label="Default select example">
+                                <option value="Pendiente">Pendiente</option>
+                                <option value="Autorizado">Autorizado</option>
+                                <option value="No autorizado">No autorizado</option>
+                            </select>
+                        </div>
+                    </div>
                 </div>
-                <div class="mb-3">
-                  <label for="Nombres_input" class="form-label"> Nombres</label>
-                  <input type="text" class="form-control" id="Nombres_input">
-                </div>
-                
-                <div class="mb-3">
-                    <label for="Apellidos_input" class="form-label"> Apellidos</label>
-                    <input type="text" class="form-control" id="Apellidos_input">
-                </div>
-                <div class="mb-3">
-                    <label for="Rol_input" class="form-label"> Rol</label>
-                    <input type="text" class="form-control" id="Rol_input" required>
-                </div>
-                <div class="mb-3">
-                  <label for="Rol_Estado" class="form-label"> Estado</label>
-                <input type="text" class="form-control" id="Estado_input" required>
               </div>
-      
-        
-    <!--           ------------------------------------------------------------------------>         
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" onclick="actualizarUsuario()" data-bs-dismiss="modal"
+                        style=" background-color: #26327e;">Modificar</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                </div>
+            </div>
         </div>
-        <div class="modal-footer">
-          <button type="button"  class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-          <button type="button" type="submit" class="btn btn-primary" onclick="nuevaFila()">Agregar</button>
-        </div>
-      </div>
-    </form>
     </div>
-  </div>
-    <!-------------------------------------------------------------------------->        
+<!--------------------------------------------------------------------------------------------------------->
+<!-- Modal Buscar -->
+    <div class="modal fade" id="Buscar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #26327e;">
+                    <h5 class="modal-title" id="staticBackdropLabel3" style="color: white;">Buscar usuario</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                        style="background-color: #7a87bb;"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="container" id="contenedorBuscar">
+                        <div class="col">
+                            <input type="text" class="form-control" id="buscarCodigo" placeholder="Código del usuario"
+                                style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
+                        background-color: #d8e5fe; text-align: center;">
+                        </div>
+                        <div class="col">
+                            <input type="text" class="form-control" id="buscarNombre"
+                                placeholder="Nombre" style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
+                        background-color: #d8e5fe; text-align: center;">
+                        </div>
+                        
+                    </div>
+                    <div class="modal-footer">
 
-    <!-- Footer -->
+                        <button type="button" class="btn btn-primary" id="btnBuscarModalBuscar" onclick="buscarUsuario()"
+                            style=" background-color: #26327e;">Buscar</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+   <div class="container" style="text-align: center;">
+      <a href="#" class="btn btn-primary" style=" background-color: #26327e;margin-bottom: 60px;" data-bs-toggle="modal"
+          data-bs-target="#Adicionar" onclick="limpiarModal()">Adicionar</a>
+      <a href="#" class="btn btn-primary" style=" background-color: #26327e;margin-bottom: 60px;" onclick="modificarUsuario()"
+          data-bs-toggle="modal" data-bs-target="#Modificar">Modificar</a>
+      <a href="#" class="btn btn-primary" style=" background-color: #26327e; margin-bottom: 60px;" data-bs-toggle="modal"
+          data-bs-target="#Buscar" onclick="limpiarModal()">Buscar2</a>
+  </div>
+
+
+<!-- Footer -->
     <footer style="text-align: center">
       <img src="/images/logo2.png" alt="logo-nightmare" style="height: 50px" />
     </footer>
-    <!-------------------------------------------------------------------------->
+<!-------------------------------------------------------------------------->
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/esm/popper.js"></script>

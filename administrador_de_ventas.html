@@ -211,6 +211,12 @@
         </div>
     </div>
     <!--  /Modal Nueva Venta -->
+    <!-- Scripts necesarios -->
+    <script>
+        // se inserta latabla automaticamente al cargar la pagina 
+        nuevaFila()
+        InsertarDatos()
+    </script>
     <!-- Script para que el id de cada nueva venta aumente -->
     <script>
         const NuevoId = document.getElementById("IdNuevo")
@@ -377,20 +383,21 @@
     </div>
     <!--  /Modal Buscar Ventas -->
     <!-- Bottones -->
-    <div class="modal-footer buttonAdVen">
-        <button type="button" class="btn btn-primary" style=" background-color: #26327e;"
-            onclick="nuevaFila();InsertarDatos()">Mostrar Ventas</button>
-        <button type="button" class="btn btn-primary" style=" background-color: #26327e;" data-bs-toggle="modal"
-            data-bs-target="#NuevaVenta">Nueva Venta</button>
+    <div class="container" style="text-align: end;">
         <div id="Muestrame" style="display:none">
             <button type="button" class="btn btn-primary" style=" background-color: #7e2626;" data-bs-toggle="modal"
                 data-bs-target="#ModificarVenta">Modificar Venta</button>
             <button type="button" class="btn btn-primary" style=" background-color: #7e2626;">Eliminar Venta</button>
         </div>
+    </div>
+    <div class="container" style="text-align: center;">
+        <button type="button" class="btn btn-primary" style=" background-color: #26327e;" data-bs-toggle="modal"
+            data-bs-target="#NuevaVenta">Nueva Venta</button>
 
         <button type="button" class="btn btn-primary" style=" background-color: #26327e;" data-bs-toggle="modal"
             data-bs-target="#BuscarVenta">Buscar Venta</button>
     </div>
+
     <!-- /Bottones -->
     <!-- Footer -->
     <footer style="text-align: center;">

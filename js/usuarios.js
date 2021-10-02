@@ -1,13 +1,11 @@
+/* --------------------------------------------------------------------------- */
 function nuevaFila() {
-
     var table = document.getElementById("tabla_usuarios");
-    var idInput = document.getElementById("ID_input").value;
-    var nombresInput = document.getElementById("Nombres_input").value;
-    var apellidosInput = document.getElementById("Apellidos_input").value;
-    var rolInput = document.getElementById("Rol_input").value;
-    var estadoInput = document.getElementById("Estado_input").value;
-
-
+    var idInput = document.getElementById("inputCodigo").value;
+    var nombresInput = document.getElementById("inputnombre").value;
+    var apellidosInput = document.getElementById("inputApellido").value;
+    var rolInput = document.getElementById("inputRol").value;
+    var estadoInput = document.getElementById("inputEstado");
     var oRows = document.getElementById('tabla_usuarios').getElementsByTagName('tr');
     var iRowCount = oRows.length;
     var row = table.insertRow(iRowCount);
@@ -22,8 +20,116 @@ function nuevaFila() {
     cell3.innerHTML = nombresInput;
     cell4.innerHTML = apellidosInput ;
     cell5.innerHTML = rolInput;
-    cell6.innerHTML = estadoInput;
-
+    cell6.innerHTML = estadoInput.value;
 }
 
+/* --------------------------------------------------------------------------- */
+function limpiarModal(){
+    // modal adcionar usuario
+    document.getElementById("inputCodigo").value ="";
+    document.getElementById("inputnombre").value="";
+    document.getElementById("inputnombre").value="";
+    document.getElementById("inputApellido").value="";
+    document.getElementById("inputEstado")=Pendiente;
+    // modal resultado modificar
+   
 
+    
+    // modal buscar usuarios
+/*     document.getElementById("").value ="";
+    document.getElementById("").value="" ; */
+    
+}
+
+/* --------------------------------------------------------------------------- */
+function modificarUsuario() {
+
+    let tablaUsuarios = document.getElementById("cuerpoTablaUsuarios");
+    let radios = tablaUsuarios.getElementsByTagName("input");
+    let filas = tablaUsuarios.getElementsByTagName("tr");
+    let totalFilas = radios.length;
+
+
+    for (i = 0; i < totalFilas; i++) {
+        if (radios[i].checked) {
+
+            filaSeleccionada = filas[i]
+            document.getElementById("MinputCodigo").value = filaSeleccionada.cells[1].innerText
+            document.getElementById("Minputnombre").value = filaSeleccionada.cells[2].innerText
+            document.getElementById("MinputApellido").value = filaSeleccionada.cells[3].innerText
+            document.getElementById("MinputRol").value = filaSeleccionada.cells[4].innerText
+            document.getElementById("MinputEstado").value = filaSeleccionada.cells[5].innerText
+
+            if (filaSeleccionada.cells[5].innerText == "Pendiente") {
+
+                document.getElementById("MinputEstado").value ="Pendiente";
+            }
+            else if (filaSeleccionada.cells[5].innerText == "Autorizado") {
+
+                document.getElementById("MinputEstado").value = "Autorizado";
+            }
+
+            else {
+
+                document.getElementById("MinputEstado").value = "No autorizado";
+            } 
+
+            filaObjetivo = filaSeleccionada
+        }
+    }
+}
+
+/* --------------------------------------------------------------------------- */
+function actualizarUsuario() {
+
+
+    filaObjetivo.cells[0].getElementsByTagName("input")[0].checked=true
+    filaObjetivo.cells[2].innerText = document.getElementById("Minputnombre").value
+    filaObjetivo.cells[3].innerText = document.getElementById("MinputApellido").value
+    filaObjetivo.cells[4].innerText = document.getElementById("MinputRol").value
+   
+    if (document.getElementById("MinputEstado").value  == "Pendiente") {
+
+        filaObjetivo.cells[5].innerText ="Pendiente";
+    }
+    else if (document.getElementById("MinputEstado").value == "Autorizado") {
+
+        filaObjetivo.cells[5].innerText ="Autorizado";
+    }
+
+    else {
+
+        filaObjetivo.cells[5].innerText ="No autorizado";
+    } 
+}
+
+/* --------------------------------------------------------------------------- */
+ function buscarUsuario() {  
+
+    var Check = document.createElement("input");
+    Check.setAttribute("class", "form-check-input")
+    Check.setAttribute("type", "radio");
+    Check.setAttribute("name", "flexRadioDefault")
+    Check.setAttribute("id", (numerodeFilas + 1));
+
+
+    let contenedor = document.getElementById("contenedorBuscar");
+
+    //Busqueda usuario
+    let cuerpoTabla = document.getElementById("cuerpoTablaUsuarios");   
+    let filas = cuerpoTabla.getElementsByTagName("tr")
+    let totalFilas = filas.length
+    console.log("totalFilas " + totalFilas);
+    if (document.getElementById("buscarCodigo").value!=false){
+
+        for(i = 0; i < totalFilas; i++){
+            if ((filas[i].cells[1].innerText) == (document.getElementById("buscarCodigo").value)){
+                console.log (filas[i].cells[1].innerText);
+
+            }
+
+        }
+
+
+}
+}

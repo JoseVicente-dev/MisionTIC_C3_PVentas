@@ -125,6 +125,8 @@
     <script src="/js/AdminVentas-BuscarVenta.js"></script>
     <script src="/js/AdminVentas-NuevaVenta.js"></script>
     <script src="js/AdminVentas-ocultarbotones.js"></script>
+    <script src="js/AdminVentas-LimpiarModales.js"></script>
+    <script src="js/AdminVentas-ModificarVentas.js"></script>
     <!-- /Archivos JS -->
     <!-- Tabla done se insertaran las filas -->
     <section class="main">
@@ -204,19 +206,29 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary" style=" background-color: #26327e;"
-                        onclick="NuevaVenta()" data-bs-dismiss="modal">Agregar</button>
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        onclick="NuevaVenta(), limpiarBusqueda()" data-bs-dismiss="modal">Agregar</button>
+                    <button type="button" class="btn btn-secondary" onclick="limpiarBusqueda()" data-bs-dismiss="modal">Cancelar</button>
                 </div>
             </div>
         </div>
     </div>
     <!--  /Modal Nueva Venta -->
+    <!-- Scripts necesarios -->
+    <script>
+        // se inserta latabla automaticamente al cargar la pagina 
+        nuevaFila()
+        InsertarDatos()
+    </script>
     <!-- Script para que el id de cada nueva venta aumente -->
     <script>
+        function addNuevaFila(){
         const NuevoId = document.getElementById("IdNuevo")
-        const UltimoIdVenta = Id.at(-1)
-        console.log(UltimoIdVenta)
-        NuevoId.textContent = UltimoIdVenta + 1
+        let numerosFila = document.getElementById("AquiVaLaFila")
+        let UltimoIdVenta = numerosFila.getElementsByTagName("tr").length
+        // const UltimoIdVenta = Id.at(-1)
+         console.log(UltimoIdVenta)
+        NuevoId.textContent = (UltimoIdVenta + 1)
+        }
     </script>
     <!--  Modal Modificar Venta -->
     <div class="modal fade" id="ModificarVenta" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
@@ -271,8 +283,9 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary" style=" background-color: #26327e;"
-                        onclick="InsertarDatosModalVentaBuscada()">Modificar</button>
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        onclick="InsertarDatosModalVentaBuscada(),actualizarProducto(), limpiarBusqueda()" data-bs-toggle="modal" data-bs-target="#AlertaModificacionVenta" data-bs-dismiss="modal"
+                        >Modificar</button>
+                    <button type="button" class="btn btn-secondary" onclick="limpiarBusqueda()" data-bs-dismiss="modal">Cancelar</button>
                 </div>
             </div>
         </div>
@@ -296,43 +309,43 @@
                         </div>
                         <div class="col">
                             <input type="text" class="form-control" id="ArticuloResultado" placeholder="Articulo" style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
-                        background-color: #d8e5fe; text-align: center;">
+                        background-color: #d8e5fe; text-align: center;"> </input>
                         </div>
                         <div class="col">
                             <input type="text" class="form-control" id="ClienteResultado" placeholder="Cliente" style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
-                        background-color: #d8e5fe; text-align: center;">
+                        background-color: #d8e5fe; text-align: center;"></input>
                         </div>
                         <div class="col">
                             <input type="text" class="form-control" id="ValorResultado" placeholder="Valor" style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
-                        background-color: #d8e5fe; text-align: center;">
+                        background-color: #d8e5fe; text-align: center;"></input>
                         </div>
                         <div class="col">
                             <input type="text" class="form-control" id="FechaVentaResultado" placeholder="Fecha Venta"
                                 style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
-                        background-color: #d8e5fe; text-align: center;">
+                        background-color: #d8e5fe; text-align: center;"></input>
                         </div>
                         <div class="col">
                             <input type="text" class="form-control" id="FechaPagoResultado" placeholder="Fecha Pago"
                                 style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
-                        background-color: #d8e5fe; text-align: center;">
+                        background-color: #d8e5fe; text-align: center;"></input>
                         </div>
                         <div class="col">
                             <input type="text" class="form-control" id="VendedorResultado" placeholder="Vendedor" style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
-                        background-color: #d8e5fe; text-align: center;">
+                        background-color: #d8e5fe; text-align: center;"></input>
                         </div>
                         <select class="form-select" id="EstadoResultado" style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
                         background-color: #d8e5fe; text-align: center;">
-                            <option index=0>Cancelada</option>
-                            <option index=1>Pendiente</option>
+                            <option>Cancelada</option>
+                            <option>Pendiente</option>
                         </select>
                         <div class="col">
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" style=" background-color: #26327e;">Modificar</button>
-                    <button type="button" class="btn btn-primary" style=" background-color: #26327e;">Eliminar</button>
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" style=" background-color: #26327e;" onclick="actualizarProductoBuscarVenta(),limpiarBusqueda()"data-bs-toggle="modal" data-bs-target="#AlertaModificacionVenta"data-bs-dismiss="modal">Modificar</button>
+                    <button type="button" class="btn btn-primary" style=" background-color: #26327e;" onclick="limpiarBusqueda()">Eliminar</button>
+                    <button type="button" class="btn btn-secondary" onclick="limpiarBusqueda()" data-bs-dismiss="modal">Cancelar</button>
                 </div>
             </div>
         </div>
@@ -366,31 +379,52 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary" style=" background-color: #26327e;"
                         data-bs-toggle="modal" data-bs-target="#ResultadoBusqueda" data-bs-dismiss="modal"
-                        onclick="InsertarDatosModalResultadoBusquedaId()">Buscar por Id Venta</button>
+                        onclick="InsertarDatosModalResultadoBusquedaId(),limpiarBusqueda()">Buscar por Id Venta</button>
                     <button type="button" class="btn btn-primary" style=" background-color: #26327e;"
                         data-bs-toggle="modal" data-bs-target="#ResultadoBusqueda" data-bs-dismiss="modal"
-                        onclick="InsertarDatosModalResultadoBusquedaNombre()">Buscar por Nombre Cliente</button>
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        onclick="InsertarDatosModalResultadoBusquedaNombre(),limpiarBusqueda()">Buscar por Nombre Cliente</button>
+                    <button type="button" class="btn btn-secondary" onclick="limpiarBusqueda()" data-bs-dismiss="modal">Cancelar</button>
                 </div>
             </div>
         </div>
     </div>
     <!--  /Modal Buscar Ventas -->
+
+  <!-- Modal Alerta Actualización Venta -->
+  <div class="modal fade" id="AlertaModificacionVenta" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Actualización Venta</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            Venta Actualizada Correctamente
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- /Modal Alerta Actualización Venta  -->
     <!-- Bottones -->
-    <div class="modal-footer buttonAdVen">
-        <button type="button" class="btn btn-primary" style=" background-color: #26327e;"
-            onclick="nuevaFila();InsertarDatos()">Mostrar Ventas</button>
-        <button type="button" class="btn btn-primary" style=" background-color: #26327e;" data-bs-toggle="modal"
-            data-bs-target="#NuevaVenta">Nueva Venta</button>
+    <div class="container" style="text-align: end;">
         <div id="Muestrame" style="display:none">
             <button type="button" class="btn btn-primary" style=" background-color: #7e2626;" data-bs-toggle="modal"
-                data-bs-target="#ModificarVenta">Modificar Venta</button>
+                data-bs-target="#ModificarVenta"  onclick="modificarProducto()">Modificar Venta</button>
             <button type="button" class="btn btn-primary" style=" background-color: #7e2626;">Eliminar Venta</button>
         </div>
+    </div>
+    <div class="container" style="text-align: center;">
+        <button type="button" class="btn btn-primary" style=" background-color: #26327e;" onclick="addNuevaFila()" data-bs-toggle="modal"
+            data-bs-target="#NuevaVenta">Nueva Venta</button>
 
         <button type="button" class="btn btn-primary" style=" background-color: #26327e;" data-bs-toggle="modal"
             data-bs-target="#BuscarVenta">Buscar Venta</button>
     </div>
+
     <!-- /Bottones -->
     <!-- Footer -->
     <footer style="text-align: center;">

@@ -325,6 +325,8 @@
         </div>
     </section>
     <!-- /Tabla con datos -->
+
+
     <!-- Modal Adicionar Datos -->
     <div class="modal fade" id="Adicionar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
         aria-labelledby="staticBackdropLabel1" aria-hidden="true">
@@ -364,7 +366,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" onclick="insertarProducto()" data-bs-dismiss="modal"
+                    <button type="button" class="btn btn-primary" onclick="insertarProducto()" data-bs-toggle="modal" data-bs-target="#DatosAgregados" data-bs-dismiss="modal"
                         style=" background-color: #26327e;">Adicionar</button>
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                 </div>
@@ -372,7 +374,7 @@
         </div>
     </div>
     <!-- /Modal Adicionar Datos -->
-    
+
     <!-- Modal Modificar Datos -->
     <div class="modal fade " id="Modificar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
         aria-labelledby="staticBackdropLabel2" aria-hidden="true">
@@ -412,7 +414,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" onclick="actualizarProducto()" data-bs-dismiss="modal"
+                    <button type="button" class="btn btn-primary" onclick="actualizarProducto()" data-bs-toggle="modal" data-bs-target="#DatosAgregados" data-bs-dismiss="modal"
                         style=" background-color: #26327e;">Modificar</button>
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                 </div>
@@ -420,6 +422,7 @@
         </div>
     </div>
     <!-- /Modal Modificar Datos -->
+
     <!-- Modal Buscar Producto -->
     <div class="modal fade" id="Buscar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
         aria-labelledby="staticBackdropLabel1" aria-hidden="true">
@@ -455,6 +458,33 @@
         </div>
     </div>
     <!-- /Modal Buscar Producto -->
+
+    <!-- Modal Datos agregados -->
+    <div class="modal fade" id="DatosAgregados" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #26327e;">
+                    <h5 class="modal-title" id="staticBackdropLabel4" style="color: white;">Anuncio</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                        style="background-color: #7a87bb;"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="container" style="text-align: center;">
+                        <span class="align-middle">¡Datos agregados!</span>
+                        
+                        
+                    </div>
+                    <div class="modal-footer">                        
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style=" background-color: #26327e;">Aceptar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /Modal Datos agregados -->
+
+
     <!-- Botones adicion, modificacion de productos -->
     <div class="container" style="text-align: center;">
         <a href="#" class="btn btn-primary" style=" background-color: #26327e;" data-bs-toggle="modal"
@@ -480,7 +510,7 @@
     <script>
         src = "/js/modal.js"
     </script>
-    <script src="/js/tablaProductos.js"></script>
+    <script src="/js/Productos-tablaProductos.js"></script>
 </body>
 
 </html>

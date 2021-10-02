@@ -1,6 +1,3 @@
-
-
-
 let filaObjetivo;
 
 function insertarProducto() {
@@ -47,7 +44,6 @@ function insertarProducto() {
     let e = document.getElementById("inputEstado")
     estado.textContent = e.options[e.selectedIndex].text
 
-
     filaTabla.appendChild(numeroProducto)
     filaTabla.appendChild(codigo)
     filaTabla.appendChild(descripcion)
@@ -63,7 +59,6 @@ function modificarProducto() {
     let radios = cuerpoTabla.getElementsByTagName("input")
     let filas = cuerpoTabla.getElementsByTagName("tr")
     let totalFilas = radios.length
-
 
     for (i = 0; i < totalFilas; i++) {
         if (radios[i].checked) {
@@ -105,10 +100,8 @@ function actualizarProducto() {
     }
 }
 
-function buscarProducto() {  
+function buscarProducto() {      
     
-    let contenedor = document.getElementById("contenedorBuscar")
-
     //Busqueda del producto deseado
     let cuerpoTabla = document.getElementById("cuerpoTablaProductos")    
     let filas = cuerpoTabla.getElementsByTagName("tr")
@@ -118,7 +111,6 @@ function buscarProducto() {
     let descripcionBuscado;
     let valorUnitarioBuscado;
     let estadoBuscado;
-
 
     if (document.getElementById("buscarCodigo").value!=false){
 
@@ -178,11 +170,10 @@ function buscarProducto() {
                 break
             }
         }
-
     }
     
     // Modificacion del modal con los atributos del producto buscado
-    
+    let contenedor = document.getElementById("contenedorBuscar")    
     let divValorUnitario = document.createElement("div")
     divValorUnitario.setAttribute("class", "col")
 
@@ -193,8 +184,7 @@ function buscarProducto() {
     valorUnitario.setAttribute("placeholder", "Valor Unitario ($)")
     valorUnitario.setAttribute("style", "margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px; background-color: gainsboro; text-align: center;")
     valorUnitario.value=valorUnitarioBuscado
-    valorUnitario.setAttribute("disabled","")
-    
+    valorUnitario.setAttribute("disabled","")    
 
     divValorUnitario.appendChild(valorUnitario)
 
@@ -205,8 +195,7 @@ function buscarProducto() {
     estado.setAttribute("class", "form-select")
     estado.setAttribute("id", "buscarEstado")    
     estado.setAttribute("style", "margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px; background-color: gainsboro; text-align: center;")
-    estado.setAttribute("aria-label","Default select example")    
-    
+    estado.setAttribute("aria-label","Default select example")   
 
     let opcion1=document.createElement("option")
     opcion1.setAttribute("value","1")
@@ -262,6 +251,11 @@ function limpiarBusqueda(){
     document.getElementById("buscarCodigo").setAttribute("style", "margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px; background-color: #d8e5fe; text-align: center;")
     document.getElementById("buscarDescripcion").setAttribute("style", "margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px; background-color: #d8e5fe; text-align: center;")
 
+    document.getElementById("btnBuscarModalBuscar").setAttribute("onClick"," buscarProducto()")
+    document.getElementById("btnBuscarModalBuscar").removeAttribute("data-bs-toggle","modal")
+    document.getElementById("btnBuscarModalBuscar").removeAttribute("data-bs-target","#Modificar")
+    document.getElementById("btnBuscarModalBuscar").removeAttribute("data-bs-dismiss","modal")
+    document.getElementById("btnBuscarModalBuscar").textContent="Buscar"
     
     
 

@@ -17,7 +17,7 @@
   }
 
   body{ 
-    background-image: url(/images/granos-bg.jpg);
+    background-image: url(images/granos-bg.jpg);
     background-repeat: no-repeat;
     background-size: cover;
   }

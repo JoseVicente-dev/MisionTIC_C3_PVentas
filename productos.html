@@ -507,10 +507,16 @@
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
     <script src="js/menu.js"></script>
-    <script>
-        src = "js/modal.js"
-    </script>
+    <script src = "js/modal.js"></script>
     <script src="js/Productos-tablaProductos.js"></script>
+
+    <!-- esconder el menú 3s -->
+    <script>
+        setTimeout(function(){
+            $(".page-wrapper").removeClass("toggled");
+        }, 3000);
+    </script>
+
 </body>
 
 </html>

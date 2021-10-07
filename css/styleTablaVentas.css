@@ -122,3 +122,15 @@ footer{
     background-color: rgb(49, 47, 148);
 }
 
+.texto-aling-end{
+    text-align: end;
+}
+
+.fuente-25px{
+    font-size: 25px;
+}
+
+.width-30px{
+    width: 30px;
+    position: absolute;
+}

@@ -1,3 +1,5 @@
+
+
 const firebaseConfig = {
   apiKey: "AIzaSyCuuC5xt_cyNbakN_gIAJ3ixHvkw8LUCk8",
   authDomain: "nightmare-mercurio.firebaseapp.com",
@@ -30,7 +32,6 @@ async function login(){
     try{
         const respuesta = await auth.signInWithPopup(proveedor)
         /* console.log(respuesta) */
-        
         usuarioActual = respuesta.user.displayName
         usuarioFoto  = respuesta.user.photoURL
         usuarioEmail = respuesta.user.email
@@ -44,15 +45,53 @@ async function login(){
             apellidos: '',
             rol: '',
             estado: false,
-            email:usuarioEmail,
-            photoUrl:usuarioFoto
+            email: usuarioEmail,
+            photoUrl: usuarioFoto
         } 
 
         
-        /* const respuesta = await guardarUsuario(usuario) */
-        const respuestaUsuario = await guardarUsuario(usuario)
-        console.log(respuestaUsuario)
+        /* const usuarios = []
+        const respuestausuarios = await dataBase.collection('ng_users').get()
+        respuestausuarios.forEach( function(item){
+            console.log(item.data())
+            usuarios.push(item.data())
+        })
+        usuarios.forEach((t)=>{
+            console.log(t.email)
+            if(t.email==usuarioEmail){
+                return "ya existe"
+            }
+        }) */
         
+
+        const respuestaUsuario = await guardarUsuario(usuario)
+        /* console.log(respuestaUsuario) */
+        
+    }catch(error){
+        console.log(error)
+    }
+}
+
+
+
+async function leerUsuarios(){
+    try{
+        const usuarios = []
+        const respuesta = await dataBase.collection('ng_users').get()
+
+        respuesta.forEach( function(item){
+            /* console.log(item.data()) */
+            usuarios.push(item.data())
+        })
+
+        //tratando de leer email */
+        /* usuarios.forEach((u)=>{ 
+            console.log(u.email)
+        }) */
+            
+        console.log(usuarios)
+        return usuarios
+
     }catch(error){
         console.log(error)
     }
@@ -70,10 +109,12 @@ async function guardarUsuario(usuario){
 
 
 
+
+
 //evento
 btnLogin.addEventListener('click', (e)=>{
     e.preventDefault()
+    /* leerUsuarios() */
     login()
-    /* adicionarUsuario()*/
 }) 
 

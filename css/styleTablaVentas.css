@@ -1,0 +1,125 @@
+html{
+    height: 100%;
+}
+
+body{
+    font-family: 'Aldrich', sans-serif;
+    /* font-variant: small-caps; */
+}
+input{
+    color: rgb(82, 110, 235);
+    background-color: rgb(82, 110, 235);
+    background: #6367a678;
+    border-radius: 20px;
+    margin:2px;
+    
+}
+
+.icono{
+color: red;
+size: 9x;
+}
+
+@media (min-width: 990px ) {
+    .navbarNG{
+        min-height: 20vh;
+    }
+    .menuNG-titulo{
+        font-size: 40px;
+    }   
+ }
+
+
+.color{
+    background-color: #060b73;
+    border-color: #060b73;
+}
+
+.bg-color{
+    background: rgb(6,11,115);
+    background: linear-gradient(180deg, rgba(6,11,115,1) 0%, rgba(6,11,115,0.5) 100%);
+}
+
+div.capa{
+    width: 100%;
+    height: 20vh;
+}
+
+.transparente{
+    background: transparent;
+    border: transparent;
+}
+
+.color-texto{
+    color: white;
+}
+
+.fuente_Mercurio{
+    font-family: Aldrich, sans-serif ;
+    
+}
+header{
+    width: 90%;
+    /* max-width: 1000px; */
+    margin: 0 auto;
+}
+
+.main{
+    width: 90%;
+    padding: 20px;
+    margin: 0 auto;
+}
+
+input, select, textarea{
+    color: #001aff;
+}
+
+textarea:focus, input:focus {
+    color: #2600ff;
+}
+
+.ingresoDatos{
+    color: rgb(82, 110, 235);
+    background-color: rgb(82, 110, 235);
+    background: #6367a678;
+    border-radius: 20px;
+}
+
+footer{
+    background-color: white;
+    width: 100%;
+    margin: auto;
+    display: block;
+    position: fixed;
+    bottom: 0px;
+}
+
+.checkbox-round {
+    width: 1.3em;
+    height: 1.3em;
+    background-color: white;
+    border-radius: 50%;
+    vertical-align: middle;
+    border: 1px solid #ddd;
+    appearance: none;
+    -webkit-appearance: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.checkbox-round:checked {
+    background-color: rgb(49, 47, 148);
+}
+
+.texto-aling-end{
+    text-align: end;
+}
+
+.fuente-25px{
+    font-size: 25px;
+}
+
+.width-30px{
+    width: 30px;
+    position: absolute;
+}

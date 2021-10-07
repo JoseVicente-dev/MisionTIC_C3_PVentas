@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" contenido="width=device-width" />
+    <meta name="description" contenido="Aplicativo prueba MisionTic2021" />
+    <meta
+      name="keywords"
+      contenido="Aplicación web, desarrollo de software, pruebas Misiontic"
+    />
+    <meta property="og:image" contenido="https://" />
+    <meta name="google-site-verification" contenido="" />
+
+    <title>Usuarios</title>
+
+    <link rel="icon" href="images/logo_mercurio.png" type="image/png" />
+
+    <!-- Bootstrap -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU"
+      crossorigin="anonymous"
+    />
+    <!-- Bootstrap -->
+
+    <!-- css Nightmare -->
+    <link rel="stylesheet" href="css/style.css" />
+    <link href="css/menu.css" rel="stylesheet" />
+    <!-- css Nightmare -->
+
+    <!-- Iconos fontAwesome -->
+    <link
+      href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
+      rel="stylesheet"
+    />
+
+    <!-- Fuente -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Aldrich&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- NavBar superior-->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-color" id="menu">
+      <div class="container-fluid">
+        <div class="col-12" style="text-align: end">
+          <a
+            class="navbar-brand menuNG-titulo"
+            href="#"
+            style="font-size: 25px"
+          >
+            <!-- ICONO USUARIOS -->
+            Usuarios&nbsp;&nbsp;
+            <i class="fas fa-users" style="font-size: 50px"></i>
+          </a>
+        </div>
+      </div>
+    </nav>
+    <!-- NavBar Superior-->
+
+    <!-- menu-lateral Menú lateral-->
+    <div class="page-wrapper mercurio-theme toggled">
+      <a id="show-menu-lateral" class="btn btn-sm btn-dark" href="#">
+        <i
+          class="fas fa-bars mx-auto"
+          style="font-size: 30px; margin-left: 5px"
+        >
+          &nbsp;
+          <img
+            src="images/logo_mercurio.png"
+            alt=""
+            style="width: 30px; position: absolute"
+          />
+        </i>
+      </a>
+      <nav id="menu-lateral" class="menu-lateral-wrapper">
+        <div class="menu-lateral-contenido">
+          <!-- encabezado menu -->
+          <div class="menu-lateral-brand" style="background-color: #2d35a7a4 ;">
+            <img src="images/logo_mercurio.png" alt="" style="width: 30px" />
+            &nbsp;
+            <a href="#" style="color: whitesmoke">Mercurio </a>
+            <div id="close-menu-lateral">
+              <i class="fas fa-times" style="color: white"></i>
+            </div>
+          </div>
+          <!-- encabezado menu -->
+
+          <!-- Sección de usuario -->
+          <div class="menu-lateral-header">
+            <div class="user-pic">
+              <img
+                class="img-responsive img-rounded"
+                src="images/user2.png"
+                alt="User picture"
+              />
+            </div>
+            <div class="user-info">
+              <span class="user-name"><strong>Nightmare User</strong></span>
+              <span class="user-role">Administrador</span>
+              <span class="user-status">
+                <i class="fa fa-circle"></i>
+                <span>Online</span>
+              </span>
+            </div>
+          </div>
+          <!-- Sección de usuario -->
+
+          <!-- Opciones disponible lista de paginas -->
+          <div class="menu-lateral-menu">
+            <ul>
+              <li class="header-menu">
+                <span>Opciones disponibles</span>
+              </li>
+              <li class="menu-lateral-dropdown">
+                <a href="#">
+                  <i class="fa fa-chart-pie"></i>
+                  <span>Dashboard</span>
+                </a>
+              </li>
+              <li class="menu-lateral-dropdown">
+                <a href="administrador_de_ventas.html">
+                  <i class="fa fa-shopping-cart"></i>
+                  <span>Módulo de Ventas</span>
+                </a>
+              </li>
+              <li class="menu-lateral-dropdown">
+                <a href="productos.html" >
+                  <!-- Icono canasta de compras -->
+                  <i class="fas fa-shopping-basket" ></i>
+
+                  <span>Productos</span>
+                </a>
+              </li>
+              <li class="menu-lateral-dropdown">
+                <a href="roles_usuarios.html" style="color: white">
+                  <i class="fas fa-users-cog" style="color: #16c7ff"></i>
+                  <span>Usuarios</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <!-- Opciones disponible lista de paginas -->
+        </div>
+
+        <!-- Footer menu -->
+        <div
+          class="menu-lateral-footer"
+          style="
+            bottom: 32px;
+            background-color: transparent;
+            border-top: transparent;
+          "
+        >
+          <img
+            src="images/logo2b.png"
+            alt="..."
+            class="img-rounded"
+            style="width: 250px"
+          />
+        </div>
+        <div class="menu-lateral-footer">
+          <a href="index.html">
+            <i class="fa fa-power-off"></i>
+          </a>
+        </div>
+        <!-- Footer menu -->
+      </nav>
+    </div>
+    <!-- Menú lateral -->
+
+
+
+    <!-- Tabla con datos -->
+    <section class="main">
+      <div class="container-fluid table-responsive">
+        <table class="table table-hover" id="tabla_usuarios">
+          <thead style="text-align: center">
+            <tr>
+              <th scope="col"></th>
+              <th scope="col">Id</th>
+              <th scope="col">Nombres</th>
+              <th scope="col">Apellidos</th>
+              <th scope="col">Rol</th>
+              <th scope="col">Estado</th>
+            </tr>
+          </thead>
+          <tbody style="text-align: center" id="cuerpoTablaUsuarios">
+            <tr>
+              <th>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="flexRadioDefault"
+                    id="flexRadioDefault1"
+                  />
+                </div>
+              </th>
+              <th scope="row">1</th>
+              <td>Pepito1</td>
+              <td>Perez</td>
+              <td>Vendendor</td>
+              <td>pendiente</td>
+            </tr>
+
+            <tr>
+              <th>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="flexRadioDefault"
+                    id="flexRadioDefault2"
+                  />
+                </div>
+              </th>
+              <th scope="row">2</th>
+              <td>Pepito2</td>
+              <td>Perez</td>
+              <td>Vendendor</td>
+              <td>pendiente</td>
+            </tr>
+
+            <tr>
+              <th>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="flexRadioDefault"
+                    id="flexRadioDefault3"
+                  />
+                </div>
+              </th>
+              <th scope="row">3</th>
+              <td>Pepito3</td>
+              <td>Perez</td>
+              <td>Vendendor</td>
+              <td>autorizado</td>
+            </tr>
+
+            <tr>
+              <th>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="flexRadioDefault"
+                    id="flexRadioDefault4"
+                  />
+                </div>
+              </th>
+              <th scope="row">4</th>
+              <td>Pepito4</td>
+              <td>Perez</td>
+              <td>Vendendor</td>
+              <td>no autorizado</td>
+            </tr>
+
+            <tr>
+              <th>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="flexRadioDefault"
+                    id="flexRadioDefault5"
+                  />
+                </div>
+              </th>
+              <th scope="row">5</th>
+              <td>Pepito5</td>
+              <td>Perez</td>
+              <td>Vendendor</td>
+              <td>no autorizado</td>
+            </tr>
+            <tr>
+              <th>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    name="flexRadioDefault"
+                    id="flexRadioDefault6"
+                  />
+                </div>
+              </th>
+              <th scope="row">6</th>
+              <td>Pepito6</td>
+              <td>Perez</td>
+              <td>Vendendor</td>
+              <td>autorizado</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Modal Adicionar Datos ---------------------------------------------------------------------------->
+    <div class="modal fade" id="Adicionar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel1" aria-hidden="true" >
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #26327e;">
+                    <h5 class="modal-title" id="staticBackdropLabel1" style="color: white;">Adicionar Usuario</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                        style="background-color: #7a87bb;"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="container">
+                        <div class="col">
+                            <input type="text" class="form-control" id="inputCodigo" placeholder="Código del usuario"
+                                style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
+                        background-color: #d8e5fe; text-align: center;">
+                        </div>
+                        <div class="col">
+                            <input type="text" class="form-control" id="inputnombre"
+                                placeholder="Nombres" style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
+                        background-color: #d8e5fe; text-align: center;">
+                        </div>
+                        <div class="col">
+                          <input type="text" class="form-control" id="inputApellido"
+                              placeholder="Apellidos" style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
+                        background-color: #d8e5fe; text-align: center;">
+                        </div>
+                        <div class="col">
+                            <input type="text" class="form-control" id="inputRol"
+                                placeholder="Cargo" style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
+                        background-color: #d8e5fe; text-align: center;">
+                        </div>
+                        <div class="col">
+
+                            <select class="form-select" id="inputEstado" placeholder="Estado" style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
+                        background-color: #d8e5fe; text-align: center;" aria-label="Default select example">
+                                <option value="Pendiente">Pendiente</option>
+                                <option value="Autorizado">Autorizado</option>
+                                <option value="No autorizado">No autorizado</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" onclick="nuevaFila()" data-bs-dismiss="modal"
+                        style=" background-color: #26327e;">Adicionar</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal Modificar Datos  ---------------------------------------------------------------------------->
+    <div class="modal fade " id="Modificar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel2" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable ">
+            <div class="modal-content ">
+                <div class="modal-header" style="background-color: #26327e;">
+                    <h5 class="modal-title" id="staticBackdropLabel2" style="color: white;">Modificar usuario</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                        style="background-color: #7a87bb;"></button>
+                </div>
+                <div class="modal-body">
+
+                  <div class="modal-body">
+                    <div class="container">
+                        <div class="col">
+                            <input type="text" class="form-control" id="MinputCodigo" placeholder="Código del usuario"
+                                style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;background-color:gainsboro ; 
+                                text-align: center;" disabled>
+                        </div>
+                        <div class="col">
+                            <input type="text" class="form-control" id="Minputnombre"
+                                placeholder="Nombres" style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
+                        background-color: #d8e5fe; text-align: center;">
+                        </div>
+                        <div class="col">
+                          <input type="text" class="form-control" id="MinputApellido"
+                              placeholder="Apellidos" style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
+                        background-color: #d8e5fe; text-align: center;">
+                        </div>
+                        <div class="col">
+                            <input type="text" class="form-control" id="MinputRol"
+                                placeholder="Cargo" style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
+                        background-color: #d8e5fe; text-align: center;">
+                        </div>
+                        <div class="col">
+
+                            <select class="form-select" id="MinputEstado" placeholder="Estado" style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
+                        background-color: #d8e5fe; text-align: center;" aria-label="Default select example">
+                                <option value="Pendiente">Pendiente</option>
+                                <option value="Autorizado">Autorizado</option>
+                                <option value="No autorizado">No autorizado</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+              </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" onclick="actualizarUsuario()" data-bs-dismiss="modal"
+                        style=" background-color: #26327e;">Modificar</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+<!--------------------------------------------------------------------------------------------------------->
+<!-- Modal Buscar -->
+    <div class="modal fade" id="Buscar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #26327e;">
+                    <h5 class="modal-title" id="staticBackdropLabel3" style="color: white;">Buscar usuario</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                        style="background-color: #7a87bb;"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="container" id="contenedorBuscar">
+                        <div class="col">
+                            <input type="text" class="form-control" id="buscarCodigo" placeholder="Código del usuario"
+                                style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
+                        background-color: #d8e5fe; text-align: center;">
+                        </div>
+                        <div class="col">
+                            <input type="text" class="form-control" id="buscarNombre"
+                                placeholder="Nombre" style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
+                        background-color: #d8e5fe; text-align: center;">
+                        </div>
+                        
+                    </div>
+                    <div class="modal-footer">
+
+                        <button type="button" class="btn btn-primary" id="btnBuscarModalBuscar" onclick="buscarUsuario()"
+                            style=" background-color: #26327e;">Buscar</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+   <div class="container" style="text-align: center;">
+      <a href="#" class="btn btn-primary" style=" background-color: #26327e;margin-bottom: 60px;" data-bs-toggle="modal"
+          data-bs-target="#Adicionar" onclick="limpiarModal()">Adicionar</a>
+      <a href="#" class="btn btn-primary" style=" background-color: #26327e;margin-bottom: 60px;" onclick="modificarUsuario()"
+          data-bs-toggle="modal" data-bs-target="#Modificar">Modificar</a>
+      <a href="#" class="btn btn-primary" style=" background-color: #26327e; margin-bottom: 60px;" data-bs-toggle="modal"
+          data-bs-target="#Buscar" onclick="limpiarModal()">Buscar2</a>
+  </div>
+
+
+<!-- Footer -->
+    <footer style="text-align: center">
+      <img src="images/logo2.png" alt="logo-nightmare" style="height: 50px" />
+    </footer>
+<!-------------------------------------------------------------------------->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/esm/popper.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+    <script src="js/menu.js"></script>
+    <script src="js/menu.js"></script>
+    <script src="js/usuarios.js"></script>
+    <script src="js/modal.js"></script>
+
+    <!-- esconder el menú 3s -->
+    <script>
+      setTimeout(function(){
+          $(".page-wrapper").removeClass("toggled");
+      }, 3000);
+    </script>
+
+  </body>
+</html>

@@ -1,0 +1,52 @@
+.card {
+    background-color: #8aa7ff;
+
+}
+
+.imagen{
+    text-align: center;
+    align-items: center;
+    
+}
+
+.tamano_imagen{
+    width: 192px;
+    height: 192px;
+}
+
+.titulo_menu{
+    font-size: 45px; 
+}
+
+.logo_mercury{
+    max-height: 52px;
+}
+
+.div_container{
+    min-width: 200px;
+}
+
+.card_mb{
+    background-color: #d8e5fe; 
+    border-color: #7a87bb;
+    min-width: 300px;
+    
+}
+
+.card_boton{
+    background-color: #26327e;
+}
+
+.div_card{
+    background-color: #d8e5fe; 
+    border-color: #7a87bb;
+}
+
+.icono_product{
+    color: #2972ff;
+    font-size: 140px;
+}
+
+footer{
+    text-align: center;
+}

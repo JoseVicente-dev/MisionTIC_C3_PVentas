@@ -344,7 +344,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary bg-color-azul" onclick="insertarProducto()" data-bs-toggle="modal" data-bs-target="#DatosAgregados" data-bs-dismiss="modal"
+                    <button type="button" class="btn btn-primary bg-color-azul" id="btnAdicionarModalAdicionar" data-bs-toggle="modal" data-bs-target="#DatosAgregados" data-bs-dismiss="modal"
                         >Adicionar</button>
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                 </div>
@@ -387,7 +387,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary bg-color-azul" onclick="actualizarProducto()" data-bs-toggle="modal" data-bs-target="#DatosAgregados" data-bs-dismiss="modal"
+                    <button type="button" class="btn btn-primary bg-color-azul" id="btnModificarModalModificar" data-bs-toggle="modal" data-bs-target="#DatosAgregados" data-bs-dismiss="modal"
                         >Modificar</button>
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                 </div>
@@ -420,7 +420,7 @@
                     </div>
                     <div class="modal-footer">
 
-                        <button type="button" class="btn btn-primary bg-color-azul" id="btnBuscarModalBuscar" onclick="buscarProducto()"
+                        <button type="button" class="btn btn-primary bg-color-azul" id="btnBuscarModalBuscar"
                             >Buscar</button>
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                     </div>
@@ -458,12 +458,12 @@
 
     <!-- Botones adicion, modificacion de productos -->
     <div class="container" style="text-align: center;">
-        <a href="#" class="btn btn-primary bg-color-azul"  data-bs-toggle="modal"
-            data-bs-target="#Adicionar" onclick="limpiarBusqueda()">Adicionar</a>
-        <a href="#" class="btn btn-primary bg-color-azul"  onclick="modificarProducto()"
+        <a href="#" class="btn btn-primary bg-color-azul" id="btnAdicionarPrincipal" data-bs-toggle="modal"
+            data-bs-target="#Adicionar" >Adicionar</a>
+        <a href="#" class="btn btn-primary bg-color-azul" id="btnModificarPrincial"
             data-bs-toggle="modal" data-bs-target="#Modificar">Modificar</a>
-        <a href="#" class="btn btn-primary bg-color-azul"  data-bs-toggle="modal"
-            data-bs-target="#Buscar" onclick="limpiarBusqueda()">Buscar</a>
+        <a href="#" class="btn btn-primary bg-color-azul" id="btnBuscarPrincipal" data-bs-toggle="modal"
+            data-bs-target="#Buscar" >Buscar</a>
 
     </div>
     <!-- /Botones adicion, modificacion de productos -->

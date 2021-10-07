@@ -20,8 +20,8 @@
     <!-- Bootstrap -->
 
     <!-- css Nightmare -->
-    <link rel="stylesheet" href="/css/style.css">
-    <link href="/css/menu.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="css/menu.css" rel="stylesheet">
     <!-- css Nightmare -->
 
     <!-- Iconos fontAwesome -->
@@ -53,7 +53,7 @@
     <div class="page-wrapper mercurio-theme toggled">
         <a id="show-menu-lateral" class="btn btn-sm btn-dark " href="#">
             <i class="fas fa-bars" style=" font-size: 30px;margin-left: 5px;"> &nbsp;
-                <img src="/images/logo_mercurio.png" alt="" style="width: 30px; position:absolute;">
+                <img src="images/logo_mercurio.png" alt="" style="width: 30px; position:absolute;">
             </i>
         </a>
         <nav id="menu-lateral" class="menu-lateral-wrapper">
@@ -61,7 +61,7 @@
                 
                 <!-- encabezado menu -->
                 <div class="menu-lateral-brand" style="background-color: #2d35a7a4;;">
-                    <img src="/images/logo_mercurio.png" alt="" style="width: 30px; ">
+                    <img src="images/logo_mercurio.png" alt="" style="width: 30px; ">
                     &nbsp;
                     <a href="#" style="color: whitesmoke; ">Mercurio </a>
                     <div id="close-menu-lateral">
@@ -73,7 +73,7 @@
                 <!-- Sección de usuario -->
                 <div class="menu-lateral-header">
                     <div class="user-pic">
-                        <img class="img-responsive img-rounded" src="/images/user2.png" alt="User picture">
+                        <img class="img-responsive img-rounded" src="images/user2.png" alt="User picture">
                     </div>
                     <div class="user-info">
                         <span class="user-name"><strong>Nightmare User</strong></span>
@@ -135,7 +135,7 @@
 
             <!-- Footer menu -->
             <div class="menu-lateral-footer" style="bottom: 32px; background-color: transparent; border-top: transparent;">
-                <img src="/images/logo2b.png" alt="..." class="img-rounded" style="width: 250px;">
+                <img src="images/logo2b.png" alt="..." class="img-rounded" style="width: 250px;">
             </div>
             <div class="menu-lateral-footer">
                 <a href="login.html">
@@ -229,7 +229,7 @@
 
     <!-- Footer -->
     <footer style="text-align: center;">
-        <img src="/images/logo2.png" alt="logo-nightmare" style="height: 50px;">
+        <img src="images/logo2.png" alt="logo-nightmare" style="height: 50px;">
     </footer>
     <!-- Footer -->
 
@@ -238,7 +238,14 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
-    <script src="/js/menu.js"></script>
+    <script src="js/menu.js"></script>
+
+    <!-- esconder el menú 3s -->
+    <script>
+        setTimeout(function(){
+            $(".page-wrapper").removeClass("toggled");
+        }, 3000);
+    </script>
 
 </body>
 

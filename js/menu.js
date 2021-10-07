@@ -19,3 +19,5 @@ $("#close-menu-lateral").click(function () {
 $("#show-menu-lateral").click(function () {
   $(".page-wrapper").addClass("toggled");
 });
+
+

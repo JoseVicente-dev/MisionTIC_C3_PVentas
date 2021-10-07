@@ -1,4 +1,3 @@
-console.log('hola')
 // se crea input container el cual busca el elemento con el id="AquiVaLaFila"
 let Id = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 let Articulo = ['Cebada', 'Arroz Integral', 'Alforfón', 'Trigo', 'Mijo', 'Avena', 'Amaranto', 'Farro', 'Quínoa', 'Lenteja'];
@@ -8,10 +7,7 @@ let FechaVenta = ['1/01/2021', '2/01/2021', '3/02/2021', '4/02/2021', '5/04/2021
 let FechaPago = ['1/01/2021', '2/01/2021', '-', '4/02/2021', '5/04/2021', '6/05/2021', '7/06/2021', '8/06/2021', '9/08/2021', '10/09/2021'];
 let Vendedor = ['Juan Rulfo', 'Juan Rulfo', 'Juan Rulfo', 'Juan Rulfo', 'Juan Rulfo', 'Juan Rulfo', 'Juan Rulfo', 'Juan Rulfo', 'Juan Rulfo', 'Juan Rulfo'];
 let Estado = ['Cancelada', 'Cancelada', 'Pendiente', 'Cancelada', 'Cancelada', 'Cancelada', 'Cancelada', 'Cancelada', 'Cancelada', 'Cancelada'];
-var filasDB = Id.at(-1)+1;
-
-console.log(filasDB)
-
+var filasDB = Id.at(-1);
 function nuevaFila() {
      var dondeInsertar = document.getElementById("AquiVaLaFila");
      for (var i = 0; i < filasDB; i++) {
@@ -20,7 +16,8 @@ function nuevaFila() {
           Check.setAttribute("type", "radio");
           Check.setAttribute("name", "flexRadioDefault")
           Check.setAttribute("id", i);
-
+          // con estas dos funciones cuando presionamos un checkbox apareceran los botones
+          // y se enviará la información para rellenar los modales necesarios
           Check.setAttribute("onClick","MostrarBotones();InsertarDatosModalVentaBuscada(id)")
           var Id = document.createElement("label");
           Id.setAttribute("id", "Id" + i);
@@ -71,12 +68,9 @@ function nuevaFila() {
           Fila.appendChild(col9)
           dondeInsertar.appendChild(Fila)
      }
-     console.log(filasDB)
 }
-
+// esta funciion llena la tabla con la informacion que hay en los vectores
 function InsertarDatos() {
-
-
      for (var i = 0; i <= filasDB; i++) {
           const ColumnId = document.getElementById("Id" + i)
           const ColumnArticulo = document.getElementById("Articulo" + i)
@@ -86,7 +80,6 @@ function InsertarDatos() {
           const ColumnFechaPago = document.getElementById("FechaPago" + i)
           const ColumnVendedor = document.getElementById("Vendedor" + i)
           const ColumnEstado = document.getElementById("Estado" + i)
-
           ColumnId.textContent = Id[i]
           ColumnArticulo.textContent = Articulo[i]
           ColumnCliente.textContent = Cliente[i]
@@ -95,7 +88,5 @@ function InsertarDatos() {
           ColumnFechaPago.textContent = FechaPago[i]
           ColumnVendedor.textContent = Vendedor[i]
           ColumnEstado.textContent = Estado[i]
-
-
      }
 }

@@ -85,17 +85,6 @@ textarea:focus, input:focus {
     border-radius: 20px;
 }
 
-.buttonAdVen{
-    /* width: 20%; */
-    /* padding: 20px; */
-    /* margin: 10 auto; */
-    /* position:relative; */
-    top:50%; 
-    /* left:-10%; */
-    /* background: #070e8c86; */
-    /* border-radius: 20px; */
-}
-
 footer{
     background-color: white;
     width: 100%;
@@ -122,3 +111,15 @@ footer{
     background-color: rgb(49, 47, 148);
 }
 
+.texto-aling-end{
+    text-align: end;
+}
+
+.fuente-25px{
+    font-size: 25px;
+}
+
+.width-30px{
+    width: 30px;
+    position: absolute;
+}

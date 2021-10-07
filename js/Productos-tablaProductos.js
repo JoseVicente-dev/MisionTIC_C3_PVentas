@@ -31,7 +31,7 @@ function insertarProducto() {
     radio.setAttribute("type", "radio")
     radio.setAttribute("name", "flexRadioDefault")
     radio.setAttribute("id", "flexRadioDefault" + i + 1)
-    radio.checked=true
+    radio.checked = true
     div.appendChild(radio)
     seleccionar.appendChild(div)
 
@@ -73,7 +73,7 @@ function modificarProducto() {
     for (i = 0; i < totalFilas; i++) {
         if (radios[i].checked) {
 
-            
+
             filaSeleccionada = filas[i]
             document.getElementById("modifyCodigo").value = filaSeleccionada.cells[2].innerText
             document.getElementById("modifyDescripcion").value = filaSeleccionada.cells[3].innerText
@@ -96,7 +96,7 @@ function modificarProducto() {
 function actualizarProducto() {
 
     // filaObjetivo.cells[2].innerText = document.getElementById("modifyCodigo").value
-    filaObjetivo.cells[0].getElementsByTagName("input")[0].checked=true
+    filaObjetivo.cells[0].getElementsByTagName("input")[0].checked = true
     filaObjetivo.cells[3].innerText = document.getElementById("modifyDescripcion").value
     filaObjetivo.cells[4].innerText = document.getElementById("modifyValorUnitario").value
 
@@ -110,10 +110,10 @@ function actualizarProducto() {
     }
 }
 
-function buscarProducto() {      
-    
+function buscarProducto() {
+
     //Busqueda del producto deseado
-    let cuerpoTabla = document.getElementById("cuerpoTablaProductos")    
+    let cuerpoTabla = document.getElementById("cuerpoTablaProductos")
     let filas = cuerpoTabla.getElementsByTagName("tr")
     let totalFilas = filas.length
 
@@ -122,20 +122,20 @@ function buscarProducto() {
     let valorUnitarioBuscado;
     let estadoBuscado;
 
-    if (document.getElementById("buscarCodigo").value!=false){
+    if (document.getElementById("buscarCodigo").value != false) {
 
-        
-        
-        for(i = 0; i < totalFilas; i++){
 
-            
 
-            if ((filas[i].cells[2].innerText) == (document.getElementById("buscarCodigo").value)){
+        for (i = 0; i < totalFilas; i++) {
 
-               
-                
-                filaObjetivo=filas[i]
-                filas[i].cells[0].getElementsByTagName("input")[0].checked=true
+
+
+            if ((filas[i].cells[2].innerText) == (document.getElementById("buscarCodigo").value)) {
+
+
+
+                filaObjetivo = filas[i]
+                filas[i].cells[0].getElementsByTagName("input")[0].checked = true
 
                 codigoBuscado = filas[i].cells[2].innerText
                 descripcionBuscado = filas[i].cells[3].innerText
@@ -149,21 +149,21 @@ function buscarProducto() {
                     estadoBuscado = 2
                 }
 
-                
+
 
                 break
-            }           
-        }        
+            }
+        }
     }
 
-    else if(document.getElementById("buscarDescripcion").value!=false && (document.getElementById("buscarCodigo").value)==false){
+    else if (document.getElementById("buscarDescripcion").value != false && (document.getElementById("buscarCodigo").value) == false) {
 
-        for(i = 0; i < totalFilas; i++){
-            
-            if ((filas[i].cells[3].innerText) == (document.getElementById("buscarDescripcion").value)){
-                
-                filaObjetivo=filas[i]
-                filas[i].cells[0].getElementsByTagName("input")[0].checked=true
+        for (i = 0; i < totalFilas; i++) {
+
+            if ((filas[i].cells[3].innerText) == (document.getElementById("buscarDescripcion").value)) {
+
+                filaObjetivo = filas[i]
+                filas[i].cells[0].getElementsByTagName("input")[0].checked = true
                 codigoBuscado = filas[i].cells[2].innerText
                 descripcionBuscado = filas[i].cells[3].innerText
                 valorUnitarioBuscado = filas[i].cells[4].innerText
@@ -180,9 +180,9 @@ function buscarProducto() {
             }
         }
     }
-    
+
     // Modificacion del modal con los atributos del producto buscado
-    let contenedor = document.getElementById("contenedorBuscar")    
+    let contenedor = document.getElementById("contenedorBuscar")
     let divValorUnitario = document.createElement("div")
     divValorUnitario.setAttribute("class", "col")
 
@@ -192,31 +192,31 @@ function buscarProducto() {
     valorUnitario.setAttribute("id", "buscarValorUnitario")
     valorUnitario.setAttribute("placeholder", "Valor Unitario ($)")
     valorUnitario.setAttribute("style", "margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px; background-color: gainsboro; text-align: center;")
-    valorUnitario.value=valorUnitarioBuscado
-    valorUnitario.setAttribute("disabled","")    
+    valorUnitario.value = valorUnitarioBuscado
+    valorUnitario.setAttribute("disabled", "")
 
     divValorUnitario.appendChild(valorUnitario)
 
     let divEstado = document.createElement("div")
     divEstado.setAttribute("class", "col")
 
-    let estado = document.createElement("select")  
+    let estado = document.createElement("select")
     estado.setAttribute("class", "form-select")
-    estado.setAttribute("id", "buscarEstado")    
+    estado.setAttribute("id", "buscarEstado")
     estado.setAttribute("style", "margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px; background-color: gainsboro; text-align: center;")
-    estado.setAttribute("aria-label","Default select example")   
+    estado.setAttribute("aria-label", "Default select example")
 
-    let opcion1=document.createElement("option")
-    opcion1.setAttribute("value","1")
-    opcion1.textContent="Disponible"
-    let opcion2=document.createElement("option")
-    opcion2.setAttribute("value","2")
-    opcion2.textContent="No disponible"
+    let opcion1 = document.createElement("option")
+    opcion1.setAttribute("value", "1")
+    opcion1.textContent = "Disponible"
+    let opcion2 = document.createElement("option")
+    opcion2.setAttribute("value", "2")
+    opcion2.textContent = "No disponible"
 
     estado.appendChild(opcion1)
     estado.appendChild(opcion2)
-    estado.value=estadoBuscado
-    estado.setAttribute("disabled","")
+    estado.value = estadoBuscado
+    estado.setAttribute("disabled", "")
 
     divEstado.appendChild(estado)
 
@@ -225,76 +225,82 @@ function buscarProducto() {
 
     document.getElementById("buscarCodigo").setAttribute("style", "margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px; background-color: gainsboro; text-align: center;")
     document.getElementById("buscarDescripcion").setAttribute("style", "margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px; background-color: gainsboro; text-align: center;")
-    
-    document.getElementById("buscarCodigo").value=codigoBuscado
-    document.getElementById("buscarDescripcion").value=descripcionBuscado
-    document.getElementById("buscarCodigo").setAttribute("disabled","")
-    document.getElementById("buscarDescripcion").setAttribute("disabled","")
 
-    document.getElementById("btnBuscarModalBuscar").setAttribute("onClick"," modificarProducto()")
-    document.getElementById("btnBuscarModalBuscar").setAttribute("data-bs-toggle","modal")
-    document.getElementById("btnBuscarModalBuscar").setAttribute("data-bs-target","#Modificar")
-    document.getElementById("btnBuscarModalBuscar").setAttribute("data-bs-dismiss","modal")
-    document.getElementById("btnBuscarModalBuscar").textContent="Modificar"
+    document.getElementById("buscarCodigo").value = codigoBuscado
+    document.getElementById("buscarDescripcion").value = descripcionBuscado
+    document.getElementById("buscarCodigo").setAttribute("disabled", "")
+    document.getElementById("buscarDescripcion").setAttribute("disabled", "")
+
+    document.getElementById("btnBuscarModalBuscar").setAttribute("onClick", " modificarProducto()")
+    document.getElementById("btnBuscarModalBuscar").setAttribute("data-bs-toggle", "modal")
+    document.getElementById("btnBuscarModalBuscar").setAttribute("data-bs-target", "#Modificar")
+    document.getElementById("btnBuscarModalBuscar").setAttribute("data-bs-dismiss", "modal")
+    document.getElementById("btnBuscarModalBuscar").textContent = "Modificar"
 
     document.getElementById("modifyCodigo").value = codigoBuscado
     document.getElementById("modifyDescripcion").value = descripcionBuscado
     document.getElementById("modifyValorUnitario").value = valorUnitarioBuscado
-    document.getElementById("modifyEstado").value = estadoBuscado 
+    document.getElementById("modifyEstado").value = estadoBuscado
 
 }
 
-function limpiarBusqueda(){
+function limpiarBusqueda() {
 
-    document.getElementById("inputCodigo").value =""
-    document.getElementById("inputDescripcion").value=""
-    document.getElementById("inputValorUnitario").value=""
-    document.getElementById("inputEstado").value= 1
-    
-    document.getElementById("buscarEstado").parentNode.removeChild(document.getElementById("buscarEstado"))
-    document.getElementById("buscarValorUnitario").parentNode.removeChild(document.getElementById("buscarValorUnitario"))
-    document.getElementById("buscarCodigo").value=""
-    document.getElementById("buscarDescripcion").value=""
-    document.getElementById("buscarCodigo").removeAttribute("disabled","")
-    document.getElementById("buscarDescripcion").removeAttribute("disabled","")
-    document.getElementById("buscarCodigo").setAttribute("style", "margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px; background-color: #d8e5fe; text-align: center;")
-    document.getElementById("buscarDescripcion").setAttribute("style", "margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px; background-color: #d8e5fe; text-align: center;")
+    document.getElementById("inputCodigo").value = ""
+    document.getElementById("inputDescripcion").value = ""
+    document.getElementById("inputValorUnitario").value = ""
+    document.getElementById("inputEstado").value = 1
 
-    document.getElementById("btnBuscarModalBuscar").setAttribute("onClick"," buscarProducto()")
-    document.getElementById("btnBuscarModalBuscar").removeAttribute("data-bs-toggle","modal")
-    document.getElementById("btnBuscarModalBuscar").removeAttribute("data-bs-target","#Modificar")
-    document.getElementById("btnBuscarModalBuscar").removeAttribute("data-bs-dismiss","modal")
-    document.getElementById("btnBuscarModalBuscar").textContent="Buscar"   
+    try {
+        document.getElementById("buscarEstado").parentNode.removeChild(document.getElementById("buscarEstado"))
+        document.getElementById("buscarValorUnitario").parentNode.removeChild(document.getElementById("buscarValorUnitario"))
+        document.getElementById("buscarCodigo").value = ""
+        document.getElementById("buscarDescripcion").value = ""
+        document.getElementById("buscarCodigo").removeAttribute("disabled", "")
+        document.getElementById("buscarDescripcion").removeAttribute("disabled", "")
+        document.getElementById("buscarCodigo").setAttribute("style", "margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px; background-color: #d8e5fe; text-align: center;")
+        document.getElementById("buscarDescripcion").setAttribute("style", "margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px; background-color: #d8e5fe; text-align: center;")
+
+    } catch (error) {
+        console.log(error);
+    }
+
+
+    // document.getElementById("btnBuscarModalBuscar").setAttribute("onClick"," buscarProducto()")
+    document.getElementById("btnBuscarModalBuscar").removeAttribute("data-bs-toggle", "modal")
+    document.getElementById("btnBuscarModalBuscar").removeAttribute("data-bs-target", "#Modificar")
+    document.getElementById("btnBuscarModalBuscar").removeAttribute("data-bs-dismiss", "modal")
+    document.getElementById("btnBuscarModalBuscar").textContent = "Buscar"
 
 }
 
 
-btnInsertarProducto.addEventListener('click', (e)=>{
+btnInsertarProducto.addEventListener('click', (e) => {
     e.preventDefault()
     insertarProducto()
 })
 
-btnModificarProducto.addEventListener('click', (e)=>{
+btnModificarProducto.addEventListener('click', (e) => {
     e.preventDefault()
     actualizarProducto()
 })
 
-btnBuscarProducto.addEventListener('click', (e)=>{
+btnBuscarProducto.addEventListener('click', (e) => {
     e.preventDefault()
     buscarProducto()
 })
 
-btnAdicionarPrincipal.addEventListener('click', (e)=>{
+btnAdicionarPrincipal.addEventListener('click', (e) => {
     e.preventDefault()
     limpiarBusqueda()
 })
 
-btnBuscarPrincipal.addEventListener('click', (e)=>{
+btnBuscarPrincipal.addEventListener('click', (e) => {
     e.preventDefault()
     limpiarBusqueda()
 })
 
-btnModificarPrincipal.addEventListener('click', (e)=>{
+btnModificarPrincipal.addEventListener('click', (e) => {
     e.preventDefault()
     modificarProducto()
 })

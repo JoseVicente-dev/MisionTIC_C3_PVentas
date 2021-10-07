@@ -35,7 +35,23 @@ async function login(){
         usuarioFoto  = respuesta.user.photoURL
         usuarioEmail = respuesta.user.email
 
-        console.log(usuarioActual, usuarioFoto, usuarioEmail)
+        /* console.log(usuarioActual, usuarioFoto, usuarioEmail) */
+
+        //usuario a guardar
+        const usuario = {
+            id: uuid.v4(), 
+            nombres: usuarioActual,
+            apellidos: '',
+            rol: '',
+            estado: false,
+            email:usuarioEmail,
+            photoUrl:usuarioFoto
+        } 
+
+        
+        /* const respuesta = await guardarUsuario(usuario) */
+        const respuestaUsuario = await guardarUsuario(usuario)
+        console.log(respuestaUsuario)
         
     }catch(error){
         console.log(error)
@@ -52,33 +68,12 @@ async function guardarUsuario(usuario){
     }
 }
 
-//adicionar usurio
-async function adicionarUsuario(){
-    try{
-        const usuario = {
-            id: uuid.v4(), 
-            nombres: usuarioActual,
-            /* apellidos:, */
-            rol: '',
-            estado: false,
-            email:usuarioEmail,
-            photoUrl:usuarioFoto, 
-
-        }
-        const respuesta = await guardarUsuario(usuario)
-        console.log(respuesta)
-
-    }catch(error){
-        console.log(error)
-    }
-}
-
 
 
 //evento
 btnLogin.addEventListener('click', (e)=>{
     e.preventDefault()
     login()
-    /* adicionarUsuario() */
-})
+    /* adicionarUsuario()*/
+}) 
 

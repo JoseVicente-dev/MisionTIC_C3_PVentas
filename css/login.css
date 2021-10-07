@@ -16,11 +16,11 @@
     border: #7a87bb;
   }
 
-  body{ 
-    background-image: url(/images/granos-bg.jpg);
+  /* body{ 
+    background-image: url(../images/granos-bg.jpg);
     background-repeat: no-repeat;
     background-size: cover;
-  }
+  } */
 
   .modal-content{
     height: auto;

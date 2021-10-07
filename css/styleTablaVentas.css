@@ -94,22 +94,8 @@ footer{
     bottom: 0px;
 }
 
-.checkbox-round {
-    width: 1.3em;
-    height: 1.3em;
-    background-color: white;
-    border-radius: 50%;
-    vertical-align: middle;
-    border: 1px solid #ddd;
-    appearance: none;
-    -webkit-appearance: none;
-    outline: none;
-    cursor: pointer;
-}
 
-.checkbox-round:checked {
-    background-color: rgb(49, 47, 148);
-}
+
 
 .texto-aling-end{
     text-align: end;
@@ -122,4 +108,9 @@ footer{
 .width-30px{
     width: 30px;
     position: absolute;
+}
+
+.font-size-30px-margin{
+    font-size: 30px;
+    margin-left: 5px;
 }

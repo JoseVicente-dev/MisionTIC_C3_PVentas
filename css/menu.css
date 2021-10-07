@@ -377,3 +377,63 @@
   .item.item-big-width {
     min-width: 380px;
   }
+
+  /* -----------Nuevas clases------------- */
+
+  .font-size-25px{
+    font-size: 25px;
+  }
+
+  .font-size-50px{
+    font-size: 50px;
+  }
+
+  .font-size-30px{
+    font-size: 30px;
+  }
+
+  .width-30px{
+    width: 30px; 
+  }
+
+  .width-30{
+    width: 30px;
+  }
+
+  .width-250px{
+    width: 250px;
+  }
+
+  .position-absolute{
+    position:absolute;
+  }
+
+  .text-aling-end{
+    text-align: end;
+  }
+
+  .margin-left-5px{
+    margin-left: 5px;
+  }
+
+  .background-color-azul{
+    background-color: #2d35a7a4;;
+  }
+
+  .color-blanco-humo{
+    color: whitesmoke;
+  }
+
+  .color-blanco{
+    color: white; 
+  }
+
+  .color-azul{
+    color: #16c7ff;
+  }
+
+  .style-footer{
+    bottom: 32px; 
+    background-color: transparent; 
+    border-top: transparent;
+  }

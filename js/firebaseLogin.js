@@ -47,52 +47,34 @@ async function login(){
             photoUrl: usuarioFoto
         } 
 
-        
         // leer usuarios para comparar email
-        /* const usuarios = []
+        const usuarios = []
         const respuestausuarios = await dataBase.collection('ng_users').get()
         respuestausuarios.forEach( function(item){
-            console.log(item.data())
-            usuarios.push(item.data())
-        })
-
-        usuarios.forEach((t)=>{
-            console.log(t.email)
-            console.log(typeof usuarioEmail)
-            
-        }) */
-        
-        const respuestaUsuario = await guardarUsuario(usuario)
-        /* console.log(respuestaUsuario) */
-        
-    }catch(error){
-        console.log(error)
-    }
-}
-
-
-async function leerUsuarios(){
-    try{
-        const usuarios = []
-        const respuesta = await dataBase.collection('ng_users').get()
-
-        respuesta.forEach( function(item){
             /* console.log(item.data()) */
             usuarios.push(item.data())
         })
 
-        //tratando de leer email */
-        /* usuarios.forEach((u)=>{ 
-            console.log(u.email)
-        }) */
-            
-        console.log(usuarios)
-        return usuarios
-
+        let contador=0
+        usuarios.forEach((t)=>{
+            /* console.log(t.email)
+            console.log(typeof usuarioEmail) */
+            if(t.email=usuarioEmail){
+                contador=contador+1
+            }
+        })
+        
+        /* console.log(contador) */
+        if(contador==1){
+            const respuestaUsuario = await guardarUsuario(usuario)
+        }
+        
+        
     }catch(error){
         console.log(error)
     }
 }
+
 
 async function guardarUsuario(usuario){
     try{
@@ -104,11 +86,19 @@ async function guardarUsuario(usuario){
     }
 }
 
-
 //evento
 btnLogin.addEventListener('click', (e)=>{
     e.preventDefault()
-    /* leerUsuarios() */
     login()
 }) 
 
+
+//borrar datos
+        /* const user = auth.currentUser;
+        var emailborrar = dataBase.collection('ng_users').where('email','==',user.email,'and','estado','==',true);
+        console.log(emailborrar);
+        emailborrar.get().then(function(querySnapshot) {
+            querySnapshot.forEach(function(doc) {
+                    doc.ref.delete();
+            });
+        }); */

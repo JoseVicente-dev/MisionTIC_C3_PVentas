@@ -24,3 +24,9 @@ function InsertarDatosModalVentaBuscada(id) {
         }
     }
 }
+
+const btnModificarDatosModalVentaBuscada = document.getElementById("btnModificarModalModificar")
+btnModificarDatosModalVentaBuscada.addEventListener('click', (e)=>{
+    e.preventDefault()
+    InsertarDatosModalVentaBuscada()
+})

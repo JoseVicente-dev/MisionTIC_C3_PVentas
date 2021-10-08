@@ -40,3 +40,43 @@ btnCancelarNuevaVentaL.addEventListener('click', (e)=>{
     e.preventDefault()
     limpiarBusqueda()
 })
+const btnModificarVentaBuscada = document.getElementById("btnModificarModalModificar")
+btnModificarVentaBuscada.addEventListener('click', (e)=>{
+    e.preventDefault()
+    limpiarBusqueda()
+})
+const btnModificarVentaBuscadaC = document.getElementById("btnCancelarModalModificar")
+btnModificarVentaBuscadaC.addEventListener('click', (e)=>{
+    e.preventDefault()
+    limpiarBusqueda()
+})
+const btnModificarBuscarVenta = document.getElementById("btnModificarModalResultadoBusqueda")
+btnModificarBuscarVenta.addEventListener('click', (e)=>{
+    e.preventDefault()
+    limpiarBusqueda()
+})
+const btnEliminarBuscarVenta = document.getElementById("btnEliminarModalResultadoBusqueda")
+btnEliminarBuscarVenta.addEventListener('click', (e)=>{
+    e.preventDefault()
+    limpiarBusqueda()
+})
+const btnCancelarBuscarVenta = document.getElementById("btnCancelarModalResultadoBusqueda")
+btnEliminarBuscarVenta.addEventListener('click', (e)=>{
+    e.preventDefault()
+    limpiarBusqueda()
+})
+const btnInsertarModalResultadoBusquedaL = document.getElementById("btnIdModalBuscarVentas")
+btnInsertarModalResultadoBusquedaL.addEventListener('click', (e)=>{
+    e.preventDefault()
+    limpiarBusqueda()
+})
+const btnInsertarModalResultadoBusquedaNL = document.getElementById("btnNombreModalBuscarVentas")
+btnInsertarModalResultadoBusquedaNL.addEventListener('click', (e)=>{
+    e.preventDefault()
+    limpiarBusqueda()
+})
+const btnCancelarModalResultadoBusquedaNL = document.getElementById("btnCancelarModalBuscarVentas")
+btnCancelarModalResultadoBusquedaNL.addEventListener('click', (e)=>{
+    e.preventDefault()
+    limpiarBusqueda()
+})

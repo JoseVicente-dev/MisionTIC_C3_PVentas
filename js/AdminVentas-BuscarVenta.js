@@ -83,3 +83,13 @@ function InsertarDatosModalResultadoBusquedaNombre() {
         }
     }
 }
+const btnInsertarModalResultadoBusquedaId = document.getElementById("btnIdModalBuscarVentas")
+btnInsertarModalResultadoBusquedaId.addEventListener('click', (e)=>{
+    e.preventDefault()
+    InsertarDatosModalResultadoBusquedaId()
+})
+const btnInsertarModalResultadoBusquedaNombre = document.getElementById("btnNombreModalBuscarVentas")
+btnInsertarModalResultadoBusquedaNombre.addEventListener('click', (e)=>{
+    e.preventDefault()
+    InsertarDatosModalResultadoBusquedaNombre()
+})

@@ -56,6 +56,8 @@ async function login(){
             usuarios.push(item.data())
         })
 
+
+        
         usuarios.forEach((t)=>{
             console.log(t.email)
             console.log(typeof usuarioEmail)

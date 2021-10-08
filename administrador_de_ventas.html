@@ -324,7 +324,7 @@
                         data-bs-target="#AlertaModificacionVenta" data-bs-dismiss="modal">Modificar</button>
                     <button type="button" class="btn btn-primary bg-color-azul" id="btnEliminarModalResultadoBusqueda"
                         >Eliminar</button>
-                    <button type="button" class="btn btn-secondary" id="btnCancelarModalResultadoBusqueda" onclick="limpiarBusqueda()"
+                    <button type="button" class="btn btn-secondary" id="btnCancelarModalResultadoBusqueda"
                         data-bs-dismiss="modal">Cancelar</button>
                 </div>
             </div>
@@ -394,13 +394,13 @@
     <!-- Bottones -->
     <div class="container tex-align">
         <div id="Muestrame" class="ocultar-elementos">
-            <button type="button" class="btn btn-primary bg-color-rojo" data-bs-toggle="modal"
-                data-bs-target="#ModificarVenta" onclick="modificarProducto()">Modificar Venta</button>
+            <button type="button" class="btn btn-primary bg-color-rojo" id="btnModificarVenta" data-bs-toggle="modal"
+                data-bs-target="#ModificarVenta">Modificar Venta</button>
             <button type="button" class="btn btn-primary bg-color-rojo">Eliminar Venta</button>
         </div>
     </div>
     <div class="container text-center">
-        <button type="button" class="btn btn-primary bg-color-azul" onclick="addNuevaFila()" data-bs-toggle="modal"
+        <button type="button" class="btn btn-primary bg-color-azul" onclick="addNuevaFila()" data-bs-toggle="modal" ><!--este evento llama a un scrip que esta aqui pero toca quitar porque no va a ser neceario-->
             data-bs-target="#NuevaVenta">Nueva Venta</button>
 
         <button type="button" class="btn btn-primary bg-color-azul" data-bs-toggle="modal"

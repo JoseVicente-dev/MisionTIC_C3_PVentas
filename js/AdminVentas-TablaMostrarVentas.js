@@ -1,7 +1,3 @@
-nuevaFila()
-InsertarDatos()
-
-
 // se crea input container el cual busca el elemento con el id="AquiVaLaFila"
 let Id = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 let Articulo = ['Cebada', 'Arroz Integral', 'Alforfón', 'Trigo', 'Mijo', 'Avena', 'Amaranto', 'Farro', 'Quínoa', 'Lenteja'];
@@ -94,3 +90,6 @@ function InsertarDatos() {
           ColumnEstado.textContent = Estado[i]
      }
 }
+
+nuevaFila()
+InsertarDatos()

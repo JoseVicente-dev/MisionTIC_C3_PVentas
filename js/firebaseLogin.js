@@ -42,7 +42,7 @@ const firebaseConfig = {
               id: uuid.v4(), 
               nombres: usuarioActual,
               apellidos: '',
-              rol: '',
+              rol: 'Vendedor',
               estado: false,
               email: usuarioEmail,
               photoUrl: usuarioFoto

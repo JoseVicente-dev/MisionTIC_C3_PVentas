@@ -1,5 +1,5 @@
 console.log('Prueba nueva venta enlace')
-const btnAgregarNuevaVenta = document.getElementById('btnAg')
+const btnAgregarNuevaVenta = document.getElementById('btnAgregarModalNuevaVenta')
 console.log(btnAgregarNuevaVenta)
 
 function NuevaVenta() {
@@ -97,10 +97,10 @@ function NuevaVenta() {
  }
 
 
-// btnAgregarNuevaVenta.addEventListener('click', (e)=>{
-//     e.preventDefault()
-//     NuevaVenta()
-// })
+btnAgregarNuevaVenta.addEventListener('click', (e)=>{
+    e.preventDefault()
+    NuevaVenta()
+})
 
     // se ingresa la info de las nuevas ventas en los vectores 
     // Id.push(UltimoIdVenta+1)

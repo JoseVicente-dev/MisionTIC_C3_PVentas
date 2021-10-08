@@ -35,3 +35,8 @@ btnAgregarNuevaVentaL.addEventListener('click', (e)=>{
     e.preventDefault()
     limpiarBusqueda()
 })
+const btnCancelarNuevaVentaL = document.getElementById("btnCancelarModalNuevaVenta")
+btnCancelarNuevaVentaL.addEventListener('click', (e)=>{
+    e.preventDefault()
+    limpiarBusqueda()
+})

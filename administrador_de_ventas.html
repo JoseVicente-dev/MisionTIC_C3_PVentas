@@ -271,52 +271,40 @@
             </div>
         </div>
     </div>
-    <!-- *************************************************************************************************************************************************************** -->
     <!--  /Modal Modificar Venta -->
     <!--  Modal Resultado Busqueda-->
     <div class="modal fade" id="ResultadoBusqueda" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
         aria-labelledby="staticBackdropLabel1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
             <div class="modal-content">
-                <div class="modal-header" style="background-color: #26327e;">
-                    <h5 class="modal-title" id="staticBackdropLabel1" style="color: white;">Resultado Busqueda</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
-                        style="background-color: #7a87bb;"></button>
+                <div class="modal-header bg-color-azul">
+                    <h5 class="modal-title color-h5" id="staticBackdropLabel1">Resultado Busqueda</h5>
+                    <button type="button" class="btn-close bg-color-cerrarX" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <div class="container">
                         <div class="col">
-                            <label type="text" class="form-control" id="IdResultado" placeholder="Id Venta" style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
-                        background-color: #d8e5fe; text-align: center;"> Id Venta</label>
+                            <label type="text" class="form-control modal-input-select-undisabled" id="IdResultado" placeholder="Id Venta"> Id Venta</label>
                         </div>
                         <div class="col">
-                            <input type="text" class="form-control" id="ArticuloResultado" placeholder="Articulo" style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
-                        background-color: #d8e5fe; text-align: center;"> </input>
+                            <input type="text" class="form-control modal-input-select-undisabled"id="ArticuloResultado" placeholder="Articulo"> </input>
                         </div>
                         <div class="col">
-                            <input type="text" class="form-control" id="ClienteResultado" placeholder="Cliente" style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
-                        background-color: #d8e5fe; text-align: center;"></input>
+                            <input type="text" class="form-control modal-input-select-undisabled"id="ClienteResultado" placeholder="Cliente"></input>
                         </div>
                         <div class="col">
-                            <input type="text" class="form-control" id="ValorResultado" placeholder="Valor" style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
-                        background-color: #d8e5fe; text-align: center;"></input>
+                            <input type="text" class="form-control modal-input-select-undisabled"id="ValorResultado" placeholder="Valor"></input>
                         </div>
                         <div class="col">
-                            <input type="text" class="form-control" id="FechaVentaResultado" placeholder="Fecha Venta"
-                                style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
-                        background-color: #d8e5fe; text-align: center;"></input>
+                            <input type="text" class="form-control modal-input-select-undisabled" id="FechaVentaResultado" placeholder="Fecha Venta"></input>
                         </div>
                         <div class="col">
-                            <input type="text" class="form-control" id="FechaPagoResultado" placeholder="Fecha Pago"
-                                style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
-                        background-color: #d8e5fe; text-align: center;"></input>
+                            <input type="text" class="form-control modal-input-select-undisabled" id="FechaPagoResultado" placeholder="Fecha Pago"></input>
                         </div>
                         <div class="col">
-                            <input type="text" class="form-control" id="VendedorResultado" placeholder="Vendedor" style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
-                        background-color: #d8e5fe; text-align: center;"></input>
+                            <input type="text" class="form-control modal-input-select-undisabled" id="VendedorResultado" placeholder="Vendedor"></input>
                         </div>
-                        <select class="form-select" id="EstadoResultado" style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
-                        background-color: #d8e5fe; text-align: center;">
+                        <select class="form-select modal-input-select-undisabled"  id="EstadoResultado">
                             <option>Cancelada</option>
                             <option>Pendiente</option>
                         </select>
@@ -325,8 +313,8 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" style=" background-color: #26327e;" onclick="actualizarProductoBuscarVenta(),limpiarBusqueda()"data-bs-toggle="modal" data-bs-target="#AlertaModificacionVenta"data-bs-dismiss="modal">Modificar</button>
-                    <button type="button" class="btn btn-primary" style=" background-color: #26327e;" onclick="limpiarBusqueda()">Eliminar</button>
+                    <button type="button" class="btn btn-primary bg-color-azul" id = "btnModificarModalResultadoBusqueda" onclick="actualizarProductoBuscarVenta(),limpiarBusqueda()"data-bs-toggle="modal" data-bs-target="#AlertaModificacionVenta"data-bs-dismiss="modal">Modificar</button>
+                    <button type="button" class="btn btn-primary bg-color-azul" id = "btnEliminarModalResultadoBusqueda" onclick="limpiarBusqueda()">Eliminar</button>
                     <button type="button" class="btn btn-secondary" onclick="limpiarBusqueda()" data-bs-dismiss="modal">Cancelar</button>
                 </div>
             </div>
@@ -338,31 +326,27 @@
         aria-labelledby="staticBackdropLabel1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
             <div class="modal-content">
-                <div class="modal-header" style="background-color: #26327e;">
-                    <h5 class="modal-title" id="staticBackdropLabel1" style="color: white;">Buscar Venta</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
-                        style="background-color: #7a87bb;"></button>
+                <div class="modal-header bg-color-azul">
+                    <h5 class="modal-title color-h5" id="staticBackdropLabel1">Buscar Venta</h5>
+                    <button type="button" class="btn-close bg-color-cerrarX" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <div class="container">
                         <div class="col">
-                            <input type="text" class="form-control" id="IdVentaBuscada" placeholder="Id Venta" style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
-                            background-color: #d8e5fe; text-align: center;">
+                            <input type="text" class="form-control modal-input-select-undisabled" id="IdVentaBuscada" placeholder="Id Venta">
                         </div>
                         <div class="col">
-                            <input type="text" class="form-control" id="NombreVentaBuscada"
-                                placeholder="Id o Nombre Cliente" style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
-                            background-color: #d8e5fe; text-align: center;">
+                            <input type="text" class="form-control modal-input-select-undisabled" id="NombreVentaBuscada" placeholder="Id o Nombre Cliente">
                         </div>
                         <div class="col">
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" style=" background-color: #26327e;"
+                    <button type="button" class="btn btn-primary bg-color-azul" id="btnIdModalBuscarVentas"
                         data-bs-toggle="modal" data-bs-target="#ResultadoBusqueda" data-bs-dismiss="modal"
                         onclick="InsertarDatosModalResultadoBusquedaId(),limpiarBusqueda()">Buscar por Id Venta</button>
-                    <button type="button" class="btn btn-primary" style=" background-color: #26327e;"
+                    <button type="button" class="btn btn-primary bg-color-azul" id="btnNombreModalBuscarVentas"
                         data-bs-toggle="modal" data-bs-target="#ResultadoBusqueda" data-bs-dismiss="modal"
                         onclick="InsertarDatosModalResultadoBusquedaNombre(),limpiarBusqueda()">Buscar por Nombre Cliente</button>
                     <button type="button" class="btn btn-secondary" onclick="limpiarBusqueda()" data-bs-dismiss="modal">Cancelar</button>
@@ -392,25 +376,25 @@
   </div>
 <!-- /Modal Alerta Actualización Venta  -->
     <!-- Bottones -->
-    <div class="container" style="text-align: end;">
-        <div id="Muestrame" style="display:none">
-            <button type="button" class="btn btn-primary" style=" background-color: #7e2626;" data-bs-toggle="modal"
+    <div class="container tex-align">
+        <div id="Muestrame"  class="ocultar-elementos">
+            <button type="button" class="btn btn-primary bg-color-rojo" data-bs-toggle="modal"
                 data-bs-target="#ModificarVenta"  onclick="modificarProducto()">Modificar Venta</button>
-            <button type="button" class="btn btn-primary" style=" background-color: #7e2626;">Eliminar Venta</button>
+            <button type="button" class="btn btn-primary bg-color-rojo">Eliminar Venta</button>
         </div>
     </div>
-    <div class="container" style="text-align: center;">
-        <button type="button" class="btn btn-primary" style=" background-color: #26327e;" onclick="addNuevaFila()" data-bs-toggle="modal"
+    <div class="container text-center">
+        <button type="button" class="btn btn-primary bg-color-azul" onclick="addNuevaFila()" data-bs-toggle="modal"
             data-bs-target="#NuevaVenta">Nueva Venta</button>
 
-        <button type="button" class="btn btn-primary" style=" background-color: #26327e;" data-bs-toggle="modal"
+        <button type="button" class="btn btn-primary bg-color-azul" data-bs-toggle="modal"
             data-bs-target="#BuscarVenta">Buscar Venta</button>
     </div>
 
     <!-- /Bottones -->
     <!-- Footer -->
-    <footer style="text-align: center;">
-        <img src="images/logo2.png" alt="logo-nightmare" style="height: 50px;">
+    <footer class="text-center">
+        <img src="images/logo2.png" alt="logo-nightmare" class="height-50px">
     </footer>
     <!-- Footer -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>

@@ -6,6 +6,10 @@
     background-color: #26327e;
 }
 
+.bg-color-rojo{
+    background-color: #7e2626;
+}
+
 .bg-color-cerrarX{
     background-color: #7a87bb;
 }
@@ -30,4 +34,16 @@
     margin-left: 15px;
     background-color: gainsboro; 
     text-align: center;
+}
+
+.ocultar-elementos{
+    display:none
+}
+
+.tex-align{
+    text-align: end;
+}
+
+.text-center{
+    text-align: center;  
 }

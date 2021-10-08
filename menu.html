@@ -39,45 +39,45 @@
 <body>
 
 
-   
 
 
 
-  
-  <!-- Modal -->
-  <div class="modal fade" id="Mercurio" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">¡Ey! Estás en Menú</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="Mercurio" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">¡Ey! Estás en Menú</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Selecciona algún lugar donde quieras ir.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+                </div>
+            </div>
         </div>
-        <div class="modal-body">
-          Selecciona algún lugar donde quieras ir.
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          
-        </div>
-      </div>
     </div>
-  </div>
 
-<!-- Modales -->
+    <!-- Modales -->
 
     <!-- NavBar superior-->
     <nav class="navbar navbar-expand-lg navbar-dark bg-color " id="menu">
         <div class="container-fluid">
             <div class="col-12" style="text-align: center;">
-                <a class="navbar-brand menuNG-titulo " href="menu.html" style="font-size: 25px;" data-bs-toggle="modal" data-bs-target="#Mercurio">
-                    <img src="images/logo_mercurio.png" alt="mercurio" style="max-height: 52px;">
-                    <!-- class="fas fa-users" style="font-size: 50px;" -->
+                <a class="navbar-brand menuNG-titulo modal_a" href="menu.html" data-bs-toggle="modal"
+                    data-bs-target="#Mercurio">
+                    <img class="img_cls" src="images/logo_mercurio.png" alt="mercurio" >
                     Mercurio&nbsp;&nbsp;
                 </a>
             </div>
         </div>
     </nav>
-    
+
 
 
 
@@ -85,7 +85,7 @@
 
     <!-- Footer menu -->
 
-    
+
     <br>
     <!-- Panel de tarjetas -->
     <div class="container " style="min-width: 200px;">
@@ -96,13 +96,14 @@
                         <div class="col text-center">
                             <img src="images/ranking_menu_color.png" class="img-fluid rounded-start" alt="menu">
                         </div>
-                        <div class="col-md-6" style="min-width: 200px;" >
+                        <div class="col-md-6" style="min-width: 200px;">
                             <div class="card-body">
                                 <h2 class="card-title">Ventas</h2>
                                 <p class="card-text">This is a wider card with supporting text below as a natural
                                     lead-in to additional content. This content is a little bit longer.</p>
                                 <div class="d-grid gap-2">
-                                    <a href="administrador_de_ventas.html" class="btn btn-primary" style="background-color: #26327e;">Ventas</a>
+                                    <a href="administrador_de_ventas.html" class="btn btn-primary"
+                                        style="background-color: #26327e;">Ventas</a>
                                 </div>
                             </div>
                         </div>
@@ -124,7 +125,8 @@
                                 <p class="card-text">This is a wider card with supporting text below as a natural
                                     lead-in to additional content. This content is a little bit longer.</p>
                                 <div class="d-grid gap-2">
-                                    <a href="roles_usuarios.html" class="btn btn-primary" style="background-color: #26327e;">Usuarios</a>
+                                    <a href="roles_usuarios.html" class="btn btn-primary"
+                                        style="background-color: #26327e;">Usuarios</a>
                                 </div>
                             </div>
                         </div>
@@ -147,7 +149,8 @@
                                 <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
 
                                 <div class="d-grid gap-2">
-                                    <a href="productos.html" class="btn btn-primary" style="background-color: #26327e;">Productos</a>
+                                    <a href="productos.html" class="btn btn-primary"
+                                        style="background-color: #26327e;">Productos</a>
                                 </div>
                             </div>
                         </div>
@@ -163,22 +166,23 @@
         <div class="row text-center">
             <div class="col">
                 <!-- <div class="d-grid gap-2"> -->
-                    <!-- <a href="#" class="btn btn-primary align-items-center" style="background-color: #26327e; align-content: center;
+                <!-- <a href="#" class="btn btn-primary align-items-center" style="background-color: #26327e; align-content: center;
                     text-align: center;">Salir</a> -->
-                    <button onclick="window.location.href='index.html'" class="btn btn-primary align-items-center" style="background-color: #26327e;">
-                        Salir
-                    </button>
-                    
+                <button onclick="window.location.href='index.html'" class="btn btn-primary align-items-center"
+                    style="background-color: #26327e;">
+                    Salir
+                </button>
+
                 <!-- </div> -->
 
             </div>
-            
+
         </div>
 
 
     </div>
 
-<!-- Footer -->
+    <!-- Footer -->
 
     <footer style="text-align: center;">
         <img src="images/logo2.png" alt="logo-nightmare" width="30%">
@@ -201,7 +205,7 @@
         crossorigin="anonymous"></script>
     <script src="js/menu.js"></script>
     <script>
-        src="js/modal.js"
+        src = "js/modal_menu_prin.js"
     </script>
 
 

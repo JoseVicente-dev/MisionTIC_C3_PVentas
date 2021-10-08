@@ -21,3 +21,14 @@
 .img_cls{
     max-height: 52px;
 }
+.div_container{
+    min-width: 200px;
+}
+.div_tarjeta{
+    min-width: 200px;
+}
+.div_cls_mb{
+    min-width: 300px; 
+    background-color: #d8e5fe;
+    border-color: #7a87bb;
+}

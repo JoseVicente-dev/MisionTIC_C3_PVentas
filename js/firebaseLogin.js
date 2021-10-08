@@ -23,6 +23,7 @@ let usuarioEmail;
 
 //variables DOM
 const btnLogin = document.getElementById('boton-loginGmail')
+/* console.log(btnLogin) */
 
 
 //funciones
@@ -40,6 +41,7 @@ async function login(){
         //usuario a guardar
         const usuario = {
             id: uuid.v4(), 
+            /* id: idasc(), */
             nombres: usuarioActual,
             apellidos: '',
             rol: '',
@@ -116,6 +118,19 @@ async function guardarUsuario(usuario){
         console.log(error)
     }
 }
+
+//id ascendente para arreglar
+/* async function idasc(){
+    let contUser=1
+    const usuarios = []
+    const respuestausuarios = await dataBase.collection('ng_users').get()
+    respuestausuarios.forEach( function(item){
+        contUser=contUser+1
+    })
+    console.log(contUser)
+    return contUser
+} */
+
 
 //evento
 btnLogin.addEventListener('click', (e)=>{

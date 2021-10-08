@@ -95,11 +95,12 @@
                 class="img-responsive img-rounded"
                 src="images/user2.png"
                 alt="User picture"
+                id="imagenUsuario"
               />
             </div>
             <div class="user-info">
-              <span class="user-name"><strong>Nightmare User</strong></span>
-              <span class="user-role">Administrador</span>
+              <span class="user-name" id="nombreDeUsuario"><strong>Nightmare User</strong></span>
+              <span class="user-role" id="tipoUsuario">Administrador</span>
               <span class="user-status">
                 <i class="fa fa-circle"></i>
                 <span>Online</span>
@@ -176,128 +177,54 @@
     <!-- Tabla con datos -->
     <section class="main">
       <div class="container-fluid table-responsive">
-        <table class="table table-hover" id="tabla_usuarios">
+        <table class="table table-hover" >
           <thead style="text-align: center">
             <tr>
               <th scope="col"></th>
               <th scope="col">Id</th>
               <th scope="col">Nombres</th>
-              <th scope="col">Apellidos</th>
+              <th scope="col">Email</th>
               <th scope="col">Rol</th>
               <th scope="col">Estado</th>
             </tr>
           </thead>
-          <tbody style="text-align: center" id="cuerpoTablaUsuarios">
-            <tr>
-              <th>
-                <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    type="radio"
-                    name="flexRadioDefault"
-                    id="flexRadioDefault1"
-                  />
-                </div>
-              </th>
-              <th scope="row">1</th>
-              <td>Pepito1</td>
-              <td>Perez</td>
-              <td>Vendendor</td>
-              <td>pendiente</td>
+          <tbody style="text-align: center" id="tabla_usuarios">
+            <tr id="tabla-usuarios">
             </tr>
 
-            <tr>
-              <th>
-                <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    type="radio"
-                    name="flexRadioDefault"
-                    id="flexRadioDefault2"
-                  />
-                </div>
-              </th>
-              <th scope="row">2</th>
-              <td>Pepito2</td>
-              <td>Perez</td>
-              <td>Vendendor</td>
-              <td>pendiente</td>
-            </tr>
-
-            <tr>
-              <th>
-                <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    type="radio"
-                    name="flexRadioDefault"
-                    id="flexRadioDefault3"
-                  />
-                </div>
-              </th>
-              <th scope="row">3</th>
-              <td>Pepito3</td>
-              <td>Perez</td>
-              <td>Vendendor</td>
-              <td>autorizado</td>
-            </tr>
-
-            <tr>
-              <th>
-                <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    type="radio"
-                    name="flexRadioDefault"
-                    id="flexRadioDefault4"
-                  />
-                </div>
-              </th>
-              <th scope="row">4</th>
-              <td>Pepito4</td>
-              <td>Perez</td>
-              <td>Vendendor</td>
-              <td>no autorizado</td>
-            </tr>
-
-            <tr>
-              <th>
-                <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    type="radio"
-                    name="flexRadioDefault"
-                    id="flexRadioDefault5"
-                  />
-                </div>
-              </th>
-              <th scope="row">5</th>
-              <td>Pepito5</td>
-              <td>Perez</td>
-              <td>Vendendor</td>
-              <td>no autorizado</td>
-            </tr>
-            <tr>
-              <th>
-                <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    type="radio"
-                    name="flexRadioDefault"
-                    id="flexRadioDefault6"
-                  />
-                </div>
-              </th>
-              <th scope="row">6</th>
-              <td>Pepito6</td>
-              <td>Perez</td>
-              <td>Vendendor</td>
-              <td>autorizado</td>
-            </tr>
           </tbody>
         </table>
       </div>
     </section>
+
+
+
+
+    <!-- Botones -->
+   <div class="container" style="text-align: center;">
+
+      <button class="btn btn-primary" id="cargarDatos" style=" background-color: #26327e;margin-bottom: 60px;" >Actualizar</button>
+
+      <button class="btn btn-primary" style=" background-color: #26327e;margin-bottom: 60px;" data-bs-toggle="modal"
+          data-bs-target="#Adicionar" onclick="limpiarModal()">Adicionar</button>
+
+      <button class="btn btn-primary" style=" background-color: #26327e;margin-bottom: 60px;" onclick="modificarUsuario()"
+          data-bs-toggle="modal" data-bs-target="#Modificar">Modificar</button>
+      <button class="btn btn-primary" style=" background-color: #26327e; margin-bottom: 60px;" data-bs-toggle="modal"
+          data-bs-target="#Buscar" onclick="limpiarModal()">Buscar2</button>
+  </div>
+  <!-- Botones -->
+
+
+<!-- Footer -->
+    <footer style="text-align: center">
+      <img src="images/logo2.png" alt="logo-nightmare" style="height: 50px" />
+      <button id="prueba">prueba</button>
+    </footer>
+<!-------------------------------------------------------------------------->
+
+
+
 
     <!-- Modal Adicionar Datos ---------------------------------------------------------------------------->
     <div class="modal fade" id="Adicionar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
@@ -343,9 +270,9 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" onclick="nuevaFila()" data-bs-dismiss="modal"
-                        style=" background-color: #26327e;">Adicionar</button>
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary"  data-bs-dismiss="modal"
+                        style=" background-color: #26327e;" id="btnAdicionarUsuario">Adicionar</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>  <!-- onclick="nuevaFila()" -->
                 </div>
             </div>
         </div>
@@ -440,21 +367,6 @@
         </div>
     </div>
 
-   <div class="container" style="text-align: center;">
-      <a href="#" class="btn btn-primary" style=" background-color: #26327e;margin-bottom: 60px;" data-bs-toggle="modal"
-          data-bs-target="#Adicionar" onclick="limpiarModal()">Adicionar</a>
-      <a href="#" class="btn btn-primary" style=" background-color: #26327e;margin-bottom: 60px;" onclick="modificarUsuario()"
-          data-bs-toggle="modal" data-bs-target="#Modificar">Modificar</a>
-      <a href="#" class="btn btn-primary" style=" background-color: #26327e; margin-bottom: 60px;" data-bs-toggle="modal"
-          data-bs-target="#Buscar" onclick="limpiarModal()">Buscar2</a>
-  </div>
-
-
-<!-- Footer -->
-    <footer style="text-align: center">
-      <img src="images/logo2.png" alt="logo-nightmare" style="height: 50px" />
-    </footer>
-<!-------------------------------------------------------------------------->
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/esm/popper.js"></script>
@@ -464,9 +376,26 @@
       crossorigin="anonymous"
     ></script>
     <script src="js/menu.js"></script>
-    <script src="js/menu.js"></script>
     <script src="js/usuarios.js"></script>
     <script src="js/modal.js"></script>
+
+
+    <!-- Firebase SDK (Software Development Kit) siempre se debe usar y debe ser el primero de colocar -->
+    <script src="https://www.gstatic.com/firebasejs/9.1.1/firebase-app-compat.js"></script>
+
+
+    <!-- Adicionar productos de Firebase que vamos a usar -->
+    <script src="https://www.gstatic.com/firebasejs/9.1.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.1.1/firebase-firestore-compat.js"></script>
+
+    <!-- UUID -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/uuid/8.3.2/uuid.min.js"
+            integrity="sha512-UNM1njAgOFUa74Z0bADwAq8gbTcqZC8Ej4xPSzpnh0l6KMevwvkBvbldF9uR++qKeJ+MOZHRjV1HZjoRvjDfNQ=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"></script>
+
+    <script src="js/firebaseUsuarios.js"></script>
+
 
     <!-- esconder el menú 3s -->
     <script>
@@ -474,6 +403,7 @@
           $(".page-wrapper").removeClass("toggled");
       }, 3000);
     </script>
+
 
   </body>
 </html>

@@ -51,7 +51,7 @@
             <div class="menu-lateral-contenido">
                 <!-- encabezado menu -->
                 <div class="menu-lateral-brand" class="background-color-azul">
-                    <img src="images/logo_mercurio.png" alt="" class="width-30" > 
+                    <img src="images/logo_mercurio.png" alt="" class="width-30">
                     &nbsp;
                     <a href="menu.html" class="color-blanco-humo">Mercurio </a>
                     <div id="close-menu-lateral">
@@ -87,8 +87,8 @@
                             </a>
                         </li>
                         <li class="menu-lateral-dropdown">
-                            <a href="#"  class="color-blanco">
-                                <i class="fa fa-shopping-cart color-azul" ></i> 
+                            <a href="#" class="color-blanco">
+                                <i class="fa fa-shopping-cart color-azul"></i>
                                 <span>Módulo de Ventas</span>
                             </a>
                         </li>
@@ -120,14 +120,7 @@
             <!-- /Footer menu -->
         </nav>
     </div>
-    <!-- Archivos JS -->
-    <script src="js/AdminVentas-TablaMostrarVentas.js"></script>
-    <script src="js/AdminVentas-VentaBuscada.js"></script>
-    <script src="js/AdminVentas-BuscarVenta.js"></script>
-    <script src="js/AdminVentas-NuevaVenta.js"></script>
-    <script src="js/AdminVentas-ocultarbotones.js"></script>
-    <script src="js/AdminVentas-LimpiarModales.js"></script>
-    <script src="js/AdminVentas-ModificarVentas.js"></script>
+ 
     <!-- /Archivos JS -->
     <!-- Tabla done se insertaran las filas -->
     <section class="main">
@@ -161,31 +154,38 @@
             <div class="modal-content">
                 <div class="modal-header bg-color-azul">
                     <h5 class="modal-title color-h5" id="staticBackdropLabel1">Nueva venta</h5>
-                    <button type="button" class="btn-close bg-color-cerrarX" data-bs-dismiss="modal" aria-label="Close"
-                        ></button>
+                    <button type="button" class="btn-close bg-color-cerrarX" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <div class="container">
                         <div class="col">
-                            <label type="text" class="form-control modal-input-select-undisabled" id="IdNuevo" placeholder="Id Venta">0</label>
+                            <label type="text" class="form-control modal-input-select-undisabled" id="IdNuevo"
+                                placeholder="Id Venta">0</label>
                         </div>
                         <div class="col">
-                            <input type="text" class="form-control modal-input-select-undisabled" id="ArticuloNuevo" placeholder="Articulo">
+                            <input type="text" class="form-control modal-input-select-undisabled" id="ArticuloNuevo"
+                                placeholder="Articulo">
                         </div>
                         <div class="col">
-                            <input type="text" class="form-control modal-input-select-undisabled" id="ClienteNuevo" placeholder="Cliente">
+                            <input type="text" class="form-control modal-input-select-undisabled" id="ClienteNuevo"
+                                placeholder="Cliente">
                         </div>
                         <div class="col">
-                            <input type="text" class="form-control modal-input-select-undisabled" id="ValorNuevo" placeholder="Valor">
+                            <input type="text" class="form-control modal-input-select-undisabled" id="ValorNuevo"
+                                placeholder="Valor">
                         </div>
                         <div class="col">
-                            <input type="text" class="form-control modal-input-select-undisabled" id="FechaVentaNuevo" placeholder="Fecha Venta">
+                            <input type="text" class="form-control modal-input-select-undisabled" id="FechaVentaNuevo"
+                                placeholder="Fecha Venta">
                         </div>
                         <div class="col">
-                            <input type="text" class="form-control modal-input-select-undisabled" id="FechaPagoNuevo" placeholder="Fecha Pago">
+                            <input type="text" class="form-control modal-input-select-undisabled" id="FechaPagoNuevo"
+                                placeholder="Fecha Pago">
                         </div>
                         <div class="col">
-                            <input type="text" class="form-control modal-input-select-undisabled" id="VendedorNuevo" placeholder="Vendedor">
+                            <input type="text" class="form-control modal-input-select-undisabled" id="VendedorNuevo"
+                                placeholder="Vendedor">
                         </div>
                         <select class="form-select modal-input-select-undisabled" id="EstadoNuevo">
                             <option>Cancelada</option>
@@ -197,31 +197,19 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary bg-color-azul" id="btnAgregarModalNuevaVenta"
-                        onclick="NuevaVenta(), limpiarBusqueda()" data-bs-dismiss="modal">Agregar</button>
-                    <button type="button" class="btn btn-secondary" onclick="limpiarBusqueda()" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary bg-color-azul" id="btnAg"
+                        onclick="limpiarBusqueda()" data-bs-dismiss="modal">Agregar</button>
+                    <button type="button" class="btn btn-secondary" onclick="limpiarBusqueda()"
+                        data-bs-dismiss="modal">Cancelar</button>
                 </div>
             </div>
         </div>
     </div>
     <!--  /Modal Nueva Venta -->
     <!-- Scripts necesarios -->
-    <script>
-        // se inserta latabla automaticamente al cargar la pagina 
-        nuevaFila()
-        InsertarDatos()
-    </script>
+   
     <!-- Script para que el id de cada nueva venta aumente -->
-    <script>
-        function addNuevaFila(){
-        const NuevoId = document.getElementById("IdNuevo")
-        let numerosFila = document.getElementById("AquiVaLaFila")
-        let UltimoIdVenta = numerosFila.getElementsByTagName("tr").length
-        // const UltimoIdVenta = Id.at(-1)
-         console.log(UltimoIdVenta)
-        NuevoId.textContent = (UltimoIdVenta + 1)
-        }
-    </script>
+ 
     <!--  Modal Modificar Venta -->
     <div class="modal fade" id="ModificarVenta" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
         aria-labelledby="staticBackdropLabel1" aria-hidden="true">
@@ -229,30 +217,38 @@
             <div class="modal-content">
                 <div class="modal-header bg-color-azul">
                     <h5 class="modal-title color-h5" id="staticBackdropLabel1">Venta Seleccionada</h5>
-                    <button type="button" class="btn-close bg-color-cerrarX" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close bg-color-cerrarX" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <div class="container">
                         <div class="col">
-                            <label type="text" class="form-control modal-input-select-undisabled" id="IdBusqueda" placeholder="Id Venta"> Id Venta</label>
+                            <label type="text" class="form-control modal-input-select-undisabled" id="IdBusqueda"
+                                placeholder="Id Venta"> Id Venta</label>
                         </div>
                         <div class="col">
-                            <input type="text" class="form-control modal-input-select-undisabled" id="ArticuloBusqueda" placeholder="Articulo"></input>
+                            <input type="text" class="form-control modal-input-select-undisabled" id="ArticuloBusqueda"
+                                placeholder="Articulo"></input>
                         </div>
                         <div class="col">
-                            <input type="text" class="form-control modal-input-select-undisabled" id="ClienteBusqueda" placeholder="Cliente"></input>
+                            <input type="text" class="form-control modal-input-select-undisabled" id="ClienteBusqueda"
+                                placeholder="Cliente"></input>
                         </div>
                         <div class="col">
-                            <input type="text" class="form-control modal-input-select-undisabled" id="ValorBusqueda" placeholder="Valor"></input>
+                            <input type="text" class="form-control modal-input-select-undisabled" id="ValorBusqueda"
+                                placeholder="Valor"></input>
                         </div>
                         <div class="col">
-                            <input type="text" class="form-control modal-input-select-undisabled" id="FechaVentaBusqueda" placeholder="Fecha Venta"></input>
+                            <input type="text" class="form-control modal-input-select-undisabled"
+                                id="FechaVentaBusqueda" placeholder="Fecha Venta"></input>
                         </div>
                         <div class="col">
-                            <input type="text" class="form-control modal-input-select-undisabled"id="FechaPagoBusqueda" placeholder="Fecha Pago"></input>
+                            <input type="text" class="form-control modal-input-select-undisabled" id="FechaPagoBusqueda"
+                                placeholder="Fecha Pago"></input>
                         </div>
                         <div class="col">
-                            <input type="text" class="form-control modal-input-select-undisabled" id="VendedorBusqueda" placeholder="Vendedor"></input>
+                            <input type="text" class="form-control modal-input-select-undisabled" id="VendedorBusqueda"
+                                placeholder="Vendedor"></input>
                         </div>
                         <select class="form-select modal-input-select-undisabled" id="EstadoBusqueda">
                             <option>Cancelada</option>
@@ -264,9 +260,11 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary bg-color-azul" id="btnModificarModalModificar"
-                        onclick="InsertarDatosModalVentaBuscada(),actualizarProducto(), limpiarBusqueda()" data-bs-toggle="modal" data-bs-target="#AlertaModificacionVenta" data-bs-dismiss="modal"
-                        >Modificar</button>
-                    <button type="button" class="btn btn-secondary" onclick="limpiarBusqueda()" data-bs-dismiss="modal">Cancelar</button>
+                        onclick="InsertarDatosModalVentaBuscada(),actualizarProducto(), limpiarBusqueda()"
+                        data-bs-toggle="modal" data-bs-target="#AlertaModificacionVenta"
+                        data-bs-dismiss="modal">Modificar</button>
+                    <button type="button" class="btn btn-secondary" onclick="limpiarBusqueda()"
+                        data-bs-dismiss="modal">Cancelar</button>
                 </div>
             </div>
         </div>
@@ -279,32 +277,40 @@
             <div class="modal-content">
                 <div class="modal-header bg-color-azul">
                     <h5 class="modal-title color-h5" id="staticBackdropLabel1">Resultado Busqueda</h5>
-                    <button type="button" class="btn-close bg-color-cerrarX" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close bg-color-cerrarX" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <div class="container">
                         <div class="col">
-                            <label type="text" class="form-control modal-input-select-undisabled" id="IdResultado" placeholder="Id Venta"> Id Venta</label>
+                            <label type="text" class="form-control modal-input-select-undisabled" id="IdResultado"
+                                placeholder="Id Venta"> Id Venta</label>
                         </div>
                         <div class="col">
-                            <input type="text" class="form-control modal-input-select-undisabled"id="ArticuloResultado" placeholder="Articulo"> </input>
+                            <input type="text" class="form-control modal-input-select-undisabled" id="ArticuloResultado"
+                                placeholder="Articulo"> </input>
                         </div>
                         <div class="col">
-                            <input type="text" class="form-control modal-input-select-undisabled"id="ClienteResultado" placeholder="Cliente"></input>
+                            <input type="text" class="form-control modal-input-select-undisabled" id="ClienteResultado"
+                                placeholder="Cliente"></input>
                         </div>
                         <div class="col">
-                            <input type="text" class="form-control modal-input-select-undisabled"id="ValorResultado" placeholder="Valor"></input>
+                            <input type="text" class="form-control modal-input-select-undisabled" id="ValorResultado"
+                                placeholder="Valor"></input>
                         </div>
                         <div class="col">
-                            <input type="text" class="form-control modal-input-select-undisabled" id="FechaVentaResultado" placeholder="Fecha Venta"></input>
+                            <input type="text" class="form-control modal-input-select-undisabled"
+                                id="FechaVentaResultado" placeholder="Fecha Venta"></input>
                         </div>
                         <div class="col">
-                            <input type="text" class="form-control modal-input-select-undisabled" id="FechaPagoResultado" placeholder="Fecha Pago"></input>
+                            <input type="text" class="form-control modal-input-select-undisabled"
+                                id="FechaPagoResultado" placeholder="Fecha Pago"></input>
                         </div>
                         <div class="col">
-                            <input type="text" class="form-control modal-input-select-undisabled" id="VendedorResultado" placeholder="Vendedor"></input>
+                            <input type="text" class="form-control modal-input-select-undisabled" id="VendedorResultado"
+                                placeholder="Vendedor"></input>
                         </div>
-                        <select class="form-select modal-input-select-undisabled"  id="EstadoResultado">
+                        <select class="form-select modal-input-select-undisabled" id="EstadoResultado">
                             <option>Cancelada</option>
                             <option>Pendiente</option>
                         </select>
@@ -313,9 +319,13 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary bg-color-azul" id = "btnModificarModalResultadoBusqueda" onclick="actualizarProductoBuscarVenta(),limpiarBusqueda()"data-bs-toggle="modal" data-bs-target="#AlertaModificacionVenta"data-bs-dismiss="modal">Modificar</button>
-                    <button type="button" class="btn btn-primary bg-color-azul" id = "btnEliminarModalResultadoBusqueda" onclick="limpiarBusqueda()">Eliminar</button>
-                    <button type="button" class="btn btn-secondary" onclick="limpiarBusqueda()" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary bg-color-azul" id="btnModificarModalResultadoBusqueda"
+                        onclick="actualizarProductoBuscarVenta(),limpiarBusqueda()" data-bs-toggle="modal"
+                        data-bs-target="#AlertaModificacionVenta" data-bs-dismiss="modal">Modificar</button>
+                    <button type="button" class="btn btn-primary bg-color-azul" id="btnEliminarModalResultadoBusqueda"
+                        onclick="limpiarBusqueda()">Eliminar</button>
+                    <button type="button" class="btn btn-secondary" onclick="limpiarBusqueda()"
+                        data-bs-dismiss="modal">Cancelar</button>
                 </div>
             </div>
         </div>
@@ -328,15 +338,18 @@
             <div class="modal-content">
                 <div class="modal-header bg-color-azul">
                     <h5 class="modal-title color-h5" id="staticBackdropLabel1">Buscar Venta</h5>
-                    <button type="button" class="btn-close bg-color-cerrarX" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close bg-color-cerrarX" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <div class="container">
                         <div class="col">
-                            <input type="text" class="form-control modal-input-select-undisabled" id="IdVentaBuscada" placeholder="Id Venta">
+                            <input type="text" class="form-control modal-input-select-undisabled" id="IdVentaBuscada"
+                                placeholder="Id Venta">
                         </div>
                         <div class="col">
-                            <input type="text" class="form-control modal-input-select-undisabled" id="NombreVentaBuscada" placeholder="Id o Nombre Cliente">
+                            <input type="text" class="form-control modal-input-select-undisabled"
+                                id="NombreVentaBuscada" placeholder="Id o Nombre Cliente">
                         </div>
                         <div class="col">
                         </div>
@@ -348,38 +361,41 @@
                         onclick="InsertarDatosModalResultadoBusquedaId(),limpiarBusqueda()">Buscar por Id Venta</button>
                     <button type="button" class="btn btn-primary bg-color-azul" id="btnNombreModalBuscarVentas"
                         data-bs-toggle="modal" data-bs-target="#ResultadoBusqueda" data-bs-dismiss="modal"
-                        onclick="InsertarDatosModalResultadoBusquedaNombre(),limpiarBusqueda()">Buscar por Nombre Cliente</button>
-                    <button type="button" class="btn btn-secondary" onclick="limpiarBusqueda()" data-bs-dismiss="modal">Cancelar</button>
+                        onclick="InsertarDatosModalResultadoBusquedaNombre(),limpiarBusqueda()">Buscar por Nombre
+                        Cliente</button>
+                    <button type="button" class="btn btn-secondary" onclick="limpiarBusqueda()"
+                        data-bs-dismiss="modal">Cancelar</button>
                 </div>
             </div>
         </div>
     </div>
     <!--  /Modal Buscar Ventas -->
 
-  <!-- Modal Alerta Actualización Venta -->
-  <div class="modal fade" id="AlertaModificacionVenta" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Actualización Venta</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    <!-- Modal Alerta Actualización Venta -->
+    <div class="modal fade" id="AlertaModificacionVenta" tabindex="-1" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Actualización Venta</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Venta Actualizada Correctamente
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+                </div>
+            </div>
         </div>
-        <div class="modal-body">
-            Venta Actualizada Correctamente
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          
-        </div>
-      </div>
     </div>
-  </div>
-<!-- /Modal Alerta Actualización Venta  -->
+    <!-- /Modal Alerta Actualización Venta  -->
     <!-- Bottones -->
     <div class="container tex-align">
-        <div id="Muestrame"  class="ocultar-elementos">
+        <div id="Muestrame" class="ocultar-elementos">
             <button type="button" class="btn btn-primary bg-color-rojo" data-bs-toggle="modal"
-                data-bs-target="#ModificarVenta"  onclick="modificarProducto()">Modificar Venta</button>
+                data-bs-target="#ModificarVenta" onclick="modificarProducto()">Modificar Venta</button>
             <button type="button" class="btn btn-primary bg-color-rojo">Eliminar Venta</button>
         </div>
     </div>
@@ -406,11 +422,33 @@
 
     <!-- esconder el menú 3s -->
     <script>
-        setTimeout(function(){
+        setTimeout(function () {
             $(".page-wrapper").removeClass("toggled");
         }, 3000);
     </script>
 
+   <!-- Archivos JS -->
+   <script src="js/AdminVentas-TablaMostrarVentas.js"></script>
+   <script src="js/AdminVentas-VentaBuscada.js"></script>
+   <script src="js/AdminVentas-BuscarVenta.js"></script>
+   <script src="js/AdminVentas-ocultarbotones.js"></script>
+   <script src="js/AdminVentas-LimpiarModales.js"></script>
+   <script src="js/AdminVentas-ModificarVentas.js"></script>
+   <script src="js/AdminVentas-NuevaVenta.js"></script>
+   <script>
+    // se inserta latabla automaticamente al cargar la pagina 
+
+</script>
+<script>
+    function addNuevaFila() {
+        const NuevoId = document.getElementById("IdNuevo")
+        let numerosFila = document.getElementById("AquiVaLaFila")
+        let UltimoIdVenta = numerosFila.getElementsByTagName("tr").length
+        // const UltimoIdVenta = Id.at(-1)
+        console.log(UltimoIdVenta)
+        NuevoId.textContent = (UltimoIdVenta + 1)
+    }
+</script>
 </body>
 
 </html>

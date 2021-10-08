@@ -1,5 +1,3 @@
-
-
 const firebaseConfig = {
   apiKey: "AIzaSyCuuC5xt_cyNbakN_gIAJ3ixHvkw8LUCk8",
   authDomain: "nightmare-mercurio.firebaseapp.com",
@@ -50,20 +48,20 @@ async function login(){
         } 
 
         
+        // leer usuarios para comparar email
         /* const usuarios = []
         const respuestausuarios = await dataBase.collection('ng_users').get()
         respuestausuarios.forEach( function(item){
             console.log(item.data())
             usuarios.push(item.data())
         })
+
         usuarios.forEach((t)=>{
             console.log(t.email)
-            if(t.email==usuarioEmail){
-                return "ya existe"
-            }
+            console.log(typeof usuarioEmail)
+            
         }) */
         
-
         const respuestaUsuario = await guardarUsuario(usuario)
         /* console.log(respuestaUsuario) */
         
@@ -71,7 +69,6 @@ async function login(){
         console.log(error)
     }
 }
-
 
 
 async function leerUsuarios(){
@@ -106,9 +103,6 @@ async function guardarUsuario(usuario){
         console.log(error)
     }
 }
-
-
-
 
 
 //evento

@@ -12,7 +12,7 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 //Declarar Variables globales  
-const dataBase = firebase.firestore()
+const dataBase = firebase.firestore();
 
 
 
@@ -31,10 +31,10 @@ async function mostrarInformacion() {
 
   //Finaliza llamado productos
 
-  
+
   let insertarFila = document.getElementById("cuerpoTablaProductos")
-  let i=0
-  productos.forEach((p)=>{
+  let i = 0;
+  productos.forEach((p) => {
 
     filaTabla = document.createElement("tr")
     filaTabla.setAttribute("id", "row" + (i + 1))
@@ -47,7 +47,7 @@ async function mostrarInformacion() {
     radio.setAttribute("type", "radio")
     radio.setAttribute("name", "flexRadioDefault")
     radio.setAttribute("id", "flexRadioDefault" + i + 1)
-    radio.checked=false
+    radio.checked = false
     div.appendChild(radio)
     seleccionar.appendChild(div)
 
@@ -71,7 +71,7 @@ async function mostrarInformacion() {
 
     estado = document.createElement("td")
     p.estado ? estado.textContent = "Disponible" : estado.textContent = "No disponible"
-    
+
     filaTabla.appendChild(numeroProducto)
     filaTabla.appendChild(codigo)
     filaTabla.appendChild(descripcion)
@@ -81,24 +81,62 @@ async function mostrarInformacion() {
 
     insertarFila.appendChild(filaTabla)
 
-  
 
-  })  
+
+  })
 
 }
 
 
-// ------------------------------------------ Adicionar Productos--------------------------------//
+// ------------------------------------------ Adicionar Productos--------------------------------
+//Llamado de variables
+const botonAgregar = document.getElementById("btnAdicionarModalAdicionar");
+
+function obtenerDatos(){
+  const inputCode = document.getElementById('inputCodigo').value;
+  const inputDescription = document.getElementById("inputDescripcion").value;
+  const inputWeigth = document.getElementById("inputPeso").value;
+  const inputValue = document.getElementById("inputValorUnitario").value;
+  const inputState = document.getElementById("inputEstado").value;
+
+  const producto = {
+    codigo: inputCode,
+    descripcion: inputDescription,
+    peso: inputWeigth,
+    valorUnitario: inputValue,
+    estado: inputState
+  }
+  anadirProducto(producto);
+  console.log(producto);
+
+
+  let contador = 0;
+}
+
+
+async function anadirProducto(product) {
+  try {
+    const respuesta = await dataBase.collection('ng_productos').add(product)
+    return respuesta
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+
+
+botonAgregar.addEventListener('click', (e)=>{
+  
+/* anadirProducto(); */
+obtenerDatos();
+   
+})
+
+ 
 
 
 
 
-
-
-
-
-
-
-
+ 
 
 mostrarInformacion()

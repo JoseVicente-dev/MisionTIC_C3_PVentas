@@ -1,4 +1,4 @@
-const firebaseConfig = {
+    const firebaseConfig = {
     apiKey: "AIzaSyCuuC5xt_cyNbakN_gIAJ3ixHvkw8LUCk8",
     authDomain: "nightmare-mercurio.firebaseapp.com",
     projectId: "nightmare-mercurio",

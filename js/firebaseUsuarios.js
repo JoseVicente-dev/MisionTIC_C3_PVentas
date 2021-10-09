@@ -33,6 +33,7 @@ let tipUsuario = document.getElementById('tipoUsuario')
 let nombreUsuario = document.getElementById('nombreDeUsuario')
 let tablaUsers = document.getElementById('tabla-usuarios')
 
+actualizar()
 
 //funciones
 //login
@@ -139,6 +140,7 @@ function pintarUsuarios(usuarios){
 })
 }
 
+
 //Agregar Usuario
 async function agregarUsuario(){
     const nombresInput = document.getElementById("inputnombre").value;
@@ -199,11 +201,6 @@ async function modificarUsuariofb(){
     const memailInput = document.getElementById("MinputEmail").value;
     const mrolInput = document.getElementById("MinputRol").value;
     const mestadoInput = document.getElementById("MinputEstado").value;
-
-    console.log(mnombresInput);
-    console.log(memailInput);
-    console.log(mrolInput);
-    console.log(mestadoInput);
     
     const respuestausuarios = await dataBase.collection("ng_users").where('email','==',memailInput).get();
     
@@ -219,10 +216,10 @@ async function modificarUsuariofb(){
         nombres: mnombresInput,
         rol: mrolInput,
         estado: mestadoInput,
-        email: memailInput,
+        /* email: memailInput, */
     });
     
-    actualizar()
+    setTimeout( actualizar,1000);
     
 }
 
@@ -388,10 +385,18 @@ btnBuscarUser.addEventListener('click', (e)=>{
 
 
 
-
-
-
-
+/* document.getElementById('inputEmail').addEventListener('input', function() {
+    campo = event.target;
+    valido = document.getElementById('input');
+        
+    emailRegex = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
+    //Se muestra un texto a modo de ejemplo, luego va a ser un icono
+    if (emailRegex.test(campo.value)) {
+    valido.style.backgroundColor = "red"
+    } else {
+        valido.style.backgroundColor = "green"
+    }
+}); */
 
 
 

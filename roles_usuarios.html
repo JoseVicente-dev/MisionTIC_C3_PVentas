@@ -41,6 +41,8 @@
       rel="stylesheet"
     />
   </head>
+  
+  
   <body>
     <!-- NavBar superior-->
     <nav class="navbar navbar-expand-lg navbar-dark bg-color" id="menu">
@@ -172,28 +174,8 @@
     </div>
     <!-- Menú lateral -->
 
-
-
     <!-- Tabla con datos -->
     <section class="main">
-
-      <!-- <div class="input-group">
-        <div class="form-outline">
-
-          <input type="search" id="busqueda" class="form-control" />
-          <label class="form-label" for="form1">Search by:</label>
-          <select class="form-select form-add-user" id="buquedapor" placeholder="Estado">
-            <option value="Id">Id</option>
-            <option value="Nombres">Nombres</option>
-            <option value="Email">Email</option>
-            <option value="Rol">rol</option>
-            <option value="Estado">Estado</option>
-          </select>
-        </div>
-        <button type="button" class="btn btn-primary" id="buscarUsuario">
-          <i class="fas fa-search"></i>
-        </button>
-      </div> -->
 
       <div class="container">
         <div class="row align-items-center">
@@ -254,9 +236,6 @@
       </div>
     </section>
 
-
-
-
     <!-- Botones -->
    <div class="container" style="text-align: center;">
       <button class="btn btn-primary fomr-mod-user" id="cargarDatos"  >Actualizar</button>
@@ -273,8 +252,6 @@
       <button class="btn btn-danger fomr-mod-user" id="btnEliminarUsuarios" >Eliminar</button>
 
   </div>
-
-
   <!-- Botones -->
 
 
@@ -305,7 +282,12 @@
                             <input type="text" class="form-control form-add-user" id="inputnombre" placeholder="Nombres y Apellidos" >
                             <!-- <input type="text" class="form-control form-add-user" id="inputApellido" placeholder="Apellidos" > -->
                             <input type="email" class="form-control form-add-user" id="inputEmail" placeholder="email" pattern=".+@gmail.com">
-                            <input type="text" class="form-control form-add-user" id="inputRol" placeholder="Cargo">
+                            
+                            <!-- <input type="text" class="form-control form-add-user" id="inputRol" placeholder="Cargo"> -->
+                            <select class="form-select form-add-user" id="inputRol" placeholder="Cargo"  aria-label="Default select example">
+                              <option value="Vendedor">Vendedor</option>
+                              <option value="Administrador">Administrador</option>
+                            </select>
                             <select class="form-select form-add-user" id="inputEstado" placeholder="Estado" >
                                   <option value="Pendiente">Pendiente</option>
                                   <option value="Autorizado">Autorizado</option>
@@ -346,7 +328,7 @@
                         <div class="col">
                             <input type="text" class="form-control form-add-user" id="MinputCodigo" placeholder="Código del usuario" disabled>
                             <input type="text" class="form-control form-add-user" id="Minputnombre" placeholder="Nombres" >
-                            <input type="email" class="form-control form-add-user" id="MinputEmail" placeholder="email" >
+                            <input type="email" class="form-control form-add-user" id="MinputEmail" placeholder="email" disabled>
                             <!-- <input type="text" class="form-control form-add-user" id="MinputRol" placeholder="Cargo" > -->
                             <select class="form-select form-add-user" id="MinputRol" placeholder="Cargo"  aria-label="Default select example">
                               <option value="Vendedor">Vendedor</option>
@@ -370,41 +352,6 @@
         </div>
     </div>
 <!--------------------------------------------------------------------------------------------------------->
-<!-- Modal Buscar -->
-    <div class="modal fade" id="Buscar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-        aria-labelledby="staticBackdropLabel1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-            <div class="modal-content">
-                <div class="modal-header" style="background-color: #26327e;">
-                    <h5 class="modal-title" id="staticBackdropLabel3" style="color: white;">Buscar usuario</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
-                        style="background-color: #7a87bb;"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="container" id="contenedorBuscar">
-                        <div class="col">
-                            <input type="text" class="form-control" id="buscarCodigo" placeholder="Código del usuario"
-                                style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
-                        background-color: #d8e5fe; text-align: center;">
-                        </div>
-                        <div class="col">
-                            <input type="text" class="form-control" id="buscarNombre"
-                                placeholder="Nombre" style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
-                        background-color: #d8e5fe; text-align: center;">
-                        </div>
-                        
-                    </div>
-                    <div class="modal-footer">
-
-                        <button type="button" class="btn btn-primary" id="btnBuscarModalBuscar" onclick="buscarUsuario()"
-                            style=" background-color: #26327e;">Buscar</button>
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/esm/popper.js"></script>

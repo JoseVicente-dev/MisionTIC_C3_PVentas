@@ -95,11 +95,12 @@
                 class="img-responsive img-rounded"
                 src="images/user2.png"
                 alt="User picture"
+                id="imagenUsuario"
               />
             </div>
             <div class="user-info">
-              <span class="user-name"><strong>Nightmare User</strong></span>
-              <span class="user-role">Administrador</span>
+              <span class="user-name" id="nombreDeUsuario"><strong>Nightmare User</strong></span>
+              <span class="user-role" id="tipoUsuario">Administrador</span>
               <span class="user-status">
                 <i class="fa fa-circle"></i>
                 <span>Online</span>
@@ -176,128 +177,57 @@
     <!-- Tabla con datos -->
     <section class="main">
       <div class="container-fluid table-responsive">
-        <table class="table table-hover" id="tabla_usuarios">
-          <thead style="text-align: center">
+        <table class="table table-hover table-striped" >
+          <thead  style="text-align: center"> <!-- class="table-dark" -->
             <tr>
               <th scope="col"></th>
               <th scope="col">Id</th>
               <th scope="col">Nombres</th>
-              <th scope="col">Apellidos</th>
+              <th scope="col">Email</th>
               <th scope="col">Rol</th>
               <th scope="col">Estado</th>
             </tr>
           </thead>
-          <tbody style="text-align: center" id="cuerpoTablaUsuarios">
-            <tr>
-              <th>
-                <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    type="radio"
-                    name="flexRadioDefault"
-                    id="flexRadioDefault1"
-                  />
-                </div>
-              </th>
-              <th scope="row">1</th>
-              <td>Pepito1</td>
-              <td>Perez</td>
-              <td>Vendendor</td>
-              <td>pendiente</td>
+          <tbody style="text-align: center" id="tabla_usuarios">
+            <tr id="tabla-usuarios">
             </tr>
 
-            <tr>
-              <th>
-                <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    type="radio"
-                    name="flexRadioDefault"
-                    id="flexRadioDefault2"
-                  />
-                </div>
-              </th>
-              <th scope="row">2</th>
-              <td>Pepito2</td>
-              <td>Perez</td>
-              <td>Vendendor</td>
-              <td>pendiente</td>
-            </tr>
-
-            <tr>
-              <th>
-                <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    type="radio"
-                    name="flexRadioDefault"
-                    id="flexRadioDefault3"
-                  />
-                </div>
-              </th>
-              <th scope="row">3</th>
-              <td>Pepito3</td>
-              <td>Perez</td>
-              <td>Vendendor</td>
-              <td>autorizado</td>
-            </tr>
-
-            <tr>
-              <th>
-                <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    type="radio"
-                    name="flexRadioDefault"
-                    id="flexRadioDefault4"
-                  />
-                </div>
-              </th>
-              <th scope="row">4</th>
-              <td>Pepito4</td>
-              <td>Perez</td>
-              <td>Vendendor</td>
-              <td>no autorizado</td>
-            </tr>
-
-            <tr>
-              <th>
-                <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    type="radio"
-                    name="flexRadioDefault"
-                    id="flexRadioDefault5"
-                  />
-                </div>
-              </th>
-              <th scope="row">5</th>
-              <td>Pepito5</td>
-              <td>Perez</td>
-              <td>Vendendor</td>
-              <td>no autorizado</td>
-            </tr>
-            <tr>
-              <th>
-                <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    type="radio"
-                    name="flexRadioDefault"
-                    id="flexRadioDefault6"
-                  />
-                </div>
-              </th>
-              <th scope="row">6</th>
-              <td>Pepito6</td>
-              <td>Perez</td>
-              <td>Vendendor</td>
-              <td>autorizado</td>
-            </tr>
           </tbody>
         </table>
       </div>
     </section>
+
+
+
+
+    <!-- Botones -->
+   <div class="container" style="text-align: center;">
+      <button class="btn btn-primary fomr-mod-user" id="cargarDatos"  >Actualizar</button>
+
+      <button class="btn btn-primary fomr-mod-user" 
+      data-bs-toggle="modal" data-bs-target="#Adicionar">Adicionar</button>
+
+      <button class="btn btn-primary fomr-mod-user" 
+      data-bs-toggle="modal" data-bs-target="#Modificar" id="modalModificar" >Modificar</button>
+          
+      <button class="btn btn-primary fomr-mod-user" 
+      data-bs-toggle="modal" data-bs-target="#Buscar" onclick="limpiarModal()">Buscar2</button>
+  
+      <button class="btn btn-danger fomr-mod-user" id="btnEliminarUsuarios" >Eliminar</button>
+
+  </div>
+  <!-- Botones -->
+
+
+<!-- Footer -->
+    <footer style="text-align: center">
+      <img src="images/logo2.png" alt="logo-nightmare" style="height: 50px" />
+      <button id="prueba">prueba</button>
+    </footer>
+<!-------------------------------------------------------------------------->
+
+
+
 
     <!-- Modal Adicionar Datos ---------------------------------------------------------------------------->
     <div class="modal fade" id="Adicionar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
@@ -310,46 +240,37 @@
                         style="background-color: #7a87bb;"></button>
                 </div>
                 <div class="modal-body">
-                    <div class="container">
+                    <div class="container"> 
                         <div class="col">
-                            <input type="text" class="form-control" id="inputCodigo" placeholder="Código del usuario"
-                                style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
-                        background-color: #d8e5fe; text-align: center;">
-                        </div>
-                        <div class="col">
-                            <input type="text" class="form-control" id="inputnombre"
-                                placeholder="Nombres" style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
-                        background-color: #d8e5fe; text-align: center;">
-                        </div>
-                        <div class="col">
-                          <input type="text" class="form-control" id="inputApellido"
-                              placeholder="Apellidos" style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
-                        background-color: #d8e5fe; text-align: center;">
-                        </div>
-                        <div class="col">
-                            <input type="text" class="form-control" id="inputRol"
-                                placeholder="Cargo" style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
-                        background-color: #d8e5fe; text-align: center;">
-                        </div>
-                        <div class="col">
-
-                            <select class="form-select" id="inputEstado" placeholder="Estado" style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
-                        background-color: #d8e5fe; text-align: center;" aria-label="Default select example">
-                                <option value="Pendiente">Pendiente</option>
-                                <option value="Autorizado">Autorizado</option>
-                                <option value="No autorizado">No autorizado</option>
+                            <!-- <input type="text" class="form-control form-add-user" id="inputCodigo" value="ID"> -->
+                            <input type="text" class="form-control form-add-user" id="inputnombre" placeholder="Nombres y Apellidos" >
+                            <!-- <input type="text" class="form-control form-add-user" id="inputApellido" placeholder="Apellidos" > -->
+                            <input type="email" class="form-control form-add-user" id="inputEmail" placeholder="email" pattern=".+@gmail.com">
+                            <input type="text" class="form-control form-add-user" id="inputRol" placeholder="Cargo">
+                            <select class="form-select form-add-user" id="inputEstado" placeholder="Estado" >
+                                  <option value="Pendiente">Pendiente</option>
+                                  <option value="Autorizado">Autorizado</option>
+                                  <option value="No autorizado">No autorizado</option>
                             </select>
-                        </div>
+                            <br>
+                            <div class="col text-center">
+                              <label for="">Seleccione una foto de perfil</label>
+                              <input type="file" class="form-control-file form-add-user"  id="" accept="image/png, .jpeg, .jpg, image/gif">
+                            </div>
+                         
+                        </div>                       
                     </div>
-                </div>
+
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" onclick="nuevaFila()" data-bs-dismiss="modal"
-                        style=" background-color: #26327e;">Adicionar</button>
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary"  data-bs-dismiss="modal"
+                        style=" background-color: #26327e;" id="btnAdicionarUsuario">Adicionar</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>  <!-- onclick="nuevaFila()" -->
                 </div>
             </div>
         </div>
     </div>
+  </div>
+
     <!-- Modal Modificar Datos  ---------------------------------------------------------------------------->
     <div class="modal fade " id="Modificar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
         aria-labelledby="staticBackdropLabel2" aria-hidden="true">
@@ -361,44 +282,29 @@
                         style="background-color: #7a87bb;"></button>
                 </div>
                 <div class="modal-body">
-
                   <div class="modal-body">
                     <div class="container">
                         <div class="col">
-                            <input type="text" class="form-control" id="MinputCodigo" placeholder="Código del usuario"
-                                style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;background-color:gainsboro ; 
-                                text-align: center;" disabled>
-                        </div>
-                        <div class="col">
-                            <input type="text" class="form-control" id="Minputnombre"
-                                placeholder="Nombres" style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
-                        background-color: #d8e5fe; text-align: center;">
-                        </div>
-                        <div class="col">
-                          <input type="text" class="form-control" id="MinputApellido"
-                              placeholder="Apellidos" style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
-                        background-color: #d8e5fe; text-align: center;">
-                        </div>
-                        <div class="col">
-                            <input type="text" class="form-control" id="MinputRol"
-                                placeholder="Cargo" style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
-                        background-color: #d8e5fe; text-align: center;">
-                        </div>
-                        <div class="col">
-
-                            <select class="form-select" id="MinputEstado" placeholder="Estado" style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
-                        background-color: #d8e5fe; text-align: center;" aria-label="Default select example">
+                            <input type="text" class="form-control form-add-user" id="MinputCodigo" placeholder="Código del usuario" disabled>
+                            <input type="text" class="form-control form-add-user" id="Minputnombre" placeholder="Nombres" >
+                            <input type="email" class="form-control form-add-user" id="MinputEmail" placeholder="email" >
+                            <!-- <input type="text" class="form-control form-add-user" id="MinputRol" placeholder="Cargo" > -->
+                            <select class="form-select form-add-user" id="MinputRol" placeholder="Cargo"  aria-label="Default select example">
+                              <option value="Vendedor">Vendedor</option>
+                              <option value="Administrador">Administrador</option>
+                            </select>
+                            <select class="form-select form-add-user" id="MinputEstado" placeholder="Estado"  aria-label="Default select example">
                                 <option value="Pendiente">Pendiente</option>
                                 <option value="Autorizado">Autorizado</option>
                                 <option value="No autorizado">No autorizado</option>
                             </select>
-                        </div>
+                          </div>
                     </div>
                 </div>
               </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" onclick="actualizarUsuario()" data-bs-dismiss="modal"
-                        style=" background-color: #26327e;">Modificar</button>
+                    <button type="button" class="btn btn-primary"  data-bs-dismiss="modal"
+                        style=" background-color: #26327e;" id="btnModificarUsuario">Modificar</button> <!-- onclick="actualizarUsuario()" -->
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                 </div>
             </div>
@@ -440,21 +346,6 @@
         </div>
     </div>
 
-   <div class="container" style="text-align: center;">
-      <a href="#" class="btn btn-primary" style=" background-color: #26327e;margin-bottom: 60px;" data-bs-toggle="modal"
-          data-bs-target="#Adicionar" onclick="limpiarModal()">Adicionar</a>
-      <a href="#" class="btn btn-primary" style=" background-color: #26327e;margin-bottom: 60px;" onclick="modificarUsuario()"
-          data-bs-toggle="modal" data-bs-target="#Modificar">Modificar</a>
-      <a href="#" class="btn btn-primary" style=" background-color: #26327e; margin-bottom: 60px;" data-bs-toggle="modal"
-          data-bs-target="#Buscar" onclick="limpiarModal()">Buscar2</a>
-  </div>
-
-
-<!-- Footer -->
-    <footer style="text-align: center">
-      <img src="images/logo2.png" alt="logo-nightmare" style="height: 50px" />
-    </footer>
-<!-------------------------------------------------------------------------->
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/esm/popper.js"></script>
@@ -464,9 +355,26 @@
       crossorigin="anonymous"
     ></script>
     <script src="js/menu.js"></script>
-    <script src="js/menu.js"></script>
     <script src="js/usuarios.js"></script>
     <script src="js/modal.js"></script>
+
+
+    <!-- Firebase SDK (Software Development Kit) siempre se debe usar y debe ser el primero de colocar -->
+    <script src="https://www.gstatic.com/firebasejs/9.1.1/firebase-app-compat.js"></script>
+
+
+    <!-- Adicionar productos de Firebase que vamos a usar -->
+    <script src="https://www.gstatic.com/firebasejs/9.1.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.1.1/firebase-firestore-compat.js"></script>
+
+    <!-- UUID -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/uuid/8.3.2/uuid.min.js"
+            integrity="sha512-UNM1njAgOFUa74Z0bADwAq8gbTcqZC8Ej4xPSzpnh0l6KMevwvkBvbldF9uR++qKeJ+MOZHRjV1HZjoRvjDfNQ=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"></script>
+
+    <script src="js/firebaseUsuarios.js"></script>
+
 
     <!-- esconder el menú 3s -->
     <script>
@@ -474,6 +382,7 @@
           $(".page-wrapper").removeClass("toggled");
       }, 3000);
     </script>
+
 
   </body>
 </html>

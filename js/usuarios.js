@@ -1,3 +1,4 @@
+
 /* --------------------------------------------------------------------------- */
 function nuevaFila() {
     var table = document.getElementById("tabla_usuarios");
@@ -42,42 +43,7 @@ function limpiarModal(){
 }
 
 /* --------------------------------------------------------------------------- */
-function modificarUsuario() {
 
-    let tablaUsuarios = document.getElementById("cuerpoTablaUsuarios");
-    let radios = tablaUsuarios.getElementsByTagName("input");
-    let filas = tablaUsuarios.getElementsByTagName("tr");
-    let totalFilas = radios.length;
-
-
-    for (i = 0; i < totalFilas; i++) {
-        if (radios[i].checked) {
-
-            filaSeleccionada = filas[i]
-            document.getElementById("MinputCodigo").value = filaSeleccionada.cells[1].innerText
-            document.getElementById("Minputnombre").value = filaSeleccionada.cells[2].innerText
-            document.getElementById("MinputApellido").value = filaSeleccionada.cells[3].innerText
-            document.getElementById("MinputRol").value = filaSeleccionada.cells[4].innerText
-            document.getElementById("MinputEstado").value = filaSeleccionada.cells[5].innerText
-
-            if (filaSeleccionada.cells[5].innerText == "Pendiente") {
-
-                document.getElementById("MinputEstado").value ="Pendiente";
-            }
-            else if (filaSeleccionada.cells[5].innerText == "Autorizado") {
-
-                document.getElementById("MinputEstado").value = "Autorizado";
-            }
-
-            else {
-
-                document.getElementById("MinputEstado").value = "No autorizado";
-            } 
-
-            filaObjetivo = filaSeleccionada
-        }
-    }
-}
 
 /* --------------------------------------------------------------------------- */
 function actualizarUsuario() {

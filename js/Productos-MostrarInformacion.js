@@ -66,12 +66,16 @@ async function mostrarInformacion() {
     valorUnitario = document.createElement("td")
     valorUnitario.textContent = p.valorUnitario
 
+    peso = document.createElement("td")
+    peso.textContent = p.peso
+
     estado = document.createElement("td")
     p.estado ? estado.textContent = "Disponible" : estado.textContent = "No disponible"
     
     filaTabla.appendChild(numeroProducto)
     filaTabla.appendChild(codigo)
     filaTabla.appendChild(descripcion)
+    filaTabla.appendChild(peso)
     filaTabla.appendChild(valorUnitario)
     filaTabla.appendChild(estado)
 

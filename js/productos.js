@@ -157,14 +157,14 @@ async function actualizar() {
 //pintarproductos
 function pintarProductos(productos) {
 
-  var table = document.getElementById("tablaProductos");
+  var table = document.getElementById("cuerpoTablaProductos");
   console.log(table);
   
-  $("#tablaProductos").empty();
+  $("#cuerpoTablaProductos").empty();
 
 
   productos.forEach((t) => {
-    var oRows = document.getElementById('tablaProductos').getElementsByTagName('tr');
+    var oRows = document.getElementById('cuerpoTablaProductos').getElementsByTagName('tr');
     var iRowCount = oRows.length;
 
     var row = table.insertRow(iRowCount);

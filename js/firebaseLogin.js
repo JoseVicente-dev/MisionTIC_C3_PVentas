@@ -45,7 +45,7 @@ async function login(){
             nombres: usuarioActual,
             apellidos: '',
             rol: '',
-            estado: false,
+            estado: 'Pendiente',
             email: usuarioEmail,
             photoUrl: usuarioFoto
         } 
@@ -65,7 +65,7 @@ async function login(){
             if(t.email==usuarioEmail){
                 /* console.log(t.email,'=',usuarioEmail) */
                 contador=contador+1
-                if(t.estado==true){
+                if(t.estado=="Autorizado"){
                     contador=100//registrado y aprobado
                 }else{
                     contador=50//registrado pendiente de aprobaciòn

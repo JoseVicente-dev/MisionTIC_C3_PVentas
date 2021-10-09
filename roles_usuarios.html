@@ -177,8 +177,8 @@
     <!-- Tabla con datos -->
     <section class="main">
       <div class="container-fluid table-responsive">
-        <table class="table table-hover" >
-          <thead style="text-align: center">
+        <table class="table table-hover table-striped" >
+          <thead  style="text-align: center"> <!-- class="table-dark" -->
             <tr>
               <th scope="col"></th>
               <th scope="col">Id</th>
@@ -203,15 +203,16 @@
     <!-- Botones -->
    <div class="container" style="text-align: center;">
 
-      <button class="btn btn-primary" id="cargarDatos" style=" background-color: #26327e;margin-bottom: 60px;" >Actualizar</button>
+      <button class="btn btn-primary fomr-mod-user" id="cargarDatos"  >Actualizar</button>
 
-      <button class="btn btn-primary" style=" background-color: #26327e;margin-bottom: 60px;" data-bs-toggle="modal"
-          data-bs-target="#Adicionar" onclick="limpiarModal()">Adicionar</button>
+      <button class="btn btn-primary fomr-mod-user" 
+      data-bs-toggle="modal" data-bs-target="#Adicionar">Adicionar</button>
 
-      <button class="btn btn-primary" style=" background-color: #26327e;margin-bottom: 60px;" onclick="modificarUsuario()"
-          data-bs-toggle="modal" data-bs-target="#Modificar">Modificar</button>
-      <button class="btn btn-primary" style=" background-color: #26327e; margin-bottom: 60px;" data-bs-toggle="modal"
-          data-bs-target="#Buscar" onclick="limpiarModal()">Buscar2</button>
+      <button class="btn btn-primary fomr-mod-user" 
+      data-bs-toggle="modal" data-bs-target="#Modificar" id="modalModificar" >Modificar</button>
+          
+      <button class="btn btn-primary fomr-mod-user" 
+      data-bs-toggle="modal" data-bs-target="#Buscar" onclick="limpiarModal()">Buscar2</button>
   </div>
   <!-- Botones -->
 
@@ -237,38 +238,28 @@
                         style="background-color: #7a87bb;"></button>
                 </div>
                 <div class="modal-body">
-                    <div class="container">
+                    <div class="container"> 
                         <div class="col">
-                            <input type="text" class="form-control" id="inputCodigo" placeholder="Código del usuario"
-                                style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
-                        background-color: #d8e5fe; text-align: center;">
-                        </div>
-                        <div class="col">
-                            <input type="text" class="form-control" id="inputnombre"
-                                placeholder="Nombres" style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
-                        background-color: #d8e5fe; text-align: center;">
-                        </div>
-                        <div class="col">
-                          <input type="text" class="form-control" id="inputApellido"
-                              placeholder="Apellidos" style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
-                        background-color: #d8e5fe; text-align: center;">
-                        </div>
-                        <div class="col">
-                            <input type="text" class="form-control" id="inputRol"
-                                placeholder="Cargo" style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
-                        background-color: #d8e5fe; text-align: center;">
-                        </div>
-                        <div class="col">
-
-                            <select class="form-select" id="inputEstado" placeholder="Estado" style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
-                        background-color: #d8e5fe; text-align: center;" aria-label="Default select example">
-                                <option value="Pendiente">Pendiente</option>
-                                <option value="Autorizado">Autorizado</option>
-                                <option value="No autorizado">No autorizado</option>
+                          <form action="">
+                            <!-- <input type="text" class="form-control form-add-user" id="inputCodigo" value="ID"> -->
+                            <input type="text" class="form-control form-add-user" id="inputnombre" placeholder="Nombres y Apellidos" >
+                            <!-- <input type="text" class="form-control form-add-user" id="inputApellido" placeholder="Apellidos" > -->
+                            <input type="email" class="form-control form-add-user" id="inputEmail" placeholder="email" pattern=".+@gmail.com">
+                            <input type="text" class="form-control form-add-user" id="inputRol" placeholder="Cargo">
+                            <select class="form-select form-add-user" id="inputEstado" placeholder="Estado" >
+                                  <option value="Pendiente">Pendiente</option>
+                                  <option value="Autorizado">Autorizado</option>
+                                  <option value="No autorizado">No autorizado</option>
                             </select>
-                        </div>
+                            <br>
+                            <div class="col text-center">
+                              <label for="">Seleccione una foto de perfil</label>
+                              <input type="file" class="form-control-file form-add-user"  id="" accept="image/png, .jpeg, .jpg, image/gif">
+                            </div>
+                          </form>
+                        </div>                       
                     </div>
-                </div>
+
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary"  data-bs-dismiss="modal"
                         style=" background-color: #26327e;" id="btnAdicionarUsuario">Adicionar</button>
@@ -277,6 +268,8 @@
             </div>
         </div>
     </div>
+  </div>
+
     <!-- Modal Modificar Datos  ---------------------------------------------------------------------------->
     <div class="modal fade " id="Modificar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
         aria-labelledby="staticBackdropLabel2" aria-hidden="true">
@@ -301,9 +294,14 @@
                                 placeholder="Nombres" style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
                         background-color: #d8e5fe; text-align: center;">
                         </div>
-                        <div class="col">
+                       <!--  <div class="col">
                           <input type="text" class="form-control" id="MinputApellido"
                               placeholder="Apellidos" style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
+                        background-color: #d8e5fe; text-align: center;">
+                        </div> -->
+                        <div class="col">
+                          <input type="email" class="form-control" id="MinputEmail"
+                              placeholder="email" style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
                         background-color: #d8e5fe; text-align: center;">
                         </div>
                         <div class="col">
@@ -324,8 +322,8 @@
                 </div>
               </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" onclick="actualizarUsuario()" data-bs-dismiss="modal"
-                        style=" background-color: #26327e;">Modificar</button>
+                    <button type="button" class="btn btn-primary"  data-bs-dismiss="modal"
+                        style=" background-color: #26327e;" id="btnModificarUsuario">Modificar</button> <!-- onclick="actualizarUsuario()" -->
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                 </div>
             </div>

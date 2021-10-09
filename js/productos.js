@@ -105,7 +105,7 @@ function obtenerDatos() {
     estado: inputState
   }
   anadirProducto(producto);
-  console.log(producto);
+  /* console.log(producto); */
 
 
   let contador = 0;
@@ -127,6 +127,7 @@ botonAgregar.addEventListener('click', (e) => {
 
   /* anadirProducto(); */
   obtenerDatos();
+  actualizar()
 
 })
 
@@ -145,10 +146,9 @@ async function actualizar() {
     const productos = []
     const respuestaproductos = await dataBase.collection('ng_productos').orderBy("descripcion").get()
     respuestaproductos.forEach(function (item) {
-      /* console.log(item.data()) */
       productos.push(item.data())
     })
-    pintarproductos(productos)
+    pintarProductos(productos)
   } catch (error) {
     console.log(error)
   }
@@ -157,12 +157,14 @@ async function actualizar() {
 //pintarproductos
 function pintarProductos(productos) {
 
-  var table = document.getElementById("tabla_productos");
+  var table = document.getElementById("tablaProductos");
+  console.log(table);
+  
+  $("#tablaProductos").empty();
 
-  $("#tabla_productos").empty();
 
   productos.forEach((t) => {
-    var oRows = document.getElementById('tabla_productos').getElementsByTagName('tr');
+    var oRows = document.getElementById('tablaProductos').getElementsByTagName('tr');
     var iRowCount = oRows.length;
 
     var row = table.insertRow(iRowCount);
@@ -173,7 +175,7 @@ function pintarProductos(productos) {
     var cell5 = row.insertCell(4);
     var cell6 = row.insertCell(5);
 
-    console.log(cell1);
+    /* console.log(cell1); */
 
     cell1.innerHTML = '<div class="form-check"><input class="form-check-input" type="radio" name="flexRadioDefault"id="flexRadioDefault6"/></div>';
     cell2.innerHTML = t.codigo;
@@ -181,7 +183,10 @@ function pintarProductos(productos) {
     cell4.innerHTML = t.peso;
     cell5.innerHTML = t.valorUnitario;
     cell6.innerHTML = t.estado;
+
   })
+
 }
+
 
 

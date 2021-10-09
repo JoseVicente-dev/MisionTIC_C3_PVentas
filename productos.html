@@ -148,6 +148,7 @@
                         <th scope="col">#</th>
                         <th scope="col">Código</th>
                         <th scope="col">Descripción</th>
+                        <th scope="col">Peso (Kg)</th>
                         <th scope="col">Valor Unitario ($)</th>
                         <th scope="col">Estado</th>
                     </tr>
@@ -161,6 +162,37 @@
     <!-- /Tabla con datos -->
 
 
+
+
+    <!-- Botones adicion, modificacion de productos -->
+    <div class="container" style="text-align: center;">
+        <a href="#" class="btn btn-primary bg-color-azul" id="btnAdicionarPrincipal" data-bs-toggle="modal"
+            data-bs-target="#Adicionar" >Adicionar</a>
+        <a href="#" class="btn btn-primary bg-color-azul" id="btnModificarPrincial"
+            data-bs-toggle="modal" data-bs-target="#Modificar">Modificar</a>
+        <a href="#" class="btn btn-primary bg-color-azul" id="btnBuscarPrincipal" data-bs-toggle="modal"
+            data-bs-target="#Buscar" >Buscar</a>
+
+    </div>
+
+    
+
+
+    <!-- /Botones adicion, modificacion de productos -->
+    <!-- Footer -->
+    <footer style="text-align: center;">
+        <img src="images/logo2.png" alt="logo-nightmare" style="height: 50px;">
+    </footer>
+
+
+    <!-- Adicionar productos de Firebase que vamos a usar -->
+    <script src="https://www.gstatic.com/firebasejs/9.1.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.1.1/firebase-firestore-compat.js"></script>
+    
+    <!-- /Footer -->
+
+
+    
     <!-- Modal Adicionar Datos -->
     <div class="modal fade" id="Adicionar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
         aria-labelledby="staticBackdropLabel1" aria-hidden="true">
@@ -307,28 +339,6 @@
     <!-- /Modal Datos agregados -->
 
 
-    <!-- Botones adicion, modificacion de productos -->
-    <div class="container" style="text-align: center;">
-        <a href="#" class="btn btn-primary bg-color-azul" id="btnAdicionarPrincipal" data-bs-toggle="modal"
-            data-bs-target="#Adicionar" >Adicionar</a>
-        <a href="#" class="btn btn-primary bg-color-azul" id="btnModificarPrincial"
-            data-bs-toggle="modal" data-bs-target="#Modificar">Modificar</a>
-        <a href="#" class="btn btn-primary bg-color-azul" id="btnBuscarPrincipal" data-bs-toggle="modal"
-            data-bs-target="#Buscar" >Buscar</a>
-
-    </div>
-    <!-- /Botones adicion, modificacion de productos -->
-    <!-- Footer -->
-    <footer style="text-align: center;">
-        <img src="images/logo2.png" alt="logo-nightmare" style="height: 50px;">
-    </footer>
-
-
-    <!-- Adicionar productos de Firebase que vamos a usar -->
-    <script src="https://www.gstatic.com/firebasejs/9.1.1/firebase-auth-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.1.1/firebase-firestore-compat.js"></script>
-    
-    <!-- /Footer -->
 
     <script src="https://www.gstatic.com/firebasejs/9.1.1/firebase-app-compat.js"></script>
 

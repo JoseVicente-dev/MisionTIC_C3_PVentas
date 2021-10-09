@@ -202,7 +202,6 @@
 
     <!-- Botones -->
    <div class="container" style="text-align: center;">
-
       <button class="btn btn-primary fomr-mod-user" id="cargarDatos"  >Actualizar</button>
 
       <button class="btn btn-primary fomr-mod-user" 
@@ -213,6 +212,9 @@
           
       <button class="btn btn-primary fomr-mod-user" 
       data-bs-toggle="modal" data-bs-target="#Buscar" onclick="limpiarModal()">Buscar2</button>
+  
+      <button class="btn btn-danger fomr-mod-user" id="btnEliminarUsuarios" >Eliminar</button>
+
   </div>
   <!-- Botones -->
 
@@ -240,7 +242,6 @@
                 <div class="modal-body">
                     <div class="container"> 
                         <div class="col">
-                          <form action="">
                             <!-- <input type="text" class="form-control form-add-user" id="inputCodigo" value="ID"> -->
                             <input type="text" class="form-control form-add-user" id="inputnombre" placeholder="Nombres y Apellidos" >
                             <!-- <input type="text" class="form-control form-add-user" id="inputApellido" placeholder="Apellidos" > -->
@@ -256,7 +257,7 @@
                               <label for="">Seleccione una foto de perfil</label>
                               <input type="file" class="form-control-file form-add-user"  id="" accept="image/png, .jpeg, .jpg, image/gif">
                             </div>
-                          </form>
+                         
                         </div>                       
                     </div>
 
@@ -281,43 +282,23 @@
                         style="background-color: #7a87bb;"></button>
                 </div>
                 <div class="modal-body">
-
                   <div class="modal-body">
                     <div class="container">
                         <div class="col">
-                            <input type="text" class="form-control" id="MinputCodigo" placeholder="Código del usuario"
-                                style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;background-color:gainsboro ; 
-                                text-align: center;" disabled>
-                        </div>
-                        <div class="col">
-                            <input type="text" class="form-control" id="Minputnombre"
-                                placeholder="Nombres" style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
-                        background-color: #d8e5fe; text-align: center;">
-                        </div>
-                       <!--  <div class="col">
-                          <input type="text" class="form-control" id="MinputApellido"
-                              placeholder="Apellidos" style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
-                        background-color: #d8e5fe; text-align: center;">
-                        </div> -->
-                        <div class="col">
-                          <input type="email" class="form-control" id="MinputEmail"
-                              placeholder="email" style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
-                        background-color: #d8e5fe; text-align: center;">
-                        </div>
-                        <div class="col">
-                            <input type="text" class="form-control" id="MinputRol"
-                                placeholder="Cargo" style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
-                        background-color: #d8e5fe; text-align: center;">
-                        </div>
-                        <div class="col">
-
-                            <select class="form-select" id="MinputEstado" placeholder="Estado" style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
-                        background-color: #d8e5fe; text-align: center;" aria-label="Default select example">
+                            <input type="text" class="form-control form-add-user" id="MinputCodigo" placeholder="Código del usuario" disabled>
+                            <input type="text" class="form-control form-add-user" id="Minputnombre" placeholder="Nombres" >
+                            <input type="email" class="form-control form-add-user" id="MinputEmail" placeholder="email" >
+                            <!-- <input type="text" class="form-control form-add-user" id="MinputRol" placeholder="Cargo" > -->
+                            <select class="form-select form-add-user" id="MinputRol" placeholder="Cargo"  aria-label="Default select example">
+                              <option value="Vendedor">Vendedor</option>
+                              <option value="Administrador">Administrador</option>
+                            </select>
+                            <select class="form-select form-add-user" id="MinputEstado" placeholder="Estado"  aria-label="Default select example">
                                 <option value="Pendiente">Pendiente</option>
                                 <option value="Autorizado">Autorizado</option>
                                 <option value="No autorizado">No autorizado</option>
                             </select>
-                        </div>
+                          </div>
                     </div>
                 </div>
               </div>

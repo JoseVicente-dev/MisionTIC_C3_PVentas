@@ -20,11 +20,12 @@ let usuarioFoto;
 let usuarioEmail;
 
 //variables DOM
-const btnLogin = document.getElementById('cargarDatos')
+const btnActualizar = document.getElementById('cargarDatos')
 const btnPrueba = document.getElementById('prueba')
 const btnAdicionarUser = document.getElementById('btnAdicionarUsuario')
 const btnModificarUser = document.getElementById('btnModificarUsuario')
 const btnModalModificar = document.getElementById('modalModificar')
+const btnEliminarUser = document.getElementById('btnEliminarUsuarios')
 
 let imgUsuario = document.getElementById('imagenUsuario')
 let tipUsuario = document.getElementById('tipoUsuario')
@@ -278,7 +279,7 @@ btnPrueba.addEventListener('click', (e)=>{
     e.preventDefault()
     menu()
 }) 
-btnLogin.addEventListener('click', (e)=>{
+btnActualizar.addEventListener('click', (e)=>{
     e.preventDefault()
     actualizar()
 }) 
@@ -298,17 +299,50 @@ btnModalModificar.addEventListener('click', (e)=>{
     modificarUsuario()
 }) 
 
+btnEliminarUser.addEventListener('click', (e)=>{
+    e.preventDefault()
+    eliminarUsuario()
+    setTimeout( actualizar,1000);
+   
+}) 
 
 
-//borrar datos
-/* const user = auth.currentUser;
-var emailborrar = dataBase.collection('ng_users').where('email','==',user.email,'and','estado','==',true);
-console.log(emailborrar);
-emailborrar.get().then(function(querySnapshot) {
-    querySnapshot.forEach(function(doc) {
-            doc.ref.delete();
+
+
+function eliminarUsuario(){
+
+    let tablaUsuarios = document.getElementById("tabla_usuarios");
+    let radios = tablaUsuarios.getElementsByTagName("input");
+    let filas = tablaUsuarios.getElementsByTagName("tr");
+    let totalFilas = radios.length;
+    let email =""
+
+    for (i = 0; i < totalFilas; i++) {
+        if (radios[i].checked) {
+            filaSeleccionada = filas[i]
+            email = filaSeleccionada.cells[3].innerText
+            
+        }
+    }
+    console.log(email);
+
+    //borrar datos
+    var userborrar = dataBase.collection('ng_users').where('email','==',email);
+    console.log(userborrar);
+    
+    userborrar.get().then(function(querySnapshot) {
+        querySnapshot.forEach(function(doc) {
+                doc.ref.delete();
+        });
     });
-}); */
+
+   
+
+}
+
+
+
+
 
 
 

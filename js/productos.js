@@ -35,9 +35,9 @@ async function mostrarInformacion() {
   let insertarFila = document.getElementById("cuerpoTablaProductos")
   let i=0
   productos.forEach((p)=>{
-
+    i++
     filaTabla = document.createElement("tr")
-    filaTabla.setAttribute("id", "row" + (i + 1))
+    filaTabla.setAttribute("id", "row" + (i))
     seleccionar = document.createElement("th")
     div = document.createElement("div")
     div.setAttribute("class", "form-check")
@@ -46,7 +46,7 @@ async function mostrarInformacion() {
     radio.setAttribute("class", "form-check-input")
     radio.setAttribute("type", "radio")
     radio.setAttribute("name", "flexRadioDefault")
-    radio.setAttribute("id", "flexRadioDefault" + i + 1)
+    radio.setAttribute("id", "flexRadioDefault" + i)
     radio.checked=false
     div.appendChild(radio)
     seleccionar.appendChild(div)
@@ -55,7 +55,7 @@ async function mostrarInformacion() {
 
     numeroProducto = document.createElement("th")
     numeroProducto.setAttribute("scope", "row")
-    numeroProducto.textContent = i + 1
+    numeroProducto.textContent = i
 
     codigo = document.createElement("td")
     codigo.textContent = p.codigo

@@ -271,6 +271,7 @@ function limpiarBusqueda(){
 btnInsertarProducto.addEventListener('click', (e)=>{
     e.preventDefault()
     insertarProducto()
+
 })
 
 btnModificarProducto.addEventListener('click', (e)=>{
@@ -281,6 +282,7 @@ btnModificarProducto.addEventListener('click', (e)=>{
 btnBuscarProducto.addEventListener('click', (e)=>{
     e.preventDefault()
     buscarProducto()
+    $('.toast').toast('show')    
 })
 
 btnAdicionarPrincipal.addEventListener('click', (e)=>{

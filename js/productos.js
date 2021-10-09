@@ -8,10 +8,6 @@ const firebaseConfig = {
   measurementId: "G-TQYRLQ0VWT"
 };
 
-// Initialize Firebase
-firebase.initializeApp(firebaseConfig);
-
-
 // Inicializar Firebase
 firebase.initializeApp(firebaseConfig);
 
@@ -187,46 +183,5 @@ function pintarProductos(productos) {
     cell6.innerHTML = t.estado;
   })
 }
-
-/* ------------------------------------------------------------------------------------------------ */
-//modificar producto
-async function modificarProductofb() {
-
-  const codigoInput = document.getElementById("MinputCodigo").value
-  const descripcionInput = document.getElementById("MinputDescripcion").value;
-  const pesoInput = document.getElementById("MinputPeso").value;
-  const valorUInput = document.getElementById("MinputPeso").value;
-  const estadoInput = document.getElementById("MinputEstado").value;
-
-  console.log(codigoInput);
-  console.log(descripcionInput);
-  console.log(pesoInput);
-  console.log(valorUInput);
-  console.log(estadoInput);
-
-  const respuestaproductos = await dataBase.collection("ng_productos").where('codigo', '==', codigoInput).get();
-
-  let idmod = ""
-  respuestaproductos.forEach(function (item) {
-    idmod = item.id
-  });
-  mod = respuestaproductos.id()
-
-  console.log(idmod)
-
-  dataBase.collection("ng_productos").doc(idmod).update({
-    // codigo: codigoInput,
-    descripcion: descripcionInput,
-    peso: pesoInput,
-    valorUnitario: valorUInput,
-    estado: estadoInput,
-
-    actualizar()
-  });
-  
-
-};
-
-
 
 

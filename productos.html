@@ -179,20 +179,20 @@
 
     
 
+      
+
 
     <!-- Footer -->
     <footer style="text-align: center;">
         <img src="images/logo2.png" alt="logo-nightmare" style="height: 50px;">
 
-        <div aria-live="polite" aria-atomic="true" style="position: relative;">
-            <div class="toast" id="toastConfirmacion" style="position: absolute; top: 0; right: 0;">
+        <div class="position-fixed bottom-0 end-0 p-3" >
+            <div id="liveToast" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">
               <div class="toast-header">
-                <img src="..." class="rounded mr-2" alt="...">
-                <strong class="mr-auto">Bootstrap</strong>
+                <img src="..." class="rounded me-2" alt="...">
+                <strong class="me-auto">Bootstrap</strong>
                 <small>11 mins ago</small>
-                <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
               </div>
               <div class="toast-body">
                 Hello, world! This is a toast message.
@@ -286,7 +286,9 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary bg-color-azul" id="btnModificarModalModificar" data-bs-toggle="modal" data-bs-target="#DatosAgregados" data-bs-dismiss="modal"
+                    <button type="button" class="btn btn-primary bg-color-azul" id="btnModificarModalModificar" 
+                    data-bs-toggle="modal" data-bs-target="#DatosAgregados" 
+                    data-bs-dismiss="modal"
                         >Modificar</button>
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                 </div>
@@ -330,7 +332,7 @@
     <!-- /Modal Buscar Producto -->
 
     <!-- Modal Datos agregados -->
-    <div class="modal fade" id="DatosAgregados" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    <!-- <div class="modal fade" id="DatosAgregados" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
         aria-labelledby="staticBackdropLabel1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
             <div class="modal-content">
@@ -351,7 +353,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
     <!-- /Modal Datos agregados -->
 
 
@@ -371,9 +373,9 @@
         crossorigin="anonymous"></script>
     <script src="js/menu.js"></script>
     
-    <!-- <script src="js/Productos-tablaProductos.js"></script> -->
-    <script src="js/productos.js"></script>
     <script src="js/Productos-tablaProductos.js"></script>
+    <script src="js/productos.js"></script>
+    
 
     <!-- esconder el menú 3s -->
     <script>
@@ -381,6 +383,8 @@
             $(".page-wrapper").removeClass("toggled");
         }, 3000);
     </script>
+
+
 
 </body>
 

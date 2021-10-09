@@ -282,7 +282,7 @@ btnModificarProducto.addEventListener('click', (e)=>{
 btnBuscarProducto.addEventListener('click', (e)=>{
     e.preventDefault()
     buscarProducto()
-    $('.toast').toast('show')    
+      
 })
 
 btnAdicionarPrincipal.addEventListener('click', (e)=>{
@@ -299,4 +299,13 @@ btnModificarPrincipal.addEventListener('click', (e)=>{
     e.preventDefault()
     modificarProducto()
 })
+
+btnModificarModalModificar.addEventListener('click', (e)=>{
+    e.preventDefault()
+    // buscarProducto()
+    $(function (){
+      $('.toast').toast('show')
+  }) 
+      
+  })
 

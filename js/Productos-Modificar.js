@@ -7,7 +7,7 @@ const firebaseConfig = {
     messagingSenderId: "829384661085",
     appId: "1:829384661085:web:980684babb57607f4315b4",
     measurementId: "G-0SKGBP594G"
-  };
+};
 
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
@@ -16,7 +16,7 @@ firebase.initializeApp(firebaseConfig);
 //Declarar letiables globales
 const dataBase = firebase.firestore()
 let Producto;
-let contadorNumeroProductos;
+let contadorNumeroProductos = 0;
 
 
 //letiables DOM
@@ -32,6 +32,7 @@ async function traerProductos() {
     productos.forEach(function (item) {
         console.log(item.data())
         contadorNumeroProductos++
+
     })
     //   let contador=0
     //   usuarios.forEach((t)=>{
@@ -47,26 +48,27 @@ async function traerProductos() {
     //           }
     //       }
     //   })
+   
 
-}
 console.log(contadorNumeroProductos)
-function pruebaTablaMostrarProductos() {
 
+
+    let dondeInsertar = document.getElementById("AquiVaLaFila");
     for (let i = 0; i < contadorNumeroProductos; i++) {
         let Check = document.createElement("input");
         Check.setAttribute("class", "form-Check-input")
         Check.setAttribute("type", "radio");
         Check.setAttribute("name", "flexRadioDefault")
-        Check.setAttribute("Descripcion", i);
+        Check.setAttribute("id", i);
         // Check.setAttribute("onClick","MostrarBotones();InsertarDatosModalVentaBuscada(Descripcion)")
         let Codigo = document.createElement("label");
-        Codigo.setAttribute("Descripcion", "Codigo" + i);
+        Codigo.setAttribute("id", "Codigo" + i);
         let Descripcion = document.createElement("label");
-        Descripcion.setAttribute("Descripcion", "Descripcion" + i);
+        Descripcion.setAttribute("id", "Descripcion" + i);
         let ValorUnitario = document.createElement("label");
-        ValorUnitario.setAttribute("Descripcion", "ValorUnitario" + i);
+        ValorUnitario.setAttribute("id", "ValorUnitario" + i);
         let Estado = document.createElement("label");
-        Estado.setAttribute("Descripcion", "Estado" + i);
+        Estado.setAttribute("id", "Estado" + i);
 
         Fila = document.createElement("tr");
         div = document.createElement("div")
@@ -75,60 +77,63 @@ function pruebaTablaMostrarProductos() {
         div.appendChild(Check)
         col1.appendChild(div);
         col2 = document.createElement("td");
-        col2.appendChild(Descripcion);
+        col2.appendChild(Codigo);
         col3 = document.createElement("td");
-        col3.appendChild(Codigo);
+        col3.appendChild(Descripcion);
         col4 = document.createElement("td");
-        col4.appendChild(Estado);
+        col4.appendChild(ValorUnitario);
         col5 = document.createElement("td");
-        col5.appendChild(ValorUnitario);
-    
+        col5.appendChild(Estado);
+
+
         Fila.appendChild(col1)
         Fila.appendChild(col2)
         Fila.appendChild(col3)
         Fila.appendChild(col4)
         Fila.appendChild(col5)
-  
+
         dondeInsertar.appendChild(Fila)
-   }
-}
-
-
-
-
-async function leerUsuarios() {
-    try {
-        const usuarios = []
-        const respuesta = await dataBase.collection('ng_users').get()
-
-        respuesta.forEach(function (item) {
-            /* console.log(item.data()) */
-            usuarios.push(item.data())
-        })
-
-        console.log(usuarios)
-        return usuarios
-
-    } catch (error) {
-        console.log(error)
     }
 }
+let filaTabla = 0;
+async function InsertarDatosTablaPrueba() {
+    const articulos = await dataBase.collection('pruebaProductos').get()
 
-async function guardarUsuario(usuario) {
-    try {
-        const respuesta = await dataBase.collection('ng_users').add(usuario)
-        return respuesta
+    articulos.forEach(function (articulo) {
+        console.log(filaTabla)
+        const ColumnCodigo = document.getElementById("Codigo" + filaTabla)
+        console.log(ColumnCodigo)
+        const ColumnDescripcion = document.getElementById("Descripcion" + filaTabla)
+        const ColumnValorUnitario = document.getElementById("VaValorUnitariolor" + filaTabla)
+        const ColumnEstado = document.getElementById("Estado" + filaTabla)
+        ColumnCodigo.textContent = item.Codigo
+        filaTabla++
+        console.log(filaTabla)
+    })
 
-    } catch (error) {
-        console.log(error)
-    }
+    // for (var i = 0; i <= contadorNumeroProductos; i++) {
+    //      const ColumnCodigo = document.getElementById("Codigo" + i)
+    //      const ColumnDescripcion = document.getElementById("Descripcion" + i)
+    //      const ColumnValorUnitario = document.getElementById("VaValorUnitariolor" + i)
+    //      const ColumnEstado = document.getElementById("Estado" + i)
+    //      ColumnCodigo.textContent = item.Codigo
+    //      ColumnDescripcion.textContent = Articulo[i]
+    //      ColumnValorUnitario.textContent = Valor[i]
+    //      ColumnEstado.textContent = Estado[i]
+    // }
 }
+
+
+
+
+
 
 //evento
 btnModificar.addEventListener('click', (e) => {
     e.preventDefault()
     traerProductos()
-    pruebaTablaMostrarProductos()
+  
+    InsertarDatosTablaPrueba()
 })
 
 

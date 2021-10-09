@@ -13,8 +13,7 @@ const btnBuscarPrincipal = document.getElementById('btnBuscarPrincipal')
 function insertarProducto() {
 
     let insertarFila = document.getElementById("cuerpoTablaProductos")
-    console.log(insertarFila);
-
+    
     // .getElementsByTagName("tbody")
 
     let i = insertarFila.getElementsByTagName("tr").length

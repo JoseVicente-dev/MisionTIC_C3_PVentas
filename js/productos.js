@@ -112,17 +112,11 @@ async function actualizar(){
     try{
         const productos = []
         const respuestaproductos = await dataBase.collection('ng_productos').orderBy("descripcion").get()
-
-
         respuestaproductos.forEach( function(item){
             /* console.log(item.data()) */
             productos.push(item.data())
- 
         })
-
-
         pintarproductos(productos)
-
     }catch(error){
         console.log(error)
     }
@@ -155,4 +149,74 @@ function pintarProductos(productos){
         cell6.innerHTML = t.estado;
         
 })
+}
+/* ------------------------------------------------------------------------------------------------ */
+//modificar producto
+async function modificarProductofb(){
+
+    const codigoInput = document.getElementById("MinputCodigo").value
+    const descripcionInput = document.getElementById("MinputDescripcion").value;
+    const pesoInput = document.getElementById("MinputPeso").value;
+    const valorUInput = document.getElementById("MinputPeso").value;
+    const estadoInput = document.getElementById("MinputEstado").value;
+
+    console.log(codigoInput);
+    console.log(descripcionInput);
+    console.log(pesoInput);
+    console.log(valorUInput);
+    console.log(estadoInput);
+    
+    const respuestaproductos = await dataBase.collection("ng_productos").where('codigo','==',codigoInput).get();
+    
+    let idmod = ""
+    respuestaproductos.forEach(function (item){
+         idmod=item.id
+    });
+   /*  idmod=respuestaproductos.id() */
+
+   console.log(idmod)
+
+    dataBase.collection("ng_productos").doc(idmod).update({
+        // codigo: codigoInput,
+        descripcion: descripcionInput,
+        peso: pesoInput,
+        valorUnitario: valorUInput,
+        estado: estadoInput,
+    });
+    
+    actualizar()
+    
+}
+/* ------------------------------------------------------------------------------------------------------------- */
+
+//funcion del boton para que abra el modal con los datos de la fila.
+function modificarProducto() {
+
+    let cuerpoTabla = document.getElementById("cuerpoTablaProductos")
+    let radios = cuerpoTabla.getElementsByTagName("input")
+    let filas = cuerpoTabla.getElementsByTagName("tr")
+    let totalFilas = radios.length
+
+    for (i = 0; i < totalFilas; i++) {
+        if (radios[i].checked) {
+
+            
+            filaSeleccionada = filas[i]
+            document.getElementById("modifyCodigo").value = filaSeleccionada.cells[2].innerText
+            document.getElementById("modifyDescripcion").value = filaSeleccionada.cells[3].innerText
+            document.getElementById("modifyPeso").value = filaSeleccionada.cells[4].innerText
+            document.getElementById("modifyValorUnitario").value = filaSeleccionada.cells[5].innerText
+
+            if (filaSeleccionada.cells[6].innerText == "Disponible") {
+
+                document.getElementById("modifyEstado").value = 1
+            }
+            else {
+
+                document.getElementById("modifyEstado").value = 2
+            }
+
+            filaObjetivo = filaSeleccionada
+        }
+    }
 }

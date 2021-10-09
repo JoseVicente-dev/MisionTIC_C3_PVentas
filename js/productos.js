@@ -19,7 +19,7 @@ async function mostrarInformacion() {
   const productos = []
 
   console.log("Inicia mostrar info")
-  const respuestaproductos = await dataBase.collection('ng_productos').orderBy("descripcion").get()
+  const respuestaProductos = await dataBase.collection('ng_productos').orderBy("descripcion").get()
   // const respuestaProductos = await dataBase.collection('ng_productos').get()
 
   respuestaProductos.forEach(function (item) {
@@ -125,9 +125,10 @@ async function anadirProducto(product) {
 
 botonAgregar.addEventListener('click', (e) => {
 
-  /* anadirProducto(); */
+  anadirProducto();
   obtenerDatos();
   actualizar()
+  // mostrarInformacion()
 
 })
 
@@ -148,45 +149,47 @@ async function actualizar() {
     respuestaproductos.forEach(function (item) {
       productos.push(item.data())
     })
-    pintarProductos(productos)
+    
   } catch (error) {
     console.log(error)
   }
+  $("#cuerpoTablaProductos").empty();
+  mostrarInformacion()
 }
 /* ------------------------------------------------------------------------------------------------------- */
 //pintarproductos
-function pintarProductos(productos) {
+// function pintarProductos(productos) {
 
-  var table = document.getElementById("tablaProductos");
-  console.log(table);
+//   var table = document.getElementById("cuerpoTablaProductos");
+//   console.log(table);
   
-  $("#tablaProductos").empty();
+//   $("#cuerpoTablaProductos").empty();
 
 
-  productos.forEach((t) => {
-    var oRows = document.getElementById('tablaProductos').getElementsByTagName('tr');
-    var iRowCount = oRows.length;
+//   productos.forEach((t) => {
+//     var oRows = document.getElementById('cuerpoTablaProductos').getElementsByTagName('tr');
+//     var iRowCount = oRows.length;
 
-    var row = table.insertRow(iRowCount);
-    var cell1 = row.insertCell(0);
-    var cell2 = row.insertCell(1);
-    var cell3 = row.insertCell(2);
-    var cell4 = row.insertCell(3);
-    var cell5 = row.insertCell(4);
-    var cell6 = row.insertCell(5);
+//     var row = table.insertRow(iRowCount);
+//     var cell1 = row.insertCell(0);
+//     var cell2 = row.insertCell(1);
+//     var cell3 = row.insertCell(2);
+//     var cell4 = row.insertCell(3);
+//     var cell5 = row.insertCell(4);
+//     var cell6 = row.insertCell(5);
 
-    /* console.log(cell1); */
+//     /* console.log(cell1); */
 
-    cell1.innerHTML = '<div class="form-check"><input class="form-check-input" type="radio" name="flexRadioDefault"id="flexRadioDefault6"/></div>';
-    cell2.innerHTML = t.codigo;
-    cell3.innerHTML = t.descripcion;
-    cell4.innerHTML = t.peso;
-    cell5.innerHTML = t.valorUnitario;
-    cell6.innerHTML = t.estado;
+//     cell1.innerHTML = '<div class="form-check"><input class="form-check-input" type="radio" name="flexRadioDefault"id="flexRadioDefault6"/></div>';
+//     cell2.innerHTML = t.codigo;
+//     cell3.innerHTML = t.descripcion;
+//     cell4.innerHTML = t.peso;
+//     cell5.innerHTML = t.valorUnitario;
+//     cell6.innerHTML = t.estado;
 
-  })
+//   })
 
-}
+// }
 
 
 

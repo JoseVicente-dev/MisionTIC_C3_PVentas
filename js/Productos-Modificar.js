@@ -95,33 +95,6 @@ console.log(contadorNumeroProductos)
         dondeInsertar.appendChild(Fila)
     }
 }
-let filaTabla = 0;
-async function InsertarDatosTablaPrueba() {
-    const articulos = await dataBase.collection('pruebaProductos').get()
-
-    articulos.forEach(function (articulo) {
-        console.log(filaTabla)
-        const ColumnCodigo = document.getElementById("Codigo" + filaTabla)
-        console.log(ColumnCodigo)
-        const ColumnDescripcion = document.getElementById("Descripcion" + filaTabla)
-        const ColumnValorUnitario = document.getElementById("VaValorUnitariolor" + filaTabla)
-        const ColumnEstado = document.getElementById("Estado" + filaTabla)
-        ColumnCodigo.textContent = item.Codigo
-        filaTabla++
-        console.log(filaTabla)
-    })
-
-    // for (var i = 0; i <= contadorNumeroProductos; i++) {
-    //      const ColumnCodigo = document.getElementById("Codigo" + i)
-    //      const ColumnDescripcion = document.getElementById("Descripcion" + i)
-    //      const ColumnValorUnitario = document.getElementById("VaValorUnitariolor" + i)
-    //      const ColumnEstado = document.getElementById("Estado" + i)
-    //      ColumnCodigo.textContent = item.Codigo
-    //      ColumnDescripcion.textContent = Articulo[i]
-    //      ColumnValorUnitario.textContent = Valor[i]
-    //      ColumnEstado.textContent = Estado[i]
-    // }
-}
 
 
 

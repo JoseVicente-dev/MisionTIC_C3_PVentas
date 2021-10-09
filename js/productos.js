@@ -18,8 +18,6 @@ firebase.initializeApp(firebaseConfig);
 //Declarar Variables globales  
 const dataBase = firebase.firestore()
 
-
-
 async function mostrarInformacion() {
   // Se inicia el llamado de los productos desde la BD
   const productos = []
@@ -200,7 +198,6 @@ function modificarProducto() {
     for (i = 0; i < totalFilas; i++) {
         if (radios[i].checked) {
 
-            
             filaSeleccionada = filas[i]
             document.getElementById("modifyCodigo").value = filaSeleccionada.cells[2].innerText
             document.getElementById("modifyDescripcion").value = filaSeleccionada.cells[3].innerText

@@ -22,7 +22,7 @@ async function mostrarInformacion() {
 
   console.log("Inicia mostrar info")
 
-  const respuestaProductos = await dataBase.collection('pruebaProductos').get()
+  const respuestaProductos = await dataBase.collection('ng_productos').get()
 
   respuestaProductos.forEach(function (item) {
 

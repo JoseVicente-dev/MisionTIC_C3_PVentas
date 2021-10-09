@@ -182,6 +182,8 @@ async function modificarProductofb(){
         estado: estadoInput,
     });
     
+
+    
     actualizar()
     
 }

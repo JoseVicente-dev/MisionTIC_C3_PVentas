@@ -472,6 +472,15 @@
         <img src="images/logo2.png" alt="logo-nightmare" style="height: 50px;">
     </footer>
     <!-- /Footer -->
+
+       <!-- Firebase SDK (Software Development Kit) siempre se debe usar y debe ser el primero de colocar -->
+       <script src="https://www.gstatic.com/firebasejs/9.1.1/firebase-app-compat.js"></script>
+
+
+       <!-- Adicionar productos de Firebase que vamos a usar -->
+       <script src="https://www.gstatic.com/firebasejs/9.1.1/firebase-auth-compat.js"></script>
+       <script src="https://www.gstatic.com/firebasejs/9.1.1/firebase-firestore-compat.js"></script>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/esm/popper.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
@@ -480,7 +489,8 @@
     <script src="js/menu.js"></script>
     <script src = "js/modal.js"></script>
     <script src="js/Productos-tablaProductos.js"></script>
-
+    <script src = "js/Productos-Modificar.js"></script>
+ 
     <!-- esconder el menú 3s -->
     <script>
         setTimeout(function(){

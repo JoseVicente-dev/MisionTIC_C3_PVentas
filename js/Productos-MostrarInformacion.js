@@ -20,7 +20,9 @@ async function mostrarInformacion() {
   // Se inicia el llamado de los productos desde la BD
   const productos = []
 
-  const respuestaProductos = await database.collection('pruebaProductos').get()
+  console.log("Inicia mostrar info")
+
+  const respuestaProductos = await dataBase.collection('pruebaProductos').get()
 
   respuestaProductos.forEach(function (item) {
 

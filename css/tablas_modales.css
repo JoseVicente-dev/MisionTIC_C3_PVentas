@@ -47,3 +47,7 @@
 .text-center{
     text-align: center;  
 }
+
+.toast_imagen{
+    height: 12px;
+}

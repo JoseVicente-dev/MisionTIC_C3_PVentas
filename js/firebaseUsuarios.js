@@ -284,6 +284,8 @@ function eliminarUsuario(){
         if (radios[i].checked) {
             filaSeleccionada = filas[i]
             email = filaSeleccionada.cells[3].innerText
+            console.log(email);
+            console.log(filaSeleccionada);
             
         }
     }

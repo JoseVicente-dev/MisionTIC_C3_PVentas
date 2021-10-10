@@ -72,7 +72,7 @@ async function mostrarInformacion() {
     peso.textContent = p.peso
 
     estado = document.createElement("td")
-    p.estado ==='1' ? estado.textContent = "Disponible" : estado.textContent = "No disponible";
+    p.estado === '1' ? estado.textContent = "Disponible" : estado.textContent = "No disponible";
     // filaTabla.appendChild(numeroProducto)
     filaTabla.appendChild(codigo)
     filaTabla.appendChild(descripcion)
@@ -95,12 +95,25 @@ async function mostrarInformacion() {
 
 const botonAgregar = document.getElementById("btnAdicionarModalAdicionar");
 
-function obtenerDatos() {
-  const inputCode = document.getElementById('inputCodigo').value;
+async function obtenerDatos() {
+  try {
+    const inputCode = document.getElementById('inputCodigo').value;
   const inputDescription = document.getElementById("inputDescripcion").value;
   const inputWeigth = document.getElementById("inputPeso").value;
   const inputValue = document.getElementById("inputValorUnitario").value;
   const inputState = document.getElementById("inputEstado").value;
+
+
+
+  const productosArray = [];
+  const nuevoxd = await dataBase.collection('ng_productos').get()
+  nuevoxd.forEach((t)=>{
+    productosArray.push(item)
+  })
+
+  console.log(productosArray);
+
+
 
   const producto = {
     codigo: uuid.v4(),
@@ -109,11 +122,17 @@ function obtenerDatos() {
     valorUnitario: inputValue,
     estado: inputState
   }
-  anadirProducto(producto);
-  /* console.log(producto); */
-
-
+  
+  console.log(producto.descripcion);
   let contador = 0;
+
+
+  producto.descripcion =="" || producto.peso == "" || producto.valorUnitario==""  ? alert("No se pueden dejar campos vacíos") : anadirProducto(producto), $('.toast').toast('show');
+
+
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 
@@ -130,12 +149,10 @@ async function anadirProducto(product) {
 
 botonAgregar.addEventListener('click', (e) => {
 
-//   anadirProducto();
+
   obtenerDatos();
   actualizar()
-  // mostrarInformacion()
-//   toastIngresoProducto
-  $('.toast').toast('show');
+  
 })
 
 
@@ -155,14 +172,10 @@ async function actualizar() {
     respuestaproductos.forEach(function (item) {
       productos.push(item.data())
     })
-
     pintarProductos(productos)
-
   } catch (error) {
     console.log(error)
   }
-//   $("#cuerpoTablaProductos").empty();
-//   mostrarInformacion()
 }
 /* ------------------------------------------------------------------------------------------------------- */
 // pintarproductos
@@ -170,7 +183,7 @@ function pintarProductos(productos) {
 
   var table = document.getElementById("cuerpoTablaProductos");
   console.log(table);
-  
+
   $("#cuerpoTablaProductos").empty();
 
 
@@ -186,66 +199,68 @@ function pintarProductos(productos) {
     var cell5 = row.insertCell(4);
     var cell6 = row.insertCell(5);
 
-    /* console.log(cell1); */
 
     cell1.innerHTML = '<div class="form-check"><input class="form-check-input" type="radio" name="flexRadioDefault"id="flexRadioDefault6"/></div>';
     cell2.innerHTML = t.codigo;
     cell3.innerHTML = t.descripcion;
     cell4.innerHTML = t.peso;
     cell5.innerHTML = t.valorUnitario;
-    cell6.innerHTML = t.estado ==='1' ? estado.textContent = "Disponible" : estado.textContent = "No disponible";
-    
+    cell6.innerHTML = t.estado === '1' ? estado.textContent = "Disponible" : estado.textContent = "No disponible";
+
   })
 
 }
 // ---------------------------------------------------------------------------
 async function buscarProductos() {
-   
-    try{
-        let busqueda = document.getElementById("busqueda").value.replace(/^\w/, (c) => c.toUpperCase());
-        console.log(busqueda)
-        let terminoBusqueda = document.getElementById("busquedapor").value;
-        /* let condicionbusqueda = document.getElementById("condicion").value; */
-        /* "1"Igual
-        "2"Comienza por
-        "3"Termina por */
+
+  try {
+    let busqueda = document.getElementById("busqueda").value.replace(/^\w/, (c) => c.toUpperCase());
+    console.log(busqueda)
+    let terminoBusqueda = document.getElementById("busquedapor").value;
+    /* let condicionbusqueda = document.getElementById("condicion").value; */
+    /* "1"Igual
+    "2"Comienza por
+    "3"Termina por */
 
 
-        /* console.log(busqueda); */
-        /* let respuestausuarios
-        if(condicionbusqueda==1){
-            respuestausuarios = await dataBase.collection("ng_users").where(terminoBusqueda, '==', busqueda).get()
-        }else if(condicionbusqueda==2){
-            respuestausuarios = await dataBase.collection("ng_users").where(terminoBusqueda, '>=', busqueda).where(terminoBusqueda, '<=', busqueda+ '\uf8ff').get()
-        }else{
-            respuestausuarios = await dataBase.collection("ng_users").orderBy(terminoBusqueda).startAt('~' + busqueda).endAt(busqueda).get();
-        } */
-        
-        respuestaproducto = await dataBase.collection("ng_productos").where(terminoBusqueda, '>=', busqueda).where(terminoBusqueda, '<=', busqueda+ '\uf8ff').get()
+    /* console.log(busqueda); */
+    /* let respuestausuarios
+    if(condicionbusqueda==1){
+        respuestausuarios = await dataBase.collection("ng_users").where(terminoBusqueda, '==', busqueda).get()
+    }else if(condicionbusqueda==2){
+        respuestausuarios = await dataBase.collection("ng_users").where(terminoBusqueda, '>=', busqueda).where(terminoBusqueda, '<=', busqueda+ '\uf8ff').get()
+    }else{
+        respuestausuarios = await dataBase.collection("ng_users").orderBy(terminoBusqueda).startAt('~' + busqueda).endAt(busqueda).get();
+    } */
 
-        const producto = []
-        respuestaproducto.forEach( function(item){
-            console.log(item.data())
-            producto.push(item.data())
- 
-        })
-         /* console.log(usuarios); */
+    respuestaproducto = await dataBase.collection("ng_productos").where(terminoBusqueda, '>=', busqueda).where(terminoBusqueda, '<=', busqueda + '\uf8ff').get()
 
-         setTimeout( pintarProductos(producto),1000)
-         
-        
+    const producto = []
+    respuestaproducto.forEach(function (item) {
+      console.log(item.data())
+      producto.push(item.data())
 
-    }catch(error){
-        console.log(error)
-    }
+    })
+    /* console.log(usuarios); */
+
+    setTimeout(pintarProductos(producto), 1000)
+
+
+
+  } catch (error) {
+    console.log(error)
+  }
 
 
 }
+
+//----------------------------- Eliminar producto---------------------
+
 // --------------------------------------------------------------------------------
-btnBuscarProducto.addEventListener('click', (e)=>{
-    e.preventDefault()
-    buscarProductos() 
-}) 
+btnBuscarProducto.addEventListener('click', (e) => {
+  e.preventDefault()
+  buscarProductos()
+})
 
 
 // ------------------------------------------------------------------*********------------------------
@@ -267,7 +282,7 @@ btnBuscarProducto.addEventListener('click', (e)=>{
 // function pintarProductos(productos){
 
 //     var table = document.getElementById("tabla_productos");
-   
+
 //     $("#tabla_productos").empty();
 
 //     productos.forEach((t)=>{
@@ -281,14 +296,14 @@ btnBuscarProducto.addEventListener('click', (e)=>{
 //         var cell4 = row.insertCell(3);
 //         var cell5 = row.insertCell(4);
 //         var cell6 = row.insertCell(5);
-        
+
 //         cell1.innerHTML = '<div class="form-check"><input class="form-check-input" type="radio" name="flexRadioDefault"id="flexRadioDefault6"/></div>';
 //         cell2.innerHTML = t.codigo;
 //         cell3.innerHTML = t.descripcion;
 //         cell4.innerHTML = t.peso;
 //         cell5.innerHTML = t.valorUnitario;
 //         cell6.innerHTML = t.estado;
-        
+
 // })
 // }
 // /* ------------------------------------------------------------------------------------------------ */
@@ -306,9 +321,9 @@ btnBuscarProducto.addEventListener('click', (e)=>{
 //     console.log(pesoInput);
 //     console.log(valorUInput);
 //     console.log(estadoInput);
-    
+
 //     const respuestaproductos = await dataBase.collection("ng_productos").where('codigo','==',codigoInput).get();
-    
+
 //     let idmod = ""
 //     respuestaproductos.forEach(function (item){
 //          idmod=item.id
@@ -324,11 +339,11 @@ btnBuscarProducto.addEventListener('click', (e)=>{
 //         valorUnitario: valorUInput,
 //         estado: estadoInput,
 //     });
-    
+
 
 
 //     actualizar()
-    
+
 // }
 // /* ------------------------------------------------------------------------------------------------------------- */
 

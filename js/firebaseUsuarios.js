@@ -26,12 +26,14 @@ const btnAdicionarUser = document.getElementById('btnAdicionarUsuario')
 const btnModificarUser = document.getElementById('btnModificarUsuario')
 const btnModalModificar = document.getElementById('modalModificar')
 const btnEliminarUser = document.getElementById('btnEliminarUsuarios')
+const btnBuscarUser = document.getElementById('buscarUsuario')
 
 let imgUsuario = document.getElementById('imagenUsuario')
 let tipUsuario = document.getElementById('tipoUsuario')
 let nombreUsuario = document.getElementById('nombreDeUsuario')
 let tablaUsers = document.getElementById('tabla-usuarios')
 
+actualizar()
 
 //funciones
 //login
@@ -138,6 +140,7 @@ function pintarUsuarios(usuarios){
 })
 }
 
+
 //Agregar Usuario
 async function agregarUsuario(){
     const nombresInput = document.getElementById("inputnombre").value;
@@ -198,11 +201,6 @@ async function modificarUsuariofb(){
     const memailInput = document.getElementById("MinputEmail").value;
     const mrolInput = document.getElementById("MinputRol").value;
     const mestadoInput = document.getElementById("MinputEstado").value;
-
-    console.log(mnombresInput);
-    console.log(memailInput);
-    console.log(mrolInput);
-    console.log(mestadoInput);
     
     const respuestausuarios = await dataBase.collection("ng_users").where('email','==',memailInput).get();
     
@@ -218,10 +216,10 @@ async function modificarUsuariofb(){
         nombres: mnombresInput,
         rol: mrolInput,
         estado: mestadoInput,
-        email: memailInput,
+        /* email: memailInput, */
     });
     
-    actualizar()
+    setTimeout( actualizar,1000);
     
 }
 
@@ -274,6 +272,79 @@ function limpiarModalAdicionar(){
     document.getElementById("inputRol").value="";
 }
 
+function eliminarUsuario(){
+
+    let tablaUsuarios = document.getElementById("tabla_usuarios");
+    let radios = tablaUsuarios.getElementsByTagName("input");
+    let filas = tablaUsuarios.getElementsByTagName("tr");
+    let totalFilas = radios.length;
+    let email =""
+
+    for (i = 0; i < totalFilas; i++) {
+        if (radios[i].checked) {
+            filaSeleccionada = filas[i]
+            email = filaSeleccionada.cells[3].innerText
+            
+        }
+    }
+    console.log(email);
+
+    //borrar datos
+    var userborrar = dataBase.collection('ng_users').where('email','==',email);
+    console.log(userborrar);
+    
+    userborrar.get().then(function(querySnapshot) {
+        querySnapshot.forEach(function(doc) {
+                doc.ref.delete();
+        });
+    });
+
+   
+
+}
+
+async function buscarUsusario() {
+   
+    try{
+        let busqueda = document.getElementById("busqueda").value;
+        let terminoBusqueda = document.getElementById("busquedapor").value;
+        /* let condicionbusqueda = document.getElementById("condicion").value; */
+        /* "1"Igual
+        "2"Comienza por
+        "3"Termina por */
+
+
+        /* console.log(busqueda); */
+        /* let respuestausuarios
+        if(condicionbusqueda==1){
+            respuestausuarios = await dataBase.collection("ng_users").where(terminoBusqueda, '==', busqueda).get()
+        }else if(condicionbusqueda==2){
+            respuestausuarios = await dataBase.collection("ng_users").where(terminoBusqueda, '>=', busqueda).where(terminoBusqueda, '<=', busqueda+ '\uf8ff').get()
+        }else{
+            respuestausuarios = await dataBase.collection("ng_users").orderBy(terminoBusqueda).startAt('~' + busqueda).endAt(busqueda).get();
+        } */
+        
+        respuestausuarios = await dataBase.collection("ng_users").where(terminoBusqueda, '>=', busqueda).where(terminoBusqueda, '<=', busqueda+ '\uf8ff').get()
+
+        const usuarios = []
+        respuestausuarios.forEach( function(item){
+            /* console.log(item.data()) */
+            usuarios.push(item.data())
+ 
+        })
+         /* console.log(usuarios); */
+
+         setTimeout( pintarUsuarios(usuarios),1000)
+         
+        
+
+    }catch(error){
+        console.log(error)
+    }
+
+
+}
+
 //evento
 btnPrueba.addEventListener('click', (e)=>{
     e.preventDefault()
@@ -306,42 +377,26 @@ btnEliminarUser.addEventListener('click', (e)=>{
    
 }) 
 
+btnBuscarUser.addEventListener('click', (e)=>{
+    e.preventDefault()
+    buscarUsusario() 
+}) 
 
 
 
-function eliminarUsuario(){
 
-    let tablaUsuarios = document.getElementById("tabla_usuarios");
-    let radios = tablaUsuarios.getElementsByTagName("input");
-    let filas = tablaUsuarios.getElementsByTagName("tr");
-    let totalFilas = radios.length;
-    let email =""
-
-    for (i = 0; i < totalFilas; i++) {
-        if (radios[i].checked) {
-            filaSeleccionada = filas[i]
-            email = filaSeleccionada.cells[3].innerText
-            
-        }
+/* document.getElementById('inputEmail').addEventListener('input', function() {
+    campo = event.target;
+    valido = document.getElementById('input');
+        
+    emailRegex = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
+    //Se muestra un texto a modo de ejemplo, luego va a ser un icono
+    if (emailRegex.test(campo.value)) {
+    valido.style.backgroundColor = "red"
+    } else {
+        valido.style.backgroundColor = "green"
     }
-    console.log(email);
-
-    //borrar datos
-    var userborrar = dataBase.collection('ng_users').where('email','==',email);
-    console.log(userborrar);
-    
-    userborrar.get().then(function(querySnapshot) {
-        querySnapshot.forEach(function(doc) {
-                doc.ref.delete();
-        });
-    });
-
-   
-
-}
-
-
-
+}); */
 
 
 

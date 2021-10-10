@@ -16,6 +16,7 @@ const dataBase = firebase.firestore();
 const btnBuscarProducto = document.getElementById('buscarProducto')
 const toastIngresoProducto = document.getElementById('liveToastIProduct')
 const btnModalModificar = document.getElementById('btnModificarPrincial')
+const btnModificarProducto = document.getElementById('btnModificarModalModificar')
 
 
 
@@ -287,14 +288,14 @@ btnBuscarProducto.addEventListener('click', (e) => {
 async function modificarProductofb(){
 
   const mCodigoInput = document.getElementById("modifyCodigo").value
-  const mDescripcionInput = document.getElementById("modifyDescripcion").value;
+  const mDescripcionInput = document.getElementById("modifyDescripcion").value.replace(/^\w/, (c) => c.toUpperCase());
   const mPesoInput = document.getElementById("modifyPeso").value;
   const mValorUnitarioInput = document.getElementById("modifyValorUnitario").value;
 
   const mestadoInput = document.getElementById("modifyEstado").value;
   
-  const respuestaprodctos = await dataBase.collection("ng_productos").where('descripcion','==',mDescripcionInput).get();
-  
+  const respuestaprodctos = await dataBase.collection("ng_productos").where('codigo','==',mCodigoInput).get();
+  console.log(respuestaprodctos)
   let idmod = ""
   respuestaprodctos.forEach(function (item){
        idmod=item.id
@@ -393,4 +394,9 @@ function eliminarProducto(){
 btnModalModificar.addEventListener('click', (e)=>{
   e.preventDefault()
   modificarProducto()
+}) 
+
+btnModificarProducto.addEventListener('click', (e)=>{
+  e.preventDefault()
+  modificarProductofb()
 }) 

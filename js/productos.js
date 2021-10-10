@@ -98,36 +98,45 @@ const botonAgregar = document.getElementById("btnAdicionarModalAdicionar");
 async function obtenerDatos() {
   try {
     const inputCode = document.getElementById('inputCodigo').value;
-  const inputDescription = document.getElementById("inputDescripcion").value;
-  const inputWeigth = document.getElementById("inputPeso").value;
-  const inputValue = document.getElementById("inputValorUnitario").value;
-  const inputState = document.getElementById("inputEstado").value;
+    const inputDescription = document.getElementById("inputDescripcion").value.replace(/^\w/, (c) => c.toUpperCase());
+    const inputWeigth = document.getElementById("inputPeso").value;
+    const inputValue = document.getElementById("inputValorUnitario").value;
+    const inputState = document.getElementById("inputEstado").value;
 
 
 
-  const productosArray = [];
-  const nuevoxd = await dataBase.collection('ng_productos').get()
-  nuevoxd.forEach((t)=>{
-    productosArray.push(item)
-  })
+    const productosArray = [];
+    const nuevoxd = await dataBase.collection('ng_productos').get()
+    nuevoxd.forEach((t) => {
+      productosArray.push(t.data())
+    })
 
-  console.log(productosArray);
-
-
-
-  const producto = {
-    codigo: uuid.v4(),
-    descripcion: inputDescription.replace(/^\w/, (c) => c.toUpperCase()),
-    peso: inputWeigth,
-    valorUnitario: inputValue,
-    estado: inputState
-  }
-  
-  console.log(producto.descripcion);
-  let contador = 0;
+    productosArray.forEach((item)=>{
+      if(item.descripcion===inputDescription){
+        console.log("Sí funciona");
+      }else{
+        console.log("No funciona");
+      }
+    })
 
 
-  producto.descripcion =="" || producto.peso == "" || producto.valorUnitario==""  ? alert("No se pueden dejar campos vacíos") : anadirProducto(producto), $('.toast').toast('show');
+    /* console.log(productosArray); */
+
+
+
+    const producto = {
+      codigo: uuid.v4(),
+      descripcion: inputDescription.replace(/^\w/, (c) => c.toUpperCase()),
+      peso: inputWeigth,
+      valorUnitario: inputValue,
+      estado: inputState
+    }
+
+    /* console.log(producto.descripcion); */
+    let contador = 0;
+
+
+    producto.descripcion == "" || producto.peso == "" || producto.valorUnitario == "" ? alert("No se pueden dejar campos vacíos") : anadirProducto(producto), $('.toast').toast('show');
 
 
   } catch (error) {
@@ -152,7 +161,7 @@ botonAgregar.addEventListener('click', (e) => {
 
   obtenerDatos();
   actualizar()
-  
+
 })
 
 
@@ -182,7 +191,7 @@ async function actualizar() {
 function pintarProductos(productos) {
 
   var table = document.getElementById("cuerpoTablaProductos");
-  console.log(table);
+  /* console.log(table); */
 
   $("#cuerpoTablaProductos").empty();
 

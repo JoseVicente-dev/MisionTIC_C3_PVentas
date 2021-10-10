@@ -15,6 +15,7 @@ firebase.initializeApp(firebaseConfig);
 const dataBase = firebase.firestore();
 const btnBuscarProducto = document.getElementById('buscarProducto')
 const toastIngresoProducto = document.getElementById('liveToastIProduct')
+const btnModalModificar = document.getElementById('btnModificarPrincial')
 
 
 
@@ -248,118 +249,124 @@ btnBuscarProducto.addEventListener('click', (e)=>{
 }) 
 
 
-// ------------------------------------------------------------------*********------------------------
-// async function actualizar(){
-//     try{
-//         const productos = []
-//         const respuestaproductos = await dataBase.collection('ng_productos').orderBy("descripcion").get()
-//         respuestaproductos.forEach( function(item){
-//             /* console.log(item.data()) */
-//             productos.push(item.data())
-//         })
-//         pintarproductos(productos)
-//     }catch(error){
-//         console.log(error)
-//     }
-// }
-// /* ------------------------------------------------------------------------------------------------------- */
-// //pintarproductos
-// function pintarProductos(productos){
 
-//     var table = document.getElementById("tabla_productos");
-   
-//     $("#tabla_productos").empty();
 
-//     productos.forEach((t)=>{
-//         var oRows = document.getElementById('tabla_productos').getElementsByTagName('tr');
-//         var iRowCount = oRows.length;
 
-//         var row = table.insertRow(iRowCount);
-//         var cell1 = row.insertCell(0);
-//         var cell2 = row.insertCell(1);
-//         var cell3 = row.insertCell(2);
-//         var cell4 = row.insertCell(3);
-//         var cell5 = row.insertCell(4);
-//         var cell6 = row.insertCell(5);
-        
-//         cell1.innerHTML = '<div class="form-check"><input class="form-check-input" type="radio" name="flexRadioDefault"id="flexRadioDefault6"/></div>';
-//         cell2.innerHTML = t.codigo;
-//         cell3.innerHTML = t.descripcion;
-//         cell4.innerHTML = t.peso;
-//         cell5.innerHTML = t.valorUnitario;
-//         cell6.innerHTML = t.estado;
-        
-// })
-// }
+
+
+
+
+
 // /* ------------------------------------------------------------------------------------------------ */
-// //modificar producto
-// async function modificarProductofb(){
 
-//     const codigoInput = document.getElementById("MinputCodigo").value
-//     const descripcionInput = document.getElementById("MinputDescripcion").value;
-//     const pesoInput = document.getElementById("MinputPeso").value;
-//     const valorUInput = document.getElementById("MinputPeso").value;
-//     const estadoInput = document.getElementById("MinputEstado").value;
+//modificar producto
+async function modificarProductofb(){
 
-//     console.log(codigoInput);
-//     console.log(descripcionInput);
-//     console.log(pesoInput);
-//     console.log(valorUInput);
-//     console.log(estadoInput);
-    
-//     const respuestaproductos = await dataBase.collection("ng_productos").where('codigo','==',codigoInput).get();
-    
-//     let idmod = ""
-//     respuestaproductos.forEach(function (item){
-//          idmod=item.id
-//     });
-//    /*  idmod=respuestaproductos.id() */
+  const mCodigoInput = document.getElementById("modifyCodigo").value
+  const mDescripcionInput = document.getElementById("modifyDescripcion").value;
+  const mPesoInput = document.getElementById("modifyPeso").value;
+  const mValorUnitarioInput = document.getElementById("modifyValorUnitario").value;
 
-//    console.log(idmod)
+  const mestadoInput = document.getElementById("modifyEstado").value;
+  
+  const respuestaprodctos = await dataBase.collection("ng_productos").where('descripcion','==',mDescripcionInput).get();
+  
+  let idmod = ""
+  respuestaprodctos.forEach(function (item){
+       idmod=item.id
+  });
+ /*  idmod=respuestausuarios.id() */
 
-//     dataBase.collection("ng_productos").doc(idmod).update({
-//         // codigo: codigoInput,
-//         descripcion: descripcionInput,
-//         peso: pesoInput,
-//         valorUnitario: valorUInput,
-//         estado: estadoInput,
-//     });
-    
+ console.log(idmod)
+
+  dataBase.collection("ng_productos").doc(idmod).update({
+      descripcion: mDescripcionInput,
+      peso: mPesoInput,
+      valorUnitario: mValorUnitarioInput,
+      estado: mestadoInput,
+      /* email: memailInput, */
+  });
+  
+  setTimeout( actualizar,1000);
+  
+}
+
+//funcion del boton para que abra el modal con los datos de la fila.
+function modificarProducto() {
+
+  let tablaProductos = document.getElementById("cuerpoTablaProductos");
+  let radios = tablaProductos.getElementsByTagName("input");
+  let filas = tablaProductos.getElementsByTagName("tr");
+  let totalFilas = radios.length;
+  console.log(radios)
+
+  for (i = 0; i < totalFilas; i++) {
+      if (radios[i].checked) {
+        console.log(radios[i])
+          filaSeleccionada = filas[i]
+          document.getElementById("modifyCodigo").value = filaSeleccionada.cells[1].innerText
+          document.getElementById("modifyDescripcion").value = filaSeleccionada.cells[2].innerText
+          document.getElementById("modifyPeso").value = filaSeleccionada.cells[3].innerText
+          document.getElementById("modifyValorUnitario").value = filaSeleccionada.cells[4].innerText
+          document.getElementById("modifyEstado").value = filaSeleccionada.cells[5].innerText
+
+          if (filaSeleccionada.cells[5].innerText == "Disponible") {
+
+              document.getElementById("modifyEstado").value ="2";
+          }
+   
+
+              document.getElementById("modifyEstado").value = "1";
+          }
+
+          // filaObjetivo = filaSeleccionada
+      }
+  }
 
 
-//     actualizar()
-    
-// }
-// /* ------------------------------------------------------------------------------------------------------------- */
 
-// //funcion del boton para que abra el modal con los datos de la fila.
-// function modificarProducto() {
+function limpiarModalAdicionar(){
+  /* document.getElementById("inputCodigo").value =""; */
+  document.getElementById("inputnombre").value="";
+  /* document.getElementById("inputApellido").value=""; */
+  document.getElementById("inputEstado").value="Pendiente";
+  document.getElementById("inputEmail").value="";
+  document.getElementById("inputRol").value="";
+}
 
-//     let cuerpoTabla = document.getElementById("cuerpoTablaProductos")
-//     let radios = cuerpoTabla.getElementsByTagName("input")
-//     let filas = cuerpoTabla.getElementsByTagName("tr")
-//     let totalFilas = radios.length
+function eliminarProducto(){
 
-//     for (i = 0; i < totalFilas; i++) {
-//         if (radios[i].checked) {
+  let tablaUsuarios = document.getElementById("tabla_productocos");
+  let radios = tablaProductos.getElementsByTagName("input");
+  let filas = tablaProductos.getElementsByTagName("tr");
+  let totalFilas = radios.length;
+  let email =""
 
-//             filaSeleccionada = filas[i]
-//             document.getElementById("modifyCodigo").value = filaSeleccionada.cells[2].innerText
-//             document.getElementById("modifyDescripcion").value = filaSeleccionada.cells[3].innerText
-//             document.getElementById("modifyPeso").value = filaSeleccionada.cells[4].innerText
-//             document.getElementById("modifyValorUnitario").value = filaSeleccionada.cells[5].innerText
+  for (i = 0; i < totalFilas; i++) {
+      if (radios[i].checked) {
+          filaSeleccionada = filas[i]
+          email = filaSeleccionada.cells[3].innerText
+          
+      }
+  }
+  console.log(email);
 
-//             if (filaSeleccionada.cells[6].innerText == "Disponible") {
+  //borrar datos
+  var userborrar = dataBase.collection('ng_users').where('email','==',email);
+  console.log(userborrar);
+  
+  userborrar.get().then(function(querySnapshot) {
+      querySnapshot.forEach(function(doc) {
+              doc.ref.delete();
+      });
+  });
 
-//                 document.getElementById("modifyEstado").value = 1
-//             }
-//             else {
+ 
 
-//                 document.getElementById("modifyEstado").value = 2
-//             }
+}
 
-//             filaObjetivo = filaSeleccionada
-//         }
-//     }
-// }
 
+btnModalModificar.addEventListener('click', (e)=>{
+  e.preventDefault()
+  modificarProducto()
+}) 

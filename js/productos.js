@@ -14,6 +14,7 @@ firebase.initializeApp(firebaseConfig);
 //Declarar Variables globales  
 const dataBase = firebase.firestore();
 const btnBuscarProducto = document.getElementById('buscarProducto')
+const toastIngresoProducto = document.getElementById('liveToastIProduct')
 
 
 
@@ -133,7 +134,8 @@ botonAgregar.addEventListener('click', (e) => {
   obtenerDatos();
   actualizar()
   // mostrarInformacion()
-
+//   toastIngresoProducto
+  $('.toast').toast('show');
 })
 
 
@@ -200,7 +202,7 @@ function pintarProductos(productos) {
 async function buscarProductos() {
    
     try{
-        let busqueda = document.getElementById("busqueda").value;
+        let busqueda = document.getElementById("busqueda").value.replace(/^\w/, (c) => c.toUpperCase());
         console.log(busqueda)
         let terminoBusqueda = document.getElementById("busquedapor").value;
         /* let condicionbusqueda = document.getElementById("condicion").value; */

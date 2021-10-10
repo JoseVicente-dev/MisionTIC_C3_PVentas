@@ -174,6 +174,7 @@
               </button>
             </div>
           </div>
+          <br>
         <div class="container-fluid table-responsive">
             <table class="table table-hover text-align-tabla" id="tablaProductos">
                 <thead >
@@ -204,38 +205,12 @@
             data-bs-target="#Adicionar" >Adicionar</a>
         <a href="#" class="btn btn-primary bg-color-azul" id="btnModificarPrincial"
             data-bs-toggle="modal" data-bs-target="#Modificar">Modificar</a>
-        <a href="#" class="btn btn-primary bg-color-azul" id="btnBuscarPrincipal" data-bs-toggle="modal"
-            data-bs-target="#Buscar" >Buscar</a>
+        <a href="#" class="btn btn-primary bg-color-azul" id="btnEliminarPrincipal" data-bs-toggle="modal"
+            data-bs-target="#Buscar" >Eliminar</a>
 
     </div>
     <!-- /Botones adicion, modificacion de productos -->
-
-    
-
-      
-
-
-    <!-- Footer -->
-    <footer style="text-align: center;">
-        <img src="images/logo2.png" alt="logo-nightmare" style="height: 50px;">
-
-        <div class="position-fixed bottom-0 end-0 p-3" >
-            <div id="liveToastIProduct" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">
-              <div class="toast-header">
-                <img src="..." class="rounded me-2" alt="...">
-                <strong class="me-auto">Registro Producto</strong>
-                <small>Now</small>
-                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-              </div>
-              <div class="toast-body">
-                Producto ingresado Correctamente!.
-              </div>
-            </div>
-          </div>
-
-
-        
-    </footer>   
+   
     
     
     <!-- /Footer -->
@@ -371,6 +346,28 @@
             </div>
         </div>
     </div>
+
+    <!-- Footer -->
+    <footer style="text-align: center;">
+        <img src="images/logo2.png" alt="logo-nightmare" style="height: 50px;">
+
+        <div class="position-fixed bottom-0 end-0 p-3" >
+            <div id="liveToastIProduct" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">
+              <div class="toast-header">
+                <img class="rounded me-2 toast_imagen fad fa-check-circle" >
+                <strong class="me-auto">Registro Producto</strong>
+                <small><i class="fad fa-check-circle"></i></small>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+              </div>
+              <div class="toast-body">
+                Producto ingresado Correctamente!.
+              </div>
+            </div>
+          </div>
+
+
+        
+    </footer>
     <!-- /Modal Buscar Producto -->
 
     <!-- Modal Datos agregados -->
@@ -429,7 +426,7 @@
     <script>
         setTimeout(function(){
             $(".page-wrapper").removeClass("toggled");
-        }, 3000);
+        }, 2000);
     </script>
 
 

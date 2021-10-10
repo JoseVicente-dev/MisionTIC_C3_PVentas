@@ -103,7 +103,7 @@ function obtenerDatos() {
   const inputState = document.getElementById("inputEstado").value;
 
   const producto = {
-    codigo: uuid.v4(20),
+    codigo: uuid.v4(),
     descripcion: inputDescription.replace(/^\w/, (c) => c.toUpperCase()),
     peso: inputWeigth,
     valorUnitario: inputValue,

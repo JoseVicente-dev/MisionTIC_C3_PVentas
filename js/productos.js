@@ -13,6 +13,9 @@ firebase.initializeApp(firebaseConfig);
 
 //Declarar Variables globales  
 const dataBase = firebase.firestore();
+const btnBuscarProducto = document.getElementById('buscarProducto')
+
+
 
 async function mostrarInformacion() {
   // Se inicia el llamado de los productos desde la BD
@@ -51,9 +54,9 @@ async function mostrarInformacion() {
 
     filaTabla.appendChild(seleccionar)
 
-    numeroProducto = document.createElement("th")
-    numeroProducto.setAttribute("scope", "row")
-    numeroProducto.textContent = i
+    // numeroProducto = document.createElement("th")
+    // numeroProducto.setAttribute("scope", "row")
+    // numeroProducto.textContent = i
 
     codigo = document.createElement("td")
     codigo.textContent = p.codigo
@@ -68,8 +71,8 @@ async function mostrarInformacion() {
     peso.textContent = p.peso
 
     estado = document.createElement("td")
-    p.estado ? estado.textContent = "Disponible" : estado.textContent = "No disponible"
-    filaTabla.appendChild(numeroProducto)
+    p.estado ==='1' ? estado.textContent = "Disponible" : estado.textContent = "No disponible";
+    // filaTabla.appendChild(numeroProducto)
     filaTabla.appendChild(codigo)
     filaTabla.appendChild(descripcion)
     filaTabla.appendChild(peso)
@@ -87,6 +90,8 @@ async function mostrarInformacion() {
 
 // ------------------------------------------ Adicionar Productos--------------------------------
 //Llamado de variables
+
+
 const botonAgregar = document.getElementById("btnAdicionarModalAdicionar");
 
 function obtenerDatos() {
@@ -97,8 +102,8 @@ function obtenerDatos() {
   const inputState = document.getElementById("inputEstado").value;
 
   const producto = {
-    codigo: inputCode,
-    descripcion: inputDescription,
+    codigo: uuid.v4(20),
+    descripcion: inputDescription.replace(/^\w/, (c) => c.toUpperCase()),
     peso: inputWeigth,
     valorUnitario: inputValue,
     estado: inputState
@@ -124,7 +129,7 @@ async function anadirProducto(product) {
 
 botonAgregar.addEventListener('click', (e) => {
 
-  anadirProducto();
+//   anadirProducto();
   obtenerDatos();
   actualizar()
   // mostrarInformacion()
@@ -148,48 +153,97 @@ async function actualizar() {
     respuestaproductos.forEach(function (item) {
       productos.push(item.data())
     })
-    
+
+    pintarProductos(productos)
+
   } catch (error) {
     console.log(error)
   }
-  $("#cuerpoTablaProductos").empty();
-  mostrarInformacion()
+//   $("#cuerpoTablaProductos").empty();
+//   mostrarInformacion()
 }
 /* ------------------------------------------------------------------------------------------------------- */
-//pintarproductos
-// function pintarProductos(productos) {
+// pintarproductos
+function pintarProductos(productos) {
 
-//   var table = document.getElementById("cuerpoTablaProductos");
-//   console.log(table);
+  var table = document.getElementById("cuerpoTablaProductos");
+  console.log(table);
   
-//   $("#cuerpoTablaProductos").empty();
+  $("#cuerpoTablaProductos").empty();
 
 
-//   productos.forEach((t) => {
-//     var oRows = document.getElementById('cuerpoTablaProductos').getElementsByTagName('tr');
-//     var iRowCount = oRows.length;
+  productos.forEach((t) => {
+    var oRows = document.getElementById('cuerpoTablaProductos').getElementsByTagName('tr');
+    var iRowCount = oRows.length;
 
-//     var row = table.insertRow(iRowCount);
-//     var cell1 = row.insertCell(0);
-//     var cell2 = row.insertCell(1);
-//     var cell3 = row.insertCell(2);
-//     var cell4 = row.insertCell(3);
-//     var cell5 = row.insertCell(4);
-//     var cell6 = row.insertCell(5);
+    var row = table.insertRow(iRowCount);
+    var cell1 = row.insertCell(0);
+    var cell2 = row.insertCell(1);
+    var cell3 = row.insertCell(2);
+    var cell4 = row.insertCell(3);
+    var cell5 = row.insertCell(4);
+    var cell6 = row.insertCell(5);
 
-//     /* console.log(cell1); */
+    /* console.log(cell1); */
 
-//     cell1.innerHTML = '<div class="form-check"><input class="form-check-input" type="radio" name="flexRadioDefault"id="flexRadioDefault6"/></div>';
-//     cell2.innerHTML = t.codigo;
-//     cell3.innerHTML = t.descripcion;
-//     cell4.innerHTML = t.peso;
-//     cell5.innerHTML = t.valorUnitario;
-//     cell6.innerHTML = t.estado;
+    cell1.innerHTML = '<div class="form-check"><input class="form-check-input" type="radio" name="flexRadioDefault"id="flexRadioDefault6"/></div>';
+    cell2.innerHTML = t.codigo;
+    cell3.innerHTML = t.descripcion;
+    cell4.innerHTML = t.peso;
+    cell5.innerHTML = t.valorUnitario;
+    cell6.innerHTML = t.estado ==='1' ? estado.textContent = "Disponible" : estado.textContent = "No disponible";
+    
+  })
 
-//   })
+}
+// ---------------------------------------------------------------------------
+async function buscarProductos() {
+   
+    try{
+        let busqueda = document.getElementById("busqueda").value;
+        console.log(busqueda)
+        let terminoBusqueda = document.getElementById("busquedapor").value;
+        /* let condicionbusqueda = document.getElementById("condicion").value; */
+        /* "1"Igual
+        "2"Comienza por
+        "3"Termina por */
 
-// }
 
+        /* console.log(busqueda); */
+        /* let respuestausuarios
+        if(condicionbusqueda==1){
+            respuestausuarios = await dataBase.collection("ng_users").where(terminoBusqueda, '==', busqueda).get()
+        }else if(condicionbusqueda==2){
+            respuestausuarios = await dataBase.collection("ng_users").where(terminoBusqueda, '>=', busqueda).where(terminoBusqueda, '<=', busqueda+ '\uf8ff').get()
+        }else{
+            respuestausuarios = await dataBase.collection("ng_users").orderBy(terminoBusqueda).startAt('~' + busqueda).endAt(busqueda).get();
+        } */
+        
+        respuestaproducto = await dataBase.collection("ng_productos").where(terminoBusqueda, '>=', busqueda).where(terminoBusqueda, '<=', busqueda+ '\uf8ff').get()
+
+        const producto = []
+        respuestaproducto.forEach( function(item){
+            console.log(item.data())
+            producto.push(item.data())
+ 
+        })
+         /* console.log(usuarios); */
+
+         setTimeout( pintarProductos(producto),1000)
+         
+        
+
+    }catch(error){
+        console.log(error)
+    }
+
+
+}
+// --------------------------------------------------------------------------------
+btnBuscarProducto.addEventListener('click', (e)=>{
+    e.preventDefault()
+    buscarProductos() 
+}) 
 
 
 // ------------------------------------------------------------------*********------------------------

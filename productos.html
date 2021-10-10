@@ -141,12 +141,46 @@
 
     <!-- Tabla con datos -->
     <section class="main">
+        <div class="row align-items-center">
+            <div class="col-2" style="text-align: end;">
+              <label class="form-label" for="form1">Search by:</label>
+            </div>
+            <div class="col-2">
+              <select class="form-select " id="busquedapor" placeholder="Estado">
+                <option value="codigo">Codigo</option>
+                <option value="descripcion">Descripción</option>
+                <option value="peso">Peso</option>
+                <option value="valorUnitario">Valor Unitario</option>
+                <option value="estado">Estado</option>
+              </select>
+            </div>
+            <!-- <div class="col-1">
+              condición
+            </div>
+            <div class="col-2">
+              <select class="form-select " id="condicion" placeholder="Condición">
+                <option value="1">Igual</option>
+                <option value="2">Comienza por</option>
+                <option value="3">Termina por</option>
+      
+              </select>
+            </div> -->
+            <div class="col-6">
+              <input type="search" id="busqueda" class="form-control" placeholder="Inserte Búsqueda"/>
+            </div>
+            
+            <div class="col-2">
+              <button type="button" class="btn btn-primary" id="buscarProducto">
+                <i class="fas fa-search"></i>
+              </button>
+            </div>
+          </div>
         <div class="container-fluid table-responsive">
             <table class="table table-hover text-align-tabla" id="tablaProductos">
                 <thead >
                     <tr>
                         <th scope="col"></th>
-                        <th scope="col">#</th>
+                        <!-- <th scope="col">#</th> -->
                         <th scope="col">Código</th>
                         <th scope="col">Descripción</th>
                         <th scope="col">Peso (Kg)</th>
@@ -223,7 +257,7 @@
                     <div class="container">
                         <div class="col">
                             <input type="text" class="form-control modal-input-select-undisabled" id="inputCodigo" placeholder="Código de producto"
-                                >
+                                disabled> 
                         </div>
                         <div class="col">
                             <input type="text" class="form-control modal-input-select-undisabled" id="inputDescripcion"
@@ -376,6 +410,12 @@
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
     <script src="js/menu.js"></script>
+
+    <!-- UUID -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/uuid/8.3.2/uuid.min.js"
+            integrity="sha512-UNM1njAgOFUa74Z0bADwAq8gbTcqZC8Ej4xPSzpnh0l6KMevwvkBvbldF9uR++qKeJ+MOZHRjV1HZjoRvjDfNQ=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"></script>
     
     <!-- <script src="js/Productos-tablaProductos.js"></script> -->
     <script src="js/productos.js"></script>

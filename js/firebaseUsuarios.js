@@ -40,7 +40,6 @@ let tablaUsers = document.getElementById('tabla-usuarios')
 actualizar()
 setTimeout( menu,1000);
 
-setTimeout( compararRolUsuario, 5000)
 
 
 
@@ -104,12 +103,14 @@ async function menu(){
             }
         })
         
+setTimeout( compararRolUsuario, 1000)
         
         
         
     }catch(error){
         console.log(error)
     }
+
 }
 
 //Actiualizar Usuarios en la tabla

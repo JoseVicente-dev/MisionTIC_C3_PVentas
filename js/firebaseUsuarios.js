@@ -10,7 +10,8 @@ const firebaseConfig = {
 
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
-
+/* firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL)
+ */
 //Declarar Variables globales
 const auth = firebase.auth()
 const proveedor = new firebase.auth.GoogleAuthProvider()
@@ -20,22 +21,55 @@ let usuarioFoto;
 let usuarioEmail;
 
 //variables DOM
+
+/* const btnPrueba = document.getElementById('prueba') */
 const btnActualizar = document.getElementById('cargarDatos')
-const btnPrueba = document.getElementById('prueba')
 const btnAdicionarUser = document.getElementById('btnAdicionarUsuario')
 const btnModificarUser = document.getElementById('btnModificarUsuario')
 const btnModalModificar = document.getElementById('modalModificar')
 const btnEliminarUser = document.getElementById('btnEliminarUsuarios')
 const btnBuscarUser = document.getElementById('buscarUsuario')
 
+
 let imgUsuario = document.getElementById('imagenUsuario')
 let tipUsuario = document.getElementById('tipoUsuario')
 let nombreUsuario = document.getElementById('nombreDeUsuario')
 let tablaUsers = document.getElementById('tabla-usuarios')
 
+
 actualizar()
+setTimeout( menu,1000);
+
+setTimeout( compararRolUsuario, 5000)
+
+
+
 
 //funciones
+
+
+//comparar sesion actual con tipo de usuario
+async function compararRolUsuario(){
+
+    const respuestausuarios = await dataBase.collection("ng_users").where('email','==',usuarioEmail).get();
+    console.log(usuarioEmail);
+
+    /* let rolmod = "" */
+    const usuariosBD = [];
+    respuestausuarios.forEach(function (item){
+        usuariosBD.push(item.data());
+    });
+
+    usuariosBD.forEach((t) => {
+        if (t.rol == "Vendedor") {
+            btnAdicionarUser.disabled = true
+            document.getElementById('modaladicionar').disabled = true
+            document.getElementById('modalModificar').disabled = true
+            document.getElementById('modalEliminar').disabled = true
+        }
+      });
+}
+
 //login
 async function menu(){
     try{
@@ -210,7 +244,7 @@ async function modificarUsuariofb(){
     });
    /*  idmod=respuestausuarios.id() */
 
-   console.log(idmod)
+   /* console.log(idmod) */
 
     dataBase.collection("ng_users").doc(idmod).update({
         nombres: mnombresInput,
@@ -287,11 +321,11 @@ function eliminarUsuario(){
             
         }
     }
-    console.log(email);
+    /* console.log(email); */
 
     //borrar datos
     var userborrar = dataBase.collection('ng_users').where('email','==',email);
-    console.log(userborrar);
+    /* console.log(userborrar); */
     
     userborrar.get().then(function(querySnapshot) {
         querySnapshot.forEach(function(doc) {
@@ -346,10 +380,10 @@ async function buscarUsusario() {
 }
 
 //evento
-btnPrueba.addEventListener('click', (e)=>{
+/* btnPrueba.addEventListener('click', (e)=>{
     e.preventDefault()
     menu()
-}) 
+})  */
 btnActualizar.addEventListener('click', (e)=>{
     e.preventDefault()
     actualizar()

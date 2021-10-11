@@ -88,7 +88,7 @@ async function login(){
             alert(usuarioActual+": El usuario "+usuarioEmail+" fue creado exitosamente en la base de datos y esta pendiente de aprobación por parte del administrador de la plataforma.")
         }else if(contador==100){
             /* window.location.href = "menu.html"; */
-            window.location.href = "roles_usuarios.html";
+            window.location.href = "menu.html";
         }else if(contador==50){
             alert(usuarioActual+": El usuario "+usuarioEmail+" esta pendiente de aprobación por parte del administrador de la plataforma.")
         }

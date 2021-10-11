@@ -19,7 +19,18 @@ const toastIngresoProductoNeg = document.getElementById('liveToastIProductNeg')
 const toastCamposVacios = document.getElementById('toastCamposVacios')
 const btnModalModificar = document.getElementById('btnModificarPrincial')
 const btnModificarProducto = document.getElementById('btnModificarModalModificar')
+let imgUsuario = document.getElementById('imagenUsuario')
+let nombreUsuario = document.getElementById('nombreDeUsuario')
+const btnEliminarProducto = document.getElementById('btnEliminarModalEliminar')
 
+
+const auth = firebase.auth()
+const proveedor = new firebase.auth.GoogleAuthProvider()
+let usuarioActual;
+let usuarioFoto;
+let usuarioEmail;
+
+setTimeout(menu,1000)
 
 
 async function mostrarInformacion() {
@@ -106,10 +117,10 @@ const botonCancelar = document.getElementById("btnCancelarModal");
 function showToast(id){
   $(id).toast('show');
 }
-
 async function obtenerDatos() {
+
   try {
-    const inputCode = document.getElementById('inputCodigo').value;
+    // const inputCode = document.getElementById('inputCodigo').value;
     const inputDescription = document.getElementById("inputDescripcion").value.replace(/^\w/, (c) => c.toUpperCase());
     const inputWeigth = document.getElementById("inputPeso").value;
     const inputValue = document.getElementById("inputValorUnitario").value;
@@ -263,7 +274,9 @@ function pintarProductos(productos) {
     cell5.innerHTML = t.valorUnitario;
     cell6.innerHTML = t.estado === '1' ?  "Disponible" : "No disponible";
 
-
+    // filaObjetivo.cells[0].getElementsByTagName("input")[0].checked = true
+    // console.log(filaObjetivo)
+    // console.log(getElementsByTagName("input"))
 
   })
 
@@ -417,23 +430,23 @@ function limpiarModalAdicionar() {
 
 function eliminarProducto() {
 
-  let tablaUsuarios = document.getElementById("cuerpoTablaProductos");
+  let tablaProductos = document.getElementById("cuerpoTablaProductos");
   let radios = tablaProductos.getElementsByTagName("input");
   let filas = tablaProductos.getElementsByTagName("tr");
   let totalFilas = radios.length;
-  let email = ""
+  let codigo = ""
 
   for (i = 0; i < totalFilas; i++) {
     if (radios[i].checked) {
       filaSeleccionada = filas[i]
-      email = filaSeleccionada.cells[3].innerText
+      codigo = filaSeleccionada.cells[1].innerText
 
     }
   }
-  console.log(email);
+  console.log(codigo);
 
   //borrar datos
-  var userborrar = dataBase.collection('ng_users').where('email', '==', email);
+  var userborrar = dataBase.collection('ng_productos').where('codigo', '==', codigo);
   console.log(userborrar);
 
   userborrar.get().then(function (querySnapshot) {
@@ -445,25 +458,101 @@ function eliminarProducto() {
 
 
 }
-function ocultarBotonesProductos(){
+// ---------------------------------------------------------------
+
+//comparar sesion actual con tipo de usuario
+async function compararRolUsuario(){
+ 
+  const respuestausuarios = await dataBase.collection("ng_users").where('email','==',usuarioEmail).get();
+  console.log(usuarioEmail);
+
+  /* let rolmod = "" */
+  const usuariosBD = [];
+  respuestausuarios.forEach(function (item){
+      usuariosBD.push(item.data());
+  });
+
+  usuariosBD.forEach((t) => {
+      if (t.rol == "Vendedor") {
+        console.log('soy de verdad!')
+          // btnAdicionarUser.disabled = true
+          document.getElementById('btnAdicionarPrincipal').disabled = true
+          document.getElementById('btnModificarPrincial').disabled = true
+          document.getElementById('btnEliminarPrincipal').disabled = true
+          // document.getElementById('modalEliminar').disabled = true
+      }
+    });
+}
+//login
+async function menu(){
+  try{
+      const respuesta = await auth.signInWithPopup(proveedor)
+      /* console.log(respuesta) */
+      usuarioActual = respuesta.user.displayName
+      usuarioFoto  = respuesta.user.photoURL
+      usuarioEmail = respuesta.user.email
+
+      imgUsuario.setAttribute("src",usuarioFoto)
+      nombreUsuario.textContent = usuarioActual  
+
+      //esto en react no va tocar hacerlo
+      // leer usuarios para comparar email
+      const usuarios = []
+      const respuestausuarios = await dataBase.collection('ng_users').get()
+
+      
+
+      respuestausuarios.forEach( function(item){
+          /* console.log(item.data()) */
+          usuarios.push(item.data())
+      })
+
+      /* pintarUsuarios(usuarios) */
+
+      usuarios.forEach((t)=>{
+          if(t.email==usuarioEmail){
+              if(t.estado==true){
+                  tipUsuario.textContent = t.rol
+              }
+          }
+      })
+      
+setTimeout( compararRolUsuario, 1000)
+      
+      
+      
+  }catch(error){
+      console.log(error)
+  }
+
+}
+// ---------------------------------------------------------------------------------
+async function ocultarBotonesProductos(){
   const BotonesAdminVentasModificar = document.getElementById("btnModificarPrincial");
   const BotonesAdminVentasEliminar = document.getElementById("btnEliminarPrincipal");
 
-  BotonesAdminVentasModificar.style.display = "none";  
-  BotonesAdminVentasEliminar.style.display = "none";  
+  BotonesAdminVentasModificar.reset();  
+  BotonesAdminVentasEliminar.reset();  
 }
 
 
 btnModalModificar.addEventListener('click', (e) => {
   e.preventDefault()
   modificarProducto()
-  ocultarBotonesProductos()
-
+  
 }) 
 
 btnModificarProducto.addEventListener('click', (e)=>{
   e.preventDefault()
   modificarProductofb()
+  // ocultarBotonesProductos()
+  showToast('#toastModificacion')
+}) 
+
+btnEliminarProducto.addEventListener('click', (e)=>{
+  e.preventDefault()
+  eliminarProducto()
+  setTimeout(actualizar,1000) 
 }) 
 
 function MostrarBotonesProductos() {

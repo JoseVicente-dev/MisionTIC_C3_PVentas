@@ -60,21 +60,26 @@
                     </div>
                 </div>
                 <!-- /encabezado menu -->
-                <!-- Sección de usuario -->
-                <div class="menu-lateral-header">
-                    <div class="user-pic">
-                        <img class="img-responsive img-rounded" src="images/user2.png" alt="User picture">
-                    </div>
-                    <div class="user-info">
-                        <span class="user-name"><strong>Nightmare User</strong></span>
-                        <span class="user-role">Administrador</span>
-                        <span class="user-status">
-                            <i class="fa fa-circle"></i>
-                            <span>Online</span>
-                        </span>
-                    </div>
-                </div>
-                <!-- /Sección de usuario -->
+                       <!-- Sección de usuario -->
+          <div class="menu-lateral-header">
+            <div class="user-pic">
+              <img
+                class="img-responsive img-rounded"
+                src="images/user2.png"
+                alt="User picture"
+                id="imagenUsuario"
+              />
+            </div>
+            <div class="user-info">
+              <span class="user-name" id="nombreDeUsuario"><strong>Nightmare User</strong></span>
+              <span class="user-role" id="tipoUsuario">Administrador</span>
+              <span class="user-status">
+                <i class="fa fa-circle"></i>
+                <span>Online</span>
+              </span>
+            </div>
+          </div>
+          <!-- Sección de usuario -->
                 <!-- Opciones disponible lista de paginas -->
                 <div class="menu-lateral-menu">
                     <ul>
@@ -204,12 +209,12 @@
 
     <!-- Botones adicion, modificacion de productos -->
     <div class="container" style="text-align: center;">
-        <a href="#" class="btn btn-primary bg-color-azul" id="btnAdicionarPrincipal" data-bs-toggle="modal"
-            data-bs-target="#Adicionar">Adicionar</a>
-        <a href="#" class="btn btn-primary bg-color-azul ocultar-elementos" id="btnModificarPrincial" data-bs-toggle="modal"
-            data-bs-target="#Modificar">Modificar</a>
-        <a href="#" class="btn btn-primary bg-color-azul ocultar-elementos" id="btnEliminarPrincipal" data-bs-toggle="modal"
-            data-bs-target="#Buscar">Eliminar</a>
+        <button class="btn btn-primary bg-color-azul" id="btnAdicionarPrincipal" data-bs-toggle="modal"
+            data-bs-target="#Adicionar">Adicionar</button>
+        <button class="btn btn-primary bg-color-azul ocultar-elementos" id="btnModificarPrincial" data-bs-toggle="modal"
+            data-bs-target="#Modificar">Modificar</button>
+        <button class="btn btn-primary bg-color-azul ocultar-elementos" id="btnEliminarPrincipal" data-bs-toggle="modal"
+            data-bs-target="#Buscar">Eliminar</button>
 
         </div>
         <!-- /Botones adicion, modificacion de productos -->
@@ -321,37 +326,57 @@
     <!-- /Modal Modificar Datos -->
 
     <!-- Modal Buscar Producto -->
-    <div class="modal fade" id="Buscar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    <!-- <div class="modal fade" id="Buscar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
         aria-labelledby="staticBackdropLabel1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
             <div class="modal-content">
                 <div class="modal-header bg-color-azul">
-                    <h5 class="modal-title color-h5" id="staticBackdropLabel3">Buscar producto</h5>
+                    <h5 class="modal-title color-h5" id="staticBackdropLabel3">Eliminar producto</h5>
                     <button type="button" class="btn-close bg-color-cerrarX" data-bs-dismiss="modal"
                         aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <div class="container" id="contenedorBuscar">
                         <div class="col">
-                            <input type="text" class="form-control modal-input-select-undisabled" id="buscarCodigo"
-                                placeholder="Código de producto">
+                            <label type="text" class="form-control modal-input-select-undisabled" id="buscarCodigo"
+                                placeholder="Código de producto">Seguro desea eliminar producto?</label>
                         </div>
-                        <div class="col">
-                            <input type="text" class="form-control modal-input-select-undisabled" id="buscarDescripcion"
-                                placeholder="Descripción del producto">
-                        </div>
+                        
 
                     </div>
                     <div class="modal-footer">
 
                         <button type="button" class="btn btn-primary bg-color-azul"
-                            id="btnBuscarModalBuscar">Buscar</button>
+                            id="btnEliminarModalEliminar">Eliminar</button>
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
+       <!-- Modal Eliminar Datos  ---------------------------------------------------------------------------->
+   <div class="modal fade " id="Buscar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+   aria-labelledby="staticBackdropLabel2" aria-hidden="true">
+   <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable ">
+       <div class="modal-content ">
+           <div class="modal-header" style="background-color: #26327e;">
+               <h5 class="modal-title" id="staticBackdropLabel2" style="color: white;">Alerta Eliminar Producto</h5>
+               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                   style="background-color: #7a87bb;"></button>
+           </div>
+           <div class="modal-body">
+             <div class="modal-body">
+              <p>Está seguro de Eliminar el Producto seleccionado, recuerde que esta acción no se puede devolver</p>
+           </div>
+         </div>
+           <div class="modal-footer">
+               <button type="button" class="btn btn-primary"  data-bs-dismiss="modal"
+                   style=" background-color: #26327e;" id="btnEliminarModalEliminar">Eliminar</button> <!-- onclick="actualizarUsuario()" -->
+               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+           </div>
+       </div>
+   </div>
+</div>
 
     <!-- Footer -->
     <footer style="text-align: center;">
@@ -393,6 +418,18 @@
                 </div>
             </div>
         </div>
+        <div class="position-fixed bottom-0 end-0 p-3">
+            <div id="toastModificacion" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="toast-header">
+                    <img class="rounded me-2 toast_imagen fad fa-check-circle">
+                    <strong class="me-auto">Actualización Producto</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+                <div class="toast-body">
+                    Producto modificado con éxito.
+                </div>
+            </div>
+        </div>
 
 
 
@@ -424,13 +461,11 @@
     </div> -->
     <!-- /Modal Datos agregados -->
 
-
-
     <script src="https://www.gstatic.com/firebasejs/9.1.1/firebase-app-compat.js"></script>
 
 
     <!-- Adicionar productos de Firebase que vamos a usar -->
-    <!-- <script src="https://www.gstatic.com/firebasejs/9.1.1/firebase-auth-compat.js"></script> -->
+    <script src="https://www.gstatic.com/firebasejs/9.1.1/firebase-auth-compat.js"></script> 
     <script src="https://www.gstatic.com/firebasejs/9.1.1/firebase-firestore-compat.js"></script>
 
 

@@ -241,7 +241,7 @@
       <button class="btn btn-primary fomr-mod-user" id="cargarDatos"  >Actualizar</button>
 
       <button class="btn btn-primary fomr-mod-user" 
-      data-bs-toggle="modal" data-bs-target="#Adicionar">Adicionar</button>
+      data-bs-toggle="modal" data-bs-target="#Adicionar" id="modaladicionar">Adicionar</button>
 
       <button class="btn btn-primary fomr-mod-user" 
       data-bs-toggle="modal" data-bs-target="#Modificar" id="modalModificar" >Modificar</button>
@@ -249,7 +249,8 @@
       <!-- <button class="btn btn-primary fomr-mod-user" 
       data-bs-toggle="modal" data-bs-target="#Buscar" onclick="limpiarModal()">Buscar2</button> -->
   
-      <button class="btn btn-danger fomr-mod-user" id="btnEliminarUsuarios" >Eliminar</button>
+      <button class="btn btn-danger fomr-mod-user" 
+      data-bs-toggle="modal" data-bs-target="#Eliminar"  id="modalEliminar" >Eliminar</button>
 
   </div>
   <!-- Botones -->
@@ -258,7 +259,7 @@
 <!-- Footer -->
     <footer style="text-align: center">
       <img src="images/logo2.png" alt="logo-nightmare" style="height: 50px" />
-      <button id="prueba">prueba</button>
+      <!-- <button id="prueba">prueba</button> -->
     </footer>
 <!-------------------------------------------------------------------------->
 
@@ -353,6 +354,33 @@
     </div>
 <!--------------------------------------------------------------------------------------------------------->
 
+   <!-- Modal Eliminar Datos  ---------------------------------------------------------------------------->
+   <div class="modal fade " id="Eliminar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+   aria-labelledby="staticBackdropLabel2" aria-hidden="true">
+   <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable ">
+       <div class="modal-content ">
+           <div class="modal-header" style="background-color: #26327e;">
+               <h5 class="modal-title" id="staticBackdropLabel2" style="color: white;">Alerta Eliminar Usuario</h5>
+               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                   style="background-color: #7a87bb;"></button>
+           </div>
+           <div class="modal-body">
+             <div class="modal-body">
+              <p>Está seguro de Eliminar el usuario seleccionado, recuerde que esta acción no se puede devolver</p>
+           </div>
+         </div>
+           <div class="modal-footer">
+               <button type="button" class="btn btn-primary"  data-bs-dismiss="modal"
+                   style=" background-color: #26327e;" id="btnEliminarUsuarios">Eliminar</button> <!-- onclick="actualizarUsuario()" -->
+               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+           </div>
+       </div>
+   </div>
+</div>
+<!--------------------------------------------------------------------------------------------------------->
+
+
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/esm/popper.js"></script>
     <script
@@ -379,6 +407,8 @@
             crossorigin="anonymous"
             referrerpolicy="no-referrer"></script>
 
+
+    <!-- <script src="js/firebaseLogin.js"></script> -->
     <script src="js/firebaseUsuarios.js"></script>
 
 

@@ -1,0 +1,39 @@
+.abs-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  form{
+    max-width: 400px;
+    min-width: 300px;
+    height: 200px ;
+  }
+
+  .campos{
+    background-color: #d8e5fe;
+    color: #7a87bb;
+    border: #7a87bb;
+  }
+
+  /* body{ 
+    background-image: url(../images/granos-bg.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+  } */
+
+  .modal-content{
+    height: auto;
+    
+  }
+
+  .logong{
+    height: 50px;
+  }
+
+  @media (max-width: 500px ) {
+    .logong{
+      height: 30px;
+    }
+ }
+

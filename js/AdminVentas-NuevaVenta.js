@@ -1,4 +1,6 @@
-console.log('Nueva Venta')
+console.log('Prueba nueva venta enlace')
+const btnAgregarNuevaVenta = document.getElementById('btnAgregarModalNuevaVenta')
+console.log(btnAgregarNuevaVenta)
 
 function NuevaVenta() {
     
@@ -23,8 +25,6 @@ function NuevaVenta() {
     Check.setAttribute("type", "radio");
     Check.setAttribute("name", "flexRadioDefault")
     Check.setAttribute("id", (numerodeFilas + 1));
-    // con estas dos funciones cuando presionamos un checkbox apareceran los botones
-    // y se enviará la información para rellenar los modales necesarios
     Check.setAttribute("onClick","MostrarBotones();InsertarDatosModalVentaBuscada(id)")
     var IdInsertado = document.createElement("label");
     IdInsertado.setAttribute("id", "Id" + (numerodeFilas));
@@ -93,6 +93,15 @@ function NuevaVenta() {
     Fila.appendChild(col9)
     insertarFila.appendChild(Fila)
 
+
+ }
+
+
+btnAgregarNuevaVenta.addEventListener('click', (e)=>{
+    e.preventDefault()
+    NuevaVenta()
+})
+
     // se ingresa la info de las nuevas ventas en los vectores 
     // Id.push(UltimoIdVenta+1)
     // console.log(Id.at(-2))
@@ -118,6 +127,3 @@ function NuevaVenta() {
     // Estado.push(NuevoEstado.value)
     // console.log(Estado.at(-2))
     // console.log(Estado.at(-1))
-
-
-}

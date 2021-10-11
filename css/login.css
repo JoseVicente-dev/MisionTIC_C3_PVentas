@@ -27,3 +27,13 @@
     
   }
 
+  .logong{
+    height: 50px;
+  }
+
+  @media (max-width: 500px ) {
+    .logong{
+      height: 30px;
+    }
+ }
+

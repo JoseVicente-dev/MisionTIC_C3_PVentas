@@ -90,3 +90,6 @@ function InsertarDatos() {
           ColumnEstado.textContent = Estado[i]
      }
 }
+
+nuevaFila()
+InsertarDatos()

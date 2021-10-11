@@ -1,10 +1,19 @@
 let filaObjetivo;
 
+const btnInsertarProducto = document.getElementById('btnAdicionarModalAdicionar')
+const btnModificarProducto = document.getElementById('btnModificarModalModificar')
+const btnBuscarProducto = document.getElementById('btnBuscarModalBuscar')
+
+const btnAdicionarPrincipal = document.getElementById('btnAdicionarPrincipal')
+const btnModificarPrincipal = document.getElementById('btnModificarPrincial')
+const btnBuscarPrincipal = document.getElementById('btnBuscarPrincipal')
+
+
+
 function insertarProducto() {
 
     let insertarFila = document.getElementById("cuerpoTablaProductos")
-    console.log(insertarFila);
-
+    
     // .getElementsByTagName("tbody")
 
     let i = insertarFila.getElementsByTagName("tr").length
@@ -63,7 +72,7 @@ function modificarProducto() {
     for (i = 0; i < totalFilas; i++) {
         if (radios[i].checked) {
 
-            // console.log((i + 1) + "-ésima fila seleccionada")
+            
             filaSeleccionada = filas[i]
             document.getElementById("modifyCodigo").value = filaSeleccionada.cells[2].innerText
             document.getElementById("modifyDescripcion").value = filaSeleccionada.cells[3].innerText
@@ -114,15 +123,15 @@ function buscarProducto() {
 
     if (document.getElementById("buscarCodigo").value!=false){
 
-        console.log("if externo");
+        
         
         for(i = 0; i < totalFilas; i++){
 
-            console.log("primer for")
+            
 
             if ((filas[i].cells[2].innerText) == (document.getElementById("buscarCodigo").value)){
 
-                console.log("primer if")
+               
                 
                 filaObjetivo=filas[i]
                 filas[i].cells[0].getElementsByTagName("input")[0].checked=true
@@ -139,8 +148,7 @@ function buscarProducto() {
                     estadoBuscado = 2
                 }
 
-                console.log(codigoBuscado)
-                console.log(descripcionBuscado)
+                
 
                 break
             }           
@@ -255,8 +263,49 @@ function limpiarBusqueda(){
     document.getElementById("btnBuscarModalBuscar").removeAttribute("data-bs-toggle","modal")
     document.getElementById("btnBuscarModalBuscar").removeAttribute("data-bs-target","#Modificar")
     document.getElementById("btnBuscarModalBuscar").removeAttribute("data-bs-dismiss","modal")
-    document.getElementById("btnBuscarModalBuscar").textContent="Buscar"
-    
-    
+    document.getElementById("btnBuscarModalBuscar").textContent="Buscar"   
 
 }
+
+
+btnInsertarProducto.addEventListener('click', (e)=>{
+    e.preventDefault()
+    insertarProducto()
+
+})
+
+btnModificarProducto.addEventListener('click', (e)=>{
+    e.preventDefault()
+    actualizarProducto()
+})
+
+btnBuscarProducto.addEventListener('click', (e)=>{
+    e.preventDefault()
+    buscarProducto()
+      
+})
+
+btnAdicionarPrincipal.addEventListener('click', (e)=>{
+    e.preventDefault()
+    limpiarBusqueda()
+})
+
+btnBuscarPrincipal.addEventListener('click', (e)=>{
+    e.preventDefault()
+    limpiarBusqueda()
+})
+
+btnModificarPrincipal.addEventListener('click', (e)=>{
+    e.preventDefault()
+    modificarProducto()
+})
+
+btnModificarModalModificar.addEventListener('click', (e)=>{
+    e.preventDefault()
+    // buscarProducto()
+    $(function (){
+      $('.toast').toast('show')
+  }) 
+      
+  })
+

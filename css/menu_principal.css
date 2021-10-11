@@ -13,3 +13,39 @@
     width: 192px;
     height: 192px;
 }
+
+.modal_a{
+    font-size: 25px;
+}
+
+.img_cls{
+    max-height: 52px;
+}
+.div_container{
+    min-width: 200px;
+}
+.div_tarjeta{
+    min-width: 200px;
+}
+.div_cls_mb{
+    min-width: 300px; 
+    background-color: #d8e5fe;
+    border-color: #7a87bb;
+}
+
+.a_ventas{
+    background-color: #26327e;
+}
+
+.card_div_mb{
+    background-color: #d8e5fe;
+    border-color: #7a87bb;
+}
+
+.i_cls{
+    font-size: 140px;
+    color: #2972ff
+}
+.css_pos{
+    text-align: center;
+}

@@ -41,6 +41,8 @@
       rel="stylesheet"
     />
   </head>
+  
+  
   <body>
     <!-- NavBar superior-->
     <nav class="navbar navbar-expand-lg navbar-dark bg-color" id="menu">
@@ -95,11 +97,12 @@
                 class="img-responsive img-rounded"
                 src="images/user2.png"
                 alt="User picture"
+                id="imagenUsuario"
               />
             </div>
             <div class="user-info">
-              <span class="user-name"><strong>Nightmare User</strong></span>
-              <span class="user-role">Administrador</span>
+              <span class="user-name" id="nombreDeUsuario"><strong>Nightmare User</strong></span>
+              <span class="user-role" id="tipoUsuario">Administrador</span>
               <span class="user-status">
                 <i class="fa fa-circle"></i>
                 <span>Online</span>
@@ -171,133 +174,97 @@
     </div>
     <!-- Menú lateral -->
 
-
-
     <!-- Tabla con datos -->
     <section class="main">
+
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-2" style="text-align: end;">
+            <label class="form-label" for="form1">Search by:</label>
+          </div>
+          <div class="col-2">
+            <select class="form-select " id="busquedapor" placeholder="Estado">
+              <option value="id">Id</option>
+              <option value="nombres">Nombres</option>
+              <option value="email">Email</option>
+              <option value="rol">rol</option>
+              <option value="estado">Estado</option>
+            </select>
+          </div>
+          <!-- <div class="col-1">
+            condición
+          </div>
+          <div class="col-2">
+            <select class="form-select " id="condicion" placeholder="Condición">
+              <option value="1">Igual</option>
+              <option value="2">Comienza por</option>
+              <option value="3">Termina por</option>
+    
+            </select>
+          </div> -->
+          <div class="col-6">
+            <input type="search" id="busqueda" class="form-control" placeholder="Inserte Búsqueda"/>
+          </div>
+          
+          <div class="col-2">
+            <button type="button" class="btn btn-primary" id="buscarUsuario">
+              <i class="fas fa-search"></i>
+            </button>
+          </div>
+        </div>
+
+      </div>
+
       <div class="container-fluid table-responsive">
-        <table class="table table-hover" id="tabla_usuarios">
-          <thead style="text-align: center">
+        <table class="table table-hover table-striped" >
+          <thead  style="text-align: center"> <!-- class="table-dark" -->
             <tr>
               <th scope="col"></th>
               <th scope="col">Id</th>
               <th scope="col">Nombres</th>
-              <th scope="col">Apellidos</th>
+              <th scope="col">Email</th>
               <th scope="col">Rol</th>
               <th scope="col">Estado</th>
             </tr>
           </thead>
-          <tbody style="text-align: center" id="cuerpoTablaUsuarios">
-            <tr>
-              <th>
-                <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    type="radio"
-                    name="flexRadioDefault"
-                    id="flexRadioDefault1"
-                  />
-                </div>
-              </th>
-              <th scope="row">1</th>
-              <td>Pepito1</td>
-              <td>Perez</td>
-              <td>Vendendor</td>
-              <td>pendiente</td>
+          <tbody style="text-align: center" id="tabla_usuarios">
+            <tr id="tabla-usuarios">
             </tr>
 
-            <tr>
-              <th>
-                <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    type="radio"
-                    name="flexRadioDefault"
-                    id="flexRadioDefault2"
-                  />
-                </div>
-              </th>
-              <th scope="row">2</th>
-              <td>Pepito2</td>
-              <td>Perez</td>
-              <td>Vendendor</td>
-              <td>pendiente</td>
-            </tr>
-
-            <tr>
-              <th>
-                <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    type="radio"
-                    name="flexRadioDefault"
-                    id="flexRadioDefault3"
-                  />
-                </div>
-              </th>
-              <th scope="row">3</th>
-              <td>Pepito3</td>
-              <td>Perez</td>
-              <td>Vendendor</td>
-              <td>autorizado</td>
-            </tr>
-
-            <tr>
-              <th>
-                <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    type="radio"
-                    name="flexRadioDefault"
-                    id="flexRadioDefault4"
-                  />
-                </div>
-              </th>
-              <th scope="row">4</th>
-              <td>Pepito4</td>
-              <td>Perez</td>
-              <td>Vendendor</td>
-              <td>no autorizado</td>
-            </tr>
-
-            <tr>
-              <th>
-                <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    type="radio"
-                    name="flexRadioDefault"
-                    id="flexRadioDefault5"
-                  />
-                </div>
-              </th>
-              <th scope="row">5</th>
-              <td>Pepito5</td>
-              <td>Perez</td>
-              <td>Vendendor</td>
-              <td>no autorizado</td>
-            </tr>
-            <tr>
-              <th>
-                <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    type="radio"
-                    name="flexRadioDefault"
-                    id="flexRadioDefault6"
-                  />
-                </div>
-              </th>
-              <th scope="row">6</th>
-              <td>Pepito6</td>
-              <td>Perez</td>
-              <td>Vendendor</td>
-              <td>autorizado</td>
-            </tr>
           </tbody>
         </table>
       </div>
     </section>
+
+    <!-- Botones -->
+   <div class="container" style="text-align: center;">
+      <button class="btn btn-primary fomr-mod-user" id="cargarDatos"  >Actualizar</button>
+
+      <button class="btn btn-primary fomr-mod-user" 
+      data-bs-toggle="modal" data-bs-target="#Adicionar" id="modaladicionar">Adicionar</button>
+
+      <button class="btn btn-primary fomr-mod-user" 
+      data-bs-toggle="modal" data-bs-target="#Modificar" id="modalModificar" >Modificar</button>
+          
+      <!-- <button class="btn btn-primary fomr-mod-user" 
+      data-bs-toggle="modal" data-bs-target="#Buscar" onclick="limpiarModal()">Buscar2</button> -->
+  
+      <button class="btn btn-danger fomr-mod-user" 
+      data-bs-toggle="modal" data-bs-target="#Eliminar"  id="modalEliminar" >Eliminar</button>
+
+  </div>
+  <!-- Botones -->
+
+
+<!-- Footer -->
+    <footer style="text-align: center">
+      <img src="images/logo2.png" alt="logo-nightmare" style="height: 50px" />
+      <!-- <button id="prueba">prueba</button> -->
+    </footer>
+<!-------------------------------------------------------------------------->
+
+
+
 
     <!-- Modal Adicionar Datos ---------------------------------------------------------------------------->
     <div class="modal fade" id="Adicionar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
@@ -310,46 +277,42 @@
                         style="background-color: #7a87bb;"></button>
                 </div>
                 <div class="modal-body">
-                    <div class="container">
+                    <div class="container"> 
                         <div class="col">
-                            <input type="text" class="form-control" id="inputCodigo" placeholder="Código del usuario"
-                                style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
-                        background-color: #d8e5fe; text-align: center;">
-                        </div>
-                        <div class="col">
-                            <input type="text" class="form-control" id="inputnombre"
-                                placeholder="Nombres" style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
-                        background-color: #d8e5fe; text-align: center;">
-                        </div>
-                        <div class="col">
-                          <input type="text" class="form-control" id="inputApellido"
-                              placeholder="Apellidos" style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
-                        background-color: #d8e5fe; text-align: center;">
-                        </div>
-                        <div class="col">
-                            <input type="text" class="form-control" id="inputRol"
-                                placeholder="Cargo" style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
-                        background-color: #d8e5fe; text-align: center;">
-                        </div>
-                        <div class="col">
-
-                            <select class="form-select" id="inputEstado" placeholder="Estado" style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
-                        background-color: #d8e5fe; text-align: center;" aria-label="Default select example">
-                                <option value="Pendiente">Pendiente</option>
-                                <option value="Autorizado">Autorizado</option>
-                                <option value="No autorizado">No autorizado</option>
+                            <!-- <input type="text" class="form-control form-add-user" id="inputCodigo" value="ID"> -->
+                            <input type="text" class="form-control form-add-user" id="inputnombre" placeholder="Nombres y Apellidos" >
+                            <!-- <input type="text" class="form-control form-add-user" id="inputApellido" placeholder="Apellidos" > -->
+                            <input type="email" class="form-control form-add-user" id="inputEmail" placeholder="email" pattern=".+@gmail.com">
+                            
+                            <!-- <input type="text" class="form-control form-add-user" id="inputRol" placeholder="Cargo"> -->
+                            <select class="form-select form-add-user" id="inputRol" placeholder="Cargo"  aria-label="Default select example">
+                              <option value="Vendedor">Vendedor</option>
+                              <option value="Administrador">Administrador</option>
                             </select>
-                        </div>
+                            <select class="form-select form-add-user" id="inputEstado" placeholder="Estado" >
+                                  <option value="Pendiente">Pendiente</option>
+                                  <option value="Autorizado">Autorizado</option>
+                                  <option value="No autorizado">No autorizado</option>
+                            </select>
+                            <br>
+                            <div class="col text-center">
+                              <label for="">Seleccione una foto de perfil</label>
+                              <input type="file" class="form-control-file form-add-user"  id="" accept="image/png, .jpeg, .jpg, image/gif">
+                            </div>
+                         
+                        </div>                       
                     </div>
-                </div>
+
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" onclick="nuevaFila()" data-bs-dismiss="modal"
-                        style=" background-color: #26327e;">Adicionar</button>
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary"  data-bs-dismiss="modal"
+                        style=" background-color: #26327e;" id="btnAdicionarUsuario">Adicionar</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>  <!-- onclick="nuevaFila()" -->
                 </div>
             </div>
         </div>
     </div>
+  </div>
+
     <!-- Modal Modificar Datos  ---------------------------------------------------------------------------->
     <div class="modal fade " id="Modificar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
         aria-labelledby="staticBackdropLabel2" aria-hidden="true">
@@ -361,100 +324,62 @@
                         style="background-color: #7a87bb;"></button>
                 </div>
                 <div class="modal-body">
-
                   <div class="modal-body">
                     <div class="container">
                         <div class="col">
-                            <input type="text" class="form-control" id="MinputCodigo" placeholder="Código del usuario"
-                                style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;background-color:gainsboro ; 
-                                text-align: center;" disabled>
-                        </div>
-                        <div class="col">
-                            <input type="text" class="form-control" id="Minputnombre"
-                                placeholder="Nombres" style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
-                        background-color: #d8e5fe; text-align: center;">
-                        </div>
-                        <div class="col">
-                          <input type="text" class="form-control" id="MinputApellido"
-                              placeholder="Apellidos" style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
-                        background-color: #d8e5fe; text-align: center;">
-                        </div>
-                        <div class="col">
-                            <input type="text" class="form-control" id="MinputRol"
-                                placeholder="Cargo" style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
-                        background-color: #d8e5fe; text-align: center;">
-                        </div>
-                        <div class="col">
-
-                            <select class="form-select" id="MinputEstado" placeholder="Estado" style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
-                        background-color: #d8e5fe; text-align: center;" aria-label="Default select example">
+                            <input type="text" class="form-control form-add-user" id="MinputCodigo" placeholder="Código del usuario" disabled>
+                            <input type="text" class="form-control form-add-user" id="Minputnombre" placeholder="Nombres" disabled>
+                            <input type="email" class="form-control form-add-user" id="MinputEmail" placeholder="email" disabled>
+                            <!-- <input type="text" class="form-control form-add-user" id="MinputRol" placeholder="Cargo" > -->
+                            <select class="form-select form-add-user" id="MinputRol" placeholder="Cargo"  aria-label="Default select example">
+                              <option value="Vendedor">Vendedor</option>
+                              <option value="Administrador">Administrador</option>
+                            </select>
+                            <select class="form-select form-add-user" id="MinputEstado" placeholder="Estado"  aria-label="Default select example">
                                 <option value="Pendiente">Pendiente</option>
                                 <option value="Autorizado">Autorizado</option>
                                 <option value="No autorizado">No autorizado</option>
                             </select>
-                        </div>
+                          </div>
                     </div>
                 </div>
               </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" onclick="actualizarUsuario()" data-bs-dismiss="modal"
-                        style=" background-color: #26327e;">Modificar</button>
+                    <button type="button" class="btn btn-primary"  data-bs-dismiss="modal"
+                        style=" background-color: #26327e;" id="btnModificarUsuario">Modificar</button> <!-- onclick="actualizarUsuario()" -->
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                 </div>
             </div>
         </div>
     </div>
 <!--------------------------------------------------------------------------------------------------------->
-<!-- Modal Buscar -->
-    <div class="modal fade" id="Buscar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-        aria-labelledby="staticBackdropLabel1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-            <div class="modal-content">
-                <div class="modal-header" style="background-color: #26327e;">
-                    <h5 class="modal-title" id="staticBackdropLabel3" style="color: white;">Buscar usuario</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
-                        style="background-color: #7a87bb;"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="container" id="contenedorBuscar">
-                        <div class="col">
-                            <input type="text" class="form-control" id="buscarCodigo" placeholder="Código del usuario"
-                                style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
-                        background-color: #d8e5fe; text-align: center;">
-                        </div>
-                        <div class="col">
-                            <input type="text" class="form-control" id="buscarNombre"
-                                placeholder="Nombre" style="margin: 10px; max-width: 90%; border-color: #7a87bb; margin-left: 15px;
-                        background-color: #d8e5fe; text-align: center;">
-                        </div>
-                        
-                    </div>
-                    <div class="modal-footer">
 
-                        <button type="button" class="btn btn-primary" id="btnBuscarModalBuscar" onclick="buscarUsuario()"
-                            style=" background-color: #26327e;">Buscar</button>
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-   <div class="container" style="text-align: center;">
-      <a href="#" class="btn btn-primary" style=" background-color: #26327e;margin-bottom: 60px;" data-bs-toggle="modal"
-          data-bs-target="#Adicionar" onclick="limpiarModal()">Adicionar</a>
-      <a href="#" class="btn btn-primary" style=" background-color: #26327e;margin-bottom: 60px;" onclick="modificarUsuario()"
-          data-bs-toggle="modal" data-bs-target="#Modificar">Modificar</a>
-      <a href="#" class="btn btn-primary" style=" background-color: #26327e; margin-bottom: 60px;" data-bs-toggle="modal"
-          data-bs-target="#Buscar" onclick="limpiarModal()">Buscar2</a>
-  </div>
+   <!-- Modal Eliminar Datos  ---------------------------------------------------------------------------->
+   <div class="modal fade " id="Eliminar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+   aria-labelledby="staticBackdropLabel2" aria-hidden="true">
+   <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable ">
+       <div class="modal-content ">
+           <div class="modal-header" style="background-color: #26327e;">
+               <h5 class="modal-title" id="staticBackdropLabel2" style="color: white;">Alerta Eliminar Usuario</h5>
+               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                   style="background-color: #7a87bb;"></button>
+           </div>
+           <div class="modal-body">
+             <div class="modal-body">
+              <p>Está seguro de Eliminar el usuario seleccionado, recuerde que esta acción no se puede devolver</p>
+           </div>
+         </div>
+           <div class="modal-footer">
+               <button type="button" class="btn btn-primary"  data-bs-dismiss="modal"
+                   style=" background-color: #26327e;" id="btnEliminarUsuarios">Eliminar</button> <!-- onclick="actualizarUsuario()" -->
+               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+           </div>
+       </div>
+   </div>
+</div>
+<!--------------------------------------------------------------------------------------------------------->
 
 
-<!-- Footer -->
-    <footer style="text-align: center">
-      <img src="images/logo2.png" alt="logo-nightmare" style="height: 50px" />
-    </footer>
-<!-------------------------------------------------------------------------->
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/esm/popper.js"></script>
@@ -464,9 +389,28 @@
       crossorigin="anonymous"
     ></script>
     <script src="js/menu.js"></script>
-    <script src="js/menu.js"></script>
     <script src="js/usuarios.js"></script>
     <script src="js/modal.js"></script>
+
+
+    <!-- Firebase SDK (Software Development Kit) siempre se debe usar y debe ser el primero de colocar -->
+    <script src="https://www.gstatic.com/firebasejs/9.1.1/firebase-app-compat.js"></script>
+
+
+    <!-- Adicionar productos de Firebase que vamos a usar -->
+    <script src="https://www.gstatic.com/firebasejs/9.1.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.1.1/firebase-firestore-compat.js"></script>
+
+    <!-- UUID -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/uuid/8.3.2/uuid.min.js"
+            integrity="sha512-UNM1njAgOFUa74Z0bADwAq8gbTcqZC8Ej4xPSzpnh0l6KMevwvkBvbldF9uR++qKeJ+MOZHRjV1HZjoRvjDfNQ=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"></script>
+
+
+    <!-- <script src="js/firebaseLogin.js"></script> -->
+    <script src="js/firebaseUsuarios.js"></script>
+
 
     <!-- esconder el menú 3s -->
     <script>
@@ -474,6 +418,7 @@
           $(".page-wrapper").removeClass("toggled");
       }, 3000);
     </script>
+
 
   </body>
 </html>

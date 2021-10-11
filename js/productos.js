@@ -422,10 +422,16 @@ async function modificarProductofb() {
 
 
 function limpiarModalAdicionar() {
-  document.getElementById("inputCodigo").value = "";
+  // document.getElementById("inputCodigo").value = "";
   document.getElementById("inputDescripcion").value = "";
   document.getElementById("inputPeso").value = "";
   document.getElementById("inputValorUnitario").value = "";
+}
+function limpiarModalModificar() {
+  document.getElementById("modifyCodigo").value = "";
+  document.getElementById("modifyDescripcion").value = "";
+  document.getElementById("modifyPeso").value = "";
+  document.getElementById("modifyValorUnitario").value = "";
 }
 
 function eliminarProducto() {
@@ -527,13 +533,13 @@ setTimeout( compararRolUsuario, 1000)
 
 }
 // ---------------------------------------------------------------------------------
-async function ocultarBotonesProductos(){
-  const BotonesAdminVentasModificar = document.getElementById("btnModificarPrincial");
-  const BotonesAdminVentasEliminar = document.getElementById("btnEliminarPrincipal");
+// async function ocultarBotonesProductos(){
+//   const BotonesAdminVentasModificar = document.getElementById("btnModificarPrincial");
+//   const BotonesAdminVentasEliminar = document.getElementById("btnEliminarPrincipal");
 
-  BotonesAdminVentasModificar.reset();  
-  BotonesAdminVentasEliminar.reset();  
-}
+//   BotonesAdminVentasModificar.reset();  
+//   BotonesAdminVentasEliminar.reset();  
+// }
 
 
 btnModalModificar.addEventListener('click', (e) => {
@@ -547,6 +553,7 @@ btnModificarProducto.addEventListener('click', (e)=>{
   modificarProductofb()
   // ocultarBotonesProductos()
   showToast('#toastModificacion')
+  limpiarModalModificar()
 }) 
 
 btnEliminarProducto.addEventListener('click', (e)=>{

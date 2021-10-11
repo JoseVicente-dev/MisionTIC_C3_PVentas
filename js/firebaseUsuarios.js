@@ -103,8 +103,7 @@ async function menu(){
             }
         })
         
-setTimeout( compararRolUsuario, 1000)
-        
+        setTimeout( compararRolUsuario, 1000)
         
         
     }catch(error){
@@ -231,7 +230,7 @@ async function agregarUsuario(){
 //modificar usuario
 async function modificarUsuariofb(){
 
-    const mnombresInput = document.getElementById("Minputnombre").value
+    /* const mnombresInput = document.getElementById("Minputnombre").value */
     /* const apellidosInput = document.getElementById("MinputApellido").value */
     const memailInput = document.getElementById("MinputEmail").value;
     const mrolInput = document.getElementById("MinputRol").value;
@@ -248,7 +247,7 @@ async function modificarUsuariofb(){
    /* console.log(idmod) */
 
     dataBase.collection("ng_users").doc(idmod).update({
-        nombres: mnombresInput,
+        /* nombres: mnombresInput, */
         rol: mrolInput,
         estado: mestadoInput,
         /* email: memailInput, */

@@ -84,7 +84,7 @@ async function mostrarInformacion() {
   })
 
 }
-
+mostrarInformacion()
 
 // ------------------------------------------ Adicionar Productos--------------------------------
 //Llamado de variables
@@ -133,13 +133,6 @@ botonAgregar.addEventListener('click', (e) => {
 })
 
 
-
-
-
-
-
-
-mostrarInformacion()
 /* ---------------------------------------------------------------------------------------------- */
 //Actiualizar Productos en la tabla
 async function actualizar() {

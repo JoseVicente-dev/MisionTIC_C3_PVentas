@@ -15,6 +15,8 @@ firebase.initializeApp(firebaseConfig);
 const dataBase = firebase.firestore();
 const btnBuscarProducto = document.getElementById('buscarProducto')
 const toastIngresoProducto = document.getElementById('liveToastIProduct')
+const toastIngresoProductoNeg = document.getElementById('liveToastIProductNeg')
+const toastCamposVacios = document.getElementById('toastCamposVacios')
 const btnModalModificar = document.getElementById('btnModificarPrincial')
 
 
@@ -95,6 +97,12 @@ async function mostrarInformacion() {
 
 
 const botonAgregar = document.getElementById("btnAdicionarModalAdicionar");
+const botonCancelar = document.getElementById("btnCancelarModal");
+
+
+function showToast(id){
+  $(id).toast('show');
+}
 
 async function obtenerDatos() {
   try {
@@ -112,19 +120,6 @@ async function obtenerDatos() {
       productosArray.push(t.data())
     })
 
-    productosArray.forEach((item)=>{
-      if(item.descripcion===inputDescription){
-        console.log("Sí funciona");
-      }else{
-        console.log("No funciona");
-      }
-    })
-
-
-    /* console.log(productosArray); */
-
-
-
     const producto = {
       codigo: uuid.v4(),
       descripcion: inputDescription.replace(/^\w/, (c) => c.toUpperCase()),
@@ -132,12 +127,50 @@ async function obtenerDatos() {
       valorUnitario: inputValue,
       estado: inputState
     }
+    //producto.descripcion == "" || producto.peso == "" || producto.valorUnitario == "" ? alert("No se pueden dejar campos vacíos") : console.log("Holi 2");//anadirProducto(producto);
+    if (producto.descripcion != "" || producto.peso != "" || producto.valorUnitario != "") {
+      if (productosArray.length != 0 && productosArray.find(busquedaArray => busquedaArray.descripcion == inputDescription)) {
+        console.log('Holi 5');
+        console.log(productosArray);
+        console.log('Ya está en la lista');
+      } else {
+        console.log('Entrando no s{e a d{onde');
+        console.log(typeof producto.estado);
+        anadirProducto(producto)
+        actualizar();
+        showToast('#liveToastIProduct');
+        
+
+
+      }
+    }else{
+      console.log('Los datos están vacíos');
+      showToast('#toastCamposVacios')
+
+    }
+
+    /* productosArray.forEach((item)=>{
+        if(item.descripcion!=producto.descripcion){
+        
+          anadirProducto(producto);
+          actualizar()
+          
+          
+        }else{
+          alert("No pueden haber varios productos iguales.")
+          console.log(!item.descripcion===inputDescription);
+          console.log(item.descripcion);
+        }
+    }) */
+
+
+
 
     /* console.log(producto.descripcion); */
     let contador = 0;
 
 
-    producto.descripcion == "" || producto.peso == "" || producto.valorUnitario == "" ? alert("No se pueden dejar campos vacíos") : anadirProducto(producto), $('.toast').toast('show');
+
 
 
   } catch (error) {
@@ -158,11 +191,15 @@ async function anadirProducto(product) {
 
 
 botonAgregar.addEventListener('click', (e) => {
-
-
   obtenerDatos();
   actualizar()
+  limpiarModalAdicionar();
 
+
+})
+botonCancelar.addEventListener('click', (e) => {
+  e.preventDefault();
+  limpiarModalAdicionar();
 })
 
 
@@ -190,14 +227,16 @@ async function actualizar() {
 /* ------------------------------------------------------------------------------------------------------- */
 // pintarproductos
 function pintarProductos(productos) {
-
+  
   var table = document.getElementById("cuerpoTablaProductos");
   /* console.log(table); */
 
   $("#cuerpoTablaProductos").empty();
 
+  
 
   productos.forEach((t) => {
+    
     var oRows = document.getElementById('cuerpoTablaProductos').getElementsByTagName('tr');
     var iRowCount = oRows.length;
 
@@ -209,13 +248,12 @@ function pintarProductos(productos) {
     var cell5 = row.insertCell(4);
     var cell6 = row.insertCell(5);
 
-
     cell1.innerHTML = '<div class="form-check"><input class="form-check-input" type="radio" name="flexRadioDefault"id="flexRadioDefault6"/></div>';
     cell2.innerHTML = t.codigo;
     cell3.innerHTML = t.descripcion;
     cell4.innerHTML = t.peso;
     cell5.innerHTML = t.valorUnitario;
-    cell6.innerHTML = t.estado === '1' ? estado.textContent = "Disponible" : estado.textContent = "No disponible";
+    cell6.innerHTML = t.estado === '1' ?  "Disponible" : "No disponible";
 
   })
 
@@ -281,10 +319,12 @@ btnBuscarProducto.addEventListener('click', (e) => {
 
 
 
+
+
 // /* ------------------------------------------------------------------------------------------------ */
 
 //modificar producto
-async function modificarProductofb(){
+async function modificarProductofb() {
 
   const mCodigoInput = document.getElementById("modifyCodigo").value
   const mDescripcionInput = document.getElementById("modifyDescripcion").value;
@@ -292,27 +332,27 @@ async function modificarProductofb(){
   const mValorUnitarioInput = document.getElementById("modifyValorUnitario").value;
 
   const mestadoInput = document.getElementById("modifyEstado").value;
-  
-  const respuestaprodctos = await dataBase.collection("ng_productos").where('descripcion','==',mDescripcionInput).get();
-  
-  let idmod = ""
-  respuestaprodctos.forEach(function (item){
-       idmod=item.id
-  });
- /*  idmod=respuestausuarios.id() */
 
- console.log(idmod)
+  const respuestaprodctos = await dataBase.collection("ng_productos").where('descripcion', '==', mDescripcionInput).get();
+
+  let idmod = ""
+  respuestaprodctos.forEach(function (item) {
+    idmod = item.id
+  });
+  /*  idmod=respuestausuarios.id() */
+
+  console.log(idmod)
 
   dataBase.collection("ng_productos").doc(idmod).update({
-      descripcion: mDescripcionInput,
-      peso: mPesoInput,
-      valorUnitario: mValorUnitarioInput,
-      estado: mestadoInput,
-      /* email: memailInput, */
+    descripcion: mDescripcionInput,
+    peso: mPesoInput,
+    valorUnitario: mValorUnitarioInput,
+    estado: mestadoInput,
+    /* email: memailInput, */
   });
-  
-  setTimeout( actualizar,1000);
-  
+
+  setTimeout(actualizar, 1000);
+
 }
 
 //funcion del boton para que abra el modal con los datos de la fila.
@@ -325,72 +365,70 @@ function modificarProducto() {
   console.log(radios)
 
   for (i = 0; i < totalFilas; i++) {
-      if (radios[i].checked) {
-        console.log(radios[i])
-          filaSeleccionada = filas[i]
-          document.getElementById("modifyCodigo").value = filaSeleccionada.cells[1].innerText
-          document.getElementById("modifyDescripcion").value = filaSeleccionada.cells[2].innerText
-          document.getElementById("modifyPeso").value = filaSeleccionada.cells[3].innerText
-          document.getElementById("modifyValorUnitario").value = filaSeleccionada.cells[4].innerText
-          document.getElementById("modifyEstado").value = filaSeleccionada.cells[5].innerText
+    if (radios[i].checked) {
+      console.log(radios[i])
+      filaSeleccionada = filas[i]
+      document.getElementById("modifyCodigo").value = filaSeleccionada.cells[1].innerText
+      document.getElementById("modifyDescripcion").value = filaSeleccionada.cells[2].innerText
+      document.getElementById("modifyPeso").value = filaSeleccionada.cells[3].innerText
+      document.getElementById("modifyValorUnitario").value = filaSeleccionada.cells[4].innerText
+      document.getElementById("modifyEstado").value = filaSeleccionada.cells[5].innerText
 
-          if (filaSeleccionada.cells[5].innerText == "Disponible") {
+      if (filaSeleccionada.cells[5].innerText == "Disponible") {
 
-              document.getElementById("modifyEstado").value ="2";
-          }
-   
-
-              document.getElementById("modifyEstado").value = "1";
-          }
-
-          // filaObjetivo = filaSeleccionada
+        document.getElementById("modifyEstado").value = "2";
       }
+
+
+      document.getElementById("modifyEstado").value = "1";
+    }
+
+    // filaObjetivo = filaSeleccionada
   }
-
-
-
-function limpiarModalAdicionar(){
-  /* document.getElementById("inputCodigo").value =""; */
-  document.getElementById("inputnombre").value="";
-  /* document.getElementById("inputApellido").value=""; */
-  document.getElementById("inputEstado").value="Pendiente";
-  document.getElementById("inputEmail").value="";
-  document.getElementById("inputRol").value="";
 }
 
-function eliminarProducto(){
+
+
+function limpiarModalAdicionar() {
+  document.getElementById("inputCodigo").value = "";
+  document.getElementById("inputDescripcion").value = "";
+  document.getElementById("inputPeso").value = "";
+  document.getElementById("inputValorUnitario").value = "";
+}
+
+function eliminarProducto() {
 
   let tablaUsuarios = document.getElementById("tabla_productocos");
   let radios = tablaProductos.getElementsByTagName("input");
   let filas = tablaProductos.getElementsByTagName("tr");
   let totalFilas = radios.length;
-  let email =""
+  let email = ""
 
   for (i = 0; i < totalFilas; i++) {
-      if (radios[i].checked) {
-          filaSeleccionada = filas[i]
-          email = filaSeleccionada.cells[3].innerText
-          
-      }
+    if (radios[i].checked) {
+      filaSeleccionada = filas[i]
+      email = filaSeleccionada.cells[3].innerText
+
+    }
   }
   console.log(email);
 
   //borrar datos
-  var userborrar = dataBase.collection('ng_users').where('email','==',email);
+  var userborrar = dataBase.collection('ng_users').where('email', '==', email);
   console.log(userborrar);
-  
-  userborrar.get().then(function(querySnapshot) {
-      querySnapshot.forEach(function(doc) {
-              doc.ref.delete();
-      });
+
+  userborrar.get().then(function (querySnapshot) {
+    querySnapshot.forEach(function (doc) {
+      doc.ref.delete();
+    });
   });
 
- 
+
 
 }
 
 
-btnModalModificar.addEventListener('click', (e)=>{
+btnModalModificar.addEventListener('click', (e) => {
   e.preventDefault()
   modificarProducto()
-}) 
+})

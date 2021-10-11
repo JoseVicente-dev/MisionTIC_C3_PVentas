@@ -17,7 +17,7 @@
     <!-- css Nightmare -->
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/tablas_modales.css">
-    <link rel="stylesheet" href="css/menu.css" >
+    <link rel="stylesheet" href="css/menu.css">
     <!-- /css Nightmare -->
     <!-- Iconos fontAwesome -->
     <link href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" rel="stylesheet">
@@ -33,7 +33,7 @@
         <div class="container-fluid">
             <div class="col-12" style="text-align: end;">
                 <a class="navbar-brand menuNG-titulo" href="#" style="font-size: 25px;">
-                    
+
                     <!-- ICONO CESTA DE COMPRAS -->
                     Productos&nbsp;&nbsp; <i class="fas fa-shopping-basket" style="font-size: 50px;"></i>
                 </a>
@@ -106,11 +106,11 @@
                         </li>
                         <li class="menu-lateral-dropdown">
                             <a href="productos.html" style="color: white;">
-                                
+
                                 <!-- Icono canasta de compras -->
                                 <i class="fas fa-shopping-basket" style="color: #16c7ff;"></i>
 
-                                
+
                                 <span>Productos</span>
                             </a>
                         </li>
@@ -143,16 +143,16 @@
     <section class="main">
         <div class="row align-items-center">
             <div class="col-2" style="text-align: end;">
-              <label class="form-label" for="form1">Search by:</label>
+                <label class="form-label" for="form1">Search by:</label>
             </div>
             <div class="col-2">
-              <select class="form-select " id="busquedapor" placeholder="Estado">
-                <option value="descripcion">Descripción</option>
-                <option value="codigo">Codigo</option>
-                
-              </select>
+                <select class="form-select " id="busquedapor" placeholder="Estado">
+                    <option value="descripcion">Descripción</option>
+                    <option value="codigo">Codigo</option>
+
+                </select>
             </div>
-            
+
             <!-- <div class="col-1">
               condición
             </div>
@@ -165,19 +165,19 @@
               </select>
             </div> -->
             <div class="col-6">
-              <input type="search" id="busqueda" class="form-control" placeholder="Inserte Búsqueda"/>
+                <input type="search" id="busqueda" class="form-control" placeholder="Inserte Búsqueda" />
             </div>
-            
+
             <div class="col-2">
-              <button type="button" class="btn btn-primary" id="buscarProducto">
-                <i class="fas fa-search"></i>
-              </button>
+                <button type="button" class="btn btn-primary" id="buscarProducto">
+                    <i class="fas fa-search"></i>
+                </button>
             </div>
-          </div>
-          <br>
+        </div>
+        <br>
         <div class="container-fluid table-responsive">
             <table class="table table-hover text-align-tabla" id="tablaProductos">
-                <thead >
+                <thead>
                     <tr>
                         <th scope="col"></th>
                         <!-- <th scope="col">#</th> -->
@@ -189,7 +189,7 @@
                     </tr>
                 </thead>
                 <tbody class="text-align-tabla" id="cuerpoTablaProductos">
-                    
+
                 </tbody>
             </table>
         </div>
@@ -202,52 +202,53 @@
     <!-- Botones adicion, modificacion de productos -->
     <div class="container" style="text-align: center;">
         <a href="#" class="btn btn-primary bg-color-azul" id="btnAdicionarPrincipal" data-bs-toggle="modal"
-            data-bs-target="#Adicionar" >Adicionar</a>
-        <a href="#" class="btn btn-primary bg-color-azul" id="btnModificarPrincial"
-            data-bs-toggle="modal" data-bs-target="#Modificar">Modificar</a>
+            data-bs-target="#Adicionar">Adicionar</a>
+        <a href="#" class="btn btn-primary bg-color-azul" id="btnModificarPrincial" data-bs-toggle="modal"
+            data-bs-target="#Modificar">Modificar</a>
         <a href="#" class="btn btn-primary bg-color-azul" id="btnEliminarPrincipal" data-bs-toggle="modal"
-            data-bs-target="#Buscar" >Eliminar</a>
+            data-bs-target="#Buscar">Eliminar</a>
 
     </div>
     <!-- /Botones adicion, modificacion de productos -->
-   
-    
-    
+
+
+
     <!-- /Footer -->
 
 
-    
+
     <!-- Modal Adicionar Datos -->
     <div class="modal fade" id="Adicionar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
         aria-labelledby="staticBackdropLabel1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
             <div class="modal-content">
-                <div class="modal-header bg-color-azul" >
-                    <h5 class="modal-title color-h5" id="staticBackdropLabel1" >Adicionar producto</h5>
-                    <button type="button " class="btn-close bg-color-cerrarX" data-bs-dismiss="modal" aria-label="Close"
-                        ></button>
+                <div class="modal-header bg-color-azul">
+                    <h5 class="modal-title color-h5" id="staticBackdropLabel1">Adicionar producto</h5>
+                    <button type="button " class="btn-close bg-color-cerrarX" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <div class="container">
                         <div class="col">
-                            <input type="text" class="form-control modal-input-select-undisabled" id="inputCodigo" placeholder="Código de producto"
-                                disabled> 
+                            <input type="text" class="form-control modal-input-select-undisabled" id="inputCodigo"
+                                placeholder="Código de producto" disabled>
                         </div>
                         <div class="col">
                             <input type="text" class="form-control modal-input-select-undisabled" id="inputDescripcion"
-                                placeholder="Descripción del producto" >
+                                placeholder="Descripción del producto">
                         </div>
                         <div class="col">
                             <input type="text" class="form-control modal-input-select-undisabled" id="inputPeso"
-                                placeholder="Peso(Kg)" >
+                                placeholder="Peso(Kg)">
                         </div>
                         <div class="col">
-                            <input type="text" class="form-control modal-input-select-undisabled" id="inputValorUnitario"
-                                placeholder="Valor unitario ($)" >
+                            <input type="text" class="form-control modal-input-select-undisabled"
+                                id="inputValorUnitario" placeholder="Valor unitario ($)">
                         </div>
                         <div class="col">
-                           
-                            <select class="form-select modal-input-select-undisabled" id="inputEstado" placeholder="Estado"  aria-label="Default select example">
+
+                            <select class="form-select modal-input-select-undisabled" id="inputEstado"
+                                placeholder="Estado" aria-label="Default select example">
                                 <option value="1">Disponible</option>
                                 <option value="2">No disponible</option>
                             </select>
@@ -255,9 +256,11 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary bg-color-azul" id="btnAdicionarModalAdicionar" data-bs-toggle="modal" data-bs-target="#DatosAgregados" data-bs-dismiss="modal"
-                        >Adicionar</button>
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary bg-color-azul" id="btnAdicionarModalAdicionar"
+                        data-bs-toggle="modal" data-bs-target="#DatosAgregados"
+                        data-bs-dismiss="modal">Adicionar</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
+                        id="btnCancelarModal">Cancelar</button>
                 </div>
             </div>
         </div>
@@ -269,33 +272,34 @@
         aria-labelledby="staticBackdropLabel2" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable ">
             <div class="modal-content ">
-                <div class="modal-header bg-color-azul" >
-                    <h5 class="modal-title color-h5" id="staticBackdropLabel2" >Modificar producto</h5>
-                    <button type="button" class="btn-close bg-color-cerrarX" data-bs-dismiss="modal" aria-label="Close"
-                        ></button>
+                <div class="modal-header bg-color-azul">
+                    <h5 class="modal-title color-h5" id="staticBackdropLabel2">Modificar producto</h5>
+                    <button type="button" class="btn-close bg-color-cerrarX" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <div class="container">
                         <div class="col">
-                            <input type="text" class="form-control modal-input-select-disabled" id="modifyCodigo" placeholder="Código de producto"
-                                disabled>
+                            <input type="text" class="form-control modal-input-select-disabled" id="modifyCodigo"
+                                placeholder="Código de producto" disabled>
                         </div>
                         <div class="col">
                             <input type="text" class="form-control modal-input-select-undisabled" id="modifyDescripcion"
-                                placeholder="Descripción del producto" >
+                                placeholder="Descripción del producto">
                         </div>
                         <div class="col">
                             <input type="text" class="form-control modal-input-select-undisabled" id="modifyPeso"
-                                placeholder="Peso (Kg)" >
+                                placeholder="Peso (Kg)">
                         </div>
                         <div class="col">
-                            <input type="text" class="form-control modal-input-select-undisabled" id="modifyValorUnitario"
-                                placeholder="Valor unitario ($)" >
+                            <input type="text" class="form-control modal-input-select-undisabled"
+                                id="modifyValorUnitario" placeholder="Valor unitario ($)">
                         </div>
-                        
+
                         <div class="col">
-                            
-                            <select class="form-select modal-input-select-undisabled" id="modifyEstado"  aria-label="Default select example">
+
+                            <select class="form-select modal-input-select-undisabled" id="modifyEstado"
+                                aria-label="Default select example">
                                 <option value="1">Disponible</option>
                                 <option value="2">No disponible</option>
                             </select>
@@ -303,10 +307,9 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary bg-color-azul" id="btnModificarModalModificar" 
-                    data-bs-toggle="modal" data-bs-target="#DatosAgregados" 
-                    data-bs-dismiss="modal"
-                        >Modificar</button>
+                    <button type="button" class="btn btn-primary bg-color-azul" id="btnModificarModalModificar"
+                        data-bs-toggle="modal" data-bs-target="#DatosAgregados"
+                        data-bs-dismiss="modal">Modificar</button>
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                 </div>
             </div>
@@ -319,27 +322,27 @@
         aria-labelledby="staticBackdropLabel1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
             <div class="modal-content">
-                <div class="modal-header bg-color-azul" >
-                    <h5 class="modal-title color-h5" id="staticBackdropLabel3" >Buscar producto</h5>
-                    <button type="button" class="btn-close bg-color-cerrarX" data-bs-dismiss="modal" aria-label="Close"
-                        ></button>
+                <div class="modal-header bg-color-azul">
+                    <h5 class="modal-title color-h5" id="staticBackdropLabel3">Buscar producto</h5>
+                    <button type="button" class="btn-close bg-color-cerrarX" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <div class="container" id="contenedorBuscar">
                         <div class="col">
-                            <input type="text" class="form-control modal-input-select-undisabled" id="buscarCodigo" placeholder="Código de producto"
-                                >
+                            <input type="text" class="form-control modal-input-select-undisabled" id="buscarCodigo"
+                                placeholder="Código de producto">
                         </div>
                         <div class="col">
                             <input type="text" class="form-control modal-input-select-undisabled" id="buscarDescripcion"
-                                placeholder="Descripción del producto" >
+                                placeholder="Descripción del producto">
                         </div>
-                        
+
                     </div>
                     <div class="modal-footer">
 
-                        <button type="button" class="btn btn-primary bg-color-azul" id="btnBuscarModalBuscar"
-                            >Buscar</button>
+                        <button type="button" class="btn btn-primary bg-color-azul"
+                            id="btnBuscarModalBuscar">Buscar</button>
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                     </div>
                 </div>
@@ -351,22 +354,48 @@
     <footer style="text-align: center;">
         <img src="images/logo2.png" alt="logo-nightmare" style="height: 50px;">
 
-        <div class="position-fixed bottom-0 end-0 p-3" >
+        <div class="position-fixed bottom-0 end-0 p-3">
             <div id="liveToastIProduct" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">
-              <div class="toast-header">
-                <img class="rounded me-2 toast_imagen fad fa-check-circle" >
-                <strong class="me-auto">Registro Producto</strong>
-                <small><i class="fad fa-check-circle"></i></small>
-                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-              </div>
-              <div class="toast-body">
-                Producto ingresado Correctamente!.
-              </div>
+                <div class="toast-header">
+                    <img class="rounded me-2 toast_imagen fad fa-check-circle">
+                    <strong class="me-auto">Registro Producto</strong>
+                    <small><i class="fad fa-check-circle"></i></small>
+                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+                <div class="toast-body">
+                    ¡Producto ingresado Correctamente!.
+                </div>
             </div>
-          </div>
+        </div>
+        <div class="position-fixed bottom-0 end-0 p-3">
+            <div id="liveToastIProductNeg" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="toast-header">
+                    <img class="rounded me-2 toast_imagen fad fa-check-circle">
+                    <strong class="me-auto">Registro Producto</strong>
+                    <small><i class="fad fa-check-circle"></i></small>
+                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+                <div class="toast-body">
+                    No se pudo añadir producto a la lista.
+                </div>
+            </div>
+        </div>
+        <div class="position-fixed bottom-0 end-0 p-3">
+            <div id="toastCamposVacios" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="toast-header">
+                    <img class="rounded me-2 toast_imagen fad fa-check-circle">
+                    <strong class="me-auto">Registro Producto</strong>
+                    <small><i class="fad fa-check-circle"></i></small>
+                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+                <div class="toast-body">
+                    No pueden haber campos vacíos.
+                </div>
+            </div>
+        </div>
 
 
-        
+
     </footer>
     <!-- /Modal Buscar Producto -->
 
@@ -404,7 +433,7 @@
     <!-- <script src="https://www.gstatic.com/firebasejs/9.1.1/firebase-auth-compat.js"></script> -->
     <script src="https://www.gstatic.com/firebasejs/9.1.1/firebase-firestore-compat.js"></script>
 
-    
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/esm/popper.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
@@ -414,17 +443,16 @@
 
     <!-- UUID -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/uuid/8.3.2/uuid.min.js"
-            integrity="sha512-UNM1njAgOFUa74Z0bADwAq8gbTcqZC8Ej4xPSzpnh0l6KMevwvkBvbldF9uR++qKeJ+MOZHRjV1HZjoRvjDfNQ=="
-            crossorigin="anonymous"
-            referrerpolicy="no-referrer"></script>
-    
+        integrity="sha512-UNM1njAgOFUa74Z0bADwAq8gbTcqZC8Ej4xPSzpnh0l6KMevwvkBvbldF9uR++qKeJ+MOZHRjV1HZjoRvjDfNQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
     <!-- <script src="js/Productos-tablaProductos.js"></script> -->
     <script src="js/productos.js"></script>
-    
+
 
     <!-- esconder el menú 3s -->
     <script>
-        setTimeout(function(){
+        setTimeout(function () {
             $(".page-wrapper").removeClass("toggled");
         }, 2000);
     </script>

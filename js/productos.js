@@ -104,6 +104,7 @@ const botonAgregarPrincipal = document.getElementById('btnAdicionarPrincipal');
 
 function showToast(id){
   $(id).toast('show');
+  /* $('.toast').toast('show'); */
 }
 
 async function obtenerDatos() {
@@ -135,6 +136,7 @@ async function obtenerDatos() {
         console.log('Holi 5');
         console.log(productosArray);
         console.log('Ya está en la lista');
+        showToast('#liveToastIProductNeg');
       } else {
         console.log('Entrando no s{e a d{onde');
         console.log(typeof producto.estado);

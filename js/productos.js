@@ -226,6 +226,9 @@ async function actualizar() {
   } catch (error) {
     console.log(error)
   }
+
+  
+
 }
 /* ------------------------------------------------------------------------------------------------------- */
 // pintarproductos
@@ -258,7 +261,11 @@ function pintarProductos(productos) {
     cell5.innerHTML = t.valorUnitario;
     cell6.innerHTML = t.estado === '1' ?  "Disponible" : "No disponible";
 
+
+
   })
+
+  
 
 }
 // ---------------------------------------------------------------------------
@@ -316,8 +323,46 @@ btnBuscarProducto.addEventListener('click', (e) => {
 
 // /* ------------------------------------------------------------------------------------------------ */
 
+let filaSeleccionada=0;
+
+//funcion del boton para que abra el modal con los datos de la fila.
+function modificarProducto() {
+
+  let tablaProductos = document.getElementById("cuerpoTablaProductos");
+  let radios = tablaProductos.getElementsByTagName("input");
+  let filas = tablaProductos.getElementsByTagName("tr");
+  let totalFilas = radios.length;
+  console.log(radios)
+
+  for (i = 0; i < totalFilas; i++) {
+    if (radios[i].checked) {
+      console.log(radios[i])
+      filaSeleccionada = filas[i]
+      document.getElementById("modifyCodigo").value = filaSeleccionada.cells[1].innerText
+      document.getElementById("modifyDescripcion").value = filaSeleccionada.cells[2].innerText
+      document.getElementById("modifyPeso").value = filaSeleccionada.cells[3].innerText
+      document.getElementById("modifyValorUnitario").value = filaSeleccionada.cells[4].innerText
+      document.getElementById("modifyEstado").value = filaSeleccionada.cells[5].innerText
+
+      if (filaSeleccionada.cells[5].innerText == "Disponible") {
+
+        document.getElementById("modifyEstado").value = "2";
+      }
+
+
+      document.getElementById("modifyEstado").value = "1";
+    }
+
+    filaObjetivo = filaSeleccionada
+  }
+}
+
+
+
 //modificar producto
 async function modificarProductofb() {
+
+
 
   const mCodigoInput = document.getElementById("modifyCodigo").value
   const mDescripcionInput = document.getElementById("modifyDescripcion").value.replace(/^\w/, (c) => c.toUpperCase());
@@ -348,37 +393,6 @@ async function modificarProductofb() {
 
 }
 
-//funcion del boton para que abra el modal con los datos de la fila.
-function modificarProducto() {
-
-  let tablaProductos = document.getElementById("cuerpoTablaProductos");
-  let radios = tablaProductos.getElementsByTagName("input");
-  let filas = tablaProductos.getElementsByTagName("tr");
-  let totalFilas = radios.length;
-  console.log(radios)
-
-  for (i = 0; i < totalFilas; i++) {
-    if (radios[i].checked) {
-      console.log(radios[i])
-      filaSeleccionada = filas[i]
-      document.getElementById("modifyCodigo").value = filaSeleccionada.cells[1].innerText
-      document.getElementById("modifyDescripcion").value = filaSeleccionada.cells[2].innerText
-      document.getElementById("modifyPeso").value = filaSeleccionada.cells[3].innerText
-      document.getElementById("modifyValorUnitario").value = filaSeleccionada.cells[4].innerText
-      document.getElementById("modifyEstado").value = filaSeleccionada.cells[5].innerText
-
-      if (filaSeleccionada.cells[5].innerText == "Disponible") {
-
-        document.getElementById("modifyEstado").value = "2";
-      }
-
-
-      document.getElementById("modifyEstado").value = "1";
-    }
-
-    // filaObjetivo = filaSeleccionada
-  }
-}
 
 
 
@@ -419,11 +433,20 @@ function eliminarProducto() {
 
 
 }
+function ocultarBotonesProductos(){
+  const BotonesAdminVentasModificar = document.getElementById("btnModificarPrincial");
+  const BotonesAdminVentasEliminar = document.getElementById("btnEliminarPrincipal");
+
+  BotonesAdminVentasModificar.style.display = "none";  
+  BotonesAdminVentasEliminar.style.display = "none";  
+}
 
 
 btnModalModificar.addEventListener('click', (e) => {
   e.preventDefault()
   modificarProducto()
+  ocultarBotonesProductos()
+
 }) 
 
 btnModificarProducto.addEventListener('click', (e)=>{

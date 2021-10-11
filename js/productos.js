@@ -53,6 +53,8 @@ async function mostrarInformacion() {
     radio.setAttribute("type", "radio")
     radio.setAttribute("name", "flexRadioDefault")
     radio.setAttribute("id", "flexRadioDefault" + i)
+    radio.setAttribute("onClick","MostrarBotonesProductos()")
+
     radio.checked = false
     div.appendChild(radio)
     seleccionar.appendChild(div)
@@ -99,17 +101,15 @@ async function mostrarInformacion() {
 
 const botonAgregar = document.getElementById("btnAdicionarModalAdicionar");
 const botonCancelar = document.getElementById("btnCancelarModal");
-const botonAgregarPrincipal = document.getElementById('btnAdicionarPrincipal');
 
 
 function showToast(id){
   $(id).toast('show');
-  /* $('.toast').toast('show'); */
 }
 
 async function obtenerDatos() {
   try {
-    /* const inputCode = document.getElementById('inputCodigo').value; */
+    const inputCode = document.getElementById('inputCodigo').value;
     const inputDescription = document.getElementById("inputDescripcion").value.replace(/^\w/, (c) => c.toUpperCase());
     const inputWeigth = document.getElementById("inputPeso").value;
     const inputValue = document.getElementById("inputValorUnitario").value;
@@ -136,7 +136,6 @@ async function obtenerDatos() {
         console.log('Holi 5');
         console.log(productosArray);
         console.log('Ya está en la lista');
-        showToast('#liveToastIProductNeg');
       } else {
         console.log('Entrando no s{e a d{onde');
         console.log(typeof producto.estado);
@@ -201,11 +200,6 @@ botonAgregar.addEventListener('click', (e) => {
 
 
 })
-
-botonAgregarPrincipal.addEventListener('click', (e)=>{
-  limpiarModalAdicionar();
-})
-
 botonCancelar.addEventListener('click', (e) => {
   e.preventDefault();
   limpiarModalAdicionar();
@@ -308,7 +302,7 @@ async function buscarProductos() {
     console.log(error)
   }
 
-
+  
 }
 
 //----------------------------- Eliminar producto---------------------
@@ -318,16 +312,6 @@ btnBuscarProducto.addEventListener('click', (e) => {
   e.preventDefault()
   buscarProductos()
 })
-
-
-
-
-
-
-
-
-
-
 
 
 // /* ------------------------------------------------------------------------------------------------ */
@@ -399,6 +383,7 @@ function modificarProducto() {
 
 
 function limpiarModalAdicionar() {
+  document.getElementById("inputCodigo").value = "";
   document.getElementById("inputDescripcion").value = "";
   document.getElementById("inputPeso").value = "";
   document.getElementById("inputValorUnitario").value = "";
@@ -406,7 +391,7 @@ function limpiarModalAdicionar() {
 
 function eliminarProducto() {
 
-  let tablaUsuarios = document.getElementById("tabla_productocos");
+  let tablaUsuarios = document.getElementById("cuerpoTablaProductos");
   let radios = tablaProductos.getElementsByTagName("input");
   let filas = tablaProductos.getElementsByTagName("tr");
   let totalFilas = radios.length;
@@ -445,3 +430,13 @@ btnModificarProducto.addEventListener('click', (e)=>{
   e.preventDefault()
   modificarProductofb()
 }) 
+
+function MostrarBotonesProductos() {
+  const BotonesAdminVentasModificar = document.getElementById("btnModificarPrincial");
+  const BotonesAdminVentasEliminar = document.getElementById("btnEliminarPrincipal");
+
+  BotonesAdminVentasModificar.style.display = "inline-block";  
+  BotonesAdminVentasEliminar.style.display = "inline-block";  
+
+
+}

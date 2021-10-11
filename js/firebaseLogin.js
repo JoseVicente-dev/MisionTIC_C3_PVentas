@@ -11,6 +11,12 @@ const firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
+firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL)
+
+
+
+
+
 
 //Declarar Variables globales
 const auth = firebase.auth()
@@ -28,10 +34,13 @@ const btnLogin = document.getElementById('boton-loginGmail')
 
 //funciones
 //login
+
 async function login(){
     try{
+
         const respuesta = await auth.signInWithPopup(proveedor)
         /* console.log(respuesta) */
+
         usuarioActual = respuesta.user.displayName
         usuarioFoto  = respuesta.user.photoURL
         usuarioEmail = respuesta.user.email
@@ -78,6 +87,7 @@ async function login(){
             const respuestaUsuario = await guardarUsuario(usuario)
             alert(usuarioActual+": El usuario "+usuarioEmail+" fue creado exitosamente en la base de datos y esta pendiente de aprobación por parte del administrador de la plataforma.")
         }else if(contador==100){
+            /* window.location.href = "menu.html"; */
             window.location.href = "menu.html";
         }else if(contador==50){
             alert(usuarioActual+": El usuario "+usuarioEmail+" esta pendiente de aprobación por parte del administrador de la plataforma.")

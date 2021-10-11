@@ -99,6 +99,7 @@ async function mostrarInformacion() {
 
 const botonAgregar = document.getElementById("btnAdicionarModalAdicionar");
 const botonCancelar = document.getElementById("btnCancelarModal");
+const botonAgregarPrincipal = document.getElementById('btnAdicionarPrincipal');
 
 
 function showToast(id){
@@ -107,7 +108,7 @@ function showToast(id){
 
 async function obtenerDatos() {
   try {
-    const inputCode = document.getElementById('inputCodigo').value;
+    /* const inputCode = document.getElementById('inputCodigo').value; */
     const inputDescription = document.getElementById("inputDescripcion").value.replace(/^\w/, (c) => c.toUpperCase());
     const inputWeigth = document.getElementById("inputPeso").value;
     const inputValue = document.getElementById("inputValorUnitario").value;
@@ -198,6 +199,11 @@ botonAgregar.addEventListener('click', (e) => {
 
 
 })
+
+botonAgregarPrincipal.addEventListener('click', (e)=>{
+  limpiarModalAdicionar();
+})
+
 botonCancelar.addEventListener('click', (e) => {
   e.preventDefault();
   limpiarModalAdicionar();
@@ -391,7 +397,6 @@ function modificarProducto() {
 
 
 function limpiarModalAdicionar() {
-  document.getElementById("inputCodigo").value = "";
   document.getElementById("inputDescripcion").value = "";
   document.getElementById("inputPeso").value = "";
   document.getElementById("inputValorUnitario").value = "";

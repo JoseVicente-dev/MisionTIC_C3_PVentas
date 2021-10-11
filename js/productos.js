@@ -351,14 +351,24 @@ async function modificarProductofb() {
   /*  idmod=respuestausuarios.id() */
 
   console.log(idmod)
-
   dataBase.collection("ng_productos").doc(idmod).update({
     descripcion: mDescripcionInput,
     peso: mPesoInput,
     valorUnitario: mValorUnitarioInput,
     estado: mestadoInput,
-    /* email: memailInput, */
   });
+
+  
+
+  const productosArray = [];
+  const nuevoxd = await dataBase.collection('ng_productos').get()
+  nuevoxd.forEach((t) => {
+    productosArray.push(t.data())
+  })
+
+  
+    
+  
 
   setTimeout(actualizar, 1000);
 

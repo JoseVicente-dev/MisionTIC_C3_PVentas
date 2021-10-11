@@ -80,6 +80,10 @@ function nuevaFila() {
     // por ultimo le decimos a la fila donde aparecer agregandola a dondeInsertar
     dondeInsertar.appendChild(Fila)
 // }
+<<<<<<< HEAD
 }
 
 /* as */
+=======
+}
+>>>>>>> 921388469438c2a71ce96b48cad2c0fb12e579c7

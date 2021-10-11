@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+
+>>>>>>> 921388469438c2a71ce96b48cad2c0fb12e579c7
 /* --------------------------------------------------------------------------- */
 function nuevaFila() {
     var table = document.getElementById("tabla_usuarios");
@@ -42,6 +46,7 @@ function limpiarModal(){
 }
 
 /* --------------------------------------------------------------------------- */
+<<<<<<< HEAD
 function modificarUsuario() {
 
     let tablaUsuarios = document.getElementById("cuerpoTablaUsuarios");
@@ -78,6 +83,9 @@ function modificarUsuario() {
         }
     }
 }
+=======
+
+>>>>>>> 921388469438c2a71ce96b48cad2c0fb12e579c7
 
 /* --------------------------------------------------------------------------- */
 function actualizarUsuario() {

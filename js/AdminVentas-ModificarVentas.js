@@ -103,4 +103,24 @@ function actualizarProductoBuscarVenta() {
 
         filaSeleccionada2.cells[8].innerText = "Pendiente"
     }
+<<<<<<< HEAD
 }
+=======
+}
+
+const btnModificarDatosModalVentaBuscadaA = document.getElementById("btnModificarModalModificar")
+btnModificarDatosModalVentaBuscadaA.addEventListener('click', (e)=>{
+    e.preventDefault()
+    actualizarProducto()
+})
+const btnModificarDatosModalBuscadarVenta = document.getElementById("btnModificarModalResultadoBusqueda")
+btnModificarDatosModalBuscadarVenta.addEventListener('click', (e)=>{
+    e.preventDefault()
+    actualizarProductoBuscarVenta()
+})
+const btnModificarVenta = document.getElementById("btnModificarVenta")
+btnModificarVenta.addEventListener('click', (e)=>{
+    e.preventDefault()
+    modificarProducto()
+})
+>>>>>>> 921388469438c2a71ce96b48cad2c0fb12e579c7

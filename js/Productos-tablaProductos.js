@@ -1,10 +1,27 @@
 let filaObjetivo;
 
+<<<<<<< HEAD
 function insertarProducto() {
 
     let insertarFila = document.getElementById("cuerpoTablaProductos")
     console.log(insertarFila);
 
+=======
+const btnInsertarProducto = document.getElementById('btnAdicionarModalAdicionar')
+const btnModificarProducto = document.getElementById('btnModificarModalModificar')
+const btnBuscarProducto = document.getElementById('btnBuscarModalBuscar')
+
+const btnAdicionarPrincipal = document.getElementById('btnAdicionarPrincipal')
+const btnModificarPrincipal = document.getElementById('btnModificarPrincial')
+const btnBuscarPrincipal = document.getElementById('btnBuscarPrincipal')
+
+
+
+function insertarProducto() {
+
+    let insertarFila = document.getElementById("cuerpoTablaProductos")
+    
+>>>>>>> 921388469438c2a71ce96b48cad2c0fb12e579c7
     // .getElementsByTagName("tbody")
 
     let i = insertarFila.getElementsByTagName("tr").length
@@ -63,7 +80,11 @@ function modificarProducto() {
     for (i = 0; i < totalFilas; i++) {
         if (radios[i].checked) {
 
+<<<<<<< HEAD
             // console.log((i + 1) + "-ésima fila seleccionada")
+=======
+            
+>>>>>>> 921388469438c2a71ce96b48cad2c0fb12e579c7
             filaSeleccionada = filas[i]
             document.getElementById("modifyCodigo").value = filaSeleccionada.cells[2].innerText
             document.getElementById("modifyDescripcion").value = filaSeleccionada.cells[3].innerText
@@ -114,6 +135,7 @@ function buscarProducto() {
 
     if (document.getElementById("buscarCodigo").value!=false){
 
+<<<<<<< HEAD
         console.log("if externo");
         
         for(i = 0; i < totalFilas; i++){
@@ -123,6 +145,17 @@ function buscarProducto() {
             if ((filas[i].cells[2].innerText) == (document.getElementById("buscarCodigo").value)){
 
                 console.log("primer if")
+=======
+        
+        
+        for(i = 0; i < totalFilas; i++){
+
+            
+
+            if ((filas[i].cells[2].innerText) == (document.getElementById("buscarCodigo").value)){
+
+               
+>>>>>>> 921388469438c2a71ce96b48cad2c0fb12e579c7
                 
                 filaObjetivo=filas[i]
                 filas[i].cells[0].getElementsByTagName("input")[0].checked=true
@@ -139,8 +172,12 @@ function buscarProducto() {
                     estadoBuscado = 2
                 }
 
+<<<<<<< HEAD
                 console.log(codigoBuscado)
                 console.log(descripcionBuscado)
+=======
+                
+>>>>>>> 921388469438c2a71ce96b48cad2c0fb12e579c7
 
                 break
             }           
@@ -255,8 +292,57 @@ function limpiarBusqueda(){
     document.getElementById("btnBuscarModalBuscar").removeAttribute("data-bs-toggle","modal")
     document.getElementById("btnBuscarModalBuscar").removeAttribute("data-bs-target","#Modificar")
     document.getElementById("btnBuscarModalBuscar").removeAttribute("data-bs-dismiss","modal")
+<<<<<<< HEAD
     document.getElementById("btnBuscarModalBuscar").textContent="Buscar"
     
     
 
 }
+=======
+    document.getElementById("btnBuscarModalBuscar").textContent="Buscar"   
+
+}
+
+
+btnInsertarProducto.addEventListener('click', (e)=>{
+    e.preventDefault()
+    insertarProducto()
+
+})
+
+btnModificarProducto.addEventListener('click', (e)=>{
+    e.preventDefault()
+    actualizarProducto()
+})
+
+btnBuscarProducto.addEventListener('click', (e)=>{
+    e.preventDefault()
+    buscarProducto()
+      
+})
+
+btnAdicionarPrincipal.addEventListener('click', (e)=>{
+    e.preventDefault()
+    limpiarBusqueda()
+})
+
+btnBuscarPrincipal.addEventListener('click', (e)=>{
+    e.preventDefault()
+    limpiarBusqueda()
+})
+
+btnModificarPrincipal.addEventListener('click', (e)=>{
+    e.preventDefault()
+    modificarProducto()
+})
+
+btnModificarModalModificar.addEventListener('click', (e)=>{
+    e.preventDefault()
+    // buscarProducto()
+    $(function (){
+      $('.toast').toast('show')
+  }) 
+      
+  })
+
+>>>>>>> 921388469438c2a71ce96b48cad2c0fb12e579c7

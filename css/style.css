@@ -21,7 +21,10 @@ size: 9x;
     }   
  }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 921388469438c2a71ce96b48cad2c0fb12e579c7
 .color{
     background-color: #060b73;
     border-color: #060b73;
@@ -72,3 +75,19 @@ footer{
 }
 
 
+<<<<<<< HEAD
+=======
+.form-add-user{
+    margin: 10px;
+    max-width: 90%; 
+    border-color: #7a87bb; 
+    margin-left: 22px;
+    background-color: #d8e5fe; 
+    text-align: center;
+}
+
+.fomr-mod-user{
+    background-color: #26327e;
+    margin-bottom: 60px;
+}
+>>>>>>> 921388469438c2a71ce96b48cad2c0fb12e579c7

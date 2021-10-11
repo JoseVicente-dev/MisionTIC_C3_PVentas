@@ -16,8 +16,8 @@
     <!-- /Bootstrap -->
     <!-- css Nightmare -->
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/productos.css">
-    <link href="css/menu.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/tablas_modales.css">
+    <link rel="stylesheet" href="css/menu.css">
     <!-- /css Nightmare -->
     <!-- Iconos fontAwesome -->
     <link href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" rel="stylesheet">
@@ -33,7 +33,6 @@
         <div class="container-fluid">
             <div class="col-12" style="text-align: end;">
                 <a class="navbar-brand menuNG-titulo" href="#" style="font-size: 25px;">
-                    
                     <!-- ICONO CESTA DE COMPRAS -->
                     Productos&nbsp;&nbsp; <i class="fas fa-shopping-basket" style="font-size: 50px;"></i>
                 </a>
@@ -60,21 +59,26 @@
                     </div>
                 </div>
                 <!-- /encabezado menu -->
-                <!-- Sección de usuario -->
-                <div class="menu-lateral-header">
-                    <div class="user-pic">
-                        <img class="img-responsive img-rounded" src="images/user2.png" alt="User picture">
-                    </div>
-                    <div class="user-info">
-                        <span class="user-name"><strong>Nightmare User</strong></span>
-                        <span class="user-role">Administrador</span>
-                        <span class="user-status">
-                            <i class="fa fa-circle"></i>
-                            <span>Online</span>
-                        </span>
-                    </div>
-                </div>
-                <!-- /Sección de usuario -->
+                       <!-- Sección de usuario -->
+          <div class="menu-lateral-header">
+            <div class="user-pic">
+              <img
+                class="img-responsive img-rounded"
+                src="images/user2.png"
+                alt="User picture"
+                id="imagenUsuario"
+              />
+            </div>
+            <div class="user-info">
+              <span class="user-name" id="nombreDeUsuario"><strong>Nightmare User</strong></span>
+              <span class="user-role" id="tipoUsuario">Administrador</span>
+              <span class="user-status">
+                <i class="fa fa-circle"></i>
+                <span>Online</span>
+              </span>
+            </div>
+          </div>
+          <!-- Sección de usuario -->
                 <!-- Opciones disponible lista de paginas -->
                 <div class="menu-lateral-menu">
                     <ul>
@@ -106,11 +110,11 @@
                         </li>
                         <li class="menu-lateral-dropdown">
                             <a href="productos.html" style="color: white;">
-                                
+
                                 <!-- Icono canasta de compras -->
                                 <i class="fas fa-shopping-basket" style="color: #16c7ff;"></i>
 
-                                
+
                                 <span>Productos</span>
                             </a>
                         </li>
@@ -138,171 +142,60 @@
         </nav>
     </div>
     <!-- /Menú lateral -->
+
     <!-- Tabla con datos -->
     <section class="main">
+        <div class="row align-items-center">
+            <div class="col-2" style="text-align: end;">
+                <label class="form-label" for="form1">Buscar u Ordenar por:</label>
+            </div>
+            <div class="col-2">
+                <select class="form-select " id="busquedapor" placeholder="Estado">
+                    <option value="descripcion">Descripción</option>
+                    <option value="codigo">Codigo</option>
+                    <option value="peso">Peso (Kg)</option>
+                    <option value="valorUnitario">Valor Unitario ($)</option>
+                    <option value="estado">Estado</option>
+
+                </select>
+            </div>
+
+            <!-- <div class="col-1">
+              condición
+            </div>
+            <div class="col-2">
+              <select class="form-select " id="condicion" placeholder="Condición">
+                <option value="1">Igual</option>
+                <option value="2">Comienza por</option>
+                <option value="3">Termina por</option>
+      
+              </select>
+            </div> -->
+            <div class="col-6">
+                <input type="search" id="busqueda" class="form-control" placeholder="Inserte Búsqueda" />
+            </div>
+
+            <div class="col-2">
+                <button type="button" class="btn btn-primary" id="buscarProducto">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+        </div>
+        <br>
         <div class="container-fluid table-responsive">
             <table class="table table-hover text-align-tabla" id="tablaProductos">
-                <thead >
+                <thead>
                     <tr>
-                        <th scope="col"></th>
-                        <th scope="col">#</th>
+                        <th scope="col">Seleccionar</th>
+                        <!-- <th scope="col">#</th> -->
                         <th scope="col">Código</th>
                         <th scope="col">Descripción</th>
+                        <th scope="col">Peso (Kg)</th>
                         <th scope="col">Valor Unitario ($)</th>
                         <th scope="col">Estado</th>
                     </tr>
                 </thead>
                 <tbody class="text-align-tabla" id="cuerpoTablaProductos">
-                    <tr id="row1">
-                        <th>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                    id="flexRadioDefault1">
-                                <!-- <label class="form-check-label" for="flexRadioDefault1">                              
-                            </label> -->
-                            </div>
-                        </th>
-                        <th scope="row">1</th>
-                        <td>101</td>
-                        <td>Arroz</td>
-                        <td>1600</td>
-                        <td>Disponible</td>
-                    </tr>
-                    <tr id="row2">
-                        <th>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                    id="flexRadioDefault2">
-                                <!-- <label class="form-check-label" for="flexRadioDefault1">                              
-                            </label> -->
-                            </div>
-                        </th>
-                        <th scope="row">2</th>
-                        <td>102</td>
-                        <td>Frijol</td>
-                        <td>700</td>
-                        <td>Disponible</td>
-                    </tr>
-                    <tr id="row3">
-                        <th>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                    id="flexRadioDefault3">
-                                <!-- <label class="form-check-label" for="flexRadioDefault1">                              
-                            </label> -->
-                            </div>
-                        </th>
-                        <th scope="row">3</th>
-                        <td>103</td>
-                        <td>Lenteja</td>
-                        <td>500</td>
-                        <td>Disponible</td>
-                    </tr>
-                    <tr id="row4">
-                        <th>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                    id="flexRadioDefault4">
-                                <!-- <label class="form-check-label" for="flexRadioDefault1">                              
-                            </label> -->
-                            </div>
-                        </th>
-                        <th scope="row">4</th>
-                        <td>104</td>
-                        <td>Blanquillo</td>
-                        <td>800</td>
-                        <td>No disponible</td>
-                    </tr>
-                    <tr id="row5">
-                        <th>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                    id="flexRadioDefault5">
-                                <!-- <label class="form-check-label" for="flexRadioDefault1">                              
-                            </label> -->
-                            </div>
-                        </th>
-                        <th scope="row">5</th>
-                        <td>105</td>
-                        <td>Arveja</td>
-                        <td>800</td>
-                        <td>Disponible</td>
-                    </tr>
-                    <tr id="row6">
-                        <th>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                    id="flexRadioDefault6">
-                                <!-- <label class="form-check-label" for="flexRadioDefault1">                              
-                            </label> -->
-                            </div>
-                        </th>
-                        <th scope="row">6</th>
-                        <td>106</td>
-                        <td>Garbanzo</td>
-                        <td>1100</td>
-                        <td>No disponible</td>
-                    </tr>
-                    <tr id="row7">
-                        <th>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                    id="flexRadioDefault7">
-                                <!-- <label class="form-check-label" for="flexRadioDefault1">                              
-                            </label> -->
-                            </div>
-                        </th>
-                        <th scope="row">7</th>
-                        <td>107</td>
-                        <td>Maiz pira</td>
-                        <td>400</td>
-                        <td>Disponible</td>
-                    </tr>
-                    <tr id="row8">
-                        <th>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                    id="flexRadioDefault8">
-                                <!-- <label class="form-check-label" for="flexRadioDefault1">                              
-                            </label> -->
-                            </div>
-                        </th>
-                        <th scope="row">8</th>
-                        <td>108</td>
-                        <td>Frijol verde</td>
-                        <td>900</td>
-                        <td>Disponible</td>
-                    </tr>
-                    <tr id="row9">
-                        <th>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                    id="flexRadioDefault9">
-                                <!-- <label class="form-check-label" for="flexRadioDefault1">                              
-                            </label> -->
-                            </div>
-                        </th>
-                        <th scope="row">9</th>
-                        <td>109</td>
-                        <td>Cuchuco</td>
-                        <td>500</td>
-                        <td>Disponible</td>
-                    </tr>
-                    <tr id="row10">
-                        <th>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                    id="flexRadioDefault10">
-                                <!-- <label class="form-check-label" for="flexRadioDefault1">                              
-                            </label> -->
-                            </div>
-                        </th>
-                        <th scope="row">10</th>
-                        <td>110</td>
-                        <td>Arroz integral</td>
-                        <td>2000</td>
-                        <td>No disponible</td>
-                    </tr>
                 </tbody>
             </table>
         </div>
@@ -310,33 +203,58 @@
     <!-- /Tabla con datos -->
 
 
+
+
+    <!-- Botones adicion, modificacion de productos -->
+    <div class="container" style="text-align: center;">
+        <button class="btn btn-primary bg-color-azul" id="btnAdicionarPrincipal" data-bs-toggle="modal"
+            data-bs-target="#Adicionar">Adicionar</button>
+        <button class="btn btn-primary bg-color-azul " id="btnModificarPrincial" data-bs-toggle="modal"  
+            data-bs-target="#Modificar">Modificar</button>
+        <button class="btn btn-primary bg-color-azul " id="btnEliminarPrincipal" data-bs-toggle="modal" 
+            data-bs-target="#Buscar">Eliminar</button>
+
+        </div>
+        <!-- /Botones adicion, modificacion de productos -->
+        <!-- /Footer -->
+
+
+
+
+
+
     <!-- Modal Adicionar Datos -->
     <div class="modal fade" id="Adicionar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
         aria-labelledby="staticBackdropLabel1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
             <div class="modal-content">
-                <div class="modal-header bg-color-azul" >
-                    <h5 class="modal-title color-h5" id="staticBackdropLabel1" >Adicionar producto</h5>
-                    <button type="button " class="btn-close bg-color-cerrarX" data-bs-dismiss="modal" aria-label="Close"
-                        ></button>
+                <div class="modal-header bg-color-azul">
+                    <h5 class="modal-title color-h5" id="staticBackdropLabel1">Adicionar producto</h5>
+                    <button type="button " class="btn-close bg-color-cerrarX" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <div class="container">
-                        <div class="col">
-                            <input type="text" class="form-control modal-input-select-undisabled" id="inputCodigo" placeholder="Código de producto"
-                                >
-                        </div>
+                        <!-- <div class="col">
+                            <input type="text" class="form-control modal-input-select-undisabled" id="inputCodigo"
+                                placeholder="Código de producto" disabled>
+                        </div> -->
                         <div class="col">
                             <input type="text" class="form-control modal-input-select-undisabled" id="inputDescripcion"
-                                placeholder="Descripción del producto" >
+                                placeholder="Descripción del producto">
                         </div>
                         <div class="col">
-                            <input type="text" class="form-control modal-input-select-undisabled" id="inputValorUnitario"
-                                placeholder="Valor unitario ($)" >
+                            <input type="number" class="form-control modal-input-select-undisabled" id="inputPeso"
+                                placeholder="Peso(Kg)">
                         </div>
                         <div class="col">
-                           
-                            <select class="form-select modal-input-select-undisabled" id="inputEstado" placeholder="Estado"  aria-label="Default select example">
+                            <input type="number" class="form-control modal-input-select-undisabled"
+                                id="inputValorUnitario" placeholder="Valor unitario ($)">
+                        </div>
+                        <div class="col">
+
+                            <select class="form-select modal-input-select-undisabled" id="inputEstado"
+                                placeholder="Estado" aria-label="Default select example">
                                 <option value="1">Disponible</option>
                                 <option value="2">No disponible</option>
                             </select>
@@ -344,9 +262,11 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary bg-color-azul" onclick="insertarProducto()" data-bs-toggle="modal" data-bs-target="#DatosAgregados" data-bs-dismiss="modal"
-                        >Adicionar</button>
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary bg-color-azul" id="btnAdicionarModalAdicionar"
+                        data-bs-toggle="modal" data-bs-target="#DatosAgregados"
+                        data-bs-dismiss="modal">Adicionar</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
+                        id="btnCancelarModal">Cancelar</button>
                 </div>
             </div>
         </div>
@@ -358,28 +278,34 @@
         aria-labelledby="staticBackdropLabel2" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable ">
             <div class="modal-content ">
-                <div class="modal-header bg-color-azul" >
-                    <h5 class="modal-title color-h5" id="staticBackdropLabel2" >Modificar producto</h5>
-                    <button type="button" class="btn-close bg-color-cerrarX" data-bs-dismiss="modal" aria-label="Close"
-                        ></button>
+                <div class="modal-header bg-color-azul">
+                    <h5 class="modal-title color-h5" id="staticBackdropLabel2">Modificar producto</h5>
+                    <button type="button" class="btn-close bg-color-cerrarX" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <div class="container">
                         <div class="col">
-                            <input type="text" class="form-control modal-input-select-disabled" id="modifyCodigo" placeholder="Código de producto"
-                                disabled>
+                            <input type="text" class="form-control modal-input-select-disabled" id="modifyCodigo"
+                                placeholder="Código de producto" disabled>
                         </div>
                         <div class="col">
-                            <input type="text" class="form-control modal-input-select-undisabled" id="modifyDescripcion"
-                                placeholder="Descripción del producto" >
+                            <input type="text" class="form-control modal-input-select-disabled" id="modifyDescripcion"
+                                placeholder="Descripción del producto" disabled>
                         </div>
                         <div class="col">
-                            <input type="text" class="form-control modal-input-select-undisabled" id="modifyValorUnitario"
-                                placeholder="Valor unitario ($)" >
+                            <input type="number" class="form-control modal-input-select-undisabled" id="modifyPeso"
+                                placeholder="Peso (Kg)">
                         </div>
                         <div class="col">
-                            
-                            <select class="form-select modal-input-select-undisabled" id="modifyEstado"  aria-label="Default select example">
+                            <input type="number" class="form-control modal-input-select-undisabled"
+                                id="modifyValorUnitario" placeholder="Valor unitario ($)">
+                        </div>
+
+                        <div class="col">
+
+                            <select class="form-select modal-input-select-undisabled" id="modifyEstado"
+                                aria-label="Default select example">
                                 <option value="1">Disponible</option>
                                 <option value="2">No disponible</option>
                             </select>
@@ -387,8 +313,9 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary bg-color-azul" onclick="actualizarProducto()" data-bs-toggle="modal" data-bs-target="#DatosAgregados" data-bs-dismiss="modal"
-                        >Modificar</button>
+                    <button type="button" class="btn btn-primary bg-color-azul" id="btnModificarModalModificar"
+                        data-bs-toggle="modal" data-bs-target="#DatosAgregados"
+                        data-bs-dismiss="modal">Modificar</button>
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                 </div>
             </div>
@@ -397,41 +324,118 @@
     <!-- /Modal Modificar Datos -->
 
     <!-- Modal Buscar Producto -->
-    <div class="modal fade" id="Buscar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    <!-- <div class="modal fade" id="Buscar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
         aria-labelledby="staticBackdropLabel1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
             <div class="modal-content">
-                <div class="modal-header bg-color-azul" >
-                    <h5 class="modal-title color-h5" id="staticBackdropLabel3" >Buscar producto</h5>
-                    <button type="button" class="btn-close bg-color-cerrarX" data-bs-dismiss="modal" aria-label="Close"
-                        ></button>
+                <div class="modal-header bg-color-azul">
+                    <h5 class="modal-title color-h5" id="staticBackdropLabel3">Eliminar producto</h5>
+                    <button type="button" class="btn-close bg-color-cerrarX" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <div class="container" id="contenedorBuscar">
                         <div class="col">
-                            <input type="text" class="form-control modal-input-select-undisabled" id="buscarCodigo" placeholder="Código de producto"
-                                >
-                        </div>
-                        <div class="col">
-                            <input type="text" class="form-control modal-input-select-undisabled" id="buscarDescripcion"
-                                placeholder="Descripción del producto" >
+                            <label type="text" class="form-control modal-input-select-undisabled" id="buscarCodigo"
+                                placeholder="Código de producto">Seguro desea eliminar producto?</label>
                         </div>
                         
+
                     </div>
                     <div class="modal-footer">
 
-                        <button type="button" class="btn btn-primary bg-color-azul" id="btnBuscarModalBuscar" onclick="buscarProducto()"
-                            >Buscar</button>
+                        <button type="button" class="btn btn-primary bg-color-azul"
+                            id="btnEliminarModalEliminar">Eliminar</button>
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
+       <!-- Modal Eliminar Datos  ---------------------------------------------------------------------------->
+   <div class="modal fade " id="Buscar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+   aria-labelledby="staticBackdropLabel2" aria-hidden="true">
+   <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable ">
+       <div class="modal-content ">
+           <div class="modal-header" style="background-color: #26327e;">
+               <h5 class="modal-title" id="staticBackdropLabel2" style="color: white;">Alerta Eliminar Producto</h5>
+               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                   style="background-color: #7a87bb;"></button>
+           </div>
+           <div class="modal-body">
+             <div class="modal-body">
+              <p>Está seguro de Eliminar el Producto seleccionado, recuerde que esta acción no se puede deshacer</p>
+           </div>
+         </div>
+           <div class="modal-footer">
+               <button type="button" class="btn btn-primary"  data-bs-dismiss="modal"
+                   style=" background-color: #26327e;" id="btnEliminarModalEliminar">Eliminar</button> <!-- onclick="actualizarUsuario()" -->
+               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+           </div>
+       </div>
+   </div>
+</div>
+
+    <!-- Footer -->
+    <footer style="text-align: center;">
+        <img src="images/logo2.png" alt="logo-nightmare" style="height: 50px;">
+
+        <div class="position-fixed bottom-0 end-0 p-3">
+            <div id="liveToastIProduct" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="toast-header">
+                    <img class="rounded me-2 toast_imagen fad fa-check-circle">
+                    <strong class="me-auto">Registro Producto</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+                <div class="toast-body">
+                    ¡Producto ingresado Correctamente!.
+                </div>
+            </div>
+        </div>
+        <div class="position-fixed bottom-0 end-0 p-3">
+            <div id="liveToastIProductNeg" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="toast-header">
+                    <img class="rounded me-2 toast_imagen fad fa-check-circle">
+                    <strong class="me-auto">Registro Producto</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+                <div class="toast-body">
+                    Ya se encuentra en la lista.
+                </div>
+            </div>
+        </div>
+        <div class="position-fixed bottom-0 end-0 p-3">
+            <div id="toastCamposVacios" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="toast-header">
+                    <img class="rounded me-2 toast_imagen fad fa-check-circle">
+                    <strong class="me-auto">Registro Producto</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+                <div class="toast-body">
+                    No pueden haber campos vacíos.
+                </div>
+            </div>
+        </div>
+        <div class="position-fixed bottom-0 end-0 p-3">
+            <div id="toastModificacion" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="toast-header">
+                    <img class="rounded me-2 toast_imagen fad fa-check-circle">
+                    <strong class="me-auto">Actualización Producto</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+                <div class="toast-body">
+                    Producto modificado con éxito.
+                </div>
+            </div>
+        </div>
+
+
+
+    </footer>
     <!-- /Modal Buscar Producto -->
 
     <!-- Modal Datos agregados -->
-    <div class="modal fade" id="DatosAgregados" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    <!-- <div class="modal fade" id="DatosAgregados" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
         aria-labelledby="staticBackdropLabel1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
             <div class="modal-content">
@@ -452,41 +456,41 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
     <!-- /Modal Datos agregados -->
 
+    <script src="https://www.gstatic.com/firebasejs/9.1.1/firebase-app-compat.js"></script>
 
-    <!-- Botones adicion, modificacion de productos -->
-    <div class="container" style="text-align: center;">
-        <a href="#" class="btn btn-primary bg-color-azul"  data-bs-toggle="modal"
-            data-bs-target="#Adicionar" onclick="limpiarBusqueda()">Adicionar</a>
-        <a href="#" class="btn btn-primary bg-color-azul"  onclick="modificarProducto()"
-            data-bs-toggle="modal" data-bs-target="#Modificar">Modificar</a>
-        <a href="#" class="btn btn-primary bg-color-azul"  data-bs-toggle="modal"
-            data-bs-target="#Buscar" onclick="limpiarBusqueda()">Buscar</a>
 
-    </div>
-    <!-- /Botones adicion, modificacion de productos -->
-    <!-- Footer -->
-    <footer style="text-align: center;">
-        <img src="images/logo2.png" alt="logo-nightmare" style="height: 50px;">
-    </footer>
-    <!-- /Footer -->
+    <!-- Adicionar productos de Firebase que vamos a usar -->
+    <script src="https://www.gstatic.com/firebasejs/9.1.1/firebase-auth-compat.js"></script> 
+    <script src="https://www.gstatic.com/firebasejs/9.1.1/firebase-firestore-compat.js"></script>
+
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/esm/popper.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
     <script src="js/menu.js"></script>
-    <script src = "js/modal.js"></script>
-    <script src="js/Productos-tablaProductos.js"></script>
+
+    <!-- UUID -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/uuid/8.3.2/uuid.min.js"
+        integrity="sha512-UNM1njAgOFUa74Z0bADwAq8gbTcqZC8Ej4xPSzpnh0l6KMevwvkBvbldF9uR++qKeJ+MOZHRjV1HZjoRvjDfNQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <!-- <script src="js/Productos-tablaProductos.js"></script> -->
+    <script src="js/productos.js"></script>
+
 
     <!-- esconder el menú 3s -->
     <script>
-        setTimeout(function(){
+        setTimeout(function () {
             $(".page-wrapper").removeClass("toggled");
-        }, 3000);
+        }, 2000);
     </script>
+
+
 
 </body>
 

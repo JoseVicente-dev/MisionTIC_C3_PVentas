@@ -254,6 +254,8 @@ function pintarProductos(productos) {
     var cell5 = row.insertCell(4);
     var cell6 = row.insertCell(5);
 
+    
+
     cell1.innerHTML = '<div class="form-check"><input class="form-check-input" type="radio" name="flexRadioDefault"id="flexRadioDefault6"/></div>';
     cell2.innerHTML = t.codigo;
     cell3.innerHTML = t.descripcion;

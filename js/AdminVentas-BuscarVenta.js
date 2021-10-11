@@ -82,9 +82,6 @@ function InsertarDatosModalResultadoBusquedaNombre() {
             break;
         }
     }
-<<<<<<< HEAD
-}
-=======
 }
 const btnInsertarModalResultadoBusquedaId = document.getElementById("btnIdModalBuscarVentas")
 btnInsertarModalResultadoBusquedaId.addEventListener('click', (e)=>{
@@ -96,4 +93,3 @@ btnInsertarModalResultadoBusquedaNombre.addEventListener('click', (e)=>{
     e.preventDefault()
     InsertarDatosModalResultadoBusquedaNombre()
 })
->>>>>>> 921388469438c2a71ce96b48cad2c0fb12e579c7

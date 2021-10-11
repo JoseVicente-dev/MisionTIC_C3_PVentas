@@ -1,14 +1,3 @@
-<<<<<<< HEAD
-function limpiarBusqueda(){
-    // modal nueva venta
-    document.getElementById("IdNuevo").value =""
-    document.getElementById("ArticuloNuevo").value=""
-    document.getElementById("ClienteNuevo").value=""
-    document.getElementById("ValorNuevo").value=""
-    document.getElementById("FechaVentaNuevo").value=""
-    document.getElementById("FechaPagoNuevo").value =""
-    document.getElementById("VendedorNuevo").value=""
-=======
 function limpiarBusqueda() {
     // modal nueva venta
     document.getElementById("IdNuevo").value = ""
@@ -18,7 +7,6 @@ function limpiarBusqueda() {
     document.getElementById("FechaVentaNuevo").value = ""
     document.getElementById("FechaPagoNuevo").value = ""
     document.getElementById("VendedorNuevo").value = ""
->>>>>>> 921388469438c2a71ce96b48cad2c0fb12e579c7
     // document.getElementById("EstadoNuevo").value= 1
     // modal modificar venta
     // document.getElementById("IdBusqueda").value =""
@@ -30,21 +18,6 @@ function limpiarBusqueda() {
     // document.getElementById("VendedorBusqueda").value =""
     // document.getElementById("EstadoBusqueda").value= 1
     // modal resultado busqueda
-<<<<<<< HEAD
-    document.getElementById("IdResultado").value =""
-    document.getElementById("ArticuloResultado").value=""
-    document.getElementById("ClienteResultado").value=""
-    document.getElementById("ValorResultado").value =""
-    document.getElementById("FechaVentaResultado").value=""
-    document.getElementById("FechaPagoResultado").value=""
-    document.getElementById("VendedorResultado").value =""
-    // document.getElementById("EstadoResultado").value= 1
-    // modal buscar ventas
-    document.getElementById("IdVentaBuscada").value =""
-    document.getElementById("NombreVentaBuscada").value="" 
-    
-}
-=======
     document.getElementById("IdResultado").value = ""
     document.getElementById("ArticuloResultado").value = ""
     document.getElementById("ClienteResultado").value = ""
@@ -107,4 +80,3 @@ btnCancelarModalResultadoBusquedaNL.addEventListener('click', (e)=>{
     e.preventDefault()
     limpiarBusqueda()
 })
->>>>>>> 921388469438c2a71ce96b48cad2c0fb12e579c7

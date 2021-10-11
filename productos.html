@@ -143,12 +143,15 @@
     <section class="main">
         <div class="row align-items-center">
             <div class="col-2" style="text-align: end;">
-                <label class="form-label" for="form1">Search by:</label>
+                <label class="form-label" for="form1">Buscar u Ordenar por:</label>
             </div>
             <div class="col-2">
                 <select class="form-select " id="busquedapor" placeholder="Estado">
                     <option value="descripcion">Descripción</option>
                     <option value="codigo">Codigo</option>
+                    <option value="peso">Peso (Kg)</option>
+                    <option value="valorUnitario">Valor Unitario ($)</option>
+                    <option value="estado">Estado</option>
 
                 </select>
             </div>
@@ -179,7 +182,7 @@
             <table class="table table-hover text-align-tabla" id="tablaProductos">
                 <thead>
                     <tr>
-                        <th scope="col"></th>
+                        <th scope="col">Seleccionar</th>
                         <!-- <th scope="col">#</th> -->
                         <th scope="col">Código</th>
                         <th scope="col">Descripción</th>
@@ -203,9 +206,9 @@
     <div class="container" style="text-align: center;">
         <a href="#" class="btn btn-primary bg-color-azul" id="btnAdicionarPrincipal" data-bs-toggle="modal"
             data-bs-target="#Adicionar">Adicionar</a>
-        <a href="#" class="btn btn-primary bg-color-azul" id="btnModificarPrincial" data-bs-toggle="modal"
+        <a href="#" class="btn btn-primary bg-color-azul ocultar-elementos" id="btnModificarPrincial" data-bs-toggle="modal"
             data-bs-target="#Modificar">Modificar</a>
-        <a href="#" class="btn btn-primary bg-color-azul" id="btnEliminarPrincipal" data-bs-toggle="modal"
+        <a href="#" class="btn btn-primary bg-color-azul ocultar-elementos" id="btnEliminarPrincipal" data-bs-toggle="modal"
             data-bs-target="#Buscar">Eliminar</a>
 
         </div>

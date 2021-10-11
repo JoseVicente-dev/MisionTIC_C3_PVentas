@@ -143,12 +143,15 @@
     <section class="main">
         <div class="row align-items-center">
             <div class="col-2" style="text-align: end;">
-                <label class="form-label" for="form1">Search by:</label>
+                <label class="form-label" for="form1">Buscar u Ordenar por:</label>
             </div>
             <div class="col-2">
                 <select class="form-select " id="busquedapor" placeholder="Estado">
                     <option value="descripcion">Descripción</option>
                     <option value="codigo">Codigo</option>
+                    <option value="peso">Peso (Kg)</option>
+                    <option value="valorUnitario">Valor Unitario ($)</option>
+                    <option value="estado">Estado</option>
 
                 </select>
             </div>
@@ -179,7 +182,7 @@
             <table class="table table-hover text-align-tabla" id="tablaProductos">
                 <thead>
                     <tr>
-                        <th scope="col"></th>
+                        <th scope="col">Seleccionar</th>
                         <!-- <th scope="col">#</th> -->
                         <th scope="col">Código</th>
                         <th scope="col">Descripción</th>

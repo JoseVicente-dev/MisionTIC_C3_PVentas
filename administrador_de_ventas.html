@@ -123,6 +123,40 @@
 
     <!-- Tabla done se insertaran las filas -->
     <section class="main">
+        <!-- Barra de búsqueda -->
+        <div class="row align-items-center">
+            <div class="col-2" style="text-align: end;">
+                <label class="form-label" for="form1">Buscar u Ordenar por:</label>
+            </div>
+            <div class="col-2">
+                <select class="form-select " id="busquedapor" placeholder="Estado">
+
+                    <option value="vendedor">Vendedor</option>
+                    <option value="idVenta">id Venta</option>
+                    <option value="articulo">Articulo</option>
+                    <option value="cliente">Cliente</option>
+                    <option value="valorVenta">Valor ($)</option>
+                    <option value="fechaVenta">Fecha de Venta</option>
+                    <option value="fechaPago">Fecha de Pago</option>
+                    <option value="estadoPago">Estado de Pago</option>
+
+                </select>
+            </div>
+            
+            <div class="col-6">
+                <input type="search" id="busqueda" class="form-control" placeholder="Inserte Búsqueda" />
+            </div>
+
+            <div class="col-2">
+                <button type="button" class="btn btn-primary" id="buscarVenta">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+        </div>
+        <!-- Barra de búsqueda -->
+
+        <br>
+
         <div class="container-fluid table-responsive">
             <table class="table table-hover text-align-tabla">
                 <thead>

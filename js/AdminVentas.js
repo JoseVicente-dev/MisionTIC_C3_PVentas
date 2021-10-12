@@ -435,5 +435,5 @@ btnBuscarVenta.addEventListener('click', (e) => {
 }) */
 btnNuevaventa.addEventListener('click', (e) => {
     e.preventDefault()
-    AdicionrVenta()
+    AdicionarVenta()
 })

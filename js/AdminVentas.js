@@ -26,7 +26,7 @@ const btnModificarVenta = document.getElementById('btnModificarModalModificar')
 let imgUsuario = document.getElementById('imagenUsuario')
 let nombreUsuario = document.getElementById('nombreDeUsuario')
 const btnEliminarVenta = document.getElementById('btnEliminarModalEliminar')
-const botonAgregar = document.getElementById("btnAdicionarModalAdicionar");
+const botonAgregar = document.getElementById("btn_AgregarVenta");
 const botonCancelar = document.getElementById("btnCancelarModal");
 const auth = firebase.auth()
 const proveedor = new firebase.auth.GoogleAuthProvider()
@@ -204,10 +204,10 @@ async function anadirVenta(product) {
 mostrarInformacion()
 /* ---------------------------------------------------------------------------------------------- */
 //Actiualizar Ventas en la tabla
-/* async function actualizar() {
+async function actualizar() {
     try {
         const Ventas = []
-        const respuestaVentas = await dataBase.collection('ng_Ventas').orderBy("descripcion").get()
+        const respuestaVentas = await dataBase.collection('ng_ventas').orderBy("articulo").get()
         respuestaVentas.forEach(function (item) {
             Ventas.push(item.data())
         })
@@ -215,33 +215,40 @@ mostrarInformacion()
     } catch (error) {
         console.log(error)
     }
-} */
+}
 /* ------------------------------------------------------------------------------------------------------- */
-/* // pintarVentas
+// pintarVentas
 function pintarVentas(Ventas) {
     var table = document.getElementById("cuerpoTablaVentas");
     $("#cuerpoTablaVentas").empty();
     Ventas.forEach((t) => {
 
-        var oRows = document.getElementById('cuerpoTablaVentas').getElementsByTagName('tr');
-        var iRowCount = oRows.length;
-        var row = table.insertRow(iRowCount);
-        var cell1 = row.insertCell(0);
-        var cell2 = row.insertCell(1);
-        var cell3 = row.insertCell(2);
-        var cell4 = row.insertCell(3);
-        var cell5 = row.insertCell(4);
-        var cell6 = row.insertCell(5);
+        let oRows = document.getElementById('cuerpoTablaVentas').getElementsByTagName('tr');
+        let iRowCount = oRows.length;
+        let row = table.insertRow(iRowCount);
+        let cell1 = row.insertCell(0);
+        let cell2 = row.insertCell(1);
+        let cell3 = row.insertCell(2);
+        let cell4 = row.insertCell(3);
+        let cell5 = row.insertCell(4);
+        let cell6 = row.insertCell(5);
+        let cell7 = row.insertCell(6);
+        let cell8 = row.insertCell(7);
+        let cell9 = row.insertCell(8);
+
 
         cell1.innerHTML = '<div class="form-check"><input class="form-check-input" type="radio" name="flexRadioDefault"id="flexRadioDefault6"/></div>';
-        cell2.innerHTML = t.codigo;
-        cell3.innerHTML = t.descripcion;
-        cell4.innerHTML = t.peso;
-        cell5.innerHTML = t.valorUnitario;
-        cell6.innerHTML = t.estado === '1' ? "Disponible" : "No disponible";
+        cell2.innerHTML = t.id;
+        cell3.innerHTML = t.articulo;
+        cell4.innerHTML = t.cliente;
+        cell5.innerHTML = t.valor;
+        cell6.innerHTML = t.fechaVenta;
+        cell7.innerHTML = t.fechaPago;
+        cell8.innerHTML = t.vendedor;
+        cell9.innerHTML = t.estadoPago === '1' ? "Cancelado" : "Pendente";
 
     })
-} */
+}
 // ---------------------------------------------------------------------------
 /* async function buscarVentas() {
 
@@ -401,35 +408,30 @@ async function menu() {
 /* btnModalModificar.addEventListener('click', (e) => {
     e.preventDefault()
     modificarVenta()
-})
-btnModificarVenta.addEventListener('click', (e) => {
+}) */
+/* btnModificarVenta.addEventListener('click', (e) => {
     e.preventDefault()
     modificarVentafb()
     // ocultarBotonesVentas()
     showToast('#toastModificacion')
     limpiarModalModificar()
-})
-btnEliminarVenta.addEventListener('click', (e) => {
+}) */
+/* btnEliminarVenta.addEventListener('click', (e) => {
     e.preventDefault()
     eliminarVenta()
     setTimeout(actualizar, 1000)
-})
-function MostrarBotonesVentas() {
-    const BotonesAdminVentasModificar = document.getElementById("btnModificarPrincial");
-    const BotonesAdminVentasEliminar = document.getElementById("btnEliminarPrincipal");
-    BotonesAdminVentasModificar.style.display = "inline-block";
-    BotonesAdminVentasEliminar.style.display = "inline-block";
-}
+}) */
+
 botonAgregar.addEventListener('click', (e) => {
     obtenerDatos();
     actualizar()
-    limpiarModalAdicionar();
+    // limpiarModalAdicionar();
 })
-botonCancelar.addEventListener('click', (e) => {
+/* botonCancelar.addEventListener('click', (e) => {
     e.preventDefault();
     limpiarModalAdicionar();
-})
-btnBuscarVenta.addEventListener('click', (e) => {
+}) */
+/* btnBuscarVenta.addEventListener('click', (e) => {
     e.preventDefault()
     buscarVentas()
 }) */

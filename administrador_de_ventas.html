@@ -461,31 +461,26 @@
 
     <!-- UUID -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/uuid/8.3.2/uuid.min.js"
-        integrity="sha512-UNM1njAgOFUa74Z0bADwAq8gbTcqZC8Ej4xPSzpnh0l6KMevwvkBvbldF9uR++qKeJ+MOZHRjV1HZjoRvjDfNQ=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+            integrity="sha512-UNM1njAgOFUa74Z0bADwAq8gbTcqZC8Ej4xPSzpnh0l6KMevwvkBvbldF9uR++qKeJ+MOZHRjV1HZjoRvjDfNQ=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"></script>
 
 
 
-    <!-- Archivos JS -->
-    <script src="js/AdminVentas-TablaMostrarVentas.js"></script>
-    <script src="js/AdminVentas-VentaBuscada.js"></script>
-    <script src="js/AdminVentas-BuscarVenta.js"></script>
-    <script src="js/AdminVentas-ocultarbotones.js"></script>
-    <script src="js/AdminVentas-ModificarVentas.js"></script>
-    <script src="js/AdminVentas-NuevaVenta.js"></script>
-    <script src="js/AdminVentas-LimpiarModales.js"></script>
-    <script src="js/ingresar_ventas.js"></script>
+   <!-- Archivos JS -->
+   <script src="js/AdminVentas.js"></script>
+   <script src="js/ingresar_ventas.js"></script>
 
-    <script>
-        function addNuevaFila() {
-            const NuevoId = document.getElementById("IdNuevo")
-            let numerosFila = document.getElementById("AquiVaLaFila")
-            let UltimoIdVenta = numerosFila.getElementsByTagName("tr").length
-            // const UltimoIdVenta = Id.at(-1)
-            console.log(UltimoIdVenta)
-            NuevoId.textContent = (UltimoIdVenta + 1)
-        }
-    </script>
+   <script>
+    function addNuevaFila() {
+        const NuevoId = document.getElementById("IdNuevo")
+        let numerosFila = document.getElementById("AquiVaLaFila")
+        let UltimoIdVenta = numerosFila.getElementsByTagName("tr").length
+        // const UltimoIdVenta = Id.at(-1)
+        console.log(UltimoIdVenta)
+        NuevoId.textContent = (UltimoIdVenta + 1)
+    }
+</script>
 
 </body>
 

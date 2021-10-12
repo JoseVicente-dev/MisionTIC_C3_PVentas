@@ -11,18 +11,18 @@
 
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
-
+const dataBase = firebase.firestore();
 
 const modalNuevaVenta = document.getElementById("btnAgregarModalNuevaVenta")
 const btn_contador = document.getElementById('contador_boton')
 
-const tador = document.getElementById('btn_prueba')
+/* const tador = document.getElementById('btn_prueba')
 
 tador.addEventListener('click', (e)=>{
     e.preventDefault();
     agregarProducto();
 })
-
+ */
 
 const botonPrueba = document.getElementById("prueba")
 
@@ -48,7 +48,7 @@ botonPrueba.addEventListener('click', (e) => {
 
 
 //Variables usadas:
-const dataBase = firebase.firestore()
+
 let contadorNumer = 1;
 
 function contador() {

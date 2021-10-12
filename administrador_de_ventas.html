@@ -238,31 +238,30 @@
                         <div class="col">
                             <label type="text" class="form-control modal-input-select-undisabled" id="IdNuevo"
                                 placeholder="Id Venta">0</label>
-                        </div>
-                        <div class="col">
+                
+
                             <input type="text" class="form-control modal-input-select-undisabled" id="ArticuloNuevo"
                                 placeholder="Articulo">
-                        </div>
-                        <div class="col">
+                  
+              
                             <input type="text" class="form-control modal-input-select-undisabled" id="ClienteNuevo"
                                 placeholder="Cliente">
-                        </div>
-                        <div class="col">
+                   
+                   
                             <input type="text" class="form-control modal-input-select-undisabled" id="ValorNuevo"
                                 placeholder="Valor">
-                        </div>
-                        <div class="col">
+                  
+                  
                             <input type="text" class="form-control modal-input-select-undisabled" id="FechaVentaNuevo"
                                 placeholder="Fecha Venta">
-                        </div>
-                        <div class="col">
+                     
                             <input type="text" class="form-control modal-input-select-undisabled" id="FechaPagoNuevo"
                                 placeholder="Fecha Pago">
                         </div>
-                        <div class="col">
+                
                             <input type="text" class="form-control modal-input-select-undisabled" id="VendedorNuevo"
                                 placeholder="Vendedor">
-                        </div>
+         
                         <select class="form-select modal-input-select-undisabled" id="EstadoNuevo">
                             <option>Cancelada</option>
                             <option>Pendiente</option>
@@ -342,6 +341,129 @@
         </div>
     </div>
     <!--  /Modal Modificar Venta -->
+    <!--  Modal Resultado Busqueda-->
+    <div class="modal fade" id="ResultadoBusqueda" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header bg-color-azul">
+                    <h5 class="modal-title color-h5" id="staticBackdropLabel1">Resultado Busqueda</h5>
+                    <button type="button" class="btn-close bg-color-cerrarX" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="container">
+                        <div class="col">
+                            <label type="text" class="form-control modal-input-select-undisabled" id="IdResultado"
+                                placeholder="Id Venta"> Id Venta</label>
+                  
+                            <input type="text" class="form-control modal-input-select-undisabled" id="ArticuloResultado"
+                                placeholder="Articulo"> </input>
+                       
+                        
+                            <input type="text" class="form-control modal-input-select-undisabled" id="ClienteResultado"
+                                placeholder="Cliente"></input>
+                      
+                      
+                            <input type="text" class="form-control modal-input-select-undisabled" id="ValorResultado"
+                                placeholder="Valor"></input>
+                        
+                   
+                            <input type="text" class="form-control modal-input-select-undisabled"
+                                id="FechaVentaResultado" placeholder="Fecha Venta"></input>
+                     
+                      
+                            <input type="text" class="form-control modal-input-select-undisabled"
+                                id="FechaPagoResultado" placeholder="Fecha Pago"></input>
+                     
+                       
+                            <input type="text" class="form-control modal-input-select-undisabled" id="VendedorResultado"
+                                placeholder="Vendedor"></input>
+                      
+                            <select class="form-select modal-input-select-undisabled" id="EstadoResultado">
+                                <option>Cancelada</option>
+                                <option>Pendiente</option>
+                            </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary bg-color-azul" id="btnModificarModalResultadoBusqueda"
+                         data-bs-toggle="modal"
+                        data-bs-target="#AlertaModificacionVenta" data-bs-dismiss="modal">Modificar</button>
+                    <button type="button" class="btn btn-primary bg-color-azul" id="btnEliminarModalResultadoBusqueda"
+                        >Eliminar</button>
+                    <button type="button" class="btn btn-secondary" id="btnCancelarModalResultadoBusqueda"
+                        data-bs-dismiss="modal">Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--  /Modal Resultado Busqueda-->
+    <!--  Modal Buscar Ventas -->
+    <div class="modal fade" id="BuscarVenta" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header bg-color-azul">
+                    <h5 class="modal-title color-h5" id="staticBackdropLabel1">Buscar Venta</h5>
+                    <button type="button" class="btn-close bg-color-cerrarX" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="container">
+                        <div class="col">
+                            <input type="text" class="form-control modal-input-select-undisabled" id="IdVentaBuscada"
+                                placeholder="Id Venta">
+                        </div>
+
+                            <input type="text" class="form-control modal-input-select-undisabled"
+                                id="NombreVentaBuscada" placeholder="Id o Nombre Cliente">
+                        </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary bg-color-azul" id="btnIdModalBuscarVentas"
+                        data-bs-toggle="modal" data-bs-target="#ResultadoBusqueda" data-bs-dismiss="modal"
+                        >Buscar por Id Venta</button>
+                    <button type="button" class="btn btn-primary bg-color-azul" id="btnNombreModalBuscarVentas"
+                        data-bs-toggle="modal" data-bs-target="#ResultadoBusqueda" data-bs-dismiss="modal"
+                        >Buscar por Nombre
+                        Cliente</button>
+                    <button type="button" class="btn btn-secondary" id="btnCancelarModalBuscarVentas"
+                        data-bs-dismiss="modal">Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--  /Modal Buscar Ventas -->
+
+    <!-- Modal Alerta Actualización Venta -->
+    <div class="modal fade" id="AlertaModificacionVenta" tabindex="-1" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Actualización Venta</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Venta Actualizada Correctamente
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /Modal Alerta Actualización Venta  -->
+
+
+
+   
+    </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/esm/popper.js"></script>

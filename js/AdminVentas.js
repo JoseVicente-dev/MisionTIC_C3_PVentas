@@ -15,23 +15,19 @@ const dataBase = firebase.firestore();
 
 // Declara Variables de DOM
 
-const btnNuevaventa= document.getElementById('btn_AgregarVenta');
+const btnNuevaventa = document.getElementById('btn_AgregarVenta');
 
 const btnBuscarVenta = document.getElementById('buscarVenta')
-
-const btnModalModificar = document.getElementById('btnModificarPrincial')
-const btnModificarVenta = document.getElementById('btnModificarModalModificar')
-
-const btnEliminarVenta = document.getElementById('btnEliminarModalEliminar')
-const botonAgregar = document.getElementById("btnAdicionarModalAdicionar");
-const botonCancelar = document.getElementById("btnCancelarModal");
-
 const toastIngresoVenta = document.getElementById('liveToastIProduct')
 const toastIngresoVentaNeg = document.getElementById('liveToastIProductNeg')
 const toastCamposVacios = document.getElementById('toastCamposVacios')
-
+const btnModalModificar = document.getElementById('btnModificarPrincial')
+const btnModificarVenta = document.getElementById('btnModificarModalModificar')
 let imgUsuario = document.getElementById('imagenUsuario')
 let nombreUsuario = document.getElementById('nombreDeUsuario')
+const btnEliminarVenta = document.getElementById('btnEliminarModalEliminar')
+const botonAgregar = document.getElementById("btn_AgregarVenta");
+const botonCancelar = document.getElementById("btnCancelarModal");
 const auth = firebase.auth()
 const proveedor = new firebase.auth.GoogleAuthProvider()
 let usuarioActual;
@@ -83,7 +79,7 @@ async function mostrarInformacion() {
 
         valor = document.createElement("td")
         valor.textContent = p.valor
-        
+
         fechaVenta = document.createElement("td")
         fechaVenta.textContent = p.fechaVenta
 
@@ -94,7 +90,7 @@ async function mostrarInformacion() {
         vendedor.textContent = p.vendedor
 
         estado = document.createElement("td")
-        p.estado === '1' ? estado.textContent = "Cancelado" : estado.textContent = "Pendiente";
+        p.estadoPago === '1' ? estado.textContent = "Cancelado" : estado.textContent = "Pendiente";
 
         filaTabla.appendChild(id)
         filaTabla.appendChild(articulo)
@@ -112,87 +108,92 @@ async function mostrarInformacion() {
 
 // ------------------------------------------ Adicionar Ventas--------------------------------
 
- /*    const idVentas= document.getElementById('IdNuevo'); */
-    function AdicionrVenta(){
+/*    const idVentas= document.getElementById('IdNuevo'); */
+function AdicionarVenta() {
     console.log('Inicio adicionar venta');
     // Creacion de las variables de DOM
-    const articuloVentas= document.getElementById('ArticuloNuevo').value;
-    const clienteVentas= document.getElementById('ClienteNuevo').value;
-    const ValorVentas= document.getElementById('ValorNuevo').value;
+    const articuloVentas = document.getElementById('ArticuloNuevo').value;
+    const clienteVentas = document.getElementById('ClienteNuevo').value;
+    const ValorVentas = document.getElementById('ValorNuevo').value;
     const fechasVenta = document.getElementById('FechaVentaNuevo').value;
     const FechaPagoVentas = document.getElementById('FechaPagoNuevo').value;
     const vendedor = document.getElementById('VendedorNuevo').value;
     const estadoPago = document.getElementById('EstadoNuevo').value;
 
     const ventaAgregar = {
-        id: uuid.v4(), 
-        articulo: articuloVentas,
-        cliente: clienteVentas,
+        id: uuid.v4(),
+        articulo: articuloVentas.replace(/^\w/, (c) => c.toUpperCase()),
+        cliente: clienteVentas.replace(/^\w/, (c) => c.toUpperCase()),
         valor: ValorVentas,
         fechaVenta: fechasVenta,
         fechaPago: FechaPagoVentas,
-        vendedor: vendedor,
-        estadoPago:estadoPago
-    } 
+        vendedor: vendedor.replace(/^\w/, (c) => c.toUpperCase()),
+        estadoPago: estadoPago
+    }
 
+    console.log(ventaAgregar);
+    if (ventaAgregar.articulo != "" && ventaAgregar.cliente != false && ventaAgregar.vendedor != "" && ventaAgregar.valor != "" && ventaAgregar.fechaVenta != "" && ventaAgregar.fechaPago != "") {
+
+        console.log(typeof ventaAgregar.estadoPago);
+        guardarVentas(ventaAgregar)
+        // actualizar();
+        showToast('#toastIngresoCorrecto');
+
+    } else {
+        showToast('#toastCamposVacios')
+
+    }
     // Obtención de la base de datos
-    guardarVentas(ventaAgregar)
+
 
 
 }
 
 //guardar Ventas
-async function guardarVentas(venta){
-    try{
+async function guardarVentas(venta) {
+    try {
         const respuesta = await dataBase.collection('ng_ventas').add(venta);
         return respuesta
 
-    }catch(error){
+    } catch (error) {
         console.log(error)
     }
 }
 
 
-/* function showToast(id) {
+function showToast(id) {
     $(id).toast('show');
 }
 async function obtenerDatos() {
     try {
-        
-        // const idVentas = document.getElementById('IdNuevo');
-        const articuloVentas = document.getElementById('ArticuloNuevo').value.replace(/^\w/, (c) => c.toUpperCase());
-        const clienteVentas = document.getElementById('ClienteNuevo').value.replace(/^\w/, (c) => c.toUpperCase());
-        const vendedor = document.getElementById('VendedorNuevo').value.replace(/^\w/, (c) => c.toUpperCase());
-        const ValorVentas = document.getElementById('ValorNuevo');
-        const fechasVenta = document.getElementById('FechaVentaNuevo');
-        const FechaPagoVentas = document.getElementById('FechaPagoNuevo');
-        const estadoVenta = document.getElementById("EstadoNuevo").value
-
+        const inputDescription = document.getElementById("inputDescripcion").value.replace(/^\w/, (c) => c.toUpperCase());
+        const inputWeigth = document.getElementById("inputPeso").value;
+        const inputValue = document.getElementById("inputValorUnitario").value;
+        const inputState = document.getElementById("inputEstado").value;
         const VentasArray = [];
-        const nuevaVenta = await dataBase.collection('ng_ventas').get()
-        nuevaVenta.forEach((t) => {
+        const nuevoxd = await dataBase.collection('ng_ventas').get()
+        nuevoxd.forEach((t) => {
             VentasArray.push(t.data())
         })
 
         const Venta = {
             id: uuid.v4(),
-            articulo: articuloVentas.replace(/^\w/, (c) => c.toUpperCase()),
-            cliente: clienteVentas.replace(/^\w/, (c) => c.toUpperCase()),
-            valor: ValorVentas,
-            fechaVenta: fechasVenta,
-            fechaPago: FechaPagoVentas,
-            vendedor: vendedor.replace(/^\w/, (c) => c.toUpperCase()),
-            estado: estadoVenta
+            articulo: inputArticulo.replace(/^\w/, (c) => c.toUpperCase()),
+            cliente: inputCliente.replace(/^\w/, (c) => c.toUpperCase()),
+            valor: inputValor,
+            fechaVenta: inputFechaVenta,
+            fechaPago: inputFechaPago,
+            vendedor: inputVendedor.replace(/^\w/, (c) => c.toUpperCase()),
+            estado: inputState
         }
-        if (Venta.articulo != "" || Venta.cliente != "" || Venta.vendedor!="" || Venta.valor != "" || Venta.fechaVenta !="" || Venta.fechaPago!="") {
-            console.log(VentasArray);
-            if (VentasArray.length != 0 && VentasArray.find(busquedaArray => busquedaArray.articulo == articuloVentas)) {
+        if (Venta.descripcion != "" || Venta.peso != "" || Venta.valorUnitario != "") {
+            if (VentasArray.length != 0 && VentasArray.find(busquedaArray => busquedaArray.descripcion == inputDescription)) {
                 console.log(VentasArray);
             } else {
                 console.log(typeof Venta.estado);
                 anadirVenta(Venta)
                 actualizar();
-                showToast('#toastIngresoCorrecto');
+                showToast('#liveToastIProduct');
             }
         } else {
             showToast('#toastCamposVacios')
@@ -204,9 +205,9 @@ async function obtenerDatos() {
     }
 }
 
-async function anadirVenta(venta) {
+async function anadirVenta(product) {
     try {
-        const respuesta = await dataBase.collection('ng_ventas').add(venta)
+        const respuesta = await dataBase.collection('ng_Ventas').add(product)
         return respuesta
     } catch (error) {
         console.log(error);
@@ -218,7 +219,7 @@ mostrarInformacion()
 async function actualizar() {
     try {
         const Ventas = []
-        const respuestaVentas = await dataBase.collection('ng_Ventas').orderBy("descripcion").get()
+        const respuestaVentas = await dataBase.collection('ng_ventas').orderBy("articulo").get()
         respuestaVentas.forEach(function (item) {
             Ventas.push(item.data())
         })
@@ -234,27 +235,34 @@ function pintarVentas(Ventas) {
     $("#cuerpoTablaVentas").empty();
     Ventas.forEach((t) => {
 
-        var oRows = document.getElementById('cuerpoTablaVentas').getElementsByTagName('tr');
-        var iRowCount = oRows.length;
-        var row = table.insertRow(iRowCount);
-        var cell1 = row.insertCell(0);
-        var cell2 = row.insertCell(1);
-        var cell3 = row.insertCell(2);
-        var cell4 = row.insertCell(3);
-        var cell5 = row.insertCell(4);
-        var cell6 = row.insertCell(5);
+        let oRows = document.getElementById('cuerpoTablaVentas').getElementsByTagName('tr');
+        let iRowCount = oRows.length;
+        let row = table.insertRow(iRowCount);
+        let cell1 = row.insertCell(0);
+        let cell2 = row.insertCell(1);
+        let cell3 = row.insertCell(2);
+        let cell4 = row.insertCell(3);
+        let cell5 = row.insertCell(4);
+        let cell6 = row.insertCell(5);
+        let cell7 = row.insertCell(6);
+        let cell8 = row.insertCell(7);
+        let cell9 = row.insertCell(8);
+
 
         cell1.innerHTML = '<div class="form-check"><input class="form-check-input" type="radio" name="flexRadioDefault"id="flexRadioDefault6"/></div>';
-        cell2.innerHTML = t.codigo;
-        cell3.innerHTML = t.descripcion;
-        cell4.innerHTML = t.peso;
-        cell5.innerHTML = t.valorUnitario;
-        cell6.innerHTML = t.estado === '1' ? "Disponible" : "No disponible";
+        cell2.innerHTML = t.id;
+        cell3.innerHTML = t.articulo;
+        cell4.innerHTML = t.cliente;
+        cell5.innerHTML = t.valor;
+        cell6.innerHTML = t.fechaVenta;
+        cell7.innerHTML = t.fechaPago;
+        cell8.innerHTML = t.vendedor;
+        cell9.innerHTML = t.estadoPago === '1' ? "Cancelado" : "Pendente";
 
     })
 }
 // ---------------------------------------------------------------------------
-async function buscarVentas() {
+/* async function buscarVentas() {
 
     try {
         let busqueda = document.getElementById("busqueda").value.replace(/^\w/, (c) => c.toUpperCase());
@@ -269,11 +277,11 @@ async function buscarVentas() {
         console.log(error)
     }
 }
-
+ */
 // /* ------------------------------------------------------------------------------------------------ */
 
 //funcion del boton para que abra el modal con los datos de la fila.
-function modificarVenta() {
+/* function modificarVenta() {
     let tablaVentas = document.getElementById("cuerpoTablaVentas");
     let radios = tablaVentas.getElementsByTagName("input");
     let filas = tablaVentas.getElementsByTagName("tr");
@@ -295,8 +303,8 @@ function modificarVenta() {
         }
     }
 }
-
-//modificar Venta
+ */
+/* //modificar Venta
 async function modificarVentafb() {
     const mCodigoInput = document.getElementById("modifyCodigo").value
     const mDescripcionInput = document.getElementById("modifyDescripcion").value.replace(/^\w/, (c) => c.toUpperCase());
@@ -355,10 +363,10 @@ function eliminarVenta() {
             doc.ref.delete();
         });
     });
-}
+} */
 // ---------------------------------------------------------------
 
-//comparar sesion actual con tipo de usuario
+/* //comparar sesion actual con tipo de usuario
 async function compararRolUsuario() {
     const respuestausuarios = await dataBase.collection("ng_users").where('email', '==', usuarioEmail).get();
     const usuariosBD = [];
@@ -373,7 +381,7 @@ async function compararRolUsuario() {
             document.getElementById('btnEliminarPrincipal').disabled = true
         }
     });
-}
+} */
 //login
 async function menu() {
     try {
@@ -409,42 +417,37 @@ async function menu() {
 }
 
 // Eventos-----------------------------------------------------
-btnModalModificar.addEventListener('click', (e) => {
+/* btnModalModificar.addEventListener('click', (e) => {
     e.preventDefault()
     modificarVenta()
-})
-btnModificarVenta.addEventListener('click', (e) => {
+}) */
+/* btnModificarVenta.addEventListener('click', (e) => {
     e.preventDefault()
     modificarVentafb()
     // ocultarBotonesVentas()
     showToast('#toastModificacion')
     limpiarModalModificar()
-})
-btnEliminarVenta.addEventListener('click', (e) => {
+}) */
+/* btnEliminarVenta.addEventListener('click', (e) => {
     e.preventDefault()
     eliminarVenta()
     setTimeout(actualizar, 1000)
-})
-function MostrarBotonesVentas() {
-    const BotonesAdminVentasModificar = document.getElementById("btnModificarPrincial");
-    const BotonesAdminVentasEliminar = document.getElementById("btnEliminarPrincipal");
-    BotonesAdminVentasModificar.style.display = "inline-block";
-    BotonesAdminVentasEliminar.style.display = "inline-block";
-}
+}) */
+
 botonAgregar.addEventListener('click', (e) => {
     obtenerDatos();
     actualizar()
-    limpiarModalAdicionar();
+    // limpiarModalAdicionar();
 })
-botonCancelar.addEventListener('click', (e) => {
+/* botonCancelar.addEventListener('click', (e) => {
     e.preventDefault();
     limpiarModalAdicionar();
-})
-btnBuscarVenta.addEventListener('click', (e) => {
+}) */
+/* btnBuscarVenta.addEventListener('click', (e) => {
     e.preventDefault()
     buscarVentas()
-})
+}) */
 btnNuevaventa.addEventListener('click', (e) => {
     e.preventDefault()
-    obtenerDatos()
+    AdicionarVenta()
 })

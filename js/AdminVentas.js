@@ -115,6 +115,7 @@ function AdicionrVenta(){
     const fechasVenta = document.getElementById('FechaVentaNuevo');
     const FechaPagoVentas = document.getElementById('FechaPagoNuevo');
 
+    
 }
 
 

@@ -14,16 +14,20 @@ firebase.initializeApp(firebaseConfig);
 //Declarar Variables globales  
 const dataBase = firebase.firestore();
 const btnBuscarVenta = document.getElementById('buscarVenta')
-const toastIngresoVenta = document.getElementById('liveToastIProduct')
-const toastIngresoVentaNeg = document.getElementById('liveToastIProductNeg')
-const toastCamposVacios = document.getElementById('toastCamposVacios')
+
 const btnModalModificar = document.getElementById('btnModificarPrincial')
 const btnModificarVenta = document.getElementById('btnModificarModalModificar')
-let imgUsuario = document.getElementById('imagenUsuario')
-let nombreUsuario = document.getElementById('nombreDeUsuario')
+
 const btnEliminarVenta = document.getElementById('btnEliminarModalEliminar')
 const botonAgregar = document.getElementById("btnAdicionarModalAdicionar");
 const botonCancelar = document.getElementById("btnCancelarModal");
+
+const toastIngresoVenta = document.getElementById('liveToastIProduct')
+const toastIngresoVentaNeg = document.getElementById('liveToastIProductNeg')
+const toastCamposVacios = document.getElementById('toastCamposVacios')
+
+let imgUsuario = document.getElementById('imagenUsuario')
+let nombreUsuario = document.getElementById('nombreDeUsuario')
 const auth = firebase.auth()
 const proveedor = new firebase.auth.GoogleAuthProvider()
 let usuarioActual;

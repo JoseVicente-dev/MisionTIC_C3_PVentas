@@ -13,6 +13,9 @@ firebase.initializeApp(firebaseConfig);
 //Declarar Variables globales  
 const dataBase = firebase.firestore();
 // Declara Variables de DOM
+
+const btnNuevaventa= document.getElementById('NewVenta')
+
 const btnBuscarVenta = document.getElementById('buscarVenta')
 const toastIngresoVenta = document.getElementById('liveToastIProduct')
 const toastIngresoVentaNeg = document.getElementById('liveToastIProductNeg')

@@ -10,16 +10,9 @@ $(".menu-lateral-dropdown > a").click(function () {
   }
 });
 
-
-
-
 $("#close-menu-lateral").click(function () {
   $(".page-wrapper").removeClass("toggled");
 });
 $("#show-menu-lateral").click(function () {
   $(".page-wrapper").addClass("toggled");
 });
-
-
-
-

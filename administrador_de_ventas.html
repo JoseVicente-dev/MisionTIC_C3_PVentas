@@ -163,6 +163,7 @@
                         <th scope="col">Id</th>
                         <th scope="col">Articulo</th>
                         <th scope="col">Cliente</th>
+                        <th scope="col">Cantidad</th>
                         <th scope="col">Valor $</th>
                         <th scope="col">Fecha Venta</th>
                         <th scope="col">Fecha Pago</th>
@@ -276,11 +277,12 @@
                             <input type="text" class="form-control modal-input-select-undisabled" id="ClienteNuevo"
                                 placeholder="Cliente">
                             <input type="text" class="form-control modal-input-select-undisabled" id="ValorNuevo"
-                                placeholder="Valor">
+                                placeholder="Valor unitario" disabled>
+                            <input type="number" class="form-control modal-input-select-undisabled" id="CantidadNueva"
+                            placeholder="cantidad en Kg">
 
-                            <!-- <input type="text" class="form-control modal-input-select-undisabled" id="VendedorNuevo"
-                                placeholder="Vendedor">
-                            </div> -->
+                            <input type="text" class="form-control modal-input-select-undisabled" id="ValorTotal"
+                            placeholder="Valor total" disabled>
 
                             <select class="form-select modal-input-select-undisabled" id="VendedorNuevo" >
                             <!--     <option hidden selected>Vendedor</option> -->

@@ -105,6 +105,7 @@ function AdicionarVenta() {
     const artiVentas = articuloVentas.options[articuloVentas.selectedIndex].text
     const clienteVentas = document.getElementById('ClienteNuevo').value;
     const ValorVentas = document.getElementById('ValorNuevo').value;
+    const CantidadVentas = document.getElementById('CantidadNueva').value;
     const fechasVenta = document.getElementById('FechaVentaNuevo').value;
     const FechaPagoVentas = document.getElementById('FechaPagoNuevo').value;
     const vendedor = document.getElementById('VendedorNuevo');
@@ -120,9 +121,10 @@ function AdicionarVenta() {
         fechaVenta: fechasVenta,
         fechaPago: FechaPagoVentas,
         vendedor: vendeVenta.replace(/^\w/, (c) => c.toUpperCase()),
-        estadoPago: estadoPago
+        estadoPago: estadoPago,
+        cantidad:CantidadVentas
     }
-    if (ventaAgregar.articulo != "" && ventaAgregar.cliente != false && ventaAgregar.vendedor != "" && ventaAgregar.valor != "" && ventaAgregar.fechaVenta != "" && ventaAgregar.fechaPago != "") {
+    if (ventaAgregar.articulo != "" && ventaAgregar.cliente != false && ventaAgregar.vendedor != "" && ventaAgregar.valor != "" && ventaAgregar.fechaVenta != "" && ventaAgregar.fechaPago != "" && ventaAgregar.cantidad != "" ) {
         guardarVentas(ventaAgregar)
         // actualizar();
         showToast('#toastIngresoCorrecto');
@@ -222,16 +224,18 @@ function pintarVentas(Ventas) {
         let cell7 = row.insertCell(6);
         let cell8 = row.insertCell(7);
         let cell9 = row.insertCell(8);
+        let cell10= row.insertCell(9);
 
         cell1.innerHTML = '<div class="form-check" style = "text-align:center"><input class="form-check-input" type="radio" name="flexRadioDefault"id="flexRadioDefault6"/></div>';
         cell2.innerHTML = t.id;
         cell3.innerHTML = t.articulo;
         cell4.innerHTML = t.cliente;
-        cell5.innerHTML = t.valor;
-        cell6.innerHTML = t.fechaVenta;
-        cell7.innerHTML = t.fechaPago;
-        cell8.innerHTML = t.vendedor;
-        cell9.innerText = t.estadoPago === '1' ? "Cancelado" : "Pendiente";
+        cell5.innerHTML = t.cantidad;
+        cell6.innerHTML = t.valor;
+        cell7.innerHTML = t.fechaVenta;
+        cell8.innerHTML = t.fechaPago;
+        cell9.innerHTML = t.vendedor;
+        cell10.innerText = t.estadoPago === '1' ? "Cancelado" : "Pendiente";
     })
     limpiarModalAdicionar()
 }
@@ -306,7 +310,14 @@ async function obtenerPrecio() {
 
 }
 
+async function obtenerPrecioTotal() {
 
+    const ValorUnitario = document.getElementById('ValorNuevo').value;
+    const Kilos= document.getElementById('CantidadNueva').value;
+    const valorTotal=ValorUnitario*Kilos;
+    document.getElementById("ValorTotal").value = valorTotal;
+
+}
 
 // ---------------------------------------------------------------------------
 async function buscarVentas() {
@@ -552,4 +563,8 @@ btnModificarMdventa.addEventListener('click', (e) => {
 
 document.getElementById('ArticuloNuevo').addEventListener('change', (e) => {
     obtenerPrecio()
+})
+
+document.getElementById('CantidadNueva').addEventListener('change', (e) => {
+    obtenerPrecioTotal()
 })

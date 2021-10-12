@@ -14,9 +14,9 @@ firebase.initializeApp(firebaseConfig);
 const dataBase = firebase.firestore();
 // Declara Variables de DOM
 
-const btnNuevaventa= document.getElementById('btn_AgregarVenta')
+const btnNuevaventa= document.getElementById('btn_AgregarVenta');
 
-const btnBuscarVenta = document.getElementById('buscarVenta')
+/* const btnBuscarVenta = document.getElementById('buscarVenta')
 const toastIngresoVenta = document.getElementById('liveToastIProduct')
 const toastIngresoVentaNeg = document.getElementById('liveToastIProductNeg')
 const toastCamposVacios = document.getElementById('toastCamposVacios')
@@ -32,7 +32,7 @@ const proveedor = new firebase.auth.GoogleAuthProvider()
 let usuarioActual;
 let usuarioFoto;
 let usuarioEmail;
-setTimeout(menu, 1000)
+setTimeout(menu, 1000) */
 
 
 async function mostrarInformacion() {
@@ -92,13 +92,36 @@ async function mostrarInformacion() {
 
 // ------------------------------------------ Adicionar Ventas--------------------------------
 function AdicionrVenta(){
-
-    const idVentas= document.getElementById('IdNuevo');
+    console.log('Inicio adiconar venta');
+    // Creacion de las variables de DOM
+ /*    const idVentas= document.getElementById('IdNuevo'); */
     const articuloVentas= document.getElementById('ArticuloNuevo');
     const clienteVentas= document.getElementById('ClienteNuevo');
     const ValorVentas= document.getElementById('ValorNuevo');
     const fechasVenta = document.getElementById('FechaVentaNuevo');
     const FechaPagoVentas = document.getElementById('FechaPagoNuevo');
+    const vendedor = document.getElementById('VendedorNuevo');
+    const estadoPago = document.getElementById('EstadoNuevo');
+
+    const ventaAgregar = {
+        id: uuid.v4(), 
+        nombres: articuloVentas,
+        cliente: clienteVentas,
+        valor: ValorVentas,
+        fechaVenta: fechasVenta,
+        fechaPago: FechaPagoVentas,
+        vendedor: vendedor,
+        estadoPago:estadoPago
+    } 
+
+    // Obtención de la base de datos
+    const VentasArray = [];
+    const DatosVentas = await dataBase.collection('ng_ventas').get()
+    Datosventas.forEach((t) => {
+        VentasArray.push(t.data());
+        console.log(t);
+    })
+
 
 }
 
@@ -107,7 +130,7 @@ function AdicionrVenta(){
 /* function showToast(id) {
     $(id).toast('show');
 } */
-async function obtenerDatos() {
+/* async function obtenerDatos() {
     try {
         const inputDescription = document.getElementById("inputDescripcion").value.replace(/^\w/, (c) => c.toUpperCase());
         const inputWeigth = document.getElementById("inputPeso").value;
@@ -153,7 +176,7 @@ async function anadirVenta(product) {
         console.log(error);
     }
 }
-mostrarInformacion()
+mostrarInformacion() */
 /* ---------------------------------------------------------------------------------------------- */
 //Actiualizar Ventas en la tabla
 /* async function actualizar() {

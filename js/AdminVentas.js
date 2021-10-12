@@ -402,6 +402,7 @@ function eliminarVenta() {
 async function compararRolUsuario() {
     const respuestausuarios = await dataBase.collection("ng_users").where('email', '==', usuarioEmail).get();
     const usuariosBD = [];
+
     respuestausuarios.forEach(function (item) {
         usuariosBD.push(item.data());
     });
@@ -412,7 +413,13 @@ async function compararRolUsuario() {
 
     if(tipoUsuarioActual=="Vendedor"){
         document.getElementById('VendedorNuevo').disabled = true
-        document.getElementById('VendedorNuevo').value = usuarioActual
+        /* document.getElementById('VendedorNuevo').text = usuarioActual */
+ 
+        var select = document.getElementById("VendedorNuevo")
+        var option = document.createElement("option");
+        option.value = 0;
+        option.text = usuarioActual;
+        select.appendChild(option);
         
     }else{
         
@@ -420,6 +427,12 @@ async function compararRolUsuario() {
     }
     pintarProductos()
     /* console.log(vendedor) */
+
+        
+
+      
+
+
 
 }
 //login

@@ -220,7 +220,7 @@ function pintarVentas(Ventas) {
         let cell8 = row.insertCell(7);
         let cell9 = row.insertCell(8);
 
-        cell1.innerHTML = '<div class="form-check"><input class="form-check-input" type="radio" name="flexRadioDefault"id="flexRadioDefault6"/></div>';
+        cell1.innerHTML = '<div class="form-check" style = "text-align:center"><input class="form-check-input" type="radio" name="flexRadioDefault"id="flexRadioDefault6"/></div>';
         cell2.innerHTML = t.id;
         cell3.innerHTML = t.articulo;
         cell4.innerHTML = t.cliente;

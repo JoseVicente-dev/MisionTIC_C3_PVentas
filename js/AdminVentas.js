@@ -109,7 +109,7 @@ async function mostrarInformacion() {
 // ------------------------------------------ Adicionar Ventas--------------------------------
 
  /*    const idVentas= document.getElementById('IdNuevo'); */
-    function AdicionrVenta(){
+    function AdicionarVenta(){
     console.log('Inicio adicionar venta');
     // Creacion de las variables de DOM
     const articuloVentas= document.getElementById('ArticuloNuevo').value;

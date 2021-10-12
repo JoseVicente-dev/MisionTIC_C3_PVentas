@@ -139,9 +139,6 @@ function AdicionrVenta(){
 
 
 }
-
-
-
 /* function showToast(id) {
     $(id).toast('show');
 } */

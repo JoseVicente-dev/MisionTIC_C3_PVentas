@@ -150,14 +150,15 @@ async function obtenerDatos() {
             vendedor: vendedor.replace(/^\w/, (c) => c.toUpperCase()),
             estado: estadoVenta
         }
-        if (Venta.articulo != "" || Venta.cliente != "" || Venta.valor != "" || Venta.fechaVenta !="" || Ven) {
-            if (VentasArray.length != 0 && VentasArray.find(busquedaArray => busquedaArray.descripcion == inputDescription)) {
+        if (Venta.articulo != "" || Venta.cliente != "" || Venta.vendedor!="" || Venta.valor != "" || Venta.fechaVenta !="" || Venta.fechaPago!="") {
+            console.log(VentasArray);
+            if (VentasArray.length != 0 && VentasArray.find(busquedaArray => busquedaArray.articulo == articuloVentas)) {
                 console.log(VentasArray);
             } else {
                 console.log(typeof Venta.estado);
                 anadirVenta(Venta)
                 actualizar();
-                showToast('#liveToastIProduct');
+                showToast('#toastIngresoCorrecto');
             }
         } else {
             showToast('#toastCamposVacios')
@@ -169,9 +170,9 @@ async function obtenerDatos() {
     }
 }
 
-async function anadirVenta(product) {
+async function anadirVenta(venta) {
     try {
-        const respuesta = await dataBase.collection('ng_Ventas').add(product)
+        const respuesta = await dataBase.collection('ng_ventas').add(venta)
         return respuesta
     } catch (error) {
         console.log(error);
@@ -411,5 +412,5 @@ btnBuscarVenta.addEventListener('click', (e) => {
 })
 btnNuevaventa.addEventListener('click', (e) => {
     e.preventDefault()
-    AdicionrVenta()
+    obtenerDatos()
 })

@@ -155,7 +155,7 @@
         <!-- Barra de búsqueda -->
         <br>
         <div class="container-fluid table-responsive">
-            <table class="table table-hover text-align-tabla" id="cuerpoTablaVentas">
+            <table class="table table-hover text-align-tabla" >
                 <thead>
                     <tr>
                         <th scope="col">Seleccionar </th>
@@ -168,10 +168,15 @@
                         <th scope="col">Vendedor</th>
                         <th scope="col">Estado Pago</th>
                     </tr>
+
                 </thead>
                 <!-- agregamos el id="AquiVaLaFila" en el body porque solo creamos las filas -->
                 <!-- se mantiene la estructura original de la tabla -->
                 <tbody id="cuerpoTablaVentas" class="text-align-tabla">
+                        <tr id="cuerpoTablaVentas_tr">
+                        </tr>
+            
+                     
                 </tbody>
             </table>
         </div>

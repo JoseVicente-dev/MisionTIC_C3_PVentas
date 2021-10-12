@@ -12,6 +12,7 @@ firebase.initializeApp(firebaseConfig);
 //Declarar Variables globales  
 const dataBase = firebase.firestore();
 // Declara Variables de DOM
+const btnModificarMdventa= document.getElementById('btnModificarModalModificar')
 const btnModalModificar= document.getElementById('btnModificarPrincial')
 const btnNuevaventa = document.getElementById('btn_AgregarVenta');
 const btnBuscarVenta = document.getElementById('buscarVenta')
@@ -249,16 +250,18 @@ function pintarVentas(Ventas) {
 
 //funcion del boton para que abra el modal con los datos de la fila.
 function modificarVenta() {
-
+    limpiarModalModificar();
     let tablaVentas = document.getElementById("cuerpoTablaVentas");
     let radios = tablaVentas.getElementsByTagName("input");
     let filas = tablaVentas.getElementsByTagName("tr");
     let totalFilas = radios.length;
     
     for (i = 0; i < totalFilas; i++) {
+        console.log(i);
         if (radios[i].checked) {
             filaSeleccionada = filas[i]
-            console.log(filaSeleccionada.cells[1].innerText)
+            console.log('fila seleccionada',filaSeleccionada)
+           
             document.getElementById("IdBusqueda").value = filaSeleccionada.cells[1].innerText;
             document.getElementById("ArticuloBusqueda").value = filaSeleccionada.cells[2].innerText;
             document.getElementById("ClienteBusqueda").value = filaSeleccionada.cells[3].innerText;
@@ -271,34 +274,52 @@ function modificarVenta() {
                 document.getElementById("modifyEstado").value = "1";
             }
             document.getElementById("modifyEstado").value = "2";
+
+            
+        }
     }
-}
 }
 
 //modificar Venta
 async function modificarVentafb() {
-    const mCodigoInput = document.getElementById("modifyCodigo").value
-    const mDescripcionInput = document.getElementById("modifyDescripcion").value.replace(/^\w/, (c) => c.toUpperCase());
-    const mPesoInput = document.getElementById("modifyPeso").value;
-    const mValorUnitarioInput = document.getElementById("modifyValorUnitario").value;
-    const mestadoInput = document.getElementById("modifyEstado").value;
-    const respuestaprodctos = await dataBase.collection("ng_Ventas").where('codigo', '==', mCodigoInput).get();
+console.log('se esta ejecutando modificarVEntafb')
+
+     const IdVentasModal=document.getElementById("IdBusqueda").value;
+    const articuloModal=document.getElementById("ArticuloBusqueda").value;
+    const clienteModal=document.getElementById("ClienteBusqueda").value;
+    const valorModal=document.getElementById("ValorBusqueda").value;
+    const fechaVentaModal=document.getElementById("FechaVentaBusqueda").value;
+    const fechapagoModal=document.getElementById("FechaPagoBusqueda").value;
+    const vendedorModal=document.getElementById("VendedorBusqueda").value;
+/*     console.log('documenrt ID',document.getElementById("modifyEstado").value);
+    const EstadoModal=document.getElementById("modifyEstado").value;
+    console.log(EstadoModal); */
+
+    const respuestaVentas = await dataBase.collection("ng_ventas").where('id', '==', IdVentasModal).get();
     let idmod = ""
-    respuestaprodctos.forEach(function (item) {
+    respuestaVentas.forEach(function (item) {
         idmod = item.id
     });
-    dataBase.collection("ng_Ventas").doc(idmod).update({
-        descripcion: mDescripcionInput,
-        peso: mPesoInput,
-        valorUnitario: mValorUnitarioInput,
-        estado: mestadoInput,
+
+    console.log(idmod)
+    dataBase.collection("ng_ventas").doc(idmod).update({
+         articulo:articuloModal.replace(/^\w/, (c) => c.toUpperCase()),
+        cliente:clienteModal.replace(/^\w/, (c) => c.toUpperCase()),
+        estadoPago:'1',
+        fechaPago: fechapagoModal,
+        fechaVenta:fechaVentaModal,
+        id:IdVentasModal,
+        valor:valorModal,
+        vendedor:vendedorModal.replace(/^\w/, (c) => c.toUpperCase())
     });
-    const VentasArray = [];
+    
+    actualizar();
+/*     const VentasArray = [];
     const nuevoxd = await dataBase.collection('ng_Ventas').get()
     nuevoxd.forEach((t) => {
         VentasArray.push(t.data())
     })
-    setTimeout(actualizar, 1000);
+    setTimeout(actualizar, 1000); */
 }
 
 function limpiarModalAdicionar() {
@@ -311,10 +332,13 @@ function limpiarModalAdicionar() {
 
 }
 function limpiarModalModificar() {
-    document.getElementById("modifyCodigo").value = "";
-    document.getElementById("modifyDescripcion").value = "";
-    document.getElementById("modifyPeso").value = "";
-    document.getElementById("modifyValorUnitario").value = "";
+    document.getElementById("IdBusqueda").value='';
+    document.getElementById("ArticuloBusqueda").value='';
+    document.getElementById("ClienteBusqueda").value='';
+    document.getElementById("ValorBusqueda").value='';
+    document.getElementById("FechaVentaBusqueda").value='';
+    document.getElementById("FechaPagoBusqueda").value='';
+    document.getElementById("VendedorBusqueda").value='';
 }
 
 function eliminarVenta() {
@@ -427,4 +451,9 @@ btnNuevaventa.addEventListener('click', (e) => {
 btnModalModificar.addEventListener('click', (e) => {
     e.preventDefault()
     modificarVenta()
+})
+
+btnModificarMdventa.addEventListener('click', (e) => {
+    e.preventDefault()
+    modificarVentafb()
 })

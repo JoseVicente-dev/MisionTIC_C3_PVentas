@@ -156,23 +156,29 @@
         <!-- Barra de búsqueda -->
         <br>
         <div class="container-fluid table-responsive">
-            <table class="table table-hover text-align-tabla" id="TablaVentas">
+            <table class="table table-hover text-align-tabla" >
                 <thead>
                     <tr>
                         <th scope="col">Seleccionar </th>
                         <th scope="col">Id</th>
                         <th scope="col">Articulo</th>
                         <th scope="col">Cliente</th>
+                        <th scope="col">Cantidad</th>
                         <th scope="col">Valor $</th>
                         <th scope="col">Fecha Venta</th>
                         <th scope="col">Fecha Pago</th>
                         <th scope="col">Vendedor</th>
                         <th scope="col">Estado Pago</th>
                     </tr>
+
                 </thead>
                 <!-- agregamos el id="AquiVaLaFila" en el body porque solo creamos las filas -->
                 <!-- se mantiene la estructura original de la tabla -->
                 <tbody id="cuerpoTablaVentas" class="text-align-tabla">
+                        <tr id="cuerpoTablaVentas_tr">
+                        </tr>
+            
+                     
                 </tbody>
             </table>
         </div>
@@ -241,6 +247,7 @@
                 </div>
             </div>
         </div>
+        
     </footer>
     <!-- /Footer -->
     <!--  Modal Nueva Venta -->
@@ -263,24 +270,25 @@
                             
                                 
                             <!-- <label for="ArticuloNuevo"> Artículo</label> -->
-                            <select class="form-select modal-input-select-undisabled" id="ArticuloNuevo">
-                            
+                            <select class="form-select modal-input-select-undisabled" id="ArticuloNuevo" >
+                                <option hidden selected>Articulo</option>
                             </select>
 
                             <input type="text" class="form-control modal-input-select-undisabled" id="ClienteNuevo"
                                 placeholder="Cliente">
                             <input type="text" class="form-control modal-input-select-undisabled" id="ValorNuevo"
-                                placeholder="Valor">
+                                placeholder="Valor unitario" disabled>
+                            <input type="number" class="form-control modal-input-select-undisabled" id="CantidadNueva"
+                            placeholder="cantidad en Kg">
 
-                            <!-- <input type="text" class="form-control modal-input-select-undisabled" id="VendedorNuevo"
-                                placeholder="Vendedor">
-                            </div> -->
+                            <input type="text" class="form-control modal-input-select-undisabled" id="ValorTotal"
+                            placeholder="Valor total" disabled>
 
-                            <select class="form-select modal-input-select-undisabled" id="VendedorNuevo">
-                                
+                            <select class="form-select modal-input-select-undisabled" id="VendedorNuevo" >
+                            <!--     <option hidden selected>Vendedor</option> -->
                             </select>
 
-                            <select class="form-select modal-input-select-undisabled" id="EstadoNuevo">
+                            <select class="form-select modal-input-select-undisabled" id="EstadoNuevo" >
                                 <option value="1">Cancelada</option>
                                 <option value="2">Pendiente</option>
                             </select>
@@ -334,16 +342,16 @@
                             placeholder="Id Venta" disabled></input>
 
                         <input type="text" class="form-control modal-input-select-undisabled" id="ArticuloBusqueda"
-                            placeholder="Articulo" disabled></input>
+                            placeholder="Articulo" disabled ></input>
                         <input type="text" class="form-control modal-input-select-undisabled" id="ClienteBusqueda"
-                            placeholder="Cliente"></input>
-                        <input type="text" class="form-control modal-input-select-undisabled" id="ValorBusqueda"
+                            placeholder="Cliente" pattern="[A-Za-z]{3}"></input>
+                        <input type="number" class="form-control modal-input-select-undisabled" id="ValorBusqueda"
                             placeholder="Valor"></input>
                         <input type="text" class="form-control modal-input-select-undisabled" id="VendedorBusqueda"
                             placeholder="Vendedor" disabled></input>
                         <select class="form-select modal-input-select-undisabled" id="EstadoBusqueda">
-                            <option>Cancelada</option>
-                            <option>Pendiente</option>
+                            <option value='1'>Cancelada</option>
+                            <option value='2'>Pendiente</option>
                         </select>
                         <div class="row" style="margin: 10px 20px 10px 5px;">
                             <div class='input-group date col-sm' id='startDate'>

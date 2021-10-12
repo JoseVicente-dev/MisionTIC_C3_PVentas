@@ -31,6 +31,8 @@ let usuarioEmail;
 let tipoUsuarioActual;
 setTimeout(menu, 1000)
 
+mostrarInformacion()
+
 async function mostrarInformacion() {
     // Se inicia el llamado de los Ventas desde la BD
     const Ventas = []
@@ -186,7 +188,7 @@ async function anadirVenta(product) {
         console.log(error);
     }
 }
-mostrarInformacion()
+
 /* ---------------------------------------------------------------------------------------------- */
 //Actiualizar Ventas en la tabla
 async function actualizar() {

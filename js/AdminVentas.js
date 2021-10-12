@@ -110,22 +110,42 @@ async function mostrarInformacion() {
 }
 
 // ------------------------------------------ Adicionar Ventas--------------------------------
-function AdicionrVenta() {
-
-    const idVentas = document.getElementById('IdNuevo');
-    const articuloVentas = document.getElementById('ArticuloNuevo');
-    const clienteVentas = document.getElementById('ClienteNuevo');
-    const ValorVentas = document.getElementById('ValorNuevo');
+function AdicionrVenta(){
+    console.log('Inicio adiconar venta');
+    // Creacion de las variables de DOM
+    const idVentas= document.getElementById('IdNuevo');
+    const articuloVentas= document.getElementById('ArticuloNuevo');
+    const clienteVentas= document.getElementById('ClienteNuevo');
+    const ValorVentas= document.getElementById('ValorNuevo');
     const fechasVenta = document.getElementById('FechaVentaNuevo');
     const FechaPagoVentas = document.getElementById('FechaPagoNuevo');
+    const vendedor = document.getElementById('VendedorNuevo');
+    const estadoPago = document.getElementById('EstadoNuevo');
+
+    const ventaAgregar = {
+        id: uuid.v4(), 
+        nombres: articuloVentas,
+        cliente: clienteVentas,
+        valor: ValorVentas,
+        fechaVenta: fechasVenta,
+        fechaPago: FechaPagoVentas,
+        vendedor: vendedor,
+        estadoPago:estadoPago
+    } 
+
+    // Obtención de la base de datos
+    const VentasArray = [];
+    const DatosVentas = await dataBase.collection('ng_ventas').get()
+    Datosventas.forEach((t) => {
+        VentasArray.push(t.data());
+        console.log(t);
+    })
+
 
 }
-
-
-
-/* function showToast(id) {
+function showToast(id) {
     $(id).toast('show');
-} */
+}
 async function obtenerDatos() {
     try {
         
@@ -184,7 +204,7 @@ async function anadirVenta(product) {
 mostrarInformacion()
 /* ---------------------------------------------------------------------------------------------- */
 //Actiualizar Ventas en la tabla
-/* async function actualizar() {
+async function actualizar() {
     try {
         const Ventas = []
         const respuestaVentas = await dataBase.collection('ng_Ventas').orderBy("descripcion").get()
@@ -195,9 +215,9 @@ mostrarInformacion()
     } catch (error) {
         console.log(error)
     }
-} */
+}
 /* ------------------------------------------------------------------------------------------------------- */
-/* // pintarVentas
+// pintarVentas
 function pintarVentas(Ventas) {
     var table = document.getElementById("cuerpoTablaVentas");
     $("#cuerpoTablaVentas").empty();
@@ -221,9 +241,9 @@ function pintarVentas(Ventas) {
         cell6.innerHTML = t.estado === '1' ? "Disponible" : "No disponible";
 
     })
-} */
+}
 // ---------------------------------------------------------------------------
-/* async function buscarVentas() {
+async function buscarVentas() {
 
     try {
         let busqueda = document.getElementById("busqueda").value.replace(/^\w/, (c) => c.toUpperCase());
@@ -238,11 +258,11 @@ function pintarVentas(Ventas) {
         console.log(error)
     }
 }
- */
+
 // /* ------------------------------------------------------------------------------------------------ */
 
 //funcion del boton para que abra el modal con los datos de la fila.
-/* function modificarVenta() {
+function modificarVenta() {
     let tablaVentas = document.getElementById("cuerpoTablaVentas");
     let radios = tablaVentas.getElementsByTagName("input");
     let filas = tablaVentas.getElementsByTagName("tr");
@@ -264,8 +284,8 @@ function pintarVentas(Ventas) {
         }
     }
 }
- */
-/* //modificar Venta
+
+//modificar Venta
 async function modificarVentafb() {
     const mCodigoInput = document.getElementById("modifyCodigo").value
     const mDescripcionInput = document.getElementById("modifyDescripcion").value.replace(/^\w/, (c) => c.toUpperCase());
@@ -324,10 +344,10 @@ function eliminarVenta() {
             doc.ref.delete();
         });
     });
-} */
+}
 // ---------------------------------------------------------------
 
-/* //comparar sesion actual con tipo de usuario
+//comparar sesion actual con tipo de usuario
 async function compararRolUsuario() {
     const respuestausuarios = await dataBase.collection("ng_users").where('email', '==', usuarioEmail).get();
     const usuariosBD = [];
@@ -342,7 +362,7 @@ async function compararRolUsuario() {
             document.getElementById('btnEliminarPrincipal').disabled = true
         }
     });
-} */
+}
 //login
 async function menu() {
     try {
@@ -378,7 +398,7 @@ async function menu() {
 }
 
 // Eventos-----------------------------------------------------
-/* btnModalModificar.addEventListener('click', (e) => {
+btnModalModificar.addEventListener('click', (e) => {
     e.preventDefault()
     modificarVenta()
 })
@@ -412,7 +432,7 @@ botonCancelar.addEventListener('click', (e) => {
 btnBuscarVenta.addEventListener('click', (e) => {
     e.preventDefault()
     buscarVentas()
-}) */
+})
 btnNuevaventa.addEventListener('click', (e) => {
     e.preventDefault()
     AdicionrVenta()

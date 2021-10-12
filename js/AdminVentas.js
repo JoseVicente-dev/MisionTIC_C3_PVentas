@@ -29,7 +29,10 @@ const proveedor = new firebase.auth.GoogleAuthProvider()
 let usuarioActual;
 let usuarioFoto;
 let usuarioEmail;
+let tipoUsuarioActual;
 setTimeout(menu, 1000)
+
+mostrarInformacion()
 
 async function mostrarInformacion() {
     // Se inicia el llamado de los Ventas desde la BD
@@ -98,22 +101,25 @@ async function mostrarInformacion() {
 /*    const idVentas= document.getElementById('IdNuevo'); */
 function AdicionarVenta() {
     // Creacion de las variables de DOM
-    const articuloVentas = document.getElementById('ArticuloNuevo').value;
+    const articuloVentas = document.getElementById('ArticuloNuevo');
+    const artiVentas = articuloVentas.options[articuloVentas.selectedIndex].text
     const clienteVentas = document.getElementById('ClienteNuevo').value;
     const ValorVentas = document.getElementById('ValorNuevo').value;
     const fechasVenta = document.getElementById('FechaVentaNuevo').value;
     const FechaPagoVentas = document.getElementById('FechaPagoNuevo').value;
-    const vendedor = document.getElementById('VendedorNuevo').value;
+    const vendedor = document.getElementById('VendedorNuevo');
+    const vendeVenta = vendedor.options[vendedor.selectedIndex].text
     const estadoPago = document.getElementById('EstadoNuevo').value;
+
 
     const ventaAgregar = {
         id: uuid.v4(),
-        articulo: articuloVentas.replace(/^\w/, (c) => c.toUpperCase()),
+        articulo: artiVentas.replace(/^\w/, (c) => c.toUpperCase()),
         cliente: clienteVentas.replace(/^\w/, (c) => c.toUpperCase()),
         valor: ValorVentas,
         fechaVenta: fechasVenta,
         fechaPago: FechaPagoVentas,
-        vendedor: vendedor.replace(/^\w/, (c) => c.toUpperCase()),
+        vendedor: vendeVenta.replace(/^\w/, (c) => c.toUpperCase()),
         estadoPago: estadoPago
     }
     if (ventaAgregar.articulo != "" && ventaAgregar.cliente != false && ventaAgregar.vendedor != "" && ventaAgregar.valor != "" && ventaAgregar.fechaVenta != "" && ventaAgregar.fechaPago != "") {
@@ -183,7 +189,7 @@ async function anadirVenta(product) {
         console.log(error);
     }
 }
-mostrarInformacion()
+
 /* ---------------------------------------------------------------------------------------------- */
 //Actiualizar Ventas en la tabla
 async function actualizar() {
@@ -217,7 +223,7 @@ function pintarVentas(Ventas) {
         let cell8 = row.insertCell(7);
         let cell9 = row.insertCell(8);
 
-        cell1.innerHTML = '<div class="form-check"><input class="form-check-input" type="radio" name="flexRadioDefault"id="flexRadioDefault6"/></div>';
+        cell1.innerHTML = '<div class="form-check" style = "text-align:center"><input class="form-check-input" type="radio" name="flexRadioDefault"id="flexRadioDefault6"/></div>';
         cell2.innerHTML = t.id;
         cell3.innerHTML = t.articulo;
         cell4.innerHTML = t.cliente;
@@ -229,23 +235,78 @@ function pintarVentas(Ventas) {
     })
     limpiarModalAdicionar()
 }
-// ---------------------------------------------------------------------------
-/* async function buscarVentas() {
 
+// pintarVendedores
+async function pintarVendedores() {
+
+    var select = document.getElementById("VendedorNuevo")
+
+    const respuestausuarios = await dataBase.collection("ng_users").where('rol', '==', 'Vendedor').get();
+    /* console.log(respuestausuarios); */
+    const usuariosBD = [];
+
+    respuestausuarios.forEach(function (item) {
+        usuariosBD.push(item.data());
+    });
+
+    let contadorV = 0
+    usuariosBD.forEach((t) => {
+        var option = document.createElement("option");
+        option.value = contadorV;
+        option.text = t.nombres;
+        select.appendChild(option);
+        contadorV = contadorV + 1
+
+    });
+
+
+}
+
+// pintarProductos
+async function pintarProductos() {
+
+    var select = document.getElementById("ArticuloNuevo")
+
+    const respuestaProductos = await dataBase.collection("ng_productos").get();
+    /* console.log(respuestausuarios); */
+    const productosBD = [];
+
+    respuestaProductos.forEach(function (item) {
+        productosBD.push(item.data());
+    });
+
+    let contadorV = 0
+    productosBD.forEach((t) => {
+        var option = document.createElement("option");
+        option.value = contadorV;
+        option.text = t.descripcion;
+        select.appendChild(option);
+        contadorV = contadorV + 1
+    });
+
+
+}
+
+
+// ---------------------------------------------------------------------------
+async function buscarVentas() {
     try {
         let busqueda = document.getElementById("busqueda").value.replace(/^\w/, (c) => c.toUpperCase());
         console.log(busqueda)
         let terminoBusqueda = document.getElementById("busquedapor").value;
-        const Venta = []
+        respuestaVenta = await dataBase.collection("ng_ventas").where(terminoBusqueda, '>=', busqueda).where(terminoBusqueda, '<=', busqueda + '\uf8ff').get()
+        const ventas = []
         respuestaVenta.forEach(function (item) {
-            Venta.push(item.data())
+            console.log(item.data())
+            ventas.push(item.data())
         })
-        setTimeout(pintarVentas(Venta), 1000)
+        console.log(ventas)
+        setTimeout(pintarVentas(ventas), 1000)
     } catch (error) {
         console.log(error)
     }
 }
- */
+
 // /* ------------------------------------------------------------------------------------------------ */
 
 //funcion del boton para que abra el modal con los datos de la fila.
@@ -255,7 +316,7 @@ function modificarVenta() {
     let radios = tablaVentas.getElementsByTagName("input");
     let filas = tablaVentas.getElementsByTagName("tr");
     let totalFilas = radios.length;
-    
+
     for (i = 0; i < totalFilas; i++) {
         console.log(i);
         if (radios[i].checked) {
@@ -269,13 +330,11 @@ function modificarVenta() {
             document.getElementById("FechaVentaBusqueda").value = filaSeleccionada.cells[5].innerText;
             document.getElementById("FechaPagoBusqueda").value = filaSeleccionada.cells[6].innerText;
             document.getElementById("VendedorBusqueda").value = filaSeleccionada.cells[7].innerText;
-          
+
             if (filaSeleccionada.cells[8].innerText == "Cancelada") {
                 document.getElementById("modifyEstado").value = "1";
             }
             document.getElementById("modifyEstado").value = "2";
-
-            
         }
     }
 }
@@ -356,7 +415,7 @@ function eliminarVenta() {
         }
     }
     //borrar datos
-    var userborrar = dataBase.collection('ng_Ventas').where('codigo', '==', codigo);
+    var userborrar = dataBase.collection('ng_ventas').where('id', '==', codigo);
     userborrar.get().then(function (querySnapshot) {
         querySnapshot.forEach(function (doc) {
             doc.ref.delete();
@@ -365,22 +424,38 @@ function eliminarVenta() {
 }
 // ---------------------------------------------------------------
 
-/* //comparar sesion actual con tipo de usuario
+//comparar sesion actual con tipo de usuario
 async function compararRolUsuario() {
     const respuestausuarios = await dataBase.collection("ng_users").where('email', '==', usuarioEmail).get();
     const usuariosBD = [];
+
     respuestausuarios.forEach(function (item) {
         usuariosBD.push(item.data());
     });
 
     usuariosBD.forEach((t) => {
-        if (t.rol == "Vendedor") {
-            document.getElementById('btnAdicionarPrincipal').disabled = true
-            document.getElementById('btnModificarPrincial').disabled = true
-            document.getElementById('btnEliminarPrincipal').disabled = true
-        }
+        tipoUsuarioActual = t.rol
     });
-} */
+
+    if (tipoUsuarioActual == "Vendedor") {
+        document.getElementById('VendedorNuevo').disabled = true
+        /* document.getElementById('VendedorNuevo').text = usuarioActual */
+
+        var select = document.getElementById("VendedorNuevo")
+        var option = document.createElement("option");
+        option.value = 0;
+        option.text = usuarioActual;
+        select.appendChild(option);
+
+    } else {
+
+        pintarVendedores()
+    }
+    pintarProductos()
+    /* console.log(vendedor) */
+
+
+}
 //login
 async function menu() {
     try {
@@ -424,11 +499,11 @@ async function menu() {
     showToast('#toastModificacion')
     limpiarModalModificar()
 }) */
-/* btnEliminarVenta.addEventListener('click', (e) => {
+btnEliminarVenta.addEventListener('click', (e) => {
     e.preventDefault()
     eliminarVenta()
     setTimeout(actualizar, 1000)
-}) */
+})
 
 botonAgregar.addEventListener('click', (e) => {
     obtenerDatos();
@@ -439,10 +514,10 @@ botonCancelar.addEventListener('click', (e) => {
     e.preventDefault();
     limpiarModalAdicionar();
 })
-/* btnBuscarVenta.addEventListener('click', (e) => {
+btnBuscarVenta.addEventListener('click', (e) => {
     e.preventDefault()
     buscarVentas()
-}) */
+})
 btnNuevaventa.addEventListener('click', (e) => {
     e.preventDefault()
     AdicionarVenta()

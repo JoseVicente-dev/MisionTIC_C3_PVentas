@@ -314,6 +314,27 @@ async function obtenerPrecio() {
 
 }
 
+async function obtenerPrecioModificar() {
+
+    const articuloVentas = document.getElementById('ArticuloBusqueda');
+    const artiVentas = articuloVentas.options[articuloVentas.selectedIndex].text
+
+    const respuestaProductos = await dataBase.collection("ng_productos").where('descripcion', '==', artiVentas).get();
+    /* console.log(respuestausuarios); */
+    const productosBD = [];
+
+    respuestaProductos.forEach(function (item) {
+        productosBD.push(item.data());
+    });
+
+    productosBD.forEach((t) => {
+        console.log(t.valorUnitario)
+        document.getElementById("ValorBusqueda").value = t.valorUnitario;
+    });
+    
+}
+
+
 async function obtenerPrecioTotal() {
 
     const ValorUnitario = document.getElementById('ValorNuevo').value;
@@ -353,25 +374,29 @@ function modificarVenta() {
     let totalFilas = radios.length;
 
     for (i = 0; i < totalFilas; i++) {
-        console.log(i);
+        
         if (radios[i].checked) {
             filaSeleccionada = filas[i]
-            console.log('fila seleccionada',filaSeleccionada)
-           
             document.getElementById("IdBusqueda").value = filaSeleccionada.cells[1].innerText;
             document.getElementById("ArticuloBusqueda").value = filaSeleccionada.cells[2].innerText;
             document.getElementById("ClienteBusqueda").value = filaSeleccionada.cells[3].innerText;
-            document.getElementById("ValorBusqueda").value = filaSeleccionada.cells[4].innerText;
-            document.getElementById("FechaVentaBusqueda").value = filaSeleccionada.cells[5].innerText;
-            document.getElementById("FechaPagoBusqueda").value = filaSeleccionada.cells[6].innerText;
-            document.getElementById("VendedorBusqueda").value = filaSeleccionada.cells[7].innerText;
+            document.getElementById("CantidadM").value = filaSeleccionada.cells[4].innerText;
+            document.getElementById("ValorTotalM").value = filaSeleccionada.cells[5].innerText;
+            /* document.getElementById("ValorBusqueda").value = filaSeleccionada.cells[6].innerText; */
+            document.getElementById("FechaVentaBusqueda").value = filaSeleccionada.cells[6].innerText;
+            document.getElementById("FechaPagoBusqueda").value = filaSeleccionada.cells[7].innerText;
+            document.getElementById("VendedorBusqueda").value = filaSeleccionada.cells[8].innerText;
 
-            if (filaSeleccionada.cells[8].innerText == "Cancelada") {
+         /*    if (filaSeleccionada.cells[9].innerText == "Cancelada") {
                 document.getElementById("modifyEstado").value = "1";
             }
-            document.getElementById("modifyEstado").value = "2";
+            else {
+                document.getElementById("modifyEstado").value = "2";
+            } */
+            obtenerPrecioModificar();  
         }
     }
+    
 }
 
 //modificar Venta
@@ -381,7 +406,8 @@ console.log('se esta ejecutando modificarVEntafb')
      const IdVentasModal=document.getElementById("IdBusqueda").value;
     const articuloModal=document.getElementById("ArticuloBusqueda").value;
     const clienteModal=document.getElementById("ClienteBusqueda").value;
-    const valorModal=document.getElementById("ValorBusqueda").value;
+    const cantidadModal=document.getElementById("CantidadM").value;
+    const valorModal=document.getElementById("ValorTotalM").value;
     const fechaVentaModal=document.getElementById("FechaVentaBusqueda").value;
     const fechapagoModal=document.getElementById("FechaPagoBusqueda").value;
     const vendedorModal=document.getElementById("VendedorBusqueda").value;
@@ -398,6 +424,7 @@ console.log('se esta ejecutando modificarVEntafb')
     dataBase.collection("ng_ventas").doc(idmod).update({
          articulo:articuloModal.replace(/^\w/, (c) => c.toUpperCase()),
         cliente:clienteModal.replace(/^\w/, (c) => c.toUpperCase()),
+        cantidad:cantidadModal,
         estadoPago:EstadoVenta,
         fechaPago: fechapagoModal,
         fechaVenta:fechaVentaModal,
@@ -572,3 +599,7 @@ document.getElementById('ArticuloNuevo').addEventListener('change', (e) => {
 document.getElementById('CantidadNueva').addEventListener('change', (e) => {
     obtenerPrecioTotal()
 })
+
+/* document.getElementById('ArticuloBusqueda').addEventListener('change', (e) => {
+    obtenerPrecioModificar()
+}) */

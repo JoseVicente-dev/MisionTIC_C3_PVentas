@@ -155,7 +155,7 @@
         <!-- Barra de búsqueda -->
         <br>
         <div class="container-fluid table-responsive">
-            <table class="table table-hover text-align-tabla">
+            <table class="table table-hover text-align-tabla" id="cuerpoTablaVentas">
                 <thead>
                     <tr>
                         <th scope="col">Seleccionar </th>
@@ -308,8 +308,10 @@
                 </div>
                 <div class="modal-body">
                     <div class="container">
-                        <label type="text" class="form-control modal-input-select-undisabled" id="IdBusqueda"
-                            placeholder="Id Venta"> Id Venta</label>
+
+                        <input type="text" class="form-control modal-input-select-undisabled" id="IdBusqueda"
+                            placeholder="Id Venta" disabled></input>
+
                         <input type="text" class="form-control modal-input-select-undisabled" id="ArticuloBusqueda"
                             placeholder="Articulo"></input>
                         <input type="text" class="form-control modal-input-select-undisabled" id="ClienteBusqueda"

@@ -12,13 +12,12 @@ firebase.initializeApp(firebaseConfig);
 //Declarar Variables globales  
 const dataBase = firebase.firestore();
 // Declara Variables de DOM
+const btnModalModificar= document.getElementById('btnModificarPrincial')
 const btnNuevaventa = document.getElementById('btn_AgregarVenta');
 const btnBuscarVenta = document.getElementById('buscarVenta')
 const toastIngresoVenta = document.getElementById('liveToastIProduct')
 const toastIngresoVentaNeg = document.getElementById('liveToastIProductNeg')
 const toastCamposVacios = document.getElementById('toastCamposVacios')
-const btnModalModificar = document.getElementById('btnModificarPrincial')
-const btnModificarVenta = document.getElementById('btnModificarModalModificar')
 let imgUsuario = document.getElementById('imagenUsuario')
 let nombreUsuario = document.getElementById('nombreDeUsuario')
 const btnEliminarVenta = document.getElementById('btnEliminarModalEliminar')
@@ -251,29 +250,33 @@ async function buscarVentas() {
 // /* ------------------------------------------------------------------------------------------------ */
 
 //funcion del boton para que abra el modal con los datos de la fila.
-/* function modificarVenta() {
+function modificarVenta() {
+
     let tablaVentas = document.getElementById("cuerpoTablaVentas");
     let radios = tablaVentas.getElementsByTagName("input");
     let filas = tablaVentas.getElementsByTagName("tr");
     let totalFilas = radios.length;
-
+    
     for (i = 0; i < totalFilas; i++) {
         if (radios[i].checked) {
             filaSeleccionada = filas[i]
-            document.getElementById("modifyCodigo").value = filaSeleccionada.cells[1].innerText
-            document.getElementById("modifyDescripcion").value = filaSeleccionada.cells[2].innerText
-            document.getElementById("modifyPeso").value = filaSeleccionada.cells[3].innerText
-            document.getElementById("modifyValorUnitario").value = filaSeleccionada.cells[4].innerText
-            document.getElementById("modifyEstado").value = filaSeleccionada.cells[5].innerText
-
-            if (filaSeleccionada.cells[5].innerText == "Disponible") {
-                document.getElementById("modifyEstado").value = "2";
+            console.log(filaSeleccionada.cells[1].innerText)
+            document.getElementById("IdBusqueda").value = filaSeleccionada.cells[1].innerText;
+            document.getElementById("ArticuloBusqueda").value = filaSeleccionada.cells[2].innerText;
+            document.getElementById("ClienteBusqueda").value = filaSeleccionada.cells[3].innerText;
+            document.getElementById("ValorBusqueda").value = filaSeleccionada.cells[4].innerText;
+            document.getElementById("FechaVentaBusqueda").value = filaSeleccionada.cells[5].innerText;
+            document.getElementById("FechaPagoBusqueda").value = filaSeleccionada.cells[6].innerText;
+            document.getElementById("VendedorBusqueda").value = filaSeleccionada.cells[7].innerText;
+          
+            if (filaSeleccionada.cells[8].innerText == "Cancelada") {
+                document.getElementById("modifyEstado").value = "1";
             }
-            document.getElementById("modifyEstado").value = "1";
-        }
+            document.getElementById("modifyEstado").value = "2";
     }
 }
- */
+}
+
 //modificar Venta
 async function modificarVentafb() {
     const mCodigoInput = document.getElementById("modifyCodigo").value
@@ -421,4 +424,9 @@ btnBuscarVenta.addEventListener('click', (e) => {
 btnNuevaventa.addEventListener('click', (e) => {
     e.preventDefault()
     AdicionarVenta()
+})
+
+btnModalModificar.addEventListener('click', (e) => {
+    e.preventDefault()
+    modificarVenta()
 })

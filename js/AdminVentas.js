@@ -15,7 +15,7 @@ const dataBase = firebase.firestore();
 
 // Declara Variables de DOM
 
-const btnNuevaventa= document.getElementById('btn_AgregarVenta');
+const btnNuevaventa = document.getElementById('btn_AgregarVenta');
 
 const btnBuscarVenta = document.getElementById('buscarVenta')
 const toastIngresoVenta = document.getElementById('liveToastIProduct')
@@ -79,7 +79,7 @@ async function mostrarInformacion() {
 
         valor = document.createElement("td")
         valor.textContent = p.valor
-        
+
         fechaVenta = document.createElement("td")
         fechaVenta.textContent = p.fechaVenta
 
@@ -90,7 +90,7 @@ async function mostrarInformacion() {
         vendedor.textContent = p.vendedor
 
         estado = document.createElement("td")
-        p.estadoPago === '1' ? estado.textContent= "Cancelado" :estado.textContent=  "Pendiente";
+        p.estadoPago === '1' ? estado.textContent = "Cancelado" : estado.textContent = "Pendiente";
 
         filaTabla.appendChild(id)
         filaTabla.appendChild(articulo)
@@ -108,50 +108,61 @@ async function mostrarInformacion() {
 
 // ------------------------------------------ Adicionar Ventas--------------------------------
 
- /*    const idVentas= document.getElementById('IdNuevo'); */
-    function AdicionarVenta(){
+/*    const idVentas= document.getElementById('IdNuevo'); */
+function AdicionarVenta() {
     console.log('Inicio adicionar venta');
     // Creacion de las variables de DOM
-    const articuloVentas= document.getElementById('ArticuloNuevo').value;
-    const clienteVentas= document.getElementById('ClienteNuevo').value;
-    const ValorVentas= document.getElementById('ValorNuevo').value;
+    const articuloVentas = document.getElementById('ArticuloNuevo').value;
+    const clienteVentas = document.getElementById('ClienteNuevo').value;
+    const ValorVentas = document.getElementById('ValorNuevo').value;
     const fechasVenta = document.getElementById('FechaVentaNuevo').value;
     const FechaPagoVentas = document.getElementById('FechaPagoNuevo').value;
     const vendedor = document.getElementById('VendedorNuevo').value;
     const estadoPago = document.getElementById('EstadoNuevo').value;
 
     const ventaAgregar = {
-        id: uuid.v4(), 
+        id: uuid.v4(),
         articulo: articuloVentas.replace(/^\w/, (c) => c.toUpperCase()),
         cliente: clienteVentas.replace(/^\w/, (c) => c.toUpperCase()),
         valor: ValorVentas,
         fechaVenta: fechasVenta,
         fechaPago: FechaPagoVentas,
         vendedor: vendedor.replace(/^\w/, (c) => c.toUpperCase()),
-        estadoPago:estadoPago
-    } 
+        estadoPago: estadoPago
+    }
 
+    if (ventaAgregar.articulo != "" || ventaAgregar.cliente != "" || ventaAgregar.vendedor != "" || ventaAgregar.valor != "" || ventaAgregar.fechaVenta != "" || ventaAgregar.fechaPago != "") {
+
+        console.log(typeof ventaAgregar.estadoPago);
+        guardarVentas(ventaAgregar)
+        // actualizar();
+        showToast('#toastIngresoCorrecto');
+
+    } else {
+        showToast('#toastCamposVacios')
+
+    }
     // Obtención de la base de datos
-    guardarVentas(ventaAgregar)
+
 
 
 }
 
 //guardar Ventas
-async function guardarVentas(venta){
-    try{
+async function guardarVentas(venta) {
+    try {
         const respuesta = await dataBase.collection('ng_ventas').add(venta);
         return respuesta
 
-    }catch(error){
+    } catch (error) {
         console.log(error)
     }
 }
 
 
-/* function showToast(id) {
+function showToast(id) {
     $(id).toast('show');
-} */
+}
 async function obtenerDatos() {
     try {
         const inputDescription = document.getElementById("inputDescripcion").value.replace(/^\w/, (c) => c.toUpperCase());

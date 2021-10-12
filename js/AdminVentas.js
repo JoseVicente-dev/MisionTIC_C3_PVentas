@@ -258,7 +258,6 @@ async function pintarVendedores() {
 
     });
 
-
 }
 
 // pintarProductos
@@ -285,6 +284,27 @@ async function pintarProductos() {
 
 
 }
+
+async function obtenerPrecio() {
+
+    const articuloVentas = document.getElementById('ArticuloNuevo');
+    const artiVentas = articuloVentas.options[articuloVentas.selectedIndex].text
+
+    const respuestaProductos = await dataBase.collection("ng_productos").where('descripcion', '==', artiVentas).get();
+    /* console.log(respuestausuarios); */
+    const productosBD = [];
+
+    respuestaProductos.forEach(function (item) {
+        productosBD.push(item.data());
+    });
+
+    productosBD.forEach((t) => {
+        //console.log(t.valorUnitario)
+        document.getElementById("ValorNuevo").value = t.valorUnitario;
+    });
+
+}
+
 
 
 // ---------------------------------------------------------------------------
@@ -504,4 +524,8 @@ btnNuevaventa.addEventListener('click', (e) => {
 btnModalModificar.addEventListener('click', (e) => {
     e.preventDefault()
     modificarVenta()
+})
+
+document.getElementById('ArticuloNuevo').addEventListener('change', (e) => {
+    obtenerPrecio()
 })

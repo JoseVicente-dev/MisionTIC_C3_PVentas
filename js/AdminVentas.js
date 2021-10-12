@@ -98,23 +98,25 @@ async function mostrarInformacion() {
 /*    const idVentas= document.getElementById('IdNuevo'); */
 function AdicionarVenta() {
     // Creacion de las variables de DOM
-    const articuloVentas = document.getElementById('ArticuloNuevo').value;
+    const articuloVentas = document.getElementById('ArticuloNuevo');
+    const artiVentas = articuloVentas.options[articuloVentas.selectedIndex].text
     const clienteVentas = document.getElementById('ClienteNuevo').value;
     const ValorVentas = document.getElementById('ValorNuevo').value;
     const fechasVenta = document.getElementById('FechaVentaNuevo').value;
     const FechaPagoVentas = document.getElementById('FechaPagoNuevo').value;
-    const vendedor = document.getElementById('VendedorNuevo').value;
+    const vendedor = document.getElementById('VendedorNuevo');
+    const vendeVenta = vendedor.options[vendedor.selectedIndex].text
     const estadoPago = document.getElementById('EstadoNuevo').value;
 
 
     const ventaAgregar = {
         id: uuid.v4(),
-        articulo: articuloVentas.replace(/^\w/, (c) => c.toUpperCase()),
+        articulo: artiVentas.replace(/^\w/, (c) => c.toUpperCase()),
         cliente: clienteVentas.replace(/^\w/, (c) => c.toUpperCase()),
         valor: ValorVentas,
         fechaVenta: fechasVenta,
         fechaPago: FechaPagoVentas,
-        vendedor: vendedor.replace(/^\w/, (c) => c.toUpperCase()),
+        vendedor: vendeVenta.replace(/^\w/, (c) => c.toUpperCase()),
         estadoPago: estadoPago
     }
     if (ventaAgregar.articulo != "" && ventaAgregar.cliente != false && ventaAgregar.vendedor != "" && ventaAgregar.valor != "" && ventaAgregar.fechaVenta != "" && ventaAgregar.fechaPago != "") {

@@ -142,7 +142,7 @@ async function obtenerDatos() {
       estado: inputState
     }
     //producto.descripcion == "" || producto.peso == "" || producto.valorUnitario == "" ? alert("No se pueden dejar campos vacíos") : console.log("Holi 2");//anadirProducto(producto);
-    if (producto.descripcion != "" || producto.peso != "" || producto.valorUnitario != "") {
+    if (producto.descripcion != "" && producto.peso != "" && producto.valorUnitario != "") {
       if (productosArray.length != 0 && productosArray.find(busquedaArray => busquedaArray.descripcion == inputDescription)) {
         console.log('Holi 5');
         console.log(productosArray);

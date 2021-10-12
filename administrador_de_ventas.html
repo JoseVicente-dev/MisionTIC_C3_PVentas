@@ -148,27 +148,19 @@
     <!-- /Tabla con datos -->
 
     <!-- Bottones -->
-    <div class="container tex-align">
-        <div id="Muestrame" class="ocultar-elementos">
-            <button type="button" class="btn btn-primary bg-color-rojo" id="btnModificarVenta" data-bs-toggle="modal"
-                data-bs-target="#ModificarVenta">Modificar Venta</button>
-            <button type="button" class="btn btn-primary bg-color-rojo">Eliminar Venta</button>
-        </div>
-    </div>
-    <div class="container text-center">
-        <button type="button" class="btn btn-primary bg-color-azul" onclick="addNuevaFila()" data-bs-toggle="modal"
-            data-bs-target="#NuevaVenta">Nueva Venta</button>
-        <!--este evento llama a un scrip que esta aqui pero toca quitar porque no va a ser neceario-->
-
-        <button type="button" class="btn btn-primary bg-color-azul" data-bs-toggle="modal"
-            data-bs-target="#BuscarVenta">Buscar Venta</button>
+    <div class="container" style="text-align: center;">
+        <button class="btn btn-primary bg-color-azul" id="btnAdicionarPrincipal" data-bs-toggle="modal"
+            data-bs-target="#NuevaVenta">Adicionar</button>
+        <button class="btn btn-primary bg-color-azul " id="btnModificarPrincial" data-bs-toggle="modal"
+            data-bs-target="#ModificarVenta">Modificar</button>
+        <button class="btn btn-primary bg-color-azul " id="btnEliminarPrincipal" data-bs-toggle="modal"
+            data-bs-target="#EliminarVenta">Eliminar</button>
     </div>
     <!-- /Bottones -->
 
     <!-- Footer -->
     <footer style="text-align: center;">
         <img src="images/logo2.png" alt="logo-nightmare" style="height: 50px;">
-
         <div class="position-fixed bottom-0 end-0 p-3">
             <div id="liveToastVenta" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">
                 <div class="toast-header">
@@ -218,8 +210,6 @@
             </div>
         </div>
 
-
-
     </footer>
     <!-- /Footer -->
     <!--  Modal Nueva Venta -->
@@ -231,37 +221,19 @@
                     <h5 class="modal-title color-h5" id="staticBackdropLabel1">Nueva venta</h5>
                     <button type="button" class="btn-close bg-color-cerrarX" data-bs-dismiss="modal"
                         aria-label="Close"></button>
-                    <button type="button" id="prueba">prueba hpta</button>
+                  
                 </div>
                 <div class="modal-body">
                     <div class="container">
                         <div class="col">
-                            <label type="text" class="form-control modal-input-select-undisabled" id="IdNuevo"
-                                placeholder="Id Venta">0</label>
-                
-
-                            <input type="text" class="form-control modal-input-select-undisabled" id="ArticuloNuevo"
-                                placeholder="Articulo">
-                  
-              
-                            <input type="text" class="form-control modal-input-select-undisabled" id="ClienteNuevo"
-                                placeholder="Cliente">
-                   
-                   
-                            <input type="text" class="form-control modal-input-select-undisabled" id="ValorNuevo"
-                                placeholder="Valor">
-                  
-                  
-                            <input type="text" class="form-control modal-input-select-undisabled" id="FechaVentaNuevo"
-                                placeholder="Fecha Venta">
-                     
-                            <input type="text" class="form-control modal-input-select-undisabled" id="FechaPagoNuevo"
-                                placeholder="Fecha Pago">
+                            <label type="text" class="form-control modal-input-select-undisabled" id="IdNuevo" placeholder="Id Venta">0</label>
+                            <input type="text" class="form-control modal-input-select-undisabled" id="ArticuloNuevo" placeholder="Articulo">
+                            <input type="text" class="form-control modal-input-select-undisabled" id="ClienteNuevo" placeholder="Cliente">
+                            <input type="text" class="form-control modal-input-select-undisabled" id="ValorNuevo" placeholder="Valor">
+                            <input type="text" class="form-control modal-input-select-undisabled" id="FechaVentaNuevo" placeholder="Fecha Venta">
+                            <input type="text" class="form-control modal-input-select-undisabled" id="FechaPagoNuevo" placeholder="Fecha Pago">
                         </div>
-                
-                            <input type="text" class="form-control modal-input-select-undisabled" id="VendedorNuevo"
-                                placeholder="Vendedor">
-         
+                        <input type="text" class="form-control modal-input-select-undisabled" id="VendedorNuevo" placeholder="Vendedor">
                         <select class="form-select modal-input-select-undisabled" id="EstadoNuevo">
                             <option>Cancelada</option>
                             <option>Pendiente</option>
@@ -273,10 +245,8 @@
                 <div class="modal-footer">
                     <!-- <button type="button" class="btn btn-primary bg-color-azul" id="btnAgregarModalNuevaVenta"
                         data-bs-dismiss="modal">Agregar</button> -->
-                    <button type="button" class="btn btn-primary bg-color-azul" id="btn_prueba"
-                        data-bs-dismiss="modal">Agregar</button>
-                    <button type="button" class="btn btn-secondary" id="btnCancelarModalNuevaVenta"
-                        data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary bg-color-azul" id="btn_prueba" data-bs-dismiss="modal">Agregar</button>
+                    <button type="button" class="btn btn-secondary" id="btnCancelarModalNuevaVenta" data-bs-dismiss="modal">Cancelar</button>
                 </div>
             </div>
         </div>
@@ -341,129 +311,33 @@
         </div>
     </div>
     <!--  /Modal Modificar Venta -->
-    <!--  Modal Resultado Busqueda-->
-    <div class="modal fade" id="ResultadoBusqueda" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-        aria-labelledby="staticBackdropLabel1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-            <div class="modal-content">
-                <div class="modal-header bg-color-azul">
-                    <h5 class="modal-title color-h5" id="staticBackdropLabel1">Resultado Busqueda</h5>
-                    <button type="button" class="btn-close bg-color-cerrarX" data-bs-dismiss="modal"
-                        aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="container">
-                        <div class="col">
-                            <label type="text" class="form-control modal-input-select-undisabled" id="IdResultado"
-                                placeholder="Id Venta"> Id Venta</label>
-                  
-                            <input type="text" class="form-control modal-input-select-undisabled" id="ArticuloResultado"
-                                placeholder="Articulo"> </input>
-                       
-                        
-                            <input type="text" class="form-control modal-input-select-undisabled" id="ClienteResultado"
-                                placeholder="Cliente"></input>
-                      
-                      
-                            <input type="text" class="form-control modal-input-select-undisabled" id="ValorResultado"
-                                placeholder="Valor"></input>
-                        
-                   
-                            <input type="text" class="form-control modal-input-select-undisabled"
-                                id="FechaVentaResultado" placeholder="Fecha Venta"></input>
-                     
-                      
-                            <input type="text" class="form-control modal-input-select-undisabled"
-                                id="FechaPagoResultado" placeholder="Fecha Pago"></input>
-                     
-                       
-                            <input type="text" class="form-control modal-input-select-undisabled" id="VendedorResultado"
-                                placeholder="Vendedor"></input>
-                      
-                            <select class="form-select modal-input-select-undisabled" id="EstadoResultado">
-                                <option>Cancelada</option>
-                                <option>Pendiente</option>
-                            </select>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary bg-color-azul" id="btnModificarModalResultadoBusqueda"
-                         data-bs-toggle="modal"
-                        data-bs-target="#AlertaModificacionVenta" data-bs-dismiss="modal">Modificar</button>
-                    <button type="button" class="btn btn-primary bg-color-azul" id="btnEliminarModalResultadoBusqueda"
-                        >Eliminar</button>
-                    <button type="button" class="btn btn-secondary" id="btnCancelarModalResultadoBusqueda"
-                        data-bs-dismiss="modal">Cancelar</button>
-                </div>
+    
+    </div>
+    <div class="modal fade " id="EliminarVenta" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel2" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable ">
+        <div class="modal-content ">
+            <div class="modal-header" style="background-color: #26327e;">
+                <h5 class="modal-title" id="staticBackdropLabel2" style="color: white;">Alerta Eliminar Producto</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                    style="background-color: #7a87bb;"></button>
+            </div>
+            <div class="modal-body">
+              <div class="modal-body">
+               <p>Está seguro de Eliminar el Producto seleccionado, recuerde que esta acción no se puede deshacer</p>
+            </div>
+          </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary"  data-bs-dismiss="modal"
+                    style=" background-color: #26327e;" id="btnEliminarModalEliminar">Eliminar</button> <!-- onclick="actualizarUsuario()" -->
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
             </div>
         </div>
     </div>
-    <!--  /Modal Resultado Busqueda-->
-    <!--  Modal Buscar Ventas -->
-    <div class="modal fade" id="BuscarVenta" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-        aria-labelledby="staticBackdropLabel1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-            <div class="modal-content">
-                <div class="modal-header bg-color-azul">
-                    <h5 class="modal-title color-h5" id="staticBackdropLabel1">Buscar Venta</h5>
-                    <button type="button" class="btn-close bg-color-cerrarX" data-bs-dismiss="modal"
-                        aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="container">
-                        <div class="col">
-                            <input type="text" class="form-control modal-input-select-undisabled" id="IdVentaBuscada"
-                                placeholder="Id Venta">
-                        </div>
-
-                            <input type="text" class="form-control modal-input-select-undisabled"
-                                id="NombreVentaBuscada" placeholder="Id o Nombre Cliente">
-                        </div>
-
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary bg-color-azul" id="btnIdModalBuscarVentas"
-                        data-bs-toggle="modal" data-bs-target="#ResultadoBusqueda" data-bs-dismiss="modal"
-                        >Buscar por Id Venta</button>
-                    <button type="button" class="btn btn-primary bg-color-azul" id="btnNombreModalBuscarVentas"
-                        data-bs-toggle="modal" data-bs-target="#ResultadoBusqueda" data-bs-dismiss="modal"
-                        >Buscar por Nombre
-                        Cliente</button>
-                    <button type="button" class="btn btn-secondary" id="btnCancelarModalBuscarVentas"
-                        data-bs-dismiss="modal">Cancelar</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--  /Modal Buscar Ventas -->
-
-    <!-- Modal Alerta Actualización Venta -->
-    <div class="modal fade" id="AlertaModificacionVenta" tabindex="-1" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Actualización Venta</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    Venta Actualizada Correctamente
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- /Modal Alerta Actualización Venta  -->
+ </div>
 
 
 
-   
-    </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/esm/popper.js"></script>

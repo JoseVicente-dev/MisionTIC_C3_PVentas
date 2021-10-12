@@ -12,9 +12,14 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 //Declarar Variables globales  
 const dataBase = firebase.firestore();
+
 // Declara Variables de DOM
 
+<<<<<<< HEAD
 const btnNuevaventa = document.getElementById('btn_AgregarVenta')
+=======
+const btnNuevaventa= document.getElementById('btn_AgregarVenta');
+>>>>>>> 458a3e6baec9f0d230293d45363d2a816b9edf40
 
 const btnBuscarVenta = document.getElementById('buscarVenta')
 
@@ -110,16 +115,49 @@ async function mostrarInformacion() {
 }
 
 // ------------------------------------------ Adicionar Ventas--------------------------------
-function AdicionrVenta(){
-    const idVentas= document.getElementById('IdNuevo');
-    const articuloVentas= document.getElementById('ArticuloNuevo');
-    const clienteVentas= document.getElementById('ClienteNuevo');
-    const ValorVentas= document.getElementById('ValorNuevo');
-    const fechasVenta = document.getElementById('FechaVentaNuevo');
-    const FechaPagoVentas = document.getElementById('FechaPagoNuevo');
+
+ /*    const idVentas= document.getElementById('IdNuevo'); */
+    function AdicionrVenta(){
+    console.log('Inicio adicionar venta');
+    // Creacion de las variables de DOM
+    const articuloVentas= document.getElementById('ArticuloNuevo').value;
+    const clienteVentas= document.getElementById('ClienteNuevo').value;
+    const ValorVentas= document.getElementById('ValorNuevo').value;
+    const fechasVenta = document.getElementById('FechaVentaNuevo').value;
+    const FechaPagoVentas = document.getElementById('FechaPagoNuevo').value;
+    const vendedor = document.getElementById('VendedorNuevo').value;
+    const estadoPago = document.getElementById('EstadoNuevo').value;
+
+    const ventaAgregar = {
+        id: uuid.v4(), 
+        articulo: articuloVentas,
+        cliente: clienteVentas,
+        valor: ValorVentas,
+        fechaVenta: fechasVenta,
+        fechaPago: FechaPagoVentas,
+        vendedor: vendedor,
+        estadoPago:estadoPago
+    } 
+
+    // Obtención de la base de datos
+    guardarVentas(ventaAgregar)
+
 
 }
-function showToast(id) {
+
+//guardar Ventas
+async function guardarVentas(venta){
+    try{
+        const respuesta = await dataBase.collection('ng_ventas').add(venta);
+        return respuesta
+
+    }catch(error){
+        console.log(error)
+    }
+}
+
+
+/* function showToast(id) {
     $(id).toast('show');
 }
 async function obtenerDatos() {

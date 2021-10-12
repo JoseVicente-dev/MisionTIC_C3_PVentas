@@ -14,7 +14,7 @@ firebase.initializeApp(firebaseConfig);
 const dataBase = firebase.firestore();
 // Declara Variables de DOM
 
-const btnNuevaventa= document.getElementById('btn_AgregarVenta')
+const btnNuevaventa = document.getElementById('btn_AgregarVenta')
 
 const btnBuscarVenta = document.getElementById('buscarVenta')
 
@@ -65,7 +65,7 @@ async function mostrarInformacion() {
         radio.setAttribute("id", "flexRadioDefault" + i)
         radio.setAttribute("onClick", "MostrarBotonesVentas()")
         radio.checked = false
-        
+
         div.appendChild(radio)
         seleccionar.appendChild(div)
 
@@ -95,12 +95,12 @@ async function mostrarInformacion() {
 }
 
 // ------------------------------------------ Adicionar Ventas--------------------------------
-function AdicionrVenta(){
+function AdicionrVenta() {
 
-    const idVentas= document.getElementById('IdNuevo');
-    const articuloVentas= document.getElementById('ArticuloNuevo');
-    const clienteVentas= document.getElementById('ClienteNuevo');
-    const ValorVentas= document.getElementById('ValorNuevo');
+    const idVentas = document.getElementById('IdNuevo');
+    const articuloVentas = document.getElementById('ArticuloNuevo');
+    const clienteVentas = document.getElementById('ClienteNuevo');
+    const ValorVentas = document.getElementById('ValorNuevo');
     const fechasVenta = document.getElementById('FechaVentaNuevo');
     const FechaPagoVentas = document.getElementById('FechaPagoNuevo');
 
@@ -113,13 +113,18 @@ function AdicionrVenta(){
 } */
 async function obtenerDatos() {
     try {
-        const inputDescription = document.getElementById("inputDescripcion").value.replace(/^\w/, (c) => c.toUpperCase());
-        const inputWeigth = document.getElementById("inputPeso").value;
-        const inputValue = document.getElementById("inputValorUnitario").value;
-        const inputState = document.getElementById("inputEstado").value;
+        
+        const idVentas = document.getElementById('IdNuevo');
+        const articuloVentas = document.getElementById('ArticuloNuevo').value.replace(/^\w/, (c) => c.toUpperCase());
+        const clienteVentas = document.getElementById('ClienteNuevo').value.replace(/^\w/, (c) => c.toUpperCase());
+        const vendedor = document.getElementById('VendedorNuevo').value.replace(/^\w/, (c) => c.toUpperCase());
+        const ValorVentas = document.getElementById('ValorNuevo');
+        const fechasVenta = document.getElementById('FechaVentaNuevo');
+        const FechaPagoVentas = document.getElementById('FechaPagoNuevo');
+
         const VentasArray = [];
-        const nuevoxd = await dataBase.collection('ng_ventas').get()
-        nuevoxd.forEach((t) => {
+        const nuevaVenta = await dataBase.collection('ng_ventas').get()
+        nuevaVenta.forEach((t) => {
             VentasArray.push(t.data())
         })
 

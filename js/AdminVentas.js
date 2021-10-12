@@ -12,7 +12,7 @@ firebase.initializeApp(firebaseConfig);
 //Declarar Variables globales  
 const dataBase = firebase.firestore();
 // Declara Variables de DOM
-const btnModalModificar= document.getElementById('btnModificarPrincial')
+const btnModalModificar = document.getElementById('btnModificarPrincial')
 const btnNuevaventa = document.getElementById('btn_AgregarVenta');
 const btnBuscarVenta = document.getElementById('buscarVenta')
 const toastIngresoVenta = document.getElementById('liveToastIProduct')
@@ -238,25 +238,25 @@ async function pintarVendedores() {
 
     var select = document.getElementById("VendedorNuevo")
 
-    const respuestausuarios = await dataBase.collection("ng_users").where('rol','==','Vendedor').get();
+    const respuestausuarios = await dataBase.collection("ng_users").where('rol', '==', 'Vendedor').get();
     /* console.log(respuestausuarios); */
     const usuariosBD = [];
 
-    respuestausuarios.forEach(function (item){
+    respuestausuarios.forEach(function (item) {
         usuariosBD.push(item.data());
     });
 
-    let contadorV=0
+    let contadorV = 0
     usuariosBD.forEach((t) => {
         var option = document.createElement("option");
         option.value = contadorV;
         option.text = t.nombres;
         select.appendChild(option);
-        contadorV=contadorV+1
+        contadorV = contadorV + 1
 
-      });
-      
-      
+    });
+
+
 }
 
 // pintarProductos
@@ -268,20 +268,20 @@ async function pintarProductos() {
     /* console.log(respuestausuarios); */
     const productosBD = [];
 
-    respuestaProductos.forEach(function (item){
+    respuestaProductos.forEach(function (item) {
         productosBD.push(item.data());
     });
 
-    let contadorV=0
+    let contadorV = 0
     productosBD.forEach((t) => {
         var option = document.createElement("option");
         option.value = contadorV;
         option.text = t.descripcion;
         select.appendChild(option);
-        contadorV=contadorV+1
-      });
-      
-      
+        contadorV = contadorV + 1
+    });
+
+
 }
 
 
@@ -313,7 +313,7 @@ function modificarVenta() {
     let radios = tablaVentas.getElementsByTagName("input");
     let filas = tablaVentas.getElementsByTagName("tr");
     let totalFilas = radios.length;
-    
+
     for (i = 0; i < totalFilas; i++) {
         if (radios[i].checked) {
             filaSeleccionada = filas[i]
@@ -325,13 +325,13 @@ function modificarVenta() {
             document.getElementById("FechaVentaBusqueda").value = filaSeleccionada.cells[5].innerText;
             document.getElementById("FechaPagoBusqueda").value = filaSeleccionada.cells[6].innerText;
             document.getElementById("VendedorBusqueda").value = filaSeleccionada.cells[7].innerText;
-          
+
             if (filaSeleccionada.cells[8].innerText == "Cancelada") {
                 document.getElementById("modifyEstado").value = "1";
             }
             document.getElementById("modifyEstado").value = "2";
+        }
     }
-}
 }
 
 //modificar Venta
@@ -391,7 +391,7 @@ function eliminarVenta() {
         }
     }
     //borrar datos
-    var userborrar = dataBase.collection('ng_Ventas').where('codigo', '==', codigo);
+    var userborrar = dataBase.collection('ng_ventas').where('id', '==', codigo);
     userborrar.get().then(function (querySnapshot) {
         querySnapshot.forEach(function (doc) {
             doc.ref.delete();
@@ -410,30 +410,25 @@ async function compararRolUsuario() {
     });
 
     usuariosBD.forEach((t) => {
-        tipoUsuarioActual=t.rol
+        tipoUsuarioActual = t.rol
     });
 
-    if(tipoUsuarioActual=="Vendedor"){
+    if (tipoUsuarioActual == "Vendedor") {
         document.getElementById('VendedorNuevo').disabled = true
         /* document.getElementById('VendedorNuevo').text = usuarioActual */
- 
+
         var select = document.getElementById("VendedorNuevo")
         var option = document.createElement("option");
         option.value = 0;
         option.text = usuarioActual;
         select.appendChild(option);
-        
-    }else{
-        
+
+    } else {
+
         pintarVendedores()
     }
     pintarProductos()
     /* console.log(vendedor) */
-
-        
-
-      
-
 
 
 }
@@ -480,11 +475,11 @@ async function menu() {
     showToast('#toastModificacion')
     limpiarModalModificar()
 }) */
-/* btnEliminarVenta.addEventListener('click', (e) => {
+btnEliminarVenta.addEventListener('click', (e) => {
     e.preventDefault()
     eliminarVenta()
     setTimeout(actualizar, 1000)
-}) */
+})
 
 botonAgregar.addEventListener('click', (e) => {
     obtenerDatos();

@@ -10,15 +10,10 @@
     <meta name="google-site-verification" contenido="" />
     <title>Admintrador Ventas</title>
     <link rel="icon" href="images/logo_mercurio.png" type="image/png" />
-    <!-- Bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
-    <!-- /Bootstrap -->
     <!-- css Nightmare -->
     <link rel="stylesheet" href="css/menu.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/tablas_modales.css">
-
     <!-- /css Nightmare -->
     <!-- Iconos fontAwesome -->
     <link href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" rel="stylesheet">
@@ -26,6 +21,13 @@
     <!-- Fuente -->
     <link href="https://fonts.googleapis.com/css2?family=Aldrich&display=swap" rel="stylesheet">
     <!-- /Fuente -->
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <!-- para las fechas -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css"
+        rel="stylesheet">
+    <!-- /Bootstrap -->
 </head>
 
 <body>
@@ -62,18 +64,19 @@
                 <!-- Sección de usuario -->
                 <div class="menu-lateral-header">
                     <div class="user-pic">
-                        <img class="img-responsive img-rounded" src="images/user2.png" alt="User picture">
+                        <img class="img-responsive img-rounded" src="images/user2.png" alt="User picture"
+                            id="imagenUsuario" />
                     </div>
                     <div class="user-info">
-                        <span class="user-name"><strong>Nightmare User</strong></span>
-                        <span class="user-role">Administrador</span>
+                        <span class="user-name" id="nombreDeUsuario"><strong>Nightmare User</strong></span>
+                        <span class="user-role" id="tipoUsuario">Administrador</span>
                         <span class="user-status">
                             <i class="fa fa-circle"></i>
                             <span>Online</span>
                         </span>
                     </div>
                 </div>
-                <!-- /Sección de usuario -->
+                <!-- Sección de usuario -->
                 <!-- Opciones disponible lista de paginas -->
                 <div class="menu-lateral-menu">
                     <ul>
@@ -121,11 +124,38 @@
         </nav>
     </div>
 
-    <!-- /Archivos JS -->
     <!-- Tabla done se insertaran las filas -->
     <section class="main">
+        <!-- Barra de búsqueda -->
+        <div class="row align-items-center">
+            <div class="col-2" style="text-align: end;">
+                <label class="form-label" for="form1">Buscar u Ordenar por:</label>
+            </div>
+            <div class="col-2">
+                <select class="form-select " id="busquedapor" placeholder="Estado">
+                    <option value="vendedor">Vendedor</option>
+                    <option value="idVenta">id Venta</option>
+                    <option value="articulo">Articulo</option>
+                    <option value="cliente">Cliente</option>
+                    <option value="valorVenta">Valor ($)</option>
+                    <option value="fechaVenta">Fecha de Venta</option>
+                    <option value="fechaPago">Fecha de Pago</option>
+                    <option value="estadoPago">Estado de Pago</option>
+                </select>
+            </div>
+            <div class="col-6">
+                <input type="search" id="busqueda" class="form-control" placeholder="Inserte Búsqueda" />
+            </div>
+            <div class="col-2">
+                <button type="button" class="btn btn-primary" id="buscarVenta">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+        </div>
+        <!-- Barra de búsqueda -->
+        <br>
         <div class="container-fluid table-responsive">
-            <table class="table table-hover text-align-tabla">
+            <table class="table table-hover text-align-tabla" id="cuerpoTablaVentas">
                 <thead>
                     <tr>
                         <th scope="col">Seleccionar </th>
@@ -141,7 +171,7 @@
                 </thead>
                 <!-- agregamos el id="AquiVaLaFila" en el body porque solo creamos las filas -->
                 <!-- se mantiene la estructura original de la tabla -->
-                <tbody id="AquiVaLaFila" class="text-align-tabla">
+                <tbody id="cuerpoTablaVentas" class="text-align-tabla">
                 </tbody>
             </table>
         </div>
@@ -149,26 +179,67 @@
     <!-- /Tabla con datos -->
 
     <!-- Bottones -->
-    <div class="container tex-align">
-        <div id="Muestrame" class="ocultar-elementos">
-            <button type="button" class="btn btn-primary bg-color-rojo" id="btnModificarVenta" data-bs-toggle="modal"
-                data-bs-target="#ModificarVenta">Modificar Venta</button>
-            <button type="button" class="btn btn-primary bg-color-rojo">Eliminar Venta</button>
-        </div>
+    <div class="container" style="text-align: center;">
+        <button class="btn btn-primary bg-color-azul" id="btnAdicionarPrincipal" data-bs-toggle="modal"
+            data-bs-target="#NuevaVenta">Adicionar</button>
+        <button class="btn btn-primary bg-color-azul " id="btnModificarPrincial" data-bs-toggle="modal"
+            data-bs-target="#ModificarVenta">Modificar</button>
+        <button class="btn btn-primary bg-color-azul " id="btnEliminarPrincipal" data-bs-toggle="modal"
+            data-bs-target="#EliminarVenta">Eliminar</button>
     </div>
-    <div class="container text-center">
-        <button type="button" class="btn btn-primary bg-color-azul" onclick="addNuevaFila()" data-bs-toggle="modal"
-            data-bs-target="#NuevaVenta">Nueva Venta</button>
-        <!--este evento llama a un scrip que esta aqui pero toca quitar porque no va a ser neceario-->
-
-        <button type="button" class="btn btn-primary bg-color-azul" data-bs-toggle="modal"
-            data-bs-target="#BuscarVenta">Buscar Venta</button>
-    </div>
-
     <!-- /Bottones -->
+
     <!-- Footer -->
-    <footer class="text-center">
-        <img src="images/logo2.png" alt="logo-nightmare" class="height-50px">
+    <footer style="text-align: center;">
+        <img src="images/logo2.png" alt="logo-nightmare" style="height: 50px;">
+        <div class="position-fixed bottom-0 end-0 p-3">
+            <div id="toastIngresoCorrecto" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="toast-header">
+                    <img class="rounded me-2 toast_imagen fad fa-check-circle">
+                    <strong class="me-auto">Registro Venta</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+                <div class="toast-body">
+                    ¡Venta ingresada Correctamente!.
+                </div>
+            </div>
+        </div>
+        <div class="position-fixed bottom-0 end-0 p-3">
+            <div id="toastIngresoDenegado" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="toast-header">
+                    <img class="rounded me-2 toast_imagen fad fa-check-circle">
+                    <strong class="me-auto">Registro Venta</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+                <div class="toast-body">
+                    Ya se encuentra en la lista.
+                </div>
+            </div>
+        </div>
+        <div class="position-fixed bottom-0 end-0 p-3">
+            <div id="toastCamposVacios" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="toast-header">
+                    <img class="rounded me-2 toast_imagen fad fa-check-circle">
+                    <strong class="me-auto">Registro Venta</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+                <div class="toast-body">
+                    No puede haber campos vacíos.
+                </div>
+            </div>
+        </div>
+        <div class="position-fixed bottom-0 end-0 p-3">
+            <div id="toastModificacion" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="toast-header">
+                    <img class="rounded me-2 toast_imagen fad fa-check-circle">
+                    <strong class="me-auto">Actualización Venta</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+                <div class="toast-body">
+                    Venta modificada con éxito.
+                </div>
+            </div>
+        </div>
     </footer>
     <!-- /Footer -->
     <!--  Modal Nueva Venta -->
@@ -180,51 +251,63 @@
                     <h5 class="modal-title color-h5" id="staticBackdropLabel1">Nueva venta</h5>
                     <button type="button" class="btn-close bg-color-cerrarX" data-bs-dismiss="modal"
                         aria-label="Close"></button>
-                    
                 </div>
                 <div class="modal-body">
                     <div class="container">
                         <div class="col">
-                            <label type="text" class="form-control modal-input-select-undisabled" id="IdNuevo"
-                                placeholder="Id Venta">0</label>
-                        </div>
-                        <div class="col">
-                            <input type="text" class="form-control modal-input-select-undisabled" id="ArticuloNuevo"
-                                placeholder="Articulo">
-                        </div>
-                        <div class="col">
+                            <!-- <label type="text" class="form-control modal-input-select-undisabled" id="IdNuevo"
+                                placeholder="Id Venta">0</label> -->
+                           <!--  <input type="text" class="form-control modal-input-select-undisabled" id="ArticuloNuevo"
+                                placeholder="Articulo"> -->
+                            
+                                
+                            <!-- <label for="ArticuloNuevo"> Artículo</label> -->
+                            <select class="form-select modal-input-select-undisabled" id="ArticuloNuevo">
+                            
+                            </select>
+
                             <input type="text" class="form-control modal-input-select-undisabled" id="ClienteNuevo"
                                 placeholder="Cliente">
-                        </div>
-                        <div class="col">
                             <input type="text" class="form-control modal-input-select-undisabled" id="ValorNuevo"
                                 placeholder="Valor">
-                        </div>
-                        <div class="col">
-                            <input type="text" class="form-control modal-input-select-undisabled" id="FechaVentaNuevo"
-                                placeholder="Fecha Venta">
-                        </div>
-                        <div class="col">
-                            <input type="text" class="form-control modal-input-select-undisabled" id="FechaPagoNuevo"
-                                placeholder="Fecha Pago">
-                        </div>
-                        <div class="col">
-                            <input type="text" class="form-control modal-input-select-undisabled" id="VendedorNuevo"
-                                placeholder="Vendedor">
-                        </div>
-                        <select class="form-select modal-input-select-undisabled" id="EstadoNuevo">
-                            <option>Cancelada</option>
-                            <option>Pendiente</option>
-                        </select>
-                        <div class="col">
 
+                            <!-- <input type="text" class="form-control modal-input-select-undisabled" id="VendedorNuevo"
+                                placeholder="Vendedor">
+                            </div> -->
+
+                            <select class="form-select modal-input-select-undisabled" id="VendedorNuevo">
+                                
+                            </select>
+
+                            <select class="form-select modal-input-select-undisabled" id="EstadoNuevo">
+                                <option value="1">Cancelada</option>
+                                <option value="2">Pendiente</option>
+                            </select>
+
+                            <div class="col">
+                            </div>
+
+                            <div class="row" style="margin: 10px 20px 10px 5px;">
+                                <div class='input-group date col-sm' id='startDate' >
+                                    <span class="input-group-addon input-group-text"><span class="fa fa-calendar"></span>
+                                    </span>
+                                    <input type='text' class="form-control modal-input-select-undisabled-fecha" name="startDate" id="FechaVentaNuevo"
+                                        placeholder="Fecha Venta" 
+                                         />
+                                </div>
+                                <div class='input-group date col-sm' id='pagoDate' >
+                                    <span class="input-group-addon input-group-text"><span class="fa fa-calendar"></span>
+                                    </span>
+                                    <input type='text' class="form-control modal-input-select-undisabled-fecha" name="startDate" id="FechaPagoNuevo"
+                                        placeholder="Fecha Pago" 
+                                        />
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <!-- <button type="button" class="btn btn-primary bg-color-azul" id="btnAgregarModalNuevaVenta"
-                        data-bs-dismiss="modal">Agregar</button> -->
-                    <button type="button" class="btn btn-primary bg-color-azul" id="btn_prueba"
+                    <button type="button" class="btn btn-primary bg-color-azul" id="btn_AgregarVenta"
                         data-bs-dismiss="modal">Agregar</button>
                     <button type="button" class="btn btn-secondary" id="btnCancelarModalNuevaVenta"
                         data-bs-dismiss="modal">Cancelar</button>
@@ -233,56 +316,47 @@
         </div>
     </div>
     <!--  /Modal Nueva Venta -->
-    <!-- Scripts necesarios -->
-
-    <!-- Script para que el id de cada nueva venta aumente -->
-
-
     <!--  Modal Modificar Venta -->
     <div class="modal fade" id="ModificarVenta" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
         aria-labelledby="staticBackdropLabel1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
             <div class="modal-content">
                 <div class="modal-header bg-color-azul">
-                    <h5 class="modal-title color-h5" id="staticBackdropLabel1">Venta Seleccionada</h5>
+                    <h5 class="modal-title color-h5" id="NewVenta">Venta Seleccionada</h5>
                     <button type="button" class="btn-close bg-color-cerrarX" data-bs-dismiss="modal"
                         aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <div class="container">
-                        <div class="col">
-                            <label type="text" class="form-control modal-input-select-undisabled" id="IdBusqueda"
-                                placeholder="Id Venta"> Id Venta</label>
-                        </div>
-                        <div class="col">
-                            <input type="text" class="form-control modal-input-select-undisabled" id="ArticuloBusqueda"
-                                placeholder="Articulo"></input>
-                        </div>
-                        <div class="col">
-                            <input type="text" class="form-control modal-input-select-undisabled" id="ClienteBusqueda"
-                                placeholder="Cliente"></input>
-                        </div>
-                        <div class="col">
-                            <input type="text" class="form-control modal-input-select-undisabled" id="ValorBusqueda"
-                                placeholder="Valor"></input>
-                        </div>
-                        <div class="col">
-                            <input type="text" class="form-control modal-input-select-undisabled"
-                                id="FechaVentaBusqueda" placeholder="Fecha Venta"></input>
-                        </div>
-                        <div class="col">
-                            <input type="text" class="form-control modal-input-select-undisabled" id="FechaPagoBusqueda"
-                                placeholder="Fecha Pago"></input>
-                        </div>
-                        <div class="col">
-                            <input type="text" class="form-control modal-input-select-undisabled" id="VendedorBusqueda"
-                                placeholder="Vendedor"></input>
-                        </div>
+
+                        <input type="text" class="form-control modal-input-select-undisabled" id="IdBusqueda"
+                            placeholder="Id Venta" disabled></input>
+
+                        <input type="text" class="form-control modal-input-select-undisabled" id="ArticuloBusqueda"
+                            placeholder="Articulo" disabled></input>
+                        <input type="text" class="form-control modal-input-select-undisabled" id="ClienteBusqueda"
+                            placeholder="Cliente"></input>
+                        <input type="text" class="form-control modal-input-select-undisabled" id="ValorBusqueda"
+                            placeholder="Valor"></input>
+                        <input type="text" class="form-control modal-input-select-undisabled" id="VendedorBusqueda"
+                            placeholder="Vendedor" disabled></input>
                         <select class="form-select modal-input-select-undisabled" id="EstadoBusqueda">
                             <option>Cancelada</option>
                             <option>Pendiente</option>
                         </select>
-                        <div class="col">
+                        <div class="row" style="margin: 10px 20px 10px 5px;">
+                            <div class='input-group date col-sm' id='startDate'>
+                                <span class="input-group-addon input-group-text"><span class="fa fa-calendar"></span>
+                                </span>
+                                <input type='text' class="form-control modal-input-select-undisabled-fecha"
+                                    name="startDate" id="FechaVentaBusqueda" placeholder="Fecha Venta" />
+                            </div>
+                            <div class='input-group date col-sm' id='pagoDate'>
+                                <span class="input-group-addon input-group-text"><span class="fa fa-calendar"></span>
+                                </span>
+                                <input type='text' class="form-control modal-input-select-undisabled-fecha"
+                                    name="startDate" id="FechaPagoBusqueda" placeholder="Fecha Pago" />
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -297,150 +371,36 @@
         </div>
     </div>
     <!--  /Modal Modificar Venta -->
-    <!--  Modal Resultado Busqueda-->
-    <div class="modal fade" id="ResultadoBusqueda" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-        aria-labelledby="staticBackdropLabel1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-            <div class="modal-content">
-                <div class="modal-header bg-color-azul">
-                    <h5 class="modal-title color-h5" id="staticBackdropLabel1"> Resultado Busqueda</h5>
-                    <button type="button" class="btn-close bg-color-cerrarX" data-bs-dismiss="modal"
-                        aria-label="Close"></button>
+    <div class="modal fade " id="EliminarVenta" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel2" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable ">
+            <div class="modal-content ">
+                <div class="modal-header" style="background-color: #26327e;">
+                    <h5 class="modal-title" id="staticBackdropLabel2" style="color: white;">Alerta Eliminar Producto
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                        style="background-color: #7a87bb;"></button>
                 </div>
                 <div class="modal-body">
-                    <div class="container">
-                        <div class="col">
-                            <label type="text" class="form-control modal-input-select-undisabled" id="IdResultado"
-                                placeholder="Id Venta"> Id Venta</label>
-                        </div>
-                        <div class="col">
-                            <input type="text" class="form-control modal-input-select-undisabled" id="ArticuloResultado"
-                                placeholder="Articulo"></input>
-                        </div>
-                        <div class="col">
-                            <input type="text" class="form-control modal-input-select-undisabled" id="ClienteResultado"
-                                placeholder="Cliente"></input>
-                        </div>
-                        <div class="col">
-                            <input type="text" class="form-control modal-input-select-undisabled" id="ValorResultado"
-                                placeholder="Valor"></input>
-                        </div>
-                        <div class="col">
-                            <input type="text" class="form-control modal-input-select-undisabled"
-                                id="FechaVentaResultado" placeholder="Fecha Venta"></input>
-                        </div>
-                        <div class="col">
-                            <input type="text" class="form-control modal-input-select-undisabled"
-                                id="FechaPagoResultado" placeholder="Fecha Pago"></input>
-                        </div>
-                        <div class="col">
-                            <input type="text" class="form-control modal-input-select-undisabled" id="VendedorResultado"
-                                placeholder="Vendedor"></input>
-                        </div>
-                        <select class="form-select modal-input-select-undisabled" id="EstadoResultado">
-                            <option>Cancelada</option>
-                            <option>Pendiente</option>
-                        </select>
-                        <div class="col">
-                        </div>
+                    <div class="modal-body">
+                        <p>Está seguro de Eliminar el Producto seleccionado, recuerde que esta acción no se puede
+                            deshacer</p>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary bg-color-azul" id="btnModificarModalResultadoBusqueda"
-                        data-bs-toggle="modal" data-bs-target="#AlertaModificacionVenta"
-                        data-bs-dismiss="modal">Modificar</button>
-                    <button type="button" class="btn btn-primary bg-color-azul"
-                        id="btnEliminarModalResultadoBusqueda">Eliminar</button>
-                    <button type="button" class="btn btn-secondary" id="btnCancelarModalResultadoBusqueda"
-                        data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
+                        style=" background-color: #26327e;" id="btnEliminarModalEliminar">Eliminar</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                 </div>
             </div>
         </div>
     </div>
-    <!--  /Modal Resultado Busqueda-->
-    <!--  Modal Buscar Ventas -->
-    <div class="modal fade" id="BuscarVenta" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-        aria-labelledby="staticBackdropLabel1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-            <div class="modal-content">
-                <div class="modal-header bg-color-azul">
-                    <h5 class="modal-title color-h5" id="staticBackdropLabel1">Buscar Venta</h5>
-                    <button type="button" class="btn-close bg-color-cerrarX" data-bs-dismiss="modal"
-                        aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="container">
-                        <div class="col">
-                            <input type="text" class="form-control modal-input-select-undisabled" id="IdVentaBuscada"
-                                placeholder="Id Venta">
-                        </div>
-                        <div class="col">
-                            <input type="text" class="form-control modal-input-select-undisabled"
-                                id="NombreVentaBuscada" placeholder="Id o Nombre Cliente">
-                        </div>
-                        <div class="col">
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary bg-color-azul" id="btnIdModalBuscarVentas"
-                        data-bs-toggle="modal" data-bs-target="#ResultadoBusqueda" data-bs-dismiss="modal">Buscar por Id
-                        Venta</button>
-                    <button type="button" class="btn btn-primary bg-color-azul" id="btnNombreModalBuscarVentas"
-                        data-bs-toggle="modal" data-bs-target="#ResultadoBusqueda" data-bs-dismiss="modal">Buscar por
-                        Nombre
-                        Cliente</button>
-                    <button type="button" class="btn btn-secondary" id="btnCancelarModalBuscarVentas"
-                        data-bs-dismiss="modal">Cancelar</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--  /Modal Buscar Ventas -->
-
-    <!-- Modal Alerta Actualización Venta -->
-    <div class="modal fade" id="AlertaModificacionVenta" tabindex="-1" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Actualización Venta</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    Venta Actualizada Correctamente
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- /Modal Alerta Actualización Venta  -->
-
-    <button type="button" class="btn btn-primary bg-color-azul" data-bs-toggle="modal"
-        data-bs-target="#BuscarVenta">Buscar Venta</button>
-
-    <button type="button" class="btn btn-primary bg-color-azul" id="contador_boton">CONTADOR</button>
-
-    </div>
-
-
-
-
-
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/esm/popper.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
-
-
-
-
-
     <script src="js/menu.js"></script>
 
     <!-- esconder el menú 3s -->
@@ -449,38 +409,39 @@
             $(".page-wrapper").removeClass("toggled");
         }, 3000);
     </script>
-
+    <!-- para el recolector de fechas -->
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $(function () {
+                $('#startDate').datepicker({
+                    format: 'dd/mm/yyyy'
+                });
+            });
+            $(function () {
+                $('#pagoDate').datepicker({
+                    format: 'dd/mm/yyyy'
+                });
+            });
+        });
+    </script>
     <!-- Librerías de Firebase -->
     <!-- Firebase SDK (Software Development Kit) siempre se debe usar y debe ser el primero de colocar -->
     <script src="https://www.gstatic.com/firebasejs/9.1.1/firebase-app-compat.js"></script>
 
-
     <!-- Adicionar productos de Firebase que vamos a usar -->
     <script src="https://www.gstatic.com/firebasejs/9.1.1/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.1.1/firebase-firestore-compat.js"></script>
+    <script src="js/menu.js"></script>
 
     <!-- UUID -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/uuid/8.3.2/uuid.min.js"
-            integrity="sha512-UNM1njAgOFUa74Z0bADwAq8gbTcqZC8Ej4xPSzpnh0l6KMevwvkBvbldF9uR++qKeJ+MOZHRjV1HZjoRvjDfNQ=="
-            crossorigin="anonymous"
-            referrerpolicy="no-referrer"></script>
+        integrity="sha512-UNM1njAgOFUa74Z0bADwAq8gbTcqZC8Ej4xPSzpnh0l6KMevwvkBvbldF9uR++qKeJ+MOZHRjV1HZjoRvjDfNQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-
-
-   <!-- Archivos JS -->
-   <script src="js/AdminVentas.js"></script>
-   <script src="js/ingresar_ventas.js"></script>
-
-   <script>
-    function addNuevaFila() {
-        const NuevoId = document.getElementById("IdNuevo")
-        let numerosFila = document.getElementById("AquiVaLaFila")
-        let UltimoIdVenta = numerosFila.getElementsByTagName("tr").length
-        // const UltimoIdVenta = Id.at(-1)
-        console.log(UltimoIdVenta)
-        NuevoId.textContent = (UltimoIdVenta + 1)
-    }
-</script>
+    <!-- Archivos JS -->
+    <script src="js/AdminVentas.js"></script>
 
 </body>
 

@@ -27,6 +27,11 @@
     text-align: center;
 }
 
+.modal-input-select-undisabled-fecha{
+    border-color: #7a87bb; 
+    background-color: #d8e5fe; 
+}
+
 .modal-input-select-disabled{
     margin: 10px; 
     max-width: 90%; 

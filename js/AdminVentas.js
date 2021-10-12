@@ -116,9 +116,6 @@ function AdicionrVenta(){
     const FechaPagoVentas = document.getElementById('FechaPagoNuevo');
 
 }
-
-
-
 /* function showToast(id) {
     $(id).toast('show');
 } */

@@ -120,7 +120,7 @@
             <!-- /Footer menu -->
         </nav>
     </div>
- 
+
     <!-- /Archivos JS -->
     <!-- Tabla done se insertaran las filas -->
     <section class="main">
@@ -157,8 +157,9 @@
         </div>
     </div>
     <div class="container text-center">
-        <button type="button" class="btn btn-primary bg-color-azul" onclick="addNuevaFila()" data-bs-toggle="modal" 
-            data-bs-target="#NuevaVenta">Nueva Venta</button> <!--este evento llama a un scrip que esta aqui pero toca quitar porque no va a ser neceario-->
+        <button type="button" class="btn btn-primary bg-color-azul" onclick="addNuevaFila()" data-bs-toggle="modal"
+            data-bs-target="#NuevaVenta">Nueva Venta</button>
+        <!--este evento llama a un scrip que esta aqui pero toca quitar porque no va a ser neceario-->
 
         <button type="button" class="btn btn-primary bg-color-azul" data-bs-toggle="modal"
             data-bs-target="#BuscarVenta">Buscar Venta</button>
@@ -179,7 +180,7 @@
                     <h5 class="modal-title color-h5" id="staticBackdropLabel1">Nueva venta</h5>
                     <button type="button" class="btn-close bg-color-cerrarX" data-bs-dismiss="modal"
                         aria-label="Close"></button>
-                        <button type="button" id="prueba">prueba hpta</button>
+                    
                 </div>
                 <div class="modal-body">
                     <div class="container">
@@ -223,7 +224,7 @@
                 <div class="modal-footer">
                     <!-- <button type="button" class="btn btn-primary bg-color-azul" id="btnAgregarModalNuevaVenta"
                         data-bs-dismiss="modal">Agregar</button> -->
-                        <button type="button" class="btn btn-primary bg-color-azul" id="btn_prueba"
+                    <button type="button" class="btn btn-primary bg-color-azul" id="btn_prueba"
                         data-bs-dismiss="modal">Agregar</button>
                     <button type="button" class="btn btn-secondary" id="btnCancelarModalNuevaVenta"
                         data-bs-dismiss="modal">Cancelar</button>
@@ -233,10 +234,10 @@
     </div>
     <!--  /Modal Nueva Venta -->
     <!-- Scripts necesarios -->
-   
+
     <!-- Script para que el id de cada nueva venta aumente -->
 
- 
+
     <!--  Modal Modificar Venta -->
     <div class="modal fade" id="ModificarVenta" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
         aria-labelledby="staticBackdropLabel1" aria-hidden="true">
@@ -302,7 +303,7 @@
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
             <div class="modal-content">
                 <div class="modal-header bg-color-azul">
-                    <h5 class="modal-title color-h5" id="staticBackdropLabel1">Resultado Busqueda</h5>
+                    <h5 class="modal-title color-h5" id="staticBackdropLabel1"> Resultado Busqueda</h5>
                     <button type="button" class="btn-close bg-color-cerrarX" data-bs-dismiss="modal"
                         aria-label="Close"></button>
                 </div>
@@ -314,7 +315,7 @@
                         </div>
                         <div class="col">
                             <input type="text" class="form-control modal-input-select-undisabled" id="ArticuloResultado"
-                                placeholder="Articulo"> </input>
+                                placeholder="Articulo"></input>
                         </div>
                         <div class="col">
                             <input type="text" class="form-control modal-input-select-undisabled" id="ClienteResultado"
@@ -346,10 +347,10 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary bg-color-azul" id="btnModificarModalResultadoBusqueda"
-                         data-bs-toggle="modal"
-                        data-bs-target="#AlertaModificacionVenta" data-bs-dismiss="modal">Modificar</button>
-                    <button type="button" class="btn btn-primary bg-color-azul" id="btnEliminarModalResultadoBusqueda"
-                        >Eliminar</button>
+                        data-bs-toggle="modal" data-bs-target="#AlertaModificacionVenta"
+                        data-bs-dismiss="modal">Modificar</button>
+                    <button type="button" class="btn btn-primary bg-color-azul"
+                        id="btnEliminarModalResultadoBusqueda">Eliminar</button>
                     <button type="button" class="btn btn-secondary" id="btnCancelarModalResultadoBusqueda"
                         data-bs-dismiss="modal">Cancelar</button>
                 </div>
@@ -383,11 +384,11 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary bg-color-azul" id="btnIdModalBuscarVentas"
-                        data-bs-toggle="modal" data-bs-target="#ResultadoBusqueda" data-bs-dismiss="modal"
-                        >Buscar por Id Venta</button>
+                        data-bs-toggle="modal" data-bs-target="#ResultadoBusqueda" data-bs-dismiss="modal">Buscar por Id
+                        Venta</button>
                     <button type="button" class="btn btn-primary bg-color-azul" id="btnNombreModalBuscarVentas"
-                        data-bs-toggle="modal" data-bs-target="#ResultadoBusqueda" data-bs-dismiss="modal"
-                        >Buscar por Nombre
+                        data-bs-toggle="modal" data-bs-target="#ResultadoBusqueda" data-bs-dismiss="modal">Buscar por
+                        Nombre
                         Cliente</button>
                     <button type="button" class="btn btn-secondary" id="btnCancelarModalBuscarVentas"
                         data-bs-dismiss="modal">Cancelar</button>
@@ -418,11 +419,11 @@
     </div>
     <!-- /Modal Alerta Actualización Venta  -->
 
-        <button type="button" class="btn btn-primary bg-color-azul" data-bs-toggle="modal"
-            data-bs-target="#BuscarVenta">Buscar Venta</button>
+    <button type="button" class="btn btn-primary bg-color-azul" data-bs-toggle="modal"
+        data-bs-target="#BuscarVenta">Buscar Venta</button>
 
-        <button type="button" class="btn btn-primary bg-color-azul" id="contador_boton">CONTADOR</button>
-        
+    <button type="button" class="btn btn-primary bg-color-azul" id="contador_boton">CONTADOR</button>
+
     </div>
 
 
@@ -460,32 +461,31 @@
 
     <!-- UUID -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/uuid/8.3.2/uuid.min.js"
-            integrity="sha512-UNM1njAgOFUa74Z0bADwAq8gbTcqZC8Ej4xPSzpnh0l6KMevwvkBvbldF9uR++qKeJ+MOZHRjV1HZjoRvjDfNQ=="
-            crossorigin="anonymous"
-            referrerpolicy="no-referrer"></script>
+        integrity="sha512-UNM1njAgOFUa74Z0bADwAq8gbTcqZC8Ej4xPSzpnh0l6KMevwvkBvbldF9uR++qKeJ+MOZHRjV1HZjoRvjDfNQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 
 
-   <!-- Archivos JS -->
-   <script src="js/AdminVentas-TablaMostrarVentas.js"></script>
-   <script src="js/AdminVentas-VentaBuscada.js"></script>
-   <script src="js/AdminVentas-BuscarVenta.js"></script>
-   <script src="js/AdminVentas-ocultarbotones.js"></script>
-   <script src="js/AdminVentas-ModificarVentas.js"></script>
-   <script src="js/AdminVentas-NuevaVenta.js"></script>
-   <script src="js/AdminVentas-LimpiarModales.js"></script>
-   <script src="js/ingresar_ventas.js"></script>
+    <!-- Archivos JS -->
+    <script src="js/AdminVentas-TablaMostrarVentas.js"></script>
+    <script src="js/AdminVentas-VentaBuscada.js"></script>
+    <script src="js/AdminVentas-BuscarVenta.js"></script>
+    <script src="js/AdminVentas-ocultarbotones.js"></script>
+    <script src="js/AdminVentas-ModificarVentas.js"></script>
+    <script src="js/AdminVentas-NuevaVenta.js"></script>
+    <script src="js/AdminVentas-LimpiarModales.js"></script>
+    <script src="js/ingresar_ventas.js"></script>
 
-   <script>
-    function addNuevaFila() {
-        const NuevoId = document.getElementById("IdNuevo")
-        let numerosFila = document.getElementById("AquiVaLaFila")
-        let UltimoIdVenta = numerosFila.getElementsByTagName("tr").length
-        // const UltimoIdVenta = Id.at(-1)
-        console.log(UltimoIdVenta)
-        NuevoId.textContent = (UltimoIdVenta + 1)
-    }
-</script>
+    <script>
+        function addNuevaFila() {
+            const NuevoId = document.getElementById("IdNuevo")
+            let numerosFila = document.getElementById("AquiVaLaFila")
+            let UltimoIdVenta = numerosFila.getElementsByTagName("tr").length
+            // const UltimoIdVenta = Id.at(-1)
+            console.log(UltimoIdVenta)
+            NuevoId.textContent = (UltimoIdVenta + 1)
+        }
+    </script>
 
 </body>
 

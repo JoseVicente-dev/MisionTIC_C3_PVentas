@@ -61,8 +61,8 @@ async function mostrarInformacion() {
         radio.setAttribute("name", "flexRadioDefault")
         radio.setAttribute("id", "flexRadioDefault" + i)
         radio.setAttribute("onClick", "MostrarBotonesVentas()")
-
         radio.checked = false
+        
         div.appendChild(radio)
         seleccionar.appendChild(div)
 

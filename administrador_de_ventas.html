@@ -22,7 +22,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Aldrich&display=swap" rel="stylesheet">
     <!-- /Fuente -->
     <!-- Bootstrap -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
     <!-- para las fechas -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css"
@@ -261,32 +261,30 @@
                                 placeholder="Cliente">
                             <input type="text" class="form-control modal-input-select-undisabled" id="ValorNuevo"
                                 placeholder="Valor">
-                                <input type="text" class="form-control modal-input-select-undisabled" id="VendedorNuevo"
+                            <input type="text" class="form-control modal-input-select-undisabled" id="VendedorNuevo"
                                 placeholder="Vendedor">
+                        </div>
+                        <select class="form-select modal-input-select-undisabled" id="EstadoNuevo">
+                            <option value="1">Cancelada</option>
+                            <option value="2">Pendiente</option>
+                        </select>
+                        <div class="col">
+                        </div>
+                        <div class="row" style="margin: 10px 20px 10px 5px;">
+                            <div class='input-group date col-sm' id='startDate'>
+                                <span class="input-group-addon input-group-text"><span class="fa fa-calendar"></span>
+                                </span>
+                                <input type='text' class="form-control modal-input-select-undisabled-fecha"
+                                    name="startDate" id="FechaVentaNuevo" placeholder="Fecha Venta" />
                             </div>
-                            <select class="form-select modal-input-select-undisabled" id="EstadoNuevo">
-                                <option value="1">Cancelada</option>
-                                <option value="2">Pendiente</option>
-                            </select>
-                            <div class="col">
-                            </div>
-                            <div class="row" style="margin: 10px 20px 10px 5px;">
-                                <div class='input-group date col-sm' id='startDate' >
-                                    <span class="input-group-addon input-group-text"><span class="fa fa-calendar"></span>
-                                    </span>
-                                    <input type='text' class="form-control modal-input-select-undisabled-fecha" name="startDate" id="FechaVentaNuevo"
-                                        placeholder="Fecha Venta" 
-                                         />
-                                </div>
-                                <div class='input-group date col-sm' id='pagoDate' >
-                                    <span class="input-group-addon input-group-text"><span class="fa fa-calendar"></span>
-                                    </span>
-                                    <input type='text' class="form-control modal-input-select-undisabled-fecha" name="startDate" id="FechaPagoNuevo"
-                                        placeholder="Fecha Pago" 
-                                        />
-                                </div>
+                            <div class='input-group date col-sm' id='pagoDate'>
+                                <span class="input-group-addon input-group-text"><span class="fa fa-calendar"></span>
+                                </span>
+                                <input type='text' class="form-control modal-input-select-undisabled-fecha"
+                                    name="startDate" id="FechaPagoNuevo" placeholder="Fecha Pago" />
                             </div>
                         </div>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary bg-color-azul" id="btn_AgregarVenta"
@@ -325,19 +323,17 @@
                             <option>Pendiente</option>
                         </select>
                         <div class="row" style="margin: 10px 20px 10px 5px;">
-                            <div class='input-group date col-sm' id='startDate' >
+                            <div class='input-group date col-sm' id='startDate'>
                                 <span class="input-group-addon input-group-text"><span class="fa fa-calendar"></span>
                                 </span>
-                                <input type='text' class="form-control modal-input-select-undisabled-fecha" name="startDate" id="FechaVentaBusqueda"
-                                    placeholder="Fecha Venta" 
-                                     />
+                                <input type='text' class="form-control modal-input-select-undisabled-fecha"
+                                    name="startDate" id="FechaVentaBusqueda" placeholder="Fecha Venta" />
                             </div>
-                            <div class='input-group date col-sm' id='pagoDate' >
+                            <div class='input-group date col-sm' id='pagoDate'>
                                 <span class="input-group-addon input-group-text"><span class="fa fa-calendar"></span>
                                 </span>
-                                <input type='text' class="form-control modal-input-select-undisabled-fecha" name="startDate" id="FechaPagoBusqueda"
-                                    placeholder="Fecha Pago" 
-                                    />
+                                <input type='text' class="form-control modal-input-select-undisabled-fecha"
+                                    name="startDate" id="FechaPagoBusqueda" placeholder="Fecha Pago" />
                             </div>
                         </div>
                     </div>
@@ -426,4 +422,5 @@
     <script src="js/AdminVentas.js"></script>
 
 </body>
+
 </html>

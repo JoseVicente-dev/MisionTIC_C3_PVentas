@@ -23,7 +23,7 @@ let imgUsuario = document.getElementById('imagenUsuario')
 let nombreUsuario = document.getElementById('nombreDeUsuario')
 const btnEliminarVenta = document.getElementById('btnEliminarModalEliminar')
 const botonAgregar = document.getElementById("btn_AgregarVenta");
-const botonCancelar = document.getElementById("btnCancelarModal");
+const botonCancelar = document.getElementById("btnCancelarModalNuevaVenta");
 const auth = firebase.auth()
 const proveedor = new firebase.auth.GoogleAuthProvider()
 let usuarioActual;
@@ -227,6 +227,7 @@ function pintarVentas(Ventas) {
         cell8.innerHTML = t.vendedor;
         cell9.innerHTML = t.estadoPago === '1' ? "Cancelado" : "Pendente";
     })
+    limpiarModalAdicionar()
 }
 // ---------------------------------------------------------------------------
 /* async function buscarVentas() {
@@ -271,7 +272,7 @@ function pintarVentas(Ventas) {
     }
 }
  */
-/* //modificar Venta
+//modificar Venta
 async function modificarVentafb() {
     const mCodigoInput = document.getElementById("modifyCodigo").value
     const mDescripcionInput = document.getElementById("modifyDescripcion").value.replace(/^\w/, (c) => c.toUpperCase());
@@ -298,9 +299,13 @@ async function modificarVentafb() {
 }
 
 function limpiarModalAdicionar() {
-    document.getElementById("inputDescripcion").value = "";
-    document.getElementById("inputPeso").value = "";
-    document.getElementById("inputValorUnitario").value = "";
+    document.getElementById("ArticuloNuevo").value = "";
+    document.getElementById("ClienteNuevo").value = "";
+    document.getElementById("ValorNuevo").value = "";
+    document.getElementById("VendedorNuevo").value = "";
+    document.getElementById("FechaVentaNuevo").value = "";
+    document.getElementById("FechaPagoNuevo").value = "";
+
 }
 function limpiarModalModificar() {
     document.getElementById("modifyCodigo").value = "";
@@ -330,7 +335,7 @@ function eliminarVenta() {
             doc.ref.delete();
         });
     });
-} */
+}
 // ---------------------------------------------------------------
 
 /* //comparar sesion actual con tipo de usuario
@@ -401,12 +406,12 @@ async function menu() {
 botonAgregar.addEventListener('click', (e) => {
     obtenerDatos();
     actualizar()
-    // limpiarModalAdicionar();
+    // limpiarModalAdicionar()
 })
-/* botonCancelar.addEventListener('click', (e) => {
+botonCancelar.addEventListener('click', (e) => {
     e.preventDefault();
     limpiarModalAdicionar();
-}) */
+})
 /* btnBuscarVenta.addEventListener('click', (e) => {
     e.preventDefault()
     buscarVentas()

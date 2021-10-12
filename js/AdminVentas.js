@@ -129,13 +129,14 @@ function AdicionrVenta() {
 async function obtenerDatos() {
     try {
         
-        const idVentas = document.getElementById('IdNuevo');
+        // const idVentas = document.getElementById('IdNuevo');
         const articuloVentas = document.getElementById('ArticuloNuevo').value.replace(/^\w/, (c) => c.toUpperCase());
         const clienteVentas = document.getElementById('ClienteNuevo').value.replace(/^\w/, (c) => c.toUpperCase());
         const vendedor = document.getElementById('VendedorNuevo').value.replace(/^\w/, (c) => c.toUpperCase());
         const ValorVentas = document.getElementById('ValorNuevo');
         const fechasVenta = document.getElementById('FechaVentaNuevo');
         const FechaPagoVentas = document.getElementById('FechaPagoNuevo');
+        const estadoVenta = document.getElementById("EstadoNuevo").value
 
         const VentasArray = [];
         const nuevaVenta = await dataBase.collection('ng_ventas').get()
@@ -145,15 +146,15 @@ async function obtenerDatos() {
 
         const Venta = {
             id: uuid.v4(),
-            articulo: inputArticulo.replace(/^\w/, (c) => c.toUpperCase()),
-            cliente: inputCliente.replace(/^\w/, (c) => c.toUpperCase()),
-            valor: inputValor,
-            fechaVenta: inputFechaVenta,
-            fechaPago: inputFechaPago,
-            vendedor: inputVendedor.replace(/^\w/, (c) => c.toUpperCase()),
-            estado: inputState
+            articulo: articuloVentas.replace(/^\w/, (c) => c.toUpperCase()),
+            cliente: clienteVentas.replace(/^\w/, (c) => c.toUpperCase()),
+            valor: ValorVentas,
+            fechaVenta: fechasVenta,
+            fechaPago: FechaPagoVentas,
+            vendedor: vendedor.replace(/^\w/, (c) => c.toUpperCase()),
+            estado: estadoVenta
         }
-        if (Venta.descripcion != "" || Venta.peso != "" || Venta.valorUnitario != "") {
+        if (Venta.articulo != "" || Venta.cliente != "" || Venta.valor != "" || Venta.fechaVenta !="" || Ven) {
             if (VentasArray.length != 0 && VentasArray.find(busquedaArray => busquedaArray.descripcion == inputDescription)) {
                 console.log(VentasArray);
             } else {

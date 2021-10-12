@@ -10,7 +10,6 @@
     <meta name="google-site-verification" contenido="" />
     <title>Admintrador Ventas</title>
     <link rel="icon" href="images/logo_mercurio.png" type="image/png" />
-
     <!-- css Nightmare -->
     <link rel="stylesheet" href="css/menu.css">
     <link rel="stylesheet" href="css/style.css">
@@ -23,7 +22,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Aldrich&display=swap" rel="stylesheet">
     <!-- /Fuente -->
     <!-- Bootstrap -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
     <!-- para las fechas -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css"
@@ -134,7 +133,6 @@
             </div>
             <div class="col-2">
                 <select class="form-select " id="busquedapor" placeholder="Estado">
-
                     <option value="vendedor">Vendedor</option>
                     <option value="idVenta">id Venta</option>
                     <option value="articulo">Articulo</option>
@@ -143,14 +141,11 @@
                     <option value="fechaVenta">Fecha de Venta</option>
                     <option value="fechaPago">Fecha de Pago</option>
                     <option value="estadoPago">Estado de Pago</option>
-
                 </select>
             </div>
-
             <div class="col-6">
                 <input type="search" id="busqueda" class="form-control" placeholder="Inserte Búsqueda" />
             </div>
-
             <div class="col-2">
                 <button type="button" class="btn btn-primary" id="buscarVenta">
                     <i class="fas fa-search"></i>
@@ -158,11 +153,9 @@
             </div>
         </div>
         <!-- Barra de búsqueda -->
-
         <br>
-
         <div class="container-fluid table-responsive">
-            <table class="table table-hover text-align-tabla">
+            <table class="table table-hover text-align-tabla" id="cuerpoTablaVentas">
                 <thead>
                     <tr>
                         <th scope="col">Seleccionar </th>
@@ -247,7 +240,6 @@
                 </div>
             </div>
         </div>
-
     </footer>
     <!-- /Footer -->
     <!--  Modal Nueva Venta -->
@@ -259,7 +251,6 @@
                     <h5 class="modal-title color-h5" id="staticBackdropLabel1">Nueva venta</h5>
                     <button type="button" class="btn-close bg-color-cerrarX" data-bs-dismiss="modal"
                         aria-label="Close"></button>
-
                 </div>
                 <div class="modal-body">
                     <div class="container">
@@ -313,10 +304,9 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
                 </div>
                 <div class="modal-footer">
-                    <!-- <button type="button" class="btn btn-primary bg-color-azul" id="btnAgregarModalNuevaVenta"
-                        data-bs-dismiss="modal">Agregar</button> -->
                     <button type="button" class="btn btn-primary bg-color-azul" id="btn_AgregarVenta"
                         data-bs-dismiss="modal">Agregar</button>
                     <button type="button" class="btn btn-secondary" id="btnCancelarModalNuevaVenta"
@@ -339,43 +329,35 @@
                 <div class="modal-body">
                     <div class="container">
 
-                        <label type="text" class="form-control modal-input-select-undisabled" id="IdBusqueda"
-                            placeholder="Id Venta"> Id Venta</label>
+                        <input type="text" class="form-control modal-input-select-undisabled" id="IdBusqueda"
+                            placeholder="Id Venta" disabled></input>
 
                         <input type="text" class="form-control modal-input-select-undisabled" id="ArticuloBusqueda"
                             placeholder="Articulo"></input>
-
                         <input type="text" class="form-control modal-input-select-undisabled" id="ClienteBusqueda"
                             placeholder="Cliente"></input>
-
                         <input type="text" class="form-control modal-input-select-undisabled" id="ValorBusqueda"
                             placeholder="Valor"></input>
-
                         <input type="text" class="form-control modal-input-select-undisabled" id="VendedorBusqueda"
                             placeholder="Vendedor"></input>
-
                         <select class="form-select modal-input-select-undisabled" id="EstadoBusqueda">
                             <option>Cancelada</option>
                             <option>Pendiente</option>
                         </select>
-
                         <div class="row" style="margin: 10px 20px 10px 5px;">
-                            <div class='input-group date col-sm' id='startDate' >
+                            <div class='input-group date col-sm' id='startDate'>
                                 <span class="input-group-addon input-group-text"><span class="fa fa-calendar"></span>
                                 </span>
-                                <input type='text' class="form-control modal-input-select-undisabled-fecha" name="startDate" id="FechaVentaBusqueda"
-                                    placeholder="Fecha Venta" 
-                                     />
+                                <input type='text' class="form-control modal-input-select-undisabled-fecha"
+                                    name="startDate" id="FechaVentaBusqueda" placeholder="Fecha Venta" />
                             </div>
-                            <div class='input-group date col-sm' id='pagoDate' >
+                            <div class='input-group date col-sm' id='pagoDate'>
                                 <span class="input-group-addon input-group-text"><span class="fa fa-calendar"></span>
                                 </span>
-                                <input type='text' class="form-control modal-input-select-undisabled-fecha" name="startDate" id="FechaPagoBusqueda"
-                                    placeholder="Fecha Pago" 
-                                    />
+                                <input type='text' class="form-control modal-input-select-undisabled-fecha"
+                                    name="startDate" id="FechaPagoBusqueda" placeholder="Fecha Pago" />
                             </div>
                         </div>
-
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -389,8 +371,6 @@
         </div>
     </div>
     <!--  /Modal Modificar Venta -->
-
-
     <div class="modal fade " id="EliminarVenta" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
         aria-labelledby="staticBackdropLabel2" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable ">
@@ -410,15 +390,11 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
                         style=" background-color: #26327e;" id="btnEliminarModalEliminar">Eliminar</button>
-                    <!-- onclick="actualizarUsuario()" -->
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                 </div>
             </div>
         </div>
     </div>
-
-
-
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/esm/popper.js"></script>
@@ -436,7 +412,6 @@
     <!-- para el recolector de fechas -->
     <script type="text/javascript"
         src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
-
     <script>
         $(document).ready(function () {
             $(function () {
@@ -451,7 +426,6 @@
             });
         });
     </script>
-
     <!-- Librerías de Firebase -->
     <!-- Firebase SDK (Software Development Kit) siempre se debe usar y debe ser el primero de colocar -->
     <script src="https://www.gstatic.com/firebasejs/9.1.1/firebase-app-compat.js"></script>
@@ -467,7 +441,6 @@
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <!-- Archivos JS -->
-
     <script src="js/AdminVentas.js"></script>
 
 </body>

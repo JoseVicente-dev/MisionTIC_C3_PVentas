@@ -7,27 +7,22 @@ const firebaseConfig = {
     appId: "1:829384661085:web:bddd58254813be754315b4",
     measurementId: "G-TQYRLQ0VWT"
 };
-
 // Inicializar Firebase
 firebase.initializeApp(firebaseConfig);
 //Declarar Variables globales  
 const dataBase = firebase.firestore();
-
 // Declara Variables de DOM
-
+const btnModalModificar= document.getElementById('btnModificarPrincial')
 const btnNuevaventa = document.getElementById('btn_AgregarVenta');
-
 const btnBuscarVenta = document.getElementById('buscarVenta')
 const toastIngresoVenta = document.getElementById('liveToastIProduct')
 const toastIngresoVentaNeg = document.getElementById('liveToastIProductNeg')
 const toastCamposVacios = document.getElementById('toastCamposVacios')
-const btnModalModificar = document.getElementById('btnModificarPrincial')
-const btnModificarVenta = document.getElementById('btnModificarModalModificar')
 let imgUsuario = document.getElementById('imagenUsuario')
 let nombreUsuario = document.getElementById('nombreDeUsuario')
 const btnEliminarVenta = document.getElementById('btnEliminarModalEliminar')
 const botonAgregar = document.getElementById("btn_AgregarVenta");
-const botonCancelar = document.getElementById("btnCancelarModal");
+const botonCancelar = document.getElementById("btnCancelarModalNuevaVenta");
 const auth = firebase.auth()
 const proveedor = new firebase.auth.GoogleAuthProvider()
 let usuarioActual;
@@ -36,7 +31,6 @@ let usuarioEmail;
 let tipoUsuarioActual;
 setTimeout(menu, 1000)
 
-
 async function mostrarInformacion() {
     // Se inicia el llamado de los Ventas desde la BD
     const Ventas = []
@@ -44,7 +38,6 @@ async function mostrarInformacion() {
     respuestaVentas.forEach(function (item) {
         Ventas.push(item.data())
     })
-
     //Finaliza llamado Ventas
     let insertarFila = document.getElementById("cuerpoTablaVentas")
     let i = 0
@@ -55,18 +48,14 @@ async function mostrarInformacion() {
         seleccionar = document.createElement("th")
         div = document.createElement("div")
         div.setAttribute("class", "form-check")
-
         radio = document.createElement("input")
         radio.setAttribute("class", "form-check-input")
         radio.setAttribute("type", "radio")
         radio.setAttribute("name", "flexRadioDefault")
         radio.setAttribute("id", "flexRadioDefault" + i)
-        // radio.setAttribute("onClick", "MostrarBotonesVentas()")
         radio.checked = false
-
         div.appendChild(radio)
         seleccionar.appendChild(div)
-
         filaTabla.appendChild(seleccionar)
 
         id = document.createElement("td")
@@ -102,16 +91,12 @@ async function mostrarInformacion() {
         filaTabla.appendChild(vendedor)
         filaTabla.appendChild(estado)
 
-
         insertarFila.appendChild(filaTabla)
     })
 }
-
 // ------------------------------------------ Adicionar Ventas--------------------------------
-
 /*    const idVentas= document.getElementById('IdNuevo'); */
 function AdicionarVenta() {
-    console.log('Inicio adicionar venta');
     // Creacion de las variables de DOM
     const articuloVentas = document.getElementById('ArticuloNuevo').value;
     const clienteVentas = document.getElementById('ClienteNuevo').value;
@@ -132,36 +117,23 @@ function AdicionarVenta() {
         vendedor: vendedor.replace(/^\w/, (c) => c.toUpperCase()),
         estadoPago: estadoPago
     }
-
-    console.log(ventaAgregar);
     if (ventaAgregar.articulo != "" && ventaAgregar.cliente != false && ventaAgregar.vendedor != "" && ventaAgregar.valor != "" && ventaAgregar.fechaVenta != "" && ventaAgregar.fechaPago != "") {
-
-        console.log(typeof ventaAgregar.estadoPago);
         guardarVentas(ventaAgregar)
         // actualizar();
         showToast('#toastIngresoCorrecto');
-
     } else {
         showToast('#toastCamposVacios')
-
     }
-    // Obtención de la base de datos
-
-
-
 }
-
 //guardar Ventas
 async function guardarVentas(venta) {
     try {
         const respuesta = await dataBase.collection('ng_ventas').add(venta);
         return respuesta
-
     } catch (error) {
         console.log(error)
     }
 }
-
 
 function showToast(id) {
     $(id).toast('show');
@@ -177,7 +149,6 @@ async function obtenerDatos() {
         nuevoxd.forEach((t) => {
             VentasArray.push(t.data())
         })
-
         const Venta = {
             id: uuid.v4(),
             articulo: inputArticulo.replace(/^\w/, (c) => c.toUpperCase()),
@@ -190,7 +161,6 @@ async function obtenerDatos() {
         }
         if (Venta.descripcion != "" || Venta.peso != "" || Venta.valorUnitario != "") {
             if (VentasArray.length != 0 && VentasArray.find(busquedaArray => busquedaArray.descripcion == inputDescription)) {
-                console.log(VentasArray);
             } else {
                 console.log(typeof Venta.estado);
                 anadirVenta(Venta)
@@ -199,7 +169,6 @@ async function obtenerDatos() {
             }
         } else {
             showToast('#toastCamposVacios')
-
         }
         let contador = 0;
     } catch (error) {
@@ -236,7 +205,6 @@ function pintarVentas(Ventas) {
     var table = document.getElementById("cuerpoTablaVentas");
     $("#cuerpoTablaVentas").empty();
     Ventas.forEach((t) => {
-
         let oRows = document.getElementById('cuerpoTablaVentas').getElementsByTagName('tr');
         let iRowCount = oRows.length;
         let row = table.insertRow(iRowCount);
@@ -250,7 +218,6 @@ function pintarVentas(Ventas) {
         let cell8 = row.insertCell(7);
         let cell9 = row.insertCell(8);
 
-
         cell1.innerHTML = '<div class="form-check"><input class="form-check-input" type="radio" name="flexRadioDefault"id="flexRadioDefault6"/></div>';
         cell2.innerHTML = t.id;
         cell3.innerHTML = t.articulo;
@@ -260,8 +227,8 @@ function pintarVentas(Ventas) {
         cell7.innerHTML = t.fechaPago;
         cell8.innerHTML = t.vendedor;
         cell9.innerHTML = t.estadoPago === '1' ? "Cancelado" : "Pendente";
-
     })
+    limpiarModalAdicionar()
 }
 
 // pintarVendedores
@@ -317,49 +284,55 @@ async function pintarProductos() {
 
 
 // ---------------------------------------------------------------------------
-/* async function buscarVentas() {
-
+async function buscarVentas() {
     try {
         let busqueda = document.getElementById("busqueda").value.replace(/^\w/, (c) => c.toUpperCase());
         console.log(busqueda)
         let terminoBusqueda = document.getElementById("busquedapor").value;
-        const Venta = []
+        respuestaVenta = await dataBase.collection("ng_ventas").where(terminoBusqueda, '>=', busqueda).where(terminoBusqueda, '<=', busqueda + '\uf8ff').get()
+        const ventas = []
         respuestaVenta.forEach(function (item) {
-            Venta.push(item.data())
+            console.log(item.data())
+            ventas.push(item.data())
         })
-        setTimeout(pintarVentas(Venta), 1000)
+        console.log(ventas)
+        setTimeout(pintarVentas(ventas), 1000)
     } catch (error) {
         console.log(error)
     }
 }
- */
+
 // /* ------------------------------------------------------------------------------------------------ */
 
 //funcion del boton para que abra el modal con los datos de la fila.
-/* function modificarVenta() {
+function modificarVenta() {
+
     let tablaVentas = document.getElementById("cuerpoTablaVentas");
     let radios = tablaVentas.getElementsByTagName("input");
     let filas = tablaVentas.getElementsByTagName("tr");
     let totalFilas = radios.length;
-
+    
     for (i = 0; i < totalFilas; i++) {
         if (radios[i].checked) {
             filaSeleccionada = filas[i]
-            document.getElementById("modifyCodigo").value = filaSeleccionada.cells[1].innerText
-            document.getElementById("modifyDescripcion").value = filaSeleccionada.cells[2].innerText
-            document.getElementById("modifyPeso").value = filaSeleccionada.cells[3].innerText
-            document.getElementById("modifyValorUnitario").value = filaSeleccionada.cells[4].innerText
-            document.getElementById("modifyEstado").value = filaSeleccionada.cells[5].innerText
-
-            if (filaSeleccionada.cells[5].innerText == "Disponible") {
-                document.getElementById("modifyEstado").value = "2";
+            console.log(filaSeleccionada.cells[1].innerText)
+            document.getElementById("IdBusqueda").value = filaSeleccionada.cells[1].innerText;
+            document.getElementById("ArticuloBusqueda").value = filaSeleccionada.cells[2].innerText;
+            document.getElementById("ClienteBusqueda").value = filaSeleccionada.cells[3].innerText;
+            document.getElementById("ValorBusqueda").value = filaSeleccionada.cells[4].innerText;
+            document.getElementById("FechaVentaBusqueda").value = filaSeleccionada.cells[5].innerText;
+            document.getElementById("FechaPagoBusqueda").value = filaSeleccionada.cells[6].innerText;
+            document.getElementById("VendedorBusqueda").value = filaSeleccionada.cells[7].innerText;
+          
+            if (filaSeleccionada.cells[8].innerText == "Cancelada") {
+                document.getElementById("modifyEstado").value = "1";
             }
-            document.getElementById("modifyEstado").value = "1";
-        }
+            document.getElementById("modifyEstado").value = "2";
     }
 }
- */
-/* //modificar Venta
+}
+
+//modificar Venta
 async function modificarVentafb() {
     const mCodigoInput = document.getElementById("modifyCodigo").value
     const mDescripcionInput = document.getElementById("modifyDescripcion").value.replace(/^\w/, (c) => c.toUpperCase());
@@ -386,9 +359,13 @@ async function modificarVentafb() {
 }
 
 function limpiarModalAdicionar() {
-    document.getElementById("inputDescripcion").value = "";
-    document.getElementById("inputPeso").value = "";
-    document.getElementById("inputValorUnitario").value = "";
+    document.getElementById("ArticuloNuevo").value = "";
+    document.getElementById("ClienteNuevo").value = "";
+    document.getElementById("ValorNuevo").value = "";
+    document.getElementById("VendedorNuevo").value = "";
+    document.getElementById("FechaVentaNuevo").value = "";
+    document.getElementById("FechaPagoNuevo").value = "";
+
 }
 function limpiarModalModificar() {
     document.getElementById("modifyCodigo").value = "";
@@ -418,7 +395,7 @@ function eliminarVenta() {
             doc.ref.delete();
         });
     });
-} */
+}
 // ---------------------------------------------------------------
 
 //comparar sesion actual con tipo de usuario
@@ -454,7 +431,6 @@ async function menu() {
         usuarioEmail = respuesta.user.email
         imgUsuario.setAttribute("src", usuarioFoto)
         nombreUsuario.textContent = usuarioActual
-
         //esto en react no va tocar hacerlo
         // leer usuarios para comparar email
         const usuarios = []
@@ -471,14 +447,12 @@ async function menu() {
                 }
             }
         })
-
         setTimeout(compararRolUsuario, 1000)
 
     } catch (error) {
         console.log(error)
     }
 }
-
 // Eventos-----------------------------------------------------
 /* btnModalModificar.addEventListener('click', (e) => {
     e.preventDefault()
@@ -500,17 +474,22 @@ async function menu() {
 botonAgregar.addEventListener('click', (e) => {
     obtenerDatos();
     actualizar()
-    // limpiarModalAdicionar();
+    // limpiarModalAdicionar()
 })
-/* botonCancelar.addEventListener('click', (e) => {
+botonCancelar.addEventListener('click', (e) => {
     e.preventDefault();
     limpiarModalAdicionar();
-}) */
-/* btnBuscarVenta.addEventListener('click', (e) => {
+})
+btnBuscarVenta.addEventListener('click', (e) => {
     e.preventDefault()
     buscarVentas()
-}) */
+})
 btnNuevaventa.addEventListener('click', (e) => {
     e.preventDefault()
     AdicionarVenta()
+})
+
+btnModalModificar.addEventListener('click', (e) => {
+    e.preventDefault()
+    modificarVenta()
 })

@@ -1,4 +1,4 @@
-/* const firebaseConfig = {
+const firebaseConfig = {
     apiKey: "AIzaSyCuuC5xt_cyNbakN_gIAJ3ixHvkw8LUCk8",
     authDomain: "nightmare-mercurio.firebaseapp.com",
     projectId: "nightmare-mercurio",
@@ -11,13 +11,13 @@
 // Inicializar Firebase
 firebase.initializeApp(firebaseConfig);
 //Declarar Variables globales  
-const dataBase = firebase.firestore(); */
+const dataBase = firebase.firestore();
 
 // Declara Variables de DOM
 
 const btnNuevaventa= document.getElementById('btn_AgregarVenta');
-console.log("Se esta ejecutando JS");
-/* const btnBuscarVenta = document.getElementById('buscarVenta')
+
+const btnBuscarVenta = document.getElementById('buscarVenta')
 const toastIngresoVenta = document.getElementById('liveToastIProduct')
 const toastIngresoVentaNeg = document.getElementById('liveToastIProductNeg')
 const toastCamposVacios = document.getElementById('toastCamposVacios')
@@ -33,7 +33,7 @@ const proveedor = new firebase.auth.GoogleAuthProvider()
 let usuarioActual;
 let usuarioFoto;
 let usuarioEmail;
-setTimeout(menu, 1000) */
+setTimeout(menu, 1000)
 
 
 async function mostrarInformacion() {
@@ -107,10 +107,11 @@ async function mostrarInformacion() {
 }
 
 // ------------------------------------------ Adicionar Ventas--------------------------------
-function AdicionrVenta(){
+
+ /*    const idVentas= document.getElementById('IdNuevo'); */
+    function AdicionrVenta(){
     console.log('Inicio adicionar venta');
     // Creacion de las variables de DOM
- /*    const idVentas= document.getElementById('IdNuevo'); */
     const articuloVentas= document.getElementById('ArticuloNuevo').value;
     const clienteVentas= document.getElementById('ClienteNuevo').value;
     const ValorVentas= document.getElementById('ValorNuevo').value;
@@ -151,7 +152,7 @@ async function guardarVentas(venta){
 /* function showToast(id) {
     $(id).toast('show');
 } */
-/* async function obtenerDatos() {
+async function obtenerDatos() {
     try {
         const inputDescription = document.getElementById("inputDescripcion").value.replace(/^\w/, (c) => c.toUpperCase());
         const inputWeigth = document.getElementById("inputPeso").value;
@@ -200,7 +201,7 @@ async function anadirVenta(product) {
         console.log(error);
     }
 }
-mostrarInformacion() */
+mostrarInformacion()
 /* ---------------------------------------------------------------------------------------------- */
 //Actiualizar Ventas en la tabla
 /* async function actualizar() {

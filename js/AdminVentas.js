@@ -33,6 +33,7 @@ const proveedor = new firebase.auth.GoogleAuthProvider()
 let usuarioActual;
 let usuarioFoto;
 let usuarioEmail;
+let tipoUsuarioActual;
 setTimeout(menu, 1000)
 
 
@@ -119,6 +120,7 @@ function AdicionarVenta() {
     const FechaPagoVentas = document.getElementById('FechaPagoNuevo').value;
     const vendedor = document.getElementById('VendedorNuevo').value;
     const estadoPago = document.getElementById('EstadoNuevo').value;
+
 
     const ventaAgregar = {
         id: uuid.v4(),
@@ -261,6 +263,59 @@ function pintarVentas(Ventas) {
 
     })
 }
+
+// pintarVendedores
+async function pintarVendedores() {
+
+    var select = document.getElementById("VendedorNuevo")
+
+    const respuestausuarios = await dataBase.collection("ng_users").where('rol','==','Vendedor').get();
+    /* console.log(respuestausuarios); */
+    const usuariosBD = [];
+
+    respuestausuarios.forEach(function (item){
+        usuariosBD.push(item.data());
+    });
+
+    let contadorV=0
+    usuariosBD.forEach((t) => {
+        var option = document.createElement("option");
+        option.value = contadorV;
+        option.text = t.nombres;
+        select.appendChild(option);
+        contadorV=contadorV+1
+
+      });
+      
+      
+}
+
+// pintarProductos
+async function pintarProductos() {
+
+    var select = document.getElementById("ArticuloNuevo")
+
+    const respuestaProductos = await dataBase.collection("ng_productos").get();
+    /* console.log(respuestausuarios); */
+    const productosBD = [];
+
+    respuestaProductos.forEach(function (item){
+        productosBD.push(item.data());
+    });
+
+    let contadorV=0
+    productosBD.forEach((t) => {
+        var option = document.createElement("option");
+        option.value = contadorV;
+        option.text = t.descripcion;
+        select.appendChild(option);
+        contadorV=contadorV+1
+      });
+      
+      
+}
+
+
 // ---------------------------------------------------------------------------
 /* async function buscarVentas() {
 
@@ -366,7 +421,7 @@ function eliminarVenta() {
 } */
 // ---------------------------------------------------------------
 
-/* //comparar sesion actual con tipo de usuario
+//comparar sesion actual con tipo de usuario
 async function compararRolUsuario() {
     const respuestausuarios = await dataBase.collection("ng_users").where('email', '==', usuarioEmail).get();
     const usuariosBD = [];
@@ -375,13 +430,21 @@ async function compararRolUsuario() {
     });
 
     usuariosBD.forEach((t) => {
-        if (t.rol == "Vendedor") {
-            document.getElementById('btnAdicionarPrincipal').disabled = true
-            document.getElementById('btnModificarPrincial').disabled = true
-            document.getElementById('btnEliminarPrincipal').disabled = true
-        }
+        tipoUsuarioActual=t.rol
     });
-} */
+
+    if(tipoUsuarioActual=="Vendedor"){
+        document.getElementById('VendedorNuevo').disabled = true
+        document.getElementById('VendedorNuevo').value = usuarioActual
+        
+    }else{
+        
+        pintarVendedores()
+    }
+    pintarProductos()
+    /* console.log(vendedor) */
+
+}
 //login
 async function menu() {
     try {

@@ -70,6 +70,9 @@ async function mostrarInformacion() {
         cliente = document.createElement("td")
         cliente.textContent = p.cliente
 
+        cantidad = document.createElement("td")
+        cantidad.textContent = p.cantidad
+
         valor = document.createElement("td")
         valor.textContent = p.valor
 
@@ -88,6 +91,7 @@ async function mostrarInformacion() {
         filaTabla.appendChild(id)
         filaTabla.appendChild(articulo)
         filaTabla.appendChild(cliente)
+        filaTabla.appendChild(cantidad)
         filaTabla.appendChild(valor)
         filaTabla.appendChild(fechaVenta)
         filaTabla.appendChild(fechaPago)
@@ -104,7 +108,7 @@ function AdicionarVenta() {
     const articuloVentas = document.getElementById('ArticuloNuevo');
     const artiVentas = articuloVentas.options[articuloVentas.selectedIndex].text
     const clienteVentas = document.getElementById('ClienteNuevo').value;
-    const ValorVentas = document.getElementById('ValorNuevo').value;
+    const ValorVentas = document.getElementById('ValorTotal').value;
     const CantidadVentas = document.getElementById('CantidadNueva').value;
     const fechasVenta = document.getElementById('FechaVentaNuevo').value;
     const FechaPagoVentas = document.getElementById('FechaPagoNuevo').value;

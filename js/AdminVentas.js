@@ -107,11 +107,11 @@ async function obtenerDatos() {
         const Venta = {
             id: uuid.v4(),
             articulo: inputArticulo.replace(/^\w/, (c) => c.toUpperCase()),
-            cliente: inputCliente,
+            cliente: inputCliente.replace(/^\w/, (c) => c.toUpperCase()),
             valor: inputValor,
             fechaVenta: inputFechaVenta,
             fechaPago: inputFechaPago,
-            vendedor: inputVendedor,
+            vendedor: inputVendedor.replace(/^\w/, (c) => c.toUpperCase()),
             estado: inputState
         }
         if (Venta.descripcion != "" || Venta.peso != "" || Venta.valorUnitario != "") {

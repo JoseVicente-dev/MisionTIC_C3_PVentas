@@ -15,11 +15,7 @@ const dataBase = firebase.firestore();
 
 // Declara Variables de DOM
 
-<<<<<<< HEAD
-const btnNuevaventa = document.getElementById('btn_AgregarVenta')
-=======
 const btnNuevaventa= document.getElementById('btn_AgregarVenta');
->>>>>>> 458a3e6baec9f0d230293d45363d2a816b9edf40
 
 const btnBuscarVenta = document.getElementById('buscarVenta')
 

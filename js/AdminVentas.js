@@ -231,7 +231,7 @@ function pintarVentas(Ventas) {
         cell6.innerHTML = t.fechaVenta;
         cell7.innerHTML = t.fechaPago;
         cell8.innerHTML = t.vendedor;
-        cell9.innerHTML = t.estadoPago === '1' ? "Cancelado" : "Pendente";
+        cell9.innerText = t.estadoPago === '1' ? "Cancelado" : "Pendiente";
     })
     limpiarModalAdicionar()
 }
@@ -350,9 +350,8 @@ console.log('se esta ejecutando modificarVEntafb')
     const fechaVentaModal=document.getElementById("FechaVentaBusqueda").value;
     const fechapagoModal=document.getElementById("FechaPagoBusqueda").value;
     const vendedorModal=document.getElementById("VendedorBusqueda").value;
-/*     console.log('documenrt ID',document.getElementById("modifyEstado").value);
-    const EstadoModal=document.getElementById("modifyEstado").value;
-    console.log(EstadoModal); */
+    const EstadoVenta=document.getElementById("EstadoBusqueda").value;
+    
 
     const respuestaVentas = await dataBase.collection("ng_ventas").where('id', '==', IdVentasModal).get();
     let idmod = ""
@@ -364,7 +363,7 @@ console.log('se esta ejecutando modificarVEntafb')
     dataBase.collection("ng_ventas").doc(idmod).update({
          articulo:articuloModal.replace(/^\w/, (c) => c.toUpperCase()),
         cliente:clienteModal.replace(/^\w/, (c) => c.toUpperCase()),
-        estadoPago:'1',
+        estadoPago:EstadoVenta,
         fechaPago: fechapagoModal,
         fechaVenta:fechaVentaModal,
         id:IdVentasModal,
@@ -373,12 +372,6 @@ console.log('se esta ejecutando modificarVEntafb')
     });
     
     actualizar();
-/*     const VentasArray = [];
-    const nuevoxd = await dataBase.collection('ng_Ventas').get()
-    nuevoxd.forEach((t) => {
-        VentasArray.push(t.data())
-    })
-    setTimeout(actualizar, 1000); */
 }
 
 function limpiarModalAdicionar() {
@@ -487,6 +480,10 @@ async function menu() {
         console.log(error)
     }
 }
+
+function toastShow(id){
+$(id).toast('show')
+}
 // Eventos-----------------------------------------------------
 /* btnModalModificar.addEventListener('click', (e) => {
     e.preventDefault()
@@ -531,4 +528,5 @@ btnModalModificar.addEventListener('click', (e) => {
 btnModificarMdventa.addEventListener('click', (e) => {
     e.preventDefault()
     modificarVentafb()
+    toastShow('#toastModificacion')
 })

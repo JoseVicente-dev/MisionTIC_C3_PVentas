@@ -10,9 +10,9 @@ const firebaseConfig = {
 
 // Inicializar Firebase
 firebase.initializeApp(firebaseConfig);
-
 //Declarar Variables globales  
 const dataBase = firebase.firestore();
+// Declara Variables de DOM
 const btnBuscarVenta = document.getElementById('buscarVenta')
 const toastIngresoVenta = document.getElementById('liveToastIProduct')
 const toastIngresoVentaNeg = document.getElementById('liveToastIProductNeg')
@@ -29,8 +29,8 @@ const proveedor = new firebase.auth.GoogleAuthProvider()
 let usuarioActual;
 let usuarioFoto;
 let usuarioEmail;
-
 setTimeout(menu, 1000)
+
 
 async function mostrarInformacion() {
     // Se inicia el llamado de los Ventas desde la BD

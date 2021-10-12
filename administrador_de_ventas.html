@@ -269,8 +269,8 @@
                             
                                 
                             <!-- <label for="ArticuloNuevo"> Artículo</label> -->
-                            <select class="form-select modal-input-select-undisabled" id="ArticuloNuevo">
-                            
+                            <select class="form-select modal-input-select-undisabled" id="ArticuloNuevo" >
+                                <option hidden selected>Articulo</option>
                             </select>
 
                             <input type="text" class="form-control modal-input-select-undisabled" id="ClienteNuevo"
@@ -282,11 +282,11 @@
                                 placeholder="Vendedor">
                             </div> -->
 
-                            <select class="form-select modal-input-select-undisabled" id="VendedorNuevo">
-                                
+                            <select class="form-select modal-input-select-undisabled" id="VendedorNuevo" >
+                            <!--     <option hidden selected>Vendedor</option> -->
                             </select>
 
-                            <select class="form-select modal-input-select-undisabled" id="EstadoNuevo">
+                            <select class="form-select modal-input-select-undisabled" id="EstadoNuevo" >
                                 <option value="1">Cancelada</option>
                                 <option value="2">Pendiente</option>
                             </select>
@@ -340,7 +340,7 @@
                             placeholder="Id Venta" disabled></input>
 
                         <input type="text" class="form-control modal-input-select-undisabled" id="ArticuloBusqueda"
-                            placeholder="Articulo" disabled></input>
+                            placeholder="Articulo" disabled ></input>
                         <input type="text" class="form-control modal-input-select-undisabled" id="ClienteBusqueda"
                             placeholder="Cliente" pattern="[A-Za-z]{3}"></input>
                         <input type="number" class="form-control modal-input-select-undisabled" id="ValorBusqueda"

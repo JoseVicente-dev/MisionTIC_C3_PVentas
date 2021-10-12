@@ -259,7 +259,6 @@ async function pintarVendedores() {
 
     });
 
-
 }
 
 // pintarProductos
@@ -267,7 +266,7 @@ async function pintarProductos() {
 
     var select = document.getElementById("ArticuloNuevo")
 
-    const respuestaProductos = await dataBase.collection("ng_productos").get();
+    const respuestaProductos = await dataBase.collection("ng_productos").where('estado', '==', '1').get();
     /* console.log(respuestausuarios); */
     const productosBD = [];
 
@@ -286,6 +285,27 @@ async function pintarProductos() {
 
 
 }
+
+async function obtenerPrecio() {
+
+    const articuloVentas = document.getElementById('ArticuloNuevo');
+    const artiVentas = articuloVentas.options[articuloVentas.selectedIndex].text
+
+    const respuestaProductos = await dataBase.collection("ng_productos").where('descripcion', '==', artiVentas).get();
+    /* console.log(respuestausuarios); */
+    const productosBD = [];
+
+    respuestaProductos.forEach(function (item) {
+        productosBD.push(item.data());
+    });
+
+    productosBD.forEach((t) => {
+        //console.log(t.valorUnitario)
+        document.getElementById("ValorNuevo").value = t.valorUnitario;
+    });
+
+}
+
 
 
 // ---------------------------------------------------------------------------
@@ -375,10 +395,10 @@ console.log('se esta ejecutando modificarVEntafb')
 }
 
 function limpiarModalAdicionar() {
-    document.getElementById("ArticuloNuevo").value = "";
+    /* document.getElementById("ArticuloNuevo").value = ""; */
     document.getElementById("ClienteNuevo").value = "";
     document.getElementById("ValorNuevo").value = "";
-    document.getElementById("VendedorNuevo").value = "";
+    /* document.getElementById("VendedorNuevo").value = ""; */
     document.getElementById("FechaVentaNuevo").value = "";
     document.getElementById("FechaPagoNuevo").value = "";
 
@@ -528,5 +548,8 @@ btnModalModificar.addEventListener('click', (e) => {
 btnModificarMdventa.addEventListener('click', (e) => {
     e.preventDefault()
     modificarVentafb()
-    toastShow('#toastModificacion')
+    toastShow('#toastModificacion') })
+
+document.getElementById('ArticuloNuevo').addEventListener('change', (e) => {
+    obtenerPrecio()
 })

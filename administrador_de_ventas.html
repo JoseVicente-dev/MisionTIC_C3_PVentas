@@ -18,7 +18,6 @@
     <link rel="stylesheet" href="css/menu.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/tablas_modales.css">
-
     <!-- /css Nightmare -->
     <!-- Iconos fontAwesome -->
     <link href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" rel="stylesheet">
@@ -59,26 +58,22 @@
                     </div>
                 </div>
                 <!-- /encabezado menu -->
-                       <!-- Sección de usuario -->
-          <div class="menu-lateral-header">
-            <div class="user-pic">
-              <img
-                class="img-responsive img-rounded"
-                src="images/user2.png"
-                alt="User picture"
-                id="imagenUsuario"
-              />
-            </div>
-            <div class="user-info">
-              <span class="user-name" id="nombreDeUsuario"><strong>Nightmare User</strong></span>
-              <span class="user-role" id="tipoUsuario">Administrador</span>
-              <span class="user-status">
-                <i class="fa fa-circle"></i>
-                <span>Online</span>
-              </span>
-            </div>
-          </div>
-          <!-- Sección de usuario -->
+                <!-- Sección de usuario -->
+                <div class="menu-lateral-header">
+                    <div class="user-pic">
+                        <img class="img-responsive img-rounded" src="images/user2.png" alt="User picture"
+                            id="imagenUsuario" />
+                    </div>
+                    <div class="user-info">
+                        <span class="user-name" id="nombreDeUsuario"><strong>Nightmare User</strong></span>
+                        <span class="user-role" id="tipoUsuario">Administrador</span>
+                        <span class="user-status">
+                            <i class="fa fa-circle"></i>
+                            <span>Online</span>
+                        </span>
+                    </div>
+                </div>
+                <!-- Sección de usuario -->
                 <!-- Opciones disponible lista de paginas -->
                 <div class="menu-lateral-menu">
                     <ul>
@@ -125,8 +120,7 @@
             <!-- /Footer menu -->
         </nav>
     </div>
- 
-    <!-- /Archivos JS -->
+
     <!-- Tabla done se insertaran las filas -->
     <section class="main">
         <div class="container-fluid table-responsive">
@@ -162,8 +156,9 @@
         </div>
     </div>
     <div class="container text-center">
-        <button type="button" class="btn btn-primary bg-color-azul" onclick="addNuevaFila()" data-bs-toggle="modal" 
-            data-bs-target="#NuevaVenta">Nueva Venta</button> <!--este evento llama a un scrip que esta aqui pero toca quitar porque no va a ser neceario-->
+        <button type="button" class="btn btn-primary bg-color-azul" onclick="addNuevaFila()" data-bs-toggle="modal"
+            data-bs-target="#NuevaVenta">Nueva Venta</button>
+        <!--este evento llama a un scrip que esta aqui pero toca quitar porque no va a ser neceario-->
 
         <button type="button" class="btn btn-primary bg-color-azul" data-bs-toggle="modal"
             data-bs-target="#BuscarVenta">Buscar Venta</button>
@@ -171,8 +166,60 @@
     <!-- /Bottones -->
 
     <!-- Footer -->
-    <footer class="text-center">
-        <img src="images/logo2.png" alt="logo-nightmare" class="height-50px">
+    <footer style="text-align: center;">
+        <img src="images/logo2.png" alt="logo-nightmare" style="height: 50px;">
+
+        <div class="position-fixed bottom-0 end-0 p-3">
+            <div id="liveToastVenta" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="toast-header">
+                    <img class="rounded me-2 toast_imagen fad fa-check-circle">
+                    <strong class="me-auto">Registro Venta</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+                <div class="toast-body">
+                    ¡Venta ingresado Correctamente!.
+                </div>
+            </div>
+        </div>
+        <div class="position-fixed bottom-0 end-0 p-3">
+            <div id="liveToastVenta" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="toast-header">
+                    <img class="rounded me-2 toast_imagen fad fa-check-circle">
+                    <strong class="me-auto">Registro Venta</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+                <div class="toast-body">
+                    Ya se encuentra en la lista.
+                </div>
+            </div>
+        </div>
+        <div class="position-fixed bottom-0 end-0 p-3">
+            <div id="toastCamposVacios" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="toast-header">
+                    <img class="rounded me-2 toast_imagen fad fa-check-circle">
+                    <strong class="me-auto">Registro Venta</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+                <div class="toast-body">
+                    No pueden haber campos vacíos.
+                </div>
+            </div>
+        </div>
+        <div class="position-fixed bottom-0 end-0 p-3">
+            <div id="toastModificacion" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="toast-header">
+                    <img class="rounded me-2 toast_imagen fad fa-check-circle">
+                    <strong class="me-auto">Actualización Venta</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+                <div class="toast-body">
+                    Venta modificada con éxito.
+                </div>
+            </div>
+        </div>
+
+
+
     </footer>
     <!-- /Footer -->
     <!--  Modal Nueva Venta -->
@@ -184,38 +231,41 @@
                     <h5 class="modal-title color-h5" id="staticBackdropLabel1">Nueva venta</h5>
                     <button type="button" class="btn-close bg-color-cerrarX" data-bs-dismiss="modal"
                         aria-label="Close"></button>
+<<<<<<< HEAD
                         
+=======
+                    <button type="button" id="prueba">prueba hpta</button>
+>>>>>>> 5ef229b8e5050e2ab4f81687e31993d5645c3ed7
                 </div>
                 <div class="modal-body">
                     <div class="container">
                         <div class="col">
                             <label type="text" class="form-control modal-input-select-undisabled" id="IdNuevo"
                                 placeholder="Id Venta">0</label>
-                        </div>
-                        <div class="col">
+                
+
                             <input type="text" class="form-control modal-input-select-undisabled" id="ArticuloNuevo"
                                 placeholder="Articulo">
-                        </div>
-                        <div class="col">
+                  
+              
                             <input type="text" class="form-control modal-input-select-undisabled" id="ClienteNuevo"
                                 placeholder="Cliente">
-                        </div>
-                        <div class="col">
+                   
+                   
                             <input type="text" class="form-control modal-input-select-undisabled" id="ValorNuevo"
                                 placeholder="Valor">
-                        </div>
-                        <div class="col">
+                  
+                  
                             <input type="text" class="form-control modal-input-select-undisabled" id="FechaVentaNuevo"
                                 placeholder="Fecha Venta">
-                        </div>
-                        <div class="col">
+                     
                             <input type="text" class="form-control modal-input-select-undisabled" id="FechaPagoNuevo"
                                 placeholder="Fecha Pago">
                         </div>
-                        <div class="col">
+                
                             <input type="text" class="form-control modal-input-select-undisabled" id="VendedorNuevo"
                                 placeholder="Vendedor">
-                        </div>
+         
                         <select class="form-select modal-input-select-undisabled" id="EstadoNuevo">
                             <option>Cancelada</option>
                             <option>Pendiente</option>
@@ -227,7 +277,7 @@
                 <div class="modal-footer">
                     <!-- <button type="button" class="btn btn-primary bg-color-azul" id="btnAgregarModalNuevaVenta"
                         data-bs-dismiss="modal">Agregar</button> -->
-                        <button type="button" class="btn btn-primary bg-color-azul" id="btn_prueba"
+                    <button type="button" class="btn btn-primary bg-color-azul" id="btn_prueba"
                         data-bs-dismiss="modal">Agregar</button>
                     <button type="button" class="btn btn-secondary" id="btnCancelarModalNuevaVenta"
                         data-bs-dismiss="modal">Cancelar</button>
@@ -295,13 +345,135 @@
         </div>
     </div>
     <!--  /Modal Modificar Venta -->
+    <!--  Modal Resultado Busqueda-->
+    <div class="modal fade" id="ResultadoBusqueda" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header bg-color-azul">
+                    <h5 class="modal-title color-h5" id="staticBackdropLabel1">Resultado Busqueda</h5>
+                    <button type="button" class="btn-close bg-color-cerrarX" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="container">
+                        <div class="col">
+                            <label type="text" class="form-control modal-input-select-undisabled" id="IdResultado"
+                                placeholder="Id Venta"> Id Venta</label>
+                  
+                            <input type="text" class="form-control modal-input-select-undisabled" id="ArticuloResultado"
+                                placeholder="Articulo"> </input>
+                       
+                        
+                            <input type="text" class="form-control modal-input-select-undisabled" id="ClienteResultado"
+                                placeholder="Cliente"></input>
+                      
+                      
+                            <input type="text" class="form-control modal-input-select-undisabled" id="ValorResultado"
+                                placeholder="Valor"></input>
+                        
+                   
+                            <input type="text" class="form-control modal-input-select-undisabled"
+                                id="FechaVentaResultado" placeholder="Fecha Venta"></input>
+                     
+                      
+                            <input type="text" class="form-control modal-input-select-undisabled"
+                                id="FechaPagoResultado" placeholder="Fecha Pago"></input>
+                     
+                       
+                            <input type="text" class="form-control modal-input-select-undisabled" id="VendedorResultado"
+                                placeholder="Vendedor"></input>
+                      
+                            <select class="form-select modal-input-select-undisabled" id="EstadoResultado">
+                                <option>Cancelada</option>
+                                <option>Pendiente</option>
+                            </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary bg-color-azul" id="btnModificarModalResultadoBusqueda"
+                         data-bs-toggle="modal"
+                        data-bs-target="#AlertaModificacionVenta" data-bs-dismiss="modal">Modificar</button>
+                    <button type="button" class="btn btn-primary bg-color-azul" id="btnEliminarModalResultadoBusqueda"
+                        >Eliminar</button>
+                    <button type="button" class="btn btn-secondary" id="btnCancelarModalResultadoBusqueda"
+                        data-bs-dismiss="modal">Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--  /Modal Resultado Busqueda-->
+    <!--  Modal Buscar Ventas -->
+    <div class="modal fade" id="BuscarVenta" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header bg-color-azul">
+                    <h5 class="modal-title color-h5" id="staticBackdropLabel1">Buscar Venta</h5>
+                    <button type="button" class="btn-close bg-color-cerrarX" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="container">
+                        <div class="col">
+                            <input type="text" class="form-control modal-input-select-undisabled" id="IdVentaBuscada"
+                                placeholder="Id Venta">
+                        </div>
+
+                            <input type="text" class="form-control modal-input-select-undisabled"
+                                id="NombreVentaBuscada" placeholder="Id o Nombre Cliente">
+                        </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary bg-color-azul" id="btnIdModalBuscarVentas"
+                        data-bs-toggle="modal" data-bs-target="#ResultadoBusqueda" data-bs-dismiss="modal"
+                        >Buscar por Id Venta</button>
+                    <button type="button" class="btn btn-primary bg-color-azul" id="btnNombreModalBuscarVentas"
+                        data-bs-toggle="modal" data-bs-target="#ResultadoBusqueda" data-bs-dismiss="modal"
+                        >Buscar por Nombre
+                        Cliente</button>
+                    <button type="button" class="btn btn-secondary" id="btnCancelarModalBuscarVentas"
+                        data-bs-dismiss="modal">Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--  /Modal Buscar Ventas -->
+
+    <!-- Modal Alerta Actualización Venta -->
+    <div class="modal fade" id="AlertaModificacionVenta" tabindex="-1" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Actualización Venta</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Venta Actualizada Correctamente
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /Modal Alerta Actualización Venta  -->
+
+
+
+   
+    </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/esm/popper.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
-
     <script src="js/menu.js"></script>
 
     <!-- esconder el menú 3s -->
@@ -315,31 +487,24 @@
     <!-- Firebase SDK (Software Development Kit) siempre se debe usar y debe ser el primero de colocar -->
     <script src="https://www.gstatic.com/firebasejs/9.1.1/firebase-app-compat.js"></script>
 
-
     <!-- Adicionar productos de Firebase que vamos a usar -->
     <script src="https://www.gstatic.com/firebasejs/9.1.1/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.1.1/firebase-firestore-compat.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/esm/popper.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <script src="js/menu.js"></script>
 
     <!-- UUID -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/uuid/8.3.2/uuid.min.js"
-            integrity="sha512-UNM1njAgOFUa74Z0bADwAq8gbTcqZC8Ej4xPSzpnh0l6KMevwvkBvbldF9uR++qKeJ+MOZHRjV1HZjoRvjDfNQ=="
-            crossorigin="anonymous"
-            referrerpolicy="no-referrer"></script>
+        integrity="sha512-UNM1njAgOFUa74Z0bADwAq8gbTcqZC8Ej4xPSzpnh0l6KMevwvkBvbldF9uR++qKeJ+MOZHRjV1HZjoRvjDfNQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-   <!-- Archivos JS -->
-   <script src="js/AdminVentas.js"></script>
-   <script src="js/ingresar_ventas.js"></script>
-
-   <script>
-    function addNuevaFila() {
-        const NuevoId = document.getElementById("IdNuevo")
-        let numerosFila = document.getElementById("AquiVaLaFila")
-        let UltimoIdVenta = numerosFila.getElementsByTagName("tr").length
-        // const UltimoIdVenta = Id.at(-1)
-        console.log(UltimoIdVenta)
-        NuevoId.textContent = (UltimoIdVenta + 1)
-    }
-</script>
+    <!-- Archivos JS -->
+    <script src="js/AdminVentas.js"></script>
+    <script src="js/ingresar_ventas.js"></script>
 
 </body>
 

@@ -35,7 +35,7 @@ setTimeout(menu, 1000)
 async function mostrarInformacion() {
     // Se inicia el llamado de los Ventas desde la BD
     const Ventas = []
-    const respuestaVentas = await dataBase.collection('ng_ventas').orderBy("descripcion").get()
+    const respuestaVentas = await dataBase.collection('ng_ventas').orderBy("articulo").get()
     respuestaVentas.forEach(function (item) {
         Ventas.push(item.data())
     })
@@ -56,33 +56,48 @@ async function mostrarInformacion() {
         radio.setAttribute("type", "radio")
         radio.setAttribute("name", "flexRadioDefault")
         radio.setAttribute("id", "flexRadioDefault" + i)
-        radio.setAttribute("onClick", "MostrarBotonesVentas()")
+        // radio.setAttribute("onClick", "MostrarBotonesVentas()")
         radio.checked = false
-        
+
         div.appendChild(radio)
         seleccionar.appendChild(div)
 
         filaTabla.appendChild(seleccionar)
 
-        codigo = document.createElement("td")
-        codigo.textContent = p.codigo
+        id = document.createElement("td")
+        id.textContent = p.id
 
-        descripcion = document.createElement("td")
-        descripcion.textContent = p.descripcion
+        articulo = document.createElement("td")
+        articulo.textContent = p.articulo
 
-        valorUnitario = document.createElement("td")
-        valorUnitario.textContent = p.valorUnitario
+        cliente = document.createElement("td")
+        cliente.textContent = p.cliente
 
-        peso = document.createElement("td")
-        peso.textContent = p.peso
+        valor = document.createElement("td")
+        valor.textContent = p.valor
+        
+        fechaVenta = document.createElement("td")
+        fechaVenta.textContent = p.fechaVenta
+
+        fechaPago = document.createElement("td")
+        fechaPago.textContent = p.fechaPago
+
+        vendedor = document.createElement("td")
+        vendedor.textContent = p.vendedor
 
         estado = document.createElement("td")
-        p.estado === '1' ? estado.textContent = "Disponible" : estado.textContent = "No disponible";
-        filaTabla.appendChild(codigo)
-        filaTabla.appendChild(descripcion)
-        filaTabla.appendChild(peso)
-        filaTabla.appendChild(valorUnitario)
+        p.estado === '1' ? estado.textContent = "Cancelado" : estado.textContent = "Pendiente";
+
+        filaTabla.appendChild(id)
+        filaTabla.appendChild(articulo)
+        filaTabla.appendChild(cliente)
+        filaTabla.appendChild(valor)
+        filaTabla.appendChild(fechaVenta)
+        filaTabla.appendChild(fechaPago)
+        filaTabla.appendChild(vendedor)
         filaTabla.appendChild(estado)
+
+
         insertarFila.appendChild(filaTabla)
     })
 }

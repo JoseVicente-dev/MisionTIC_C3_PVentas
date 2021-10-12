@@ -12,6 +12,7 @@ firebase.initializeApp(firebaseConfig);
 //Declarar Variables globales  
 const dataBase = firebase.firestore();
 // Declara Variables de DOM
+const btnModalModificar= document.getElementById('btnModificarPrincial')
 const btnNuevaventa = document.getElementById('btn_AgregarVenta');
 const btnBuscarVenta = document.getElementById('buscarVenta')
 const toastIngresoVenta = document.getElementById('liveToastIProduct')
@@ -271,6 +272,7 @@ function modificarVenta() {
             }
             document.getElementById("modifyEstado").value = "2";
     }
+}
 }
 
 //modificar Venta

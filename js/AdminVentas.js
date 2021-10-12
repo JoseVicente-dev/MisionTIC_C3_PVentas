@@ -230,22 +230,24 @@ function pintarVentas(Ventas) {
     limpiarModalAdicionar()
 }
 // ---------------------------------------------------------------------------
-/* async function buscarVentas() {
-
+async function buscarVentas() {
     try {
         let busqueda = document.getElementById("busqueda").value.replace(/^\w/, (c) => c.toUpperCase());
         console.log(busqueda)
         let terminoBusqueda = document.getElementById("busquedapor").value;
-        const Venta = []
+        respuestaVenta = await dataBase.collection("ng_ventas").where(terminoBusqueda, '>=', busqueda).where(terminoBusqueda, '<=', busqueda + '\uf8ff').get()
+        const ventas = []
         respuestaVenta.forEach(function (item) {
-            Venta.push(item.data())
+            console.log(item.data())
+            ventas.push(item.data())
         })
-        setTimeout(pintarVentas(Venta), 1000)
+        console.log(ventas)
+        setTimeout(pintarVentas(ventas), 1000)
     } catch (error) {
         console.log(error)
     }
 }
- */
+
 // /* ------------------------------------------------------------------------------------------------ */
 
 //funcion del boton para que abra el modal con los datos de la fila.
@@ -412,10 +414,10 @@ botonCancelar.addEventListener('click', (e) => {
     e.preventDefault();
     limpiarModalAdicionar();
 })
-/* btnBuscarVenta.addEventListener('click', (e) => {
+btnBuscarVenta.addEventListener('click', (e) => {
     e.preventDefault()
     buscarVentas()
-}) */
+})
 btnNuevaventa.addEventListener('click', (e) => {
     e.preventDefault()
     AdicionarVenta()

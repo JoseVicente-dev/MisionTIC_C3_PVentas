@@ -131,7 +131,8 @@ function AdicionarVenta() {
         estadoPago: estadoPago
     }
 
-    if (ventaAgregar.articulo != "" || ventaAgregar.cliente != "" || ventaAgregar.vendedor != "" || ventaAgregar.valor != "" || ventaAgregar.fechaVenta != "" || ventaAgregar.fechaPago != "") {
+    console.log(ventaAgregar);
+    if (ventaAgregar.articulo != "" && ventaAgregar.cliente != false && ventaAgregar.vendedor != "" && ventaAgregar.valor != "" && ventaAgregar.fechaVenta != "" && ventaAgregar.fechaPago != "") {
 
         console.log(typeof ventaAgregar.estadoPago);
         guardarVentas(ventaAgregar)

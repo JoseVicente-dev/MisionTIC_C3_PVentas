@@ -129,13 +129,15 @@ function AdicionarVenta() {
         cantidad:CantidadVentas
     }
     if (ventaAgregar.articulo != "" && ventaAgregar.cliente != false && ventaAgregar.vendedor != "" && ventaAgregar.valor != "" && ventaAgregar.fechaVenta != "" && ventaAgregar.fechaPago != "" && ventaAgregar.cantidad != "" ) {
+        actualizarProducto()
         guardarVentas(ventaAgregar)
-        // actualizar();
         showToast('#toastIngresoCorrecto');
     } else {
         showToast('#toastCamposVacios')
     }
 }
+
+
 //guardar Ventas
 async function guardarVentas(venta) {
     try {
@@ -146,12 +148,49 @@ async function guardarVentas(venta) {
     }
 }
 
+//aCTUALIZAR CANTIDAD DE PRODUCTOS
+async function actualizarProducto() {
+
+    const articuloVentas = document.getElementById('ArticuloNuevo');
+    const artiVentas = articuloVentas.options[articuloVentas.selectedIndex].text
+    const CantidadVentas = document.getElementById('CantidadNueva').value;
+    /* console.log(articuloVentas); */
+    const respuestaProductos = await dataBase.collection("ng_productos").where('descripcion', '==', artiVentas).get();
+    
+    const productosBD = [];
+
+    respuestaProductos.forEach(function (item) {
+        productosBD.push(item.data());
+    });
+
+    productosBD.forEach((t) => {
+        /* console.log(t.peso,"voy a actualizar el producto") */
+        pesoactualizar=t.peso-CantidadVentas
+    });
+
+
+    let idmod = ""
+    respuestaProductos.forEach(function (item) {
+        idmod = item.id
+    });
+
+    /* console.log(idmod) */
+
+    dataBase.collection("ng_productos").doc(idmod).update({
+        peso:pesoactualizar
+    });
+
+
+
+
+}
+
 function showToast(id) {
     $(id).toast('show');
 }
 async function obtenerDatos() {
     try {
-        const inputDescription = document.getElementById("inputDescripcion").value.replace(/^\w/, (c) => c.toUpperCase());
+        const inputDescription = document.getElementById("inputDescripcion").value;
         const inputWeigth = document.getElementById("inputPeso").value;
         const inputValue = document.getElementById("inputValorUnitario").value;
         const inputState = document.getElementById("inputEstado").value;
@@ -269,6 +308,8 @@ async function pintarVendedores() {
 
 }
 
+
+
 // pintarProductos
 async function pintarProductos() {
 
@@ -291,7 +332,6 @@ async function pintarProductos() {
         contadorV = contadorV + 1
     });
 
-
 }
 
 async function obtenerPrecio() {
@@ -310,13 +350,19 @@ async function obtenerPrecio() {
     productosBD.forEach((t) => {
         //console.log(t.valorUnitario)
         document.getElementById("ValorNuevo").value = t.valorUnitario;
+        document.getElementById("cantDisp").innerHTML = "Cantidad disponible: "+ t.peso + "kg";
     });
 
 }
 
-async function obtenerPrecioModificar() {
 
-    const articuloVentas = document.getElementById('ArticuloBusqueda');
+async function obtenerPrecioTotal() {
+
+    const ValorUnitario = document.getElementById('ValorNuevo').value;
+    const Kilos= document.getElementById('CantidadNueva').value;
+    const valorTotal=ValorUnitario*Kilos;
+
+    const articuloVentas = document.getElementById('ArticuloNuevo');
     const artiVentas = articuloVentas.options[articuloVentas.selectedIndex].text
 
     const respuestaProductos = await dataBase.collection("ng_productos").where('descripcion', '==', artiVentas).get();
@@ -327,20 +373,30 @@ async function obtenerPrecioModificar() {
         productosBD.push(item.data());
     });
 
+    //Validación de cantidad disponible
     productosBD.forEach((t) => {
-        console.log(t.valorUnitario)
-        document.getElementById("ValorBusqueda").value = t.valorUnitario;
+
+        if (parseInt(t.peso,10)>= parseInt(Kilos,10)){
+            document.getElementById("ValorTotal").value = valorTotal;
+        }else{ 
+            alert("no hay la cantidad requerida en bodega")
+            document.getElementById('CantidadNueva').value=""
+            document.getElementById("ValorTotal").value = ""
+        }
     });
+
+
     
+    
+
 }
 
+async function obtenerPrecioTotalModificar() {
 
-async function obtenerPrecioTotal() {
-
-    const ValorUnitario = document.getElementById('ValorNuevo').value;
-    const Kilos= document.getElementById('CantidadNueva').value;
+    const ValorUnitario = document.getElementById('ValorBusqueda').value;
+    const Kilos= document.getElementById('CantidadM').value;
     const valorTotal=ValorUnitario*Kilos;
-    document.getElementById("ValorTotal").value = valorTotal;
+    document.getElementById("ValorTotalM").value = valorTotal;
 
 }
 
@@ -366,12 +422,13 @@ async function buscarVentas() {
 // /* ------------------------------------------------------------------------------------------------ */
 
 //funcion del boton para que abra el modal con los datos de la fila.
-function modificarVenta() {
+async function modificarVenta() {
     limpiarModalModificar();
     let tablaVentas = document.getElementById("cuerpoTablaVentas");
     let radios = tablaVentas.getElementsByTagName("input");
     let filas = tablaVentas.getElementsByTagName("tr");
     let totalFilas = radios.length;
+
 
     for (i = 0; i < totalFilas; i++) {
         
@@ -387,13 +444,28 @@ function modificarVenta() {
             document.getElementById("FechaPagoBusqueda").value = filaSeleccionada.cells[7].innerText;
             document.getElementById("VendedorBusqueda").value = filaSeleccionada.cells[8].innerText;
 
-         /*    if (filaSeleccionada.cells[9].innerText == "Cancelada") {
-                document.getElementById("modifyEstado").value = "1";
+            if (filaSeleccionada.cells[9].innerText == "Cancelada") {
+                document.getElementById("EstadoBusqueda").value = "1";
             }
             else {
-                document.getElementById("modifyEstado").value = "2";
-            } */
-            obtenerPrecioModificar();  
+                document.getElementById("EstadoBusqueda").value = "2";
+            }
+            
+            //Funcion para traer el valor unitario
+            /* document.getElementById("ValorBusqueda").value = (obtenerPrecioModificar(filaSeleccionada.cells[2].innerText)) */
+            
+            const articulo= filaSeleccionada.cells[2].innerText
+            const respuestaProductos = await dataBase.collection("ng_productos").where('descripcion', '==', articulo).get();
+            const productosBD = [];
+            respuestaProductos.forEach(function (item) {
+                productosBD.push(item.data());
+            });
+
+            productosBD.forEach((t) => {
+                /* console.log(t.valorUnitario) */
+                document.getElementById("ValorBusqueda").value =t.valorUnitario
+            });
+            
         }
     }
     
@@ -401,7 +473,7 @@ function modificarVenta() {
 
 //modificar Venta
 async function modificarVentafb() {
-console.log('se esta ejecutando modificarVEntafb')
+/* console.log('se esta ejecutando modificarVEntafb') */
 
      const IdVentasModal=document.getElementById("IdBusqueda").value;
     const articuloModal=document.getElementById("ArticuloBusqueda").value;
@@ -420,7 +492,7 @@ console.log('se esta ejecutando modificarVEntafb')
         idmod = item.id
     });
 
-    console.log(idmod)
+    /* console.log(idmod) */
     dataBase.collection("ng_ventas").doc(idmod).update({
          articulo:articuloModal.replace(/^\w/, (c) => c.toUpperCase()),
         cliente:clienteModal.replace(/^\w/, (c) => c.toUpperCase()),
@@ -561,11 +633,11 @@ $(id).toast('show')
 btnEliminarVenta.addEventListener('click', (e) => {
     e.preventDefault()
     eliminarVenta()
-    setTimeout(actualizar, 1000)
+    /* setTimeout(actualizar, 1000) */
 })
 
 botonAgregar.addEventListener('click', (e) => {
-    obtenerDatos();
+    /* obtenerDatos(); */
     actualizar()
     // limpiarModalAdicionar()
 })
@@ -580,6 +652,7 @@ btnBuscarVenta.addEventListener('click', (e) => {
 btnNuevaventa.addEventListener('click', (e) => {
     e.preventDefault()
     AdicionarVenta()
+    setTimeout( limpiarModalAdicionar,1000);
 })
 
 btnModalModificar.addEventListener('click', (e) => {
@@ -600,6 +673,7 @@ document.getElementById('CantidadNueva').addEventListener('change', (e) => {
     obtenerPrecioTotal()
 })
 
-/* document.getElementById('ArticuloBusqueda').addEventListener('change', (e) => {
-    obtenerPrecioModificar()
-}) */
+document.getElementById('CantidadM').addEventListener('change', (e) => {
+    obtenerPrecioTotalModificar()
+})
+

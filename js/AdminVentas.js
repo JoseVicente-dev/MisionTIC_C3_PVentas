@@ -459,8 +459,6 @@ async function modificarVenta() {
             }
             
             //Funcion para traer el valor unitario
-            /* document.getElementById("ValorBusqueda").value = (obtenerPrecioModificar(filaSeleccionada.cells[2].innerText)) */
-            
             const articulo= filaSeleccionada.cells[2].innerText
             const respuestaProductos = await dataBase.collection("ng_productos").where('descripcion', '==', articulo).get();
             const productosBD = [];
@@ -482,7 +480,7 @@ async function modificarVenta() {
 async function modificarVentafb() {
 /* console.log('se esta ejecutando modificarVEntafb') */
 
-     const IdVentasModal=document.getElementById("IdBusqueda").value;
+    const IdVentasModal=document.getElementById("IdBusqueda").value;
     const articuloModal=document.getElementById("ArticuloBusqueda").value;
     const clienteModal=document.getElementById("ClienteBusqueda").value;
     const cantidadModal=document.getElementById("CantidadM").value;

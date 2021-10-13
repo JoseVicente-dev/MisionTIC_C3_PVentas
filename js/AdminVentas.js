@@ -166,6 +166,12 @@ async function actualizarProducto() {
     productosBD.forEach((t) => {
         /* console.log(t.peso,"voy a actualizar el producto") */
         pesoactualizar=t.peso-CantidadVentas
+        if(pesoactualizar==0){
+            estadoaActualizar="2"
+        }else{
+            estadoaActualizar="1"
+        }
+
     });
 
 
@@ -177,7 +183,8 @@ async function actualizarProducto() {
     /* console.log(idmod) */
 
     dataBase.collection("ng_productos").doc(idmod).update({
-        peso:pesoactualizar
+        peso:pesoactualizar,
+        estado:estadoaActualizar
     });
 
 

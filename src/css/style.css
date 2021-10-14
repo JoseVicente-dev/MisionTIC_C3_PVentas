@@ -84,3 +84,24 @@ footer{
     background-color: #26327e;
     margin-bottom: 60px;
 }
+
+
+.abs-center{
+  /* display: flex;
+  align-items: center;
+  justify-content: center; */
+  /* min-height: 100vh; */
+  margin-top: 18vh;
+  background-color: rgba(238, 230, 230, 0.5);
+  border-radius: 10px;
+}
+
+.paddingcentro{
+    padding: 40px 0 40px 0px;
+}
+
+.headerNg{
+    background-color: #26327e; 
+    color: white; 
+    text-align: center;
+}

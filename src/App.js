@@ -12,7 +12,7 @@ function App() {
       
       <MenuLateralNg/>
 
-      {/* <LoginComponent/> */}
+      <LoginComponent/>
 
       <FooterComponent/>
 

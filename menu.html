@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Menú principal</title>
+    <link rel="icon" href="images/logo_mercurio.png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
+        integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <!-- Bootstrap -->
+
+    <!-- css Nightmare -->
+    <link rel="stylesheet" href="css/style.css">
+    <link href="css/menu.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/menu_principal.css">
+    <!-- css Nightmare -->
+
+    <!-- Iconos fontAwesome -->
+    <link href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" rel="stylesheet">
+    <!-- Iconos fontAwesome -->
+
+    <!-- Fuente -->
+    <link href="https://fonts.googleapis.com/css2?family=Aldrich&display=swap" rel="stylesheet">
+    <!-- Fuente -->
+
+
+    <!-- cambio -->
+
+</head>
+
+<body>
+
+
+
+
+
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="Mercurio" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">¡Ey! Estás en Menú</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Selecciona algún lugar donde quieras ir.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modales -->
+
+    <!-- NavBar superior-->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-color " id="menu">
+        <div class="container-fluid">
+            <div class="col-12 css_pos">
+                <a class="navbar-brand menuNG-titulo modal_a" href="menu.html" data-bs-toggle="modal"
+                    data-bs-target="#Mercurio">
+                    <img class="img_cls" src="images/logo_mercurio.png" alt="mercurio">
+                    Mercurio&nbsp;&nbsp;
+                </a>
+            </div>
+        </div>
+    </nav>
+
+
+
+
+
+
+    <!-- Footer menu -->
+
+
+    <br>
+    <!-- Panel de tarjetas -->
+    <div class="container div_container">
+        <div class="row">
+            <div class="col-12 div_tarjeta">
+                <div class="card mb-3 div_cls_mb ">
+                    <div class="row">
+                        <div class="col text-center">
+                            <img src="images/ranking_menu_color.png" class="img-fluid rounded-start" alt="menu">
+                        </div>
+                        <div class="col-md-6 div_container">
+                            <div class="card-body">
+                                <h2 class="card-title">Ventas</h2>
+                                <p class="card-text">This is a wider card with supporting text below as a natural
+                                    lead-in to additional content. This content is a little bit longer.</p>
+                                <div class="d-grid gap-2">
+                                    <a href="administrador_de_ventas.html" class="btn btn-primary a_ventas">Ventas</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <div class="card mb-3 card_div_mb">
+                    <div class="row align-items-center">
+                        <div class="col imagen">
+                            <img src="images/circular_menu.png" class="img-fluid rounded-start" alt="circular">
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card-body">
+                                <h2 class="card-title">Usuarios</h2>
+                                <p class="card-text">This is a wider card with supporting text below as a natural
+                                    lead-in to additional content. This content is a little bit longer.</p>
+                                <div class="d-grid gap-2">
+                                    <button onclick="window.location.href='roles_usuarios.html'" class="btn btn-primary a_ventas" id="btnusers">Usuarios</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-6">
+                <div class="card mb-3 card_div_mb">
+                    <div class="row align-items-center">
+                        <div class="col imagen">
+                            <i class="fas fa-shopping-basket i_cls "></i>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card-body">
+                                <h2 class="card-title">Productos</h2>
+                                <p class="card-text">This is a wider card with supporting text below as a natural
+                                    lead-in to additional content. This content is a little bit longer.</p>
+                                <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
+
+                                <div class="d-grid gap-2">
+                                    <button onclick="window.location.href='productos.html'" class="btn btn-primary a_ventas" id="btnproducts">Productos</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+    </div>
+    <div>
+        <div class="row text-center">
+            <div class="col">
+                <button onclick="window.location.href='index.html'" class="btn btn-primary align-items-center a_ventas">
+                    Salir
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+
+    <footer class="css_pos">
+        <img src="images/logo2.png" alt="logo-nightmare" width="20%">
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/distjs/bootstrap.bundle.min.js"
+        integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+        crossorigin="anonymous"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/esm/popper.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+    <!-- Librerías de Firebase -->
+    <!-- Firebase SDK (Software Development Kit) siempre se debe usar y debe ser el primero de colocar -->
+    <script src="https://www.gstatic.com/firebasejs/9.1.1/firebase-app-compat.js"></script>
+
+    <!-- Adicionar productos de Firebase que vamos a usar -->
+    <script src="https://www.gstatic.com/firebasejs/9.1.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.1.1/firebase-firestore-compat.js"></script>
+    <script src="js/firebaseMenu.js"></script>
+
+
+
+
+</body>
+
+</html>

@@ -18,7 +18,7 @@ function App() {
 
       {/* <FooterComponent/> */}
 
-      <MenuLateralNg usuario='Steven' tipo='Administrador' foto=''/>
+      <MenuLateralNg usuario='nombre de Usuario' tipo='Administrador_Prueba' foto='foto url'/>
 
     </div>
   );

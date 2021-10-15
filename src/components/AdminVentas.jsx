@@ -1,12 +1,13 @@
 import React from 'react'
 import { HeaderNg } from './HeaderNg'
-import { FooterComponent } from './FooterComponent';
+import { ListaVentas } from './ListaVentas';
 
 export const AdminVentas = () => {
     return (
         <>
             <HeaderNg titulo='Administrador de Ventas'/>
-            <FooterComponent/>
+
+            <ListaVentas/>
         </>
     )
 }

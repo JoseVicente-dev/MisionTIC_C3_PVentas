@@ -14,7 +14,7 @@ function App() {
 
       {/* <HeaderNg/> */}
       
-     {/*  <LoginComponent/> */}
+      {/* <LoginComponent/> */}
 
       {/* <FooterComponent/> */}
 

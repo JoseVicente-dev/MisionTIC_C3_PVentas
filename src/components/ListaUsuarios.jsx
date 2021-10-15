@@ -1,4 +1,5 @@
 import React,{ useEffect, useState} from 'react'
+import { consultarDatabase } from '../config/firebase';
 
 import {
     BrowserRouter as Router,
@@ -7,7 +8,7 @@ import {
     Link
   } from "react-router-dom";
 
-import { consultarDatabase } from '../config/firebase';
+
 
 export const ListaUsuarios = () => {
 
@@ -40,7 +41,7 @@ export const ListaUsuarios = () => {
                                     {
                                         listaUsuarios.map((usuario, index)=>(
                                             <tr key={usuario.id}>
-                                                <th>
+                                                <td>
                                                 <Link to={`/usuarios/${usuario.idDocumento}`}>
                                                     <div className="form-check"> 
                                                         <input 
@@ -50,12 +51,12 @@ export const ListaUsuarios = () => {
                                                             id="seleccionUsuario"/> 
                                                     </div>
                                                 </Link>
-                                                </th>
-                                                <th scope="row">{index+1}</th>
-                                                <th>{usuario.nombres}</th>
-                                                <th>{usuario.email}</th>
-                                                <th>{usuario.rol}</th>
-                                                <th>{usuario.estado}</th>
+                                                </td>
+                                                <td scope="row">{index+1}</td>
+                                                <td>{usuario.nombres}</td>
+                                                <td>{usuario.email}</td>
+                                                <td>{usuario.rol}</td>
+                                                <td>{usuario.estado}</td>
                                             </tr> 
                                         ))
                                     }

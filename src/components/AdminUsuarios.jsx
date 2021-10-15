@@ -1,6 +1,5 @@
 import React, { useEffect, useState} from 'react'
 import { HeaderNg } from './HeaderNg'
-import { FooterComponent } from './FooterComponent';
 import { ListaUsuarios } from './ListaUsuarios';
 
 export const AdminUsuarios = () => {
@@ -15,8 +14,7 @@ export const AdminUsuarios = () => {
             <HeaderNg titulo='Administrador de Usuarios'/>
             
             <ListaUsuarios/>
-            
-            <FooterComponent/>
+    
         </>
     )
 }

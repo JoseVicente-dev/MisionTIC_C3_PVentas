@@ -1,6 +1,5 @@
 import React from 'react'
 import { HeaderNg } from './HeaderNg'
-import { FooterComponent } from './FooterComponent';
 import { ListaProductos } from './ListaProductos';
 
 export const AdminProductos = () => {
@@ -9,8 +8,6 @@ export const AdminProductos = () => {
             <HeaderNg titulo='Administrador de Productos'/>
             
             <ListaProductos/>
-
-            <FooterComponent/>
         </>
     )
 }

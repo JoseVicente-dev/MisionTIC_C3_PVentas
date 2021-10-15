@@ -41,7 +41,7 @@ export const ListaProductos = () => {
                                     {
                                     listaProductos.map((producto, index)=>(
                                         <tr key={producto.codigo}>
-                                            <th>
+                                            <td>
                                             <Link to={`/productos/${producto.idDocumento}`}>
                                                 <div className="form-check"> 
                                                     <input 
@@ -51,12 +51,12 @@ export const ListaProductos = () => {
                                                         id="seleccionProducto"/> 
                                                 </div>
                                             </Link>
-                                            </th>
-                                            <th scope="row">{index+1}</th>
-                                            <th>{producto.descripcion}</th>
-                                            <th>{producto.peso}</th>
-                                            <th>{producto.valorUnitario}</th>
-                                            <th>{producto.estado}</th>
+                                            </td>
+                                            <td scope="row">{index+1}</td>
+                                            <td>{producto.descripcion}</td>
+                                            <td>{producto.peso}</td>
+                                            <td>{producto.valorUnitario}</td>
+                                            <td>{producto.estado}</td>
                                         </tr> 
                                         ))
                                     }

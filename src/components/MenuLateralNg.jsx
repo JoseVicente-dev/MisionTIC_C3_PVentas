@@ -17,9 +17,21 @@ import {
 import { AdminVentas } from './AdminVentas';
 import { AdminUsuarios } from './AdminUsuarios';
 import { AdminProductos } from './AdminProductos';
+import { FooterComponent } from './FooterComponent';
 
 
 export const MenuLateralNg = ({usuario, tipo, foto}) => {
+
+      
+      
+    /* $("#close-menu-lateral").click(function () {
+        $(".page-wrapper").removeClass("toggled");
+      });
+      $("#show-menu-lateral").click(function () {
+        $(".page-wrapper").addClass("toggled");
+      });
+ */
+
 
 
     return (
@@ -134,6 +146,9 @@ export const MenuLateralNg = ({usuario, tipo, foto}) => {
 
             </div>
         </Router>
+
+        <FooterComponent/>
+
         </>
     )
 }

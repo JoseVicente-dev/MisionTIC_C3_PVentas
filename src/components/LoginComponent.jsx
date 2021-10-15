@@ -5,12 +5,20 @@ import logoMercurio from '../images/logo_mercurio.png'
 import logoGmail from '../images/gmail.png'
 
 import { FooterComponent } from './FooterComponent';
+import { crearUsuario, logInUsuario, logOutUsuario } from '../config/firebase';
 
 export const LoginComponent = () => {
 
     const handleClickLogin= async  () => {
         console.log("Pueba de boton")
         
+
+        //Crear Usuario en la autenticacion de firebase AUTH
+        //crearUsuario ('steven.tavera@gmail.com', '123456')
+        
+        //Realizar loginAUTH
+        const usuarioActivo = await logInUsuario ('steven.tavera@gmail.com', '123456')
+        console.log('Usuario Activo: ', usuarioActivo.email)
         
       }
 
@@ -63,7 +71,7 @@ export const LoginComponent = () => {
 
             </div>
 
-            <FooterComponent/>
+            {/* <FooterComponent/> */}
         </>
     )
 

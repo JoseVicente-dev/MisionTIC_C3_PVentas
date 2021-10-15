@@ -14,11 +14,11 @@ function App() {
 
       {/* <HeaderNg/> */}
       
-      <LoginComponent/>
+     {/*  <LoginComponent/> */}
 
       {/* <FooterComponent/> */}
 
-      {/* <MenuLateralNg usuario='nombre de Usuario' tipo='Administrador_Prueba' foto='foto url'/> */}
+      <MenuLateralNg usuario='nombre de Usuario' tipo='Administrador_Prueba' foto='foto url'/>
 
     </div>
   );

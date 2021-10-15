@@ -3,17 +3,14 @@ import '../css/style.css';
 
 import logoMercurio from '../images/logo_mercurio.png'
 import logoGmail from '../images/gmail.png'
-import { logInUsuario, logInUsuarioPopup } from '../config/firebase';
+
+import { FooterComponent } from './FooterComponent';
 
 export const LoginComponent = () => {
 
     const handleClickLogin= async  () => {
         console.log("Pueba de boton")
         
-        //Realizar loginAUTH
-        /* await logInUsuario ('steven.tavera@gmail.com', '123456') */
-
-        /* logInUsuarioPopup() */
         
       }
 
@@ -63,7 +60,10 @@ export const LoginComponent = () => {
                     </div>
 
                 </div>
+
             </div>
+
+            <FooterComponent/>
         </>
     )
 

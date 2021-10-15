@@ -4,20 +4,52 @@ import '../css/menu.css';
 import logoMercurio from '../images/logo_mercurio.png'
 import fotoUsuario from '../images/user2.png'
 import logoNg from '../images/logo2.png'
-import { datosUsuario } from '../config/firebase';
-import { usuarioActivo } from './../config/firebase';
 
-export const MenuLateralNg = () => {
 
-    
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link
+  } from "react-router-dom";
 
-        /* datosUsuario() */
-        let nombreUsuario = usuarioActivo
 
-   
+import { AdminVentas } from './AdminVentas';
+import { AdminUsuarios } from './AdminUsuarios';
+import { AdminProductos } from './AdminProductos';
+
+
+export const MenuLateralNg = ({usuario, tipo, foto}) => {
+
 
     return (
         <>
+
+        <Router>
+            <Switch>
+            <Route path="/" exact>
+                <h2> Ruta principal</h2>
+            </Route>
+
+            <Route path="/menu">
+                <h2> Ruta Menú</h2>
+            </Route>
+
+            <Route path="/ventas">
+                <AdminVentas/>
+            </Route>
+            
+            <Route path="/usuarios">
+                <AdminUsuarios/>
+            </Route>
+
+            <Route path="/productos">
+                <AdminProductos/>
+            </Route>
+
+            </Switch>
+        
+
             {/* <!-- menu-lateral Menú lateral--> */}
             <div className="page-wrapper mercurio-theme toggled">
                 <a id="show-menu-lateral" className="btn btn-sm btn-dark " href="#">
@@ -40,12 +72,12 @@ export const MenuLateralNg = () => {
                         {/* <!-- Sección de usuario --> */}
                         <div className="menu-lateral-header">
                             <div className="user-pic">
-                                <img className="img-responsive img-rounded" src={fotoUsuario} alt="User picture"
+                                <img className="img-responsive img-rounded" src={foto} alt="User picture"
                                     id="imagenUsuario" />
                             </div>
                             <div className="user-info">
-                                <span className="user-name" id="nombreDeUsuario"><strong>{nombreUsuario}</strong></span>
-                                <span className="user-role" id="tipoUsuario">Administrador</span>
+                                <span className="user-name" id="nombreDeUsuario"><strong>{usuario}</strong></span>
+                                <span className="user-role" id="tipoUsuario">{tipo}</span>
                                 <span className="user-status">
                                     <i className="fa fa-circle"></i>
                                     <span>Online</span>
@@ -60,28 +92,28 @@ export const MenuLateralNg = () => {
                                     <span>Opciones disponibles</span>
                                 </li>
                                 <li className="menu-lateral-dropdown">
-                                    <a href="#">
+                                    <Link to="/dashboard">
                                         <i className="fa fa-chart-pie"></i>
                                         <span>Dashboard </span>
-                                    </a>
+                                    </Link>
                                 </li>
                                 <li className="menu-lateral-dropdown">
-                                    <a href="#">
+                                    <Link to='/ventas'>
                                         <i className="fa fa-shopping-cart"></i>
                                         <span>Módulo de Ventas</span>
-                                    </a>
+                                    </Link>
                                 </li>
                                 <li className="menu-lateral-dropdown">
-                                    <a href="productos.html">
+                                    <Link to="/productos">
                                         <i className="fas fa-shopping-basket"></i>
                                         <span>Productos</span>
-                                    </a>
+                                    </Link>
                                 </li>
                                 <li className="menu-lateral-dropdown">
-                                    <a href="roles_usuarios.html">
+                                    <Link to='/usuarios'>
                                         <i className="fas fa-users-cog"></i>
                                         <span>Usuarios</span>
-                                    </a>
+                                    </Link>
                                 </li>
                             </ul>
                         </div>
@@ -101,6 +133,7 @@ export const MenuLateralNg = () => {
 
 
             </div>
+        </Router>
         </>
     )
 }

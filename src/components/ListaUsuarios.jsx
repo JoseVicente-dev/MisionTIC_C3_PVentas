@@ -1,16 +1,7 @@
 import React,{ useEffect, useState} from 'react'
-import { actualizarDocumentoDatabase, consultarDatabase, consultarDocumentoDatabase, guardarDatabase } from '../config/firebase';
-import { BusquedaBd } from './BusquedaBd';
-import { consultarDocumentoWhere, eliminarDocumentoDatabase } from './../config/firebase';
-
-
-import {
-
-    BrowserRouter as Router,
-    Switch,
-    Route,
-    Link
-  } from "react-router-dom";
+import {actualizarDocumentoDatabase, consultarDatabase, consultarDocumentoDatabase, guardarDatabase } from '../config/firebase';
+import {BusquedaBd } from './BusquedaBd';
+import {eliminarDocumentoDatabase } from './../config/firebase';
 
 
 
@@ -121,7 +112,6 @@ export const ListaUsuarios = () => {
 
     return (
         <>
-         <Router>
                 <div className="container text-center">
 
                 <BusquedaBd estado='1'/>
@@ -303,9 +293,6 @@ export const ListaUsuarios = () => {
                 </div>
                 {/* Modal Eliminar */}      
 
-
-               
-            </Router>
 
         </>
     )

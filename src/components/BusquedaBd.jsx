@@ -1,5 +1,4 @@
 import React, { useEffect, useState} from 'react'
-import { consultarDocumentoDatabase } from '../config/firebase';
 import { consultarDocumentoWhere } from './../config/firebase';
 
 export const BusquedaBd = ({estado}) => {
@@ -53,6 +52,7 @@ export const BusquedaBd = ({estado}) => {
         switch(ventana){
             case '1'://usuarios
             consultarDocumentoWhere('ng_users',terminoBusqueda, busqueda)
+            
                 break;
             case '2'://productos
             consultarDocumentoWhere('ng_productos',terminoBusqueda, busqueda)

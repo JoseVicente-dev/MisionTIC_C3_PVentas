@@ -21,6 +21,8 @@ export const ListaProductos = () => {
         setListaProductos(listaTemporal)
     },[])
 
+    //useState
+
     return (
         <>
          <Router>
@@ -33,7 +35,7 @@ export const ListaProductos = () => {
                                     <tr>
                                     <th scope="col"></th>
                                     <th scope="col">Id</th>
-                                    <th scope="col">Descripciçon</th>
+                                    <th scope="col">Descripción</th>
                                     <th scope="col">Peso</th>
                                     <th scope="col">Valor Unit.</th>
                                     <th scope="col">Estado</th>

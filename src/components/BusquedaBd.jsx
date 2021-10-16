@@ -1,71 +1,64 @@
-import React from 'react'
+import React, { useEffect, useState} from 'react'
 import { consultarDocumentoDatabase } from '../config/firebase';
+import { consultarDocumentoWhere } from './../config/firebase';
 
 export const BusquedaBd = ({estado}) => {
 
-    let a , b, c, d, e, f, g, A, B, C, D, E, F, G
-
     const ventana = estado
+    let opciones=[]
 
     /* console.log(ventana) */
     switch(ventana){
         case '1'://usuarios
-             a = 'Id';
-             b = 'Nombres';
-             c = 'Email';
-             d = 'Rol';
-             e = 'Estado';
-             A = 'id';
-             B = 'nombres';
-             C = 'email';
-             D = 'rol';
-             E = 'estado';
+             opciones=[
+                 {opcion: "id", value: "Id"},
+                 {opcion: "nombres", value: "Nombres"},
+                 {opcion: "email", value: "Email"},
+                 {opcion: "rol", value: "Rol"},
+                 {opcion: "estado", value: "Estado"},
+             ]
             break;
         case '2'://productos
-             a = 'Id';
-             b = 'Descripción';
-             c = 'Peso';
-             d = 'Valor Unit';
-             e = 'Estado';
-             A = 'id';
-             B = 'descripcion';
-             C = 'peso';
-             D = 'valor Unit';
-             E = 'estado';
+             opciones=[
+                {opcion: "id", value: "Id"},
+                {opcion: "descripcion", value: "Descripción"},
+                {opcion: "peso", value: "Peso"},
+                {opcion: "valor", value: "Valor Unit"},
+                {opcion: "estado", value: "Estado"},
+            ]
             break;
         case '3'://ventas
-             a = 'Id';
-             b = 'Cliente';
-             c = 'Artículo';
-             d = 'Valor Unit.';
-             e = 'Vendedor';
-             f = 'Estado';
-             g = 'Fecha de Venta';
-             A = 'id';
-             B = 'cliente';
-             C = 'articulo';
-             D = 'valor';
-             E = 'vendedor';
-             F = 'estadoPago';
-             G = 'fechaVenta';
+            opciones=[
+                {opcion: "id", value: "Id"},
+                {opcion: "cliente", value: "Cliente"},
+                {opcion: "articulo", value: "Artículo"},
+                {opcion: "valor", value: "Valor Unit."},
+                {opcion: "vendedor", value: "Vendedor"},
+                {opcion: "estadoPago", value: "Estado"},
+                {opcion: "fechaVenta", value: "Fecha de Venta"},
+            ]
             break;
     }
 
+    useEffect(()=>{
+
+    })
 
     const handleClickBusqueda = async  () => {
-        console.log("Pueba de boton")
+        //console.log("Pueba de boton")
         
+        let terminoBusqueda = document.getElementById('busquedapor').value
+        let busqueda = document.getElementById("busqueda").value;
+
         switch(ventana){
             case '1'://usuarios
-            console.log(await consultarDocumentoDatabase('ng_users', "60nWtTdQPssWzCdFKQ0l"));
-            /* await dataBase.collection("ng_users").where(terminoBusqueda, '>=', busqueda).where(terminoBusqueda, '<=', busqueda+ '\uf8ff').get() */
+            consultarDocumentoWhere('ng_users',terminoBusqueda, busqueda)
                 break;
             case '2'://productos
-            console.log(await consultarDocumentoDatabase('ng_productos', "Ek4c4gxMRY1gsQ8D32K5"));
+            consultarDocumentoWhere('ng_productos',terminoBusqueda, busqueda)
                 break;
             case '3'://ventas
-            console.log(await consultarDocumentoDatabase('ng_ventas', "DkI5Irk59hAxzsfWXGBA"));
-            
+            consultarDocumentoWhere('ng_ventas',terminoBusqueda, busqueda)
                 break;
             }
         }
@@ -78,21 +71,28 @@ export const BusquedaBd = ({estado}) => {
 
     return (
         <>
-            <div className="row align-items-center">
+            <div className="row align-items-center ">
 
-                <div className="col-2" style={{textAlign: "end;"}}>
+                <div className="col-2 abs-center-table" style={{textAlign: "end;"}}>
                     <label className="form-label" for="form1">Buscar u Ordenar por:</label>
                 </div>
 
                 <div className="col-2">
                     <select className="form-select " id="busquedapor" placeholder="Estado">  
-                        <option value={A}>{a}</option>
+                        {/* <option value={A}>{a}</option>
                         <option value={B}>{b}</option>
                         <option value={C}>{c}</option>
                         <option value={D}>{d}</option>
                         <option value={E}>{e}</option>
                         <option value={F}>{f}</option>
-                        <option value={G}>{g}</option>
+                        <option value={G}>{g}</option> */}
+
+                        {
+                            opciones.map((opcion)=>
+                                <option key= { opcion.opcion} value={opcion.opcion}>{opcion.value}</option>
+                            )
+                        }
+
                     </select>
 
                 </div>

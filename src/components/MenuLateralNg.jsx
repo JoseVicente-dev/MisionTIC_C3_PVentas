@@ -13,7 +13,8 @@ import {
     BrowserRouter as Router,
     Switch,
     Route,
-    Link
+    Link,
+    NavLink
   } from "react-router-dom";
 
 
@@ -26,7 +27,7 @@ import { FooterComponent } from './FooterComponent';
 
 export const MenuLateralNg = ({usuario, tipo, foto}) => {
 
-    const [menu, setMenu]= useState("toggled")
+    const [menu, setMenu]= useState("")
     
     const handleClickMenu= () => {
        /*  console.log("Pueba de Menu") */
@@ -42,10 +43,9 @@ export const MenuLateralNg = ({usuario, tipo, foto}) => {
          
       }
 
-    /* useEffect(()=>{
-        console.log("prueba")
-
-    },[menu]) */
+    useEffect(()=>{
+        document.getElementById('menuNg').classList.remove('toggled')
+    },[])
 
 
 
@@ -54,26 +54,11 @@ export const MenuLateralNg = ({usuario, tipo, foto}) => {
 
         <Router>
             <Switch>
-            <Route path="/" exact>
-                <h2> Ruta principal</h2>
-            </Route>
-
-            <Route path="/menu">
-                <h2> Ruta Menú</h2>
-            </Route>
-
-            <Route path="/ventas">
-                <AdminVentas/>
-            </Route>
-            
-            <Route path="/usuarios">
-                <AdminUsuarios/>
-            </Route>
-
-            <Route path="/productos">
-                <AdminProductos/>
-            </Route>
-
+                <Route path="/" exact><h2> Ruta principal</h2></Route>
+                <Route path="/menu"><h2> Ruta Menú</h2></Route>
+                <Route path="/ventas" component={AdminVentas}/>         
+                <Route path="/usuarios" component={AdminUsuarios}/>
+                <Route path="/productos" component={AdminProductos}/>
             </Switch>
         
 
@@ -123,28 +108,28 @@ export const MenuLateralNg = ({usuario, tipo, foto}) => {
                                     <span>Opciones disponibles</span>
                                 </li>
                                 <li className="menu-lateral-dropdown">
-                                    <Link to="/dashboard">
+                                    <NavLink to="/dashboard" activeClassName="color-blanco">
                                         <i className="fa fa-chart-pie"></i>
                                         <span>Dashboard </span>
-                                    </Link>
+                                    </NavLink>
                                 </li>
                                 <li className="menu-lateral-dropdown">
-                                    <Link to='/ventas'>
+                                    <NavLink to='/ventas' activeClassName="color-blanco">
                                         <i className="fa fa-shopping-cart"></i>
                                         <span>Módulo de Ventas</span>
-                                    </Link>
+                                    </NavLink>
                                 </li>
                                 <li className="menu-lateral-dropdown">
-                                    <Link to="/productos">
+                                    <NavLink to="/productos" activeClassName="color-blanco">
                                         <i className="fas fa-shopping-basket"></i>
                                         <span>Productos</span>
-                                    </Link>
+                                    </NavLink>
                                 </li>
-                                <li className="menu-lateral-dropdown">
-                                    <Link to='/usuarios'>
+                                <li className="menu-lateral-dropdown" >
+                                    <NavLink to='/usuarios' activeClassName="color-blanco">
                                         <i className="fas fa-users-cog"></i>
                                         <span>Usuarios</span>
-                                    </Link>
+                                    </NavLink>
                                 </li>
                             </ul>
                         </div>

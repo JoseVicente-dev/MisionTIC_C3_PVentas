@@ -1,7 +1,7 @@
 import {initializeApp} from 'firebase/app'
 import {getFirestore} from 'firebase/firestore'
-import {getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged, getg} from 'firebase/auth'
-import {addDoc, collection, getDocs, query, getDoc, doc, updateDoc, deleteDoc} from 'firebase/firestore'//Métodos de interaccion BD
+import {getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged, } from 'firebase/auth'
+import {addDoc, collection, getDocs, query, getDoc, doc, updateDoc, deleteDoc, where} from 'firebase/firestore'//Métodos de interaccion BD
 
 
 const firebaseConfig = {
@@ -83,6 +83,31 @@ const firebaseConfig = {
         throw new Error(e)
     }
   }
+
+
+
+  //consultar por where
+  export const consultarDocumentoWhere = async(nombreColeccion, terminoBusqueda, busqueda) =>{
+    try{
+
+        const respuesta = await getDocs(query(collection(database, nombreColeccion), where(terminoBusqueda, '>=', busqueda), where(terminoBusqueda, '<=', busqueda+ '\uf8ff')))
+
+        const coleccionDatos = respuesta.docs.map((documento)=>{
+            //console.log(documento.data());
+            const documentoTemporal = {
+                idDocumento: documento.id,//id para actualizar
+                ...documento.data()
+            }
+            console.log(documentoTemporal);
+            return documentoTemporal
+        })
+        return coleccionDatos     
+    }
+    catch(e){
+        throw new Error(e)
+    }
+  }
+
 
 
   //Actualizaciòn de un documento en Base de datos

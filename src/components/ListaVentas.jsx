@@ -18,7 +18,7 @@ export const ListaVentas = () => {
 
     useEffect( async () => {
         const listaTemporal = await consultarDatabase('ng_ventas') //trae info database
-        console.log(listaTemporal)
+        /* console.log(listaTemporal) */
         setListaVentas(listaTemporal)
     },[])
     

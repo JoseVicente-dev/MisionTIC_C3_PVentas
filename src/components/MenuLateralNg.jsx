@@ -1,5 +1,4 @@
-import React from 'react'
-
+import React, { useEffect, useState} from 'react'
 /* import $ from 'jquery'; */
 
 import '../css/menu.css';
@@ -27,31 +26,26 @@ import { FooterComponent } from './FooterComponent';
 
 export const MenuLateralNg = ({usuario, tipo, foto}) => {
 
-    
+    const [menu, setMenu]= useState("toggled")
     
     const handleClickMenu= () => {
-        console.log("Pueba de Menu")
+       /*  console.log("Pueba de Menu") */
 
-
-        /* const cerrarMenu = document.getElementById('close-menu-lateral')
-        const abrirMenu = document.getElementById('show-menu-lateral')
-
-        cerrarMenu.classList.remove('toggled')
-        abrirMenu.classList.add('toggled') */
-        
-        
-        /*  $("#close-menu-lateral").click(function () {
-            $(".page-wrapper").removeClass("toggled");
-        });
-        $("#show-menu-lateral").click(function () {
-            $(".page-wrapper").addClass("toggled");
-        }); */
-          
+        if(menu=="toggled"){
+            setMenu("")
+            document.getElementById('menuNg').classList.remove('toggled')
+        }else{
+            setMenu("toggled")
+            document.getElementById('menuNg').classList.add('toggled')
+        }
+        /* console.log(menu); */
+         
       }
 
-     /*  componentDidMount() { */
-       
-    /* } */
+    /* useEffect(()=>{
+        console.log("prueba")
+
+    },[menu]) */
 
 
 
@@ -84,7 +78,7 @@ export const MenuLateralNg = ({usuario, tipo, foto}) => {
         
 
             {/* <!-- menu-lateral Menú lateral--> */}
-            <div className="page-wrapper mercurio-theme toggled ">
+            <div className="page-wrapper mercurio-theme toggled " id="menuNg">
                 <button 
                     id="show-menu-lateral" 
                     className="btn btn-sm btn-dark " 

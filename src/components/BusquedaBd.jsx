@@ -60,10 +60,8 @@ export const BusquedaBd = ({estado}) => {
             case '3'://ventas
             consultarDocumentoWhere('ng_ventas',terminoBusqueda, busqueda)
                 break;
-            }
         }
-
-        
+    }
 
 
 
@@ -79,13 +77,6 @@ export const BusquedaBd = ({estado}) => {
 
                 <div className="col-2">
                     <select className="form-select " id="busquedapor" placeholder="Estado">  
-                        {/* <option value={A}>{a}</option>
-                        <option value={B}>{b}</option>
-                        <option value={C}>{c}</option>
-                        <option value={D}>{d}</option>
-                        <option value={E}>{e}</option>
-                        <option value={F}>{f}</option>
-                        <option value={G}>{g}</option> */}
 
                         {
                             opciones.map((opcion)=>

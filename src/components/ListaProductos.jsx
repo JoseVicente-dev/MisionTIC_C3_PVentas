@@ -8,6 +8,7 @@ import {
   } from "react-router-dom";
 
 import { consultarDatabase } from '../config/firebase';
+import { BusquedaBd } from './BusquedaBd';
 
 
 export const ListaProductos = () => {
@@ -24,6 +25,7 @@ export const ListaProductos = () => {
         <>
          <Router>
                 <div className="container text-center">
+                    <BusquedaBd estado='2'/>
                      <section className="main">
                         <div className="container-fluid table-responsive abs-center-table">
                             <table className="table table-hover table-striped" >

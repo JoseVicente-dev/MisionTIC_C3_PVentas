@@ -1,9 +1,13 @@
 import React from 'react'
+
+/* import $ from 'jquery'; */
+
 import '../css/menu.css';
 
 import logoMercurio from '../images/logo_mercurio.png'
 import fotoUsuario from '../images/user2.png'
 import logoNg from '../images/logo2.png'
+
 
 
 import {
@@ -20,17 +24,34 @@ import { AdminProductos } from './AdminProductos';
 import { FooterComponent } from './FooterComponent';
 
 
+
 export const MenuLateralNg = ({usuario, tipo, foto}) => {
 
-      
-      
-    /* $("#close-menu-lateral").click(function () {
-        $(".page-wrapper").removeClass("toggled");
-      });
-      $("#show-menu-lateral").click(function () {
-        $(".page-wrapper").addClass("toggled");
-      });
- */
+    
+    
+    const handleClickMenu= () => {
+        console.log("Pueba de Menu")
+
+
+        /* const cerrarMenu = document.getElementById('close-menu-lateral')
+        const abrirMenu = document.getElementById('show-menu-lateral')
+
+        cerrarMenu.classList.remove('toggled')
+        abrirMenu.classList.add('toggled') */
+        
+        
+        /*  $("#close-menu-lateral").click(function () {
+            $(".page-wrapper").removeClass("toggled");
+        });
+        $("#show-menu-lateral").click(function () {
+            $(".page-wrapper").addClass("toggled");
+        }); */
+          
+      }
+
+     /*  componentDidMount() { */
+       
+    /* } */
 
 
 
@@ -63,22 +84,26 @@ export const MenuLateralNg = ({usuario, tipo, foto}) => {
         
 
             {/* <!-- menu-lateral Menú lateral--> */}
-            <div className="page-wrapper mercurio-theme toggled">
-                <a id="show-menu-lateral" className="btn btn-sm btn-dark " href="#">
+            <div className="page-wrapper mercurio-theme toggled ">
+                <button 
+                    id="show-menu-lateral" 
+                    className="btn btn-sm btn-dark " 
+                    onClick={handleClickMenu}>
                     <i className="fas fa-bars font-size-30px margin-left-5px"> &nbsp;
-                        <img src="images/logo_mercurio.png" alt="" className="width-30px position-absolute"/>
+                        <img src={logoMercurio} alt="" className="width-30px position-absolute"/>
                     </i>
-                </a>
+                </button>
                 <nav id="menu-lateral" className="menu-lateral-wrapper">
                     <div className="menu-lateral-contenido">
                         {/* <!-- encabezado menu --> */}
                         <div className="menu-lateral-brand background-color-azul">
                             <img src={logoMercurio} alt="" className="width-30"/>
                             &nbsp;
-                            <a href="menu.html" className="color-blanco-humo">Mercurio </a>
-                            <div id="close-menu-lateral">
-                                <i className="fas fa-times color-blanco"></i>
-                            </div>
+                            <a href="#" className="color-blanco-humo">Mercurio </a>
+                                <div id="close-menu-lateral">
+                                    <a onClick={handleClickMenu}><i className="fas fa-times color-blanco"></i></a>
+                                </div>
+                            
                         </div>
                         {/* <!-- /encabezado menu --> */}
                         {/* <!-- Sección de usuario --> */}
@@ -136,7 +161,7 @@ export const MenuLateralNg = ({usuario, tipo, foto}) => {
                         <img src={logoNg} alt="..." className="img-rounded width-250px"/>
                     </div>
                     <div className="menu-lateral-footer">
-                        <a href="index.html">
+                        <a href="#">
                             <i className="fa fa-power-off"></i>
                         </a>
                     </div>

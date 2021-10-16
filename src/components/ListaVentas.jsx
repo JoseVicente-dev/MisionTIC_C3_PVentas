@@ -1,7 +1,10 @@
 import React,{ useEffect, useState} from 'react'
 import { consultarDatabase } from '../config/firebase';
+import { BusquedaBd } from './BusquedaBd';
+
 
 import {
+
     BrowserRouter as Router,
     Switch,
     Route,
@@ -24,6 +27,9 @@ export const ListaVentas = () => {
         <>
             <Router>
                 <div className="container text-center">
+
+                    <BusquedaBd estado='3'/>
+
                      <section className="main">
                         <div className="container-fluid table-responsive abs-center-table">
                             <table className="table table-hover table-striped" >

@@ -16,10 +16,13 @@ export const ListaVentas = () => {
     
     const [listaVentas, setListaVentas] = useState([])
 
-    useEffect( async () => {
+    const cargarVentas = async() =>{
         const listaTemporal = await consultarDatabase('ng_ventas') //trae info database
-        /* console.log(listaTemporal) */
         setListaVentas(listaTemporal)
+    }
+
+    useEffect(() => {
+        cargarVentas()
     },[])
     
 

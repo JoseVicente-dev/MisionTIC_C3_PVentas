@@ -15,10 +15,15 @@ export const ListaUsuarios = () => {
 
     const [listaUsuarios, setListaUsuarios] = useState([])
 
-    useEffect( async () => {
+    const cargarUsuarios = async () => {
         const listaTemporal = await consultarDatabase('ng_users') //trae info database
-        /* console.log(listaTemporal) */
         setListaUsuarios(listaTemporal)
+    }
+
+    /* useParams */
+
+    useEffect( () => {
+        cargarUsuarios()
     },[])
 
     return (

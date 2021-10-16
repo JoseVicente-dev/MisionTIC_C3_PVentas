@@ -15,10 +15,13 @@ export const ListaProductos = () => {
 
     const [listaProductos, setListaProductos] = useState([])
 
-    useEffect( async () => {
+    const cargarProductos = async () =>{
         const listaTemporal = await consultarDatabase('ng_productos') //trae info database
-        /* console.log(listaTemporal) */
         setListaProductos(listaTemporal)
+    }
+
+    useEffect(() => {
+        cargarProductos()
     },[])
 
     //useState

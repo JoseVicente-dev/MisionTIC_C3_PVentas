@@ -30,7 +30,24 @@ export const ListaProductos = () => {
         <>
          <Router>
                 <div className="container text-center">
-                    <BusquedaBd estado='2'/>
+                    
+                    <div className="container">
+                        <div className="row">
+                            <div className="col-10">
+                                <BusquedaBd estado='2'/>
+                            </div>
+                            <div className="col-2">
+                                <button type="button" 
+                                    className="btn btn-primary" 
+                                    id="buscarVenta"
+                                    /* onClick={() =>setCounter (counter +1) } */
+                                >
+                                    <i className="fas fa-search"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
                      <section className="main">
                         <div className="container-fluid table-responsive abs-center-table">
                             <table className="table table-hover table-striped" >

@@ -36,12 +36,12 @@ export const ListaProductos = () => {
                             <table className="table table-hover table-striped" >
                                 <thead  style={{textAlign: "center"}}>
                                     <tr>
-                                    <th scope="col"></th>
-                                    <th scope="col">Id</th>
-                                    <th scope="col">Descripción</th>
-                                    <th scope="col">Peso</th>
-                                    <th scope="col">Valor Unit.</th>
-                                    <th scope="col">Estado</th>
+                                        <th scope="col">&nbsp;</th>
+                                        <th scope="col">Id</th>
+                                        <th scope="col">Descripción</th>
+                                        <th scope="col">Peso</th>
+                                        <th scope="col">Valor Unit.</th>
+                                        <th scope="col">Estado</th>
                                     </tr>
                                 </thead>
                                 <tbody style={{textAlign: "center"}} id="tabla_productos">

@@ -1,10 +1,17 @@
 import React, { useEffect, useState} from 'react'
 import { consultarDocumentoWhere } from './../config/firebase';
 
+
+
+
+
 export const BusquedaBd = ({estado}) => {
 
     const ventana = estado
     let opciones=[]
+    let usuarios
+
+    /* console.log(useParams()); */
 
     /* console.log(ventana) */
     switch(ventana){
@@ -39,43 +46,39 @@ export const BusquedaBd = ({estado}) => {
             break;
     }
 
-    useEffect(()=>{
 
-    })
-
-    const handleClickBusqueda = async  () => {
+    /* const handleClickBusqueda = async  () => {
         //console.log("Pueba de boton")
+
+        
         
         let terminoBusqueda = document.getElementById('busquedapor').value
         let busqueda = document.getElementById("busqueda").value;
 
         switch(ventana){
             case '1'://usuarios
-            consultarDocumentoWhere('ng_users',terminoBusqueda, busqueda)
-            
+            usuarios = await consultarDocumentoWhere('ng_users',terminoBusqueda, busqueda)
+
                 break;
             case '2'://productos
-            consultarDocumentoWhere('ng_productos',terminoBusqueda, busqueda)
+            usuarios = await consultarDocumentoWhere('ng_productos',terminoBusqueda, busqueda)
                 break;
             case '3'://ventas
-            consultarDocumentoWhere('ng_ventas',terminoBusqueda, busqueda)
+            usuarios = await consultarDocumentoWhere('ng_ventas',terminoBusqueda, busqueda)
                 break;
         }
-    }
+    } */
 
-
-
-    /* console.log(a,b,c,d,e); */
 
     return (
         <>
             <div className="row align-items-center ">
 
-                <div className="col-2 abs-center-table" style={{textAlign: "end;"}}>
-                    <label className="form-label" for="form1">Buscar u Ordenar por:</label>
+                <div className="col-3" style={{textAlign: "end"},{color:"white"}}>
+                    <label className="form-label" htmlFor="form1">Buscar u Ordenar por:</label>
                 </div>
 
-                <div className="col-2">
+                <div className="col-3">
                     <select className="form-select " id="busquedapor" placeholder="Estado">  
 
                         {
@@ -92,7 +95,7 @@ export const BusquedaBd = ({estado}) => {
                     <input type="search" id="busqueda" className="form-control" placeholder="Inserte Búsqueda" />
                 </div>
 
-                <div className="col-2">
+                {/* <div className="col-2">
                     <button type="button" 
                         className="btn btn-primary" 
                         id="buscarVenta"
@@ -100,7 +103,7 @@ export const BusquedaBd = ({estado}) => {
                     >
                         <i className="fas fa-search"></i>
                     </button>
-                </div>
+                </div> */}
             </div>
         </>
     )

@@ -14,7 +14,7 @@ export const FooterComponent = () => {
                         <div className="container">
                             <div className="row">
                                 <div    className="col-8" 
-                                        style={{textAlign: "end;"}}>
+                                        style={{textAlign: "end"}}>
                                     <img 
                                         className="logong" 
                                         src={logoNg} 
@@ -22,13 +22,13 @@ export const FooterComponent = () => {
                                 </div>
                                 <div className="col-1"></div>
                                 <div    className="col-3 " 
-                                        style={{textAlign: "end;"}}>
+                                        style={{textAlign: "end"}}>
                                     <div className="collapse navbar-collapse" id="navbarNav">
                                         <ul className="navbar-nav">
                                             <li className="nav-item">
                                                 <a  className="nav-link active" 
-                                                    style={{color: "#26327e;"},{fontSize: "22px;"}} 
-                                                    ariaCurrent="page"
+                                                    style={{color: "#26327e;"},{fontSize: "22px"}} 
+                                                    aria-current="page"
                                                     href="#" data-bs-toggle="modal" data-bs-target="#Info">
                                                 INFO</a>
                                             </li>
@@ -46,7 +46,7 @@ export const FooterComponent = () => {
                 </nav>
             </footer>
 
-            <div className="modal fade" id="Info" tabindex="-1">
+            <div className="modal fade" id="Info" tabIndex="-1">
             <div className="modal-dialog modal-dialog-centered">
             <div className="modal-content">
                 <div className="modal-header headerNg" >

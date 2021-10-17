@@ -98,7 +98,7 @@ const firebaseConfig = {
                 idDocumento: documento.id,//id para actualizar
                 ...documento.data()
             }
-            console.log(documentoTemporal);
+            /* console.log(documentoTemporal); */
             return documentoTemporal
         })
         return coleccionDatos     

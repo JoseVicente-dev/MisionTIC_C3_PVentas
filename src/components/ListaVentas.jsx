@@ -38,17 +38,17 @@ export const ListaVentas = () => {
                             <table className="table table-hover table-striped" >
                                 <thead  style={{textAlign: "center"}}>
                                     <tr>
-                                    <th scope="col"></th>
-                                    <th scope="col">Id</th>
-                                    <th scope="col">Cliente</th>
-                                    <th scope="col">Articulo</th>
-                                    <th scope="col">Cantidad</th>
-                                    <th scope="col">Valor Unit.</th>
-                                    <th scope="col">Valor Total</th>
-                                    <th scope="col">Fecha de Venta</th>
-                                    <th scope="col">Vendedor</th>
-                                    <th scope="col">Estado</th>
-                                    <th scope="col">Fecha de Pago</th>
+                                        <th scope="col">&nbsp;</th>
+                                        <th scope="col">Id</th>
+                                        <th scope="col">Cliente</th>
+                                        <th scope="col">Articulo</th>
+                                        <th scope="col">Cantidad</th>
+                                        <th scope="col">Valor Unit.</th>
+                                        <th scope="col">Valor Total</th>
+                                        <th scope="col">Fecha de Venta</th>
+                                        <th scope="col">Vendedor</th>
+                                        <th scope="col">Estado</th>
+                                        <th scope="col">Fecha de Pago</th>
                                     </tr>
                                 </thead>
 

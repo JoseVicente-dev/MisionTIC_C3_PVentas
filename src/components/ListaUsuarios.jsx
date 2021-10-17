@@ -1,24 +1,34 @@
 import React,{ useEffect, useState} from 'react'
 import {actualizarDocumentoDatabase, consultarDatabase, consultarDocumentoDatabase, guardarDatabase } from '../config/firebase';
 import {BusquedaBd } from './BusquedaBd';
-import {eliminarDocumentoDatabase } from './../config/firebase';
+import { eliminarDocumentoDatabase, consultarDocumentoWhere } from './../config/firebase';
+import { useParams } from 'react-router';
+import { uuid } from 'uuidv4';
 
 
 
 export const ListaUsuarios = () => {
 
     const [listaUsuarios, setListaUsuarios] = useState([])
+    const [counter, setCounter]=useState(0);
 
     const cargarUsuarios = async () => {
-        const listaTemporal = await consultarDatabase('ng_users') //trae info database
+       /*  const listaTemporal = await consultarDatabase('ng_users') //trae info database
+        setListaUsuarios(listaTemporal) */
+
+        let terminoBusqueda = document.getElementById('busquedapor').value
+        let busqueda = document.getElementById("busqueda").value;
+
+        const listaTemporal = await consultarDocumentoWhere('ng_users',terminoBusqueda, busqueda)
         setListaUsuarios(listaTemporal)
+
     }
 
-    /* useParams */
+
 
     useEffect( () => {
         cargarUsuarios()
-    },[])
+    },[counter])
 
 
     let idSeleccionado // idDocumento que esta oculto en la tabla para modificar posteriormente
@@ -65,6 +75,7 @@ export const ListaUsuarios = () => {
         actualizarDocumentoDatabase('ng_users', idSeleccionado, usuario)
         setTimeout(cargarUsuarios,100)
         
+        
     }
 
 
@@ -78,7 +89,7 @@ export const ListaUsuarios = () => {
         const estadoInput = document.getElementById("inputEstado").value;
 
         const usuarios = {
-            /* id: uuid.v4(), */ 
+            id: uuid(), 
             nombres: nombresInput,
             /* apellidos: apellidosInput, */
             rol: rolInput,
@@ -89,6 +100,7 @@ export const ListaUsuarios = () => {
 
         guardarDatabase('ng_users', usuarios)
         setTimeout(cargarUsuarios,100)
+        
 
     }
 
@@ -103,6 +115,7 @@ export const ListaUsuarios = () => {
             if (radios[i].checked) {
                 idSeleccionado=filas[i].cells[6].innerText//esta linea trae el idDocuemtno
             }
+            
         }
 
         eliminarDocumentoDatabase ('ng_users', idSeleccionado)
@@ -114,19 +127,37 @@ export const ListaUsuarios = () => {
         <>
                 <div className="container text-center">
 
-                <BusquedaBd estado='1'/>
+                <div className="container">
+                    <div className="row">
+                        <div className="col-10">
+                            <BusquedaBd estado='1'/>
+                        </div>
+                        <div className="col-2">
+                            <button type="button" 
+                                className="btn btn-primary" 
+                                id="buscarVenta"
+                                onClick={() =>setCounter (counter +1) }
+                            >
+                                <i className="fas fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+
+                
 
                      <section className="main">
                         <div className="container-fluid table-responsive abs-center-table">
                             <table className="table table-hover table-striped" >
                                 <thead  style={{textAlign: "center"}}>
                                     <tr>
-                                    <th scope="col"></th>
-                                    <th scope="col">Id</th>
-                                    <th scope="col">Nombres</th>
-                                    <th scope="col">Email</th>
-                                    <th scope="col">Rol</th>
-                                    <th scope="col">Estado</th>
+                                        <th scope="col">&nbsp;</th>
+                                        <th scope="col">Id</th>
+                                        <th scope="col">Nombres</th>
+                                        <th scope="col">Email</th>
+                                        <th scope="col">Rol</th>
+                                        <th scope="col">Estado</th>
                                     </tr>
                                 </thead>
                                 <tbody style={{textAlign: "center"}} id="tabla_usuarios">
@@ -134,17 +165,13 @@ export const ListaUsuarios = () => {
                                         listaUsuarios.map((usuario, index)=>(
                                             <tr key={usuario.id}>
                                                 <td>
-                                                {/* <Link to={`/usuarios/${usuario.idDocumento}`}> */}
-                                                    
                                                     <div className="form-check"> 
                                                         <input 
                                                             className="form-check-input" 
                                                             type="radio" 
                                                             name="flexRadioDefault"
-                                                            id="seleccionUsuario"
-                                                        /> 
+                                                            id="seleccionUsuario"/> 
                                                     </div>
-                                                {/* </Link> */}
                                                 </td>
                                                 <td scope="row">{index+1}</td>
                                                 <td>{usuario.nombres}</td>
@@ -165,13 +192,13 @@ export const ListaUsuarios = () => {
                     <div className="container text-center">
                         {/* <button className="btn btn-primary fomr-mod-user" id="cargarDatos"  >Actualizar</button> */}
 
-                        <button className="btn btn-primary fomr-mod-user" 
+                        <button className="btn btn-primary fomr-mod-user " 
                         data-bs-toggle="modal" data-bs-target="#Adicionar" id="modaladicionar">Adicionar</button>
 
-                        <button className="btn btn-primary fomr-mod-user" 
+                        <button className="btn btn-primary fomr-mod-user ms-3 me-3" 
                         data-bs-toggle="modal" data-bs-target="#Modificar" id="modalModificar" onClick={handleClickModificar}>Modificar</button>
                     
-                        <button className="btn btn-danger fomr-mod-user" 
+                        <button className="btn btn-danger fomr-mod-user " 
                         data-bs-toggle="modal" data-bs-target="#Eliminar"  id="modalEliminar" >Eliminar</button>
 
                     </div>
@@ -180,7 +207,7 @@ export const ListaUsuarios = () => {
 
 
                 {/* Modal de Modificar */}
-                <div className="modal fade " id="Modificar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+                <div className="modal fade " id="Modificar" data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1"
                     aria-labelledby="staticBackdropLabel2" aria-hidden="true">
                     <div className="modal-dialog modal-dialog-centered modal-dialog-scrollable ">
                         <div className="modal-content ">
@@ -220,7 +247,7 @@ export const ListaUsuarios = () => {
                 {/* Modal de Modificar */}
 
                 {/* Modal de Adicionar */}
-                <div className="modal fade" id="Adicionar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+                <div className="modal fade" id="Adicionar" data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1"
                     aria-labelledby="staticBackdropLabel1" aria-hidden="true" >
                     <div className="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                         <div className="modal-content">
@@ -249,7 +276,7 @@ export const ListaUsuarios = () => {
                                         </select>
                                         <br />
                                         <div className="col text-center">
-                                        <label for="">Seleccione una foto de perfil</label>
+                                        <label htmlFor="">Seleccione una foto de perfil</label>
                                             <input type="file" className="form-control-file form-add-user"  id="" accept="image/png, .jpeg, .jpg, image/gif" />
                                         </div>
                                     
@@ -269,7 +296,7 @@ export const ListaUsuarios = () => {
 
 
                 {/* Modal Eliminar */}
-                <div className="modal fade " id="Eliminar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+                <div className="modal fade " id="Eliminar" data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1"
                 aria-labelledby="staticBackdropLabel3" aria-hidden="true">
                 <div className="modal-dialog modal-dialog-centered modal-dialog-scrollable ">
                     <div className="modal-content ">

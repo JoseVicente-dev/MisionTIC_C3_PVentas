@@ -4,12 +4,14 @@ import { uuid } from 'uuidv4'
 import { BusquedaBd } from './BusquedaBd';
 import { consultarDocumentoWhere, guardarDatabase, actualizarDocumentoDatabase, eliminarDocumentoDatabase} from './../config/firebase';
 
+import { usuarioActivo } from './../config/firebase';
+import {useHistory } from 'react-router'
+
 export const ListaProductos = () => {
 
     const [listaProductos, setListaProductos] = useState([])
     const [counter, setCounter]=useState(0);
     
-
     const cargarProductos = async () =>{
        /*  const listaTemporal = await consultarDatabase('ng_productos') //trae info database */
         let terminoBusqueda = document.getElementById('busquedapor').value
@@ -20,8 +22,15 @@ export const ListaProductos = () => {
         setListaProductos(listaTemporal)
     }
 
+    const history = useHistory()
+
+    const sinAcceso = ()=>{
+        alert('por favor loguear')
+        history.push('/')
+    }
+
     useEffect(() => {
-        cargarProductos()
+        usuarioActivo == undefined  ?  sinAcceso() : cargarProductos()
     },[counter])
 
     

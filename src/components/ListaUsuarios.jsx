@@ -2,8 +2,6 @@ import React,{ useEffect, useState} from 'react'
 import {actualizarDocumentoDatabase, consultarDatabase, consultarDocumentoDatabase, guardarDatabase } from '../config/firebase';
 import {BusquedaBd } from './BusquedaBd';
 import { eliminarDocumentoDatabase, consultarDocumentoWhere } from './../config/firebase';
-import { useParams } from 'react-router';
-import { uuid } from 'uuidv4';
 
 
 
@@ -51,7 +49,7 @@ export const ListaUsuarios = () => {
                 document.getElementById("MinputEmail").value = filas[i].cells[3].innerText
                 document.getElementById("MinputRol").value = filas[i].cells[4].innerText
                 document.getElementById("MinputEstado").value = filas[i].cells[5].innerText
-                idSeleccionado=filas[i].cells[6].innerText//esta linea trae el idDocuemtno
+                idSeleccionado=filas[i].cells[6].innerText//esta linea trae el idDocuemtno oculta
             }
         }
 
@@ -298,25 +296,25 @@ export const ListaUsuarios = () => {
                 {/* Modal Eliminar */}
                 <div className="modal fade " id="Eliminar" data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1"
                 aria-labelledby="staticBackdropLabel3" aria-hidden="true">
-                <div className="modal-dialog modal-dialog-centered modal-dialog-scrollable ">
-                    <div className="modal-content ">
-                        <div className="modal-header" style={{backgroundColor: "#26327e"}}>
-                            <h5 className="modal-title" id="staticBackdropLabel3" style={{color: "white"}}>Alerta Eliminar Usuario</h5>
-                            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"
-                                style={{backgroundColor: "#7a87bb"}}></button>
-                        </div>
-                        <div className="modal-body">
+                    <div className="modal-dialog modal-dialog-centered modal-dialog-scrollable ">
+                        <div className="modal-content ">
+                            <div className="modal-header" style={{backgroundColor: "#26327e"}}>
+                                <h5 className="modal-title" id="staticBackdropLabel3" style={{color: "white"}}>Alerta Eliminar Usuario</h5>
+                                <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                                    style={{backgroundColor: "#7a87bb"}}></button>
+                            </div>
                             <div className="modal-body">
-                            <p>Está seguro de Eliminar el usuario seleccionado, recuerde que esta acción no se puede devolver</p>
-                        </div>
-                        </div>
-                        <div className="modal-footer">
-                            <button type="button" className="btn btn-primary"  data-bs-dismiss="modal"
-                                style={{backgroundColor: "#26327e"}} id="btnEliminarUsuarios" onClick={handleClickEliminar}>Eliminar</button>
-                            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                <div className="modal-body">
+                                <p>Está seguro de Eliminar el usuario seleccionado, recuerde que esta acción no se puede devolver</p>
+                            </div>
+                            </div>
+                            <div className="modal-footer">
+                                <button type="button" className="btn btn-primary"  data-bs-dismiss="modal"
+                                    style={{backgroundColor: "#26327e"}} id="btnEliminarUsuarios" onClick={handleClickEliminar}>Eliminar</button>
+                                <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                            </div>
                         </div>
                     </div>
-                </div>
                 </div>
                 {/* Modal Eliminar */}      
 

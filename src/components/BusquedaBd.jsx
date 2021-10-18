@@ -1,15 +1,11 @@
 import React, { useEffect, useState} from 'react'
-import { consultarDocumentoWhere } from './../config/firebase';
-
-
-
-
+/* import { consultarDocumentoWhere } from './../config/firebase'; */
 
 export const BusquedaBd = ({estado}) => {
 
     const ventana = estado
     let opciones=[]
-    let usuarios
+    /* let usuarios */
 
     /* console.log(useParams()); */
 
@@ -26,10 +22,10 @@ export const BusquedaBd = ({estado}) => {
             break;
         case '2'://productos
              opciones=[
-                {opcion: "id", value: "Id"},
+                /* {opcion: "id", value: "Id"}, */
                 {opcion: "descripcion", value: "Descripción"},
                 {opcion: "peso", value: "Peso"},
-                {opcion: "valor", value: "Valor Unit"},
+                {opcion: "valorUnitario", value: "Valor Unit"},
                 {opcion: "estado", value: "Estado"},
             ]
             break;
@@ -49,8 +45,6 @@ export const BusquedaBd = ({estado}) => {
 
     /* const handleClickBusqueda = async  () => {
         //console.log("Pueba de boton")
-
-        
         
         let terminoBusqueda = document.getElementById('busquedapor').value
         let busqueda = document.getElementById("busqueda").value;
@@ -83,7 +77,7 @@ export const BusquedaBd = ({estado}) => {
 
                         {
                             opciones.map((opcion)=>
-                                <option key= { opcion.opcion} value={opcion.opcion}>{opcion.value}</option>
+                                <option key= {opcion.opcion} value={opcion.opcion}>{opcion.value}</option>
                             )
                         }
 

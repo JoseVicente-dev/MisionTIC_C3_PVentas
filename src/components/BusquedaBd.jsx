@@ -42,7 +42,7 @@ export const BusquedaBd = ({estado}) => {
             break;
     }
 
-
+    //esta funcion reemplace los botones del componente principal
     /* const handleClickBusqueda = async  () => {
         //console.log("Pueba de boton")
         

@@ -92,7 +92,7 @@ export const ListaVentas = () => {
                                                 <td>{venta.vendedor}</td>
                                                 <td>{venta.estadoPago}</td>
                                                 <td>{venta.fechaPago}</td>
-                                            </tr> 
+                                            </tr>
                                         ))
                                     }
                                 </tbody>

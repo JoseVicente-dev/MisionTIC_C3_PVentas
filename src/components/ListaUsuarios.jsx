@@ -4,7 +4,6 @@ import {BusquedaBd } from './BusquedaBd';
 import { eliminarDocumentoDatabase, consultarDocumentoWhere } from './../config/firebase';
 
 
-
 export const ListaUsuarios = () => {
 
     const [listaUsuarios, setListaUsuarios] = useState([])
@@ -177,7 +176,7 @@ export const ListaUsuarios = () => {
                                                 <td>{usuario.rol}</td>
                                                 <td>{usuario.estado}</td>
                                                 <td hidden>{usuario.idDocumento}</td> {/* idDocumento Oculto en la tabla */}
-                                            </tr> 
+                                            </tr>
                                         ))
                                     }
                                 </tbody>
@@ -188,7 +187,6 @@ export const ListaUsuarios = () => {
 
                     
                     <div className="container text-center">
-                        {/* <button className="btn btn-primary fomr-mod-user" id="cargarDatos"  >Actualizar</button> */}
 
                         <button className="btn btn-primary fomr-mod-user " 
                         data-bs-toggle="modal" data-bs-target="#Adicionar" id="modaladicionar">Adicionar</button>

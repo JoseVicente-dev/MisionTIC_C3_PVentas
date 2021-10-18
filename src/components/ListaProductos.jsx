@@ -73,14 +73,12 @@ export const ListaProductos = () => {
 
     const handleClickModificarBd = async  () => {
         
-        
         const mCodigoInput = document.getElementById("modifyCodigo").value
         const mDescripcionInput = document.getElementById("modifyDescripcion").value.replace(/^\w/, (c) => c.toUpperCase());
         const mPesoInput = document.getElementById("modifyPeso").value;
         const mValorUnitarioInput = document.getElementById("modifyValorUnitario").value;
         const mestadoInput = document.getElementById("modifyEstado").value;
         
-
        const producto = {
             descripcion: mDescripcionInput,
             peso: mPesoInput,
@@ -154,7 +152,6 @@ export const ListaProductos = () => {
                                     listaProductos.map((producto, index)=>(
                                         <tr key={producto.codigo}>
                                             <td>
-                                            
                                                 <div className="form-check"> 
                                                     <input 
                                                         className="form-check-input" 
@@ -162,7 +159,6 @@ export const ListaProductos = () => {
                                                         name="flexRadioDefault"
                                                         id="seleccionProducto"/> 
                                                 </div>
-                                            
                                             </td>
                                             <td scope="row">{index+1}</td>
                                             <td>{producto.descripcion}</td>
@@ -170,7 +166,7 @@ export const ListaProductos = () => {
                                             <td>{producto.valorUnitario}</td>
                                             <td>{producto.estado}</td>
                                             <td hidden>{producto.idDocumento}</td> {/* idDocumento Oculto en la tabla */}
-                                        </tr> 
+                                        </tr>
                                         ))
                                     }
                                 </tbody>
@@ -193,7 +189,7 @@ export const ListaProductos = () => {
 
 
                     {/* <!-- Modal Adicionar Datos --> */}
-                    <div className="modal fade" id="Adicionar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+                    <div className="modal fade" id="Adicionar" data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1"
                         aria-labelledby="staticBackdropLabel1" aria-hidden="true">
                         <div className="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                             <div className="modal-content">
@@ -240,7 +236,7 @@ export const ListaProductos = () => {
                     
 
                     {/* <!-- Modal Modificar Datos --> */}
-                    <div className="modal fade " id="Modificar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+                    <div className="modal fade " id="Modificar" data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1"
                         aria-labelledby="staticBackdropLabel2" aria-hidden="true">
                         <div className="modal-dialog modal-dialog-centered modal-dialog-scrollable ">
                             <div className="modal-content ">
@@ -291,7 +287,7 @@ export const ListaProductos = () => {
 
 
                     {/* <!-- Modal Eliminar Datos --> */}
-                    <div className="modal fade " id="Buscar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+                    <div className="modal fade " id="Buscar" data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1"
                     aria-labelledby="staticBackdropLabel3" aria-hidden="true">
                         <div className="modal-dialog modal-dialog-centered modal-dialog-scrollable ">
                             <div className="modal-content ">

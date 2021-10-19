@@ -1,0 +1,115 @@
+html{
+    height: 100%;
+}
+
+body{
+    font-family: 'Aldrich', sans-serif;
+    /* font-variant: small-caps; */
+}
+
+.icono{
+color: red;
+size: 9x;
+}
+
+@media (min-width: 990px ) {
+    .navbarNG{
+        min-height: 20vh;
+    }
+    .menuNG-titulo{
+        font-size: 40px;
+    }   
+ }
+
+.color{
+    background-color: #060b73;
+    border-color: #060b73;
+}
+
+.bg-color{
+    background: rgb(6,11,115);
+    background: linear-gradient(180deg, rgba(6,11,115,1) 0%, rgba(6,11,115,0.5) 100%);
+}
+
+div.capa{
+    width: 100%;
+    height: 20vh;
+}
+
+.transparente{
+    background: transparent;
+    border: transparent;
+}
+
+.color-texto{
+    color: white;
+}
+
+.fuente_Mercurio{
+    font-family: Aldrich, sans-serif ;
+    
+}
+header{
+    width: 90%;
+    /* max-width: 1000px; */
+    margin: 0 auto;
+}
+
+.main{
+    width: 90%;
+    padding: 20px;
+    margin: 0 auto;
+}
+
+footer{
+    background-color: rgba(238, 230, 230, 0.58);
+    width: 100%;
+    margin: auto;
+    display: block;
+    position: fixed;
+    bottom: 0px;
+/*     height: 80px;
+ */}
+
+
+.form-add-user{
+    margin: 10px;
+    max-width: 90%; 
+    border-color: #7a87bb; 
+    margin-left: 22px;
+    background-color: #d8e5fe; 
+    text-align: center;
+}
+
+.fomr-mod-user{
+    background-color: #26327e;
+    margin-bottom: 60px;
+}
+
+
+.abs-center{
+  /* display: flex;
+  align-items: center;
+  justify-content: center; */
+  /* min-height: 100vh; */
+  margin-top: 18vh;
+  background-color: rgba(238, 230, 230, 0.5);
+  border-radius: 10px;
+}
+
+.paddingcentro{
+    padding: 40px 0 40px 0px;
+}
+
+.headerNg{
+    background-color: #26327e; 
+    color: white; 
+    text-align: center;
+}
+
+.abs-center-table{
+   /*  margin-top: 10vh; */
+    background-color: rgba(238, 230, 230, 0.9);
+    border-radius: 10px;
+    /* margin-left: 10vw; */
+  }

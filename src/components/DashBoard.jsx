@@ -20,7 +20,7 @@ const DashBoard = () => {
 
     useEffect(() => {
         usuarioActivo == undefined  ?  sinAcceso() : seriesProductos() && seriesVendedores() && seriesVendedorVenta()
-    })
+    },[])
 
 
     //--------------------------------------------------------------------------------------------

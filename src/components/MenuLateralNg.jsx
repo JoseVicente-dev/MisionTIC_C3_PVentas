@@ -15,6 +15,7 @@ import { FooterComponent } from './FooterComponent';
 import { LoginComponent } from './LoginComponent';
 import { logOutUsuario} from '../config/firebase';
 import { usuarioActivo, usuarioActivoPhoto, usuarioActivoRol} from './../config/firebase';                                       
+import DashBoard from './DashBoard';
 
 export const MenuLateralNg = ({usuario, tipo, foto}) => {
 
@@ -61,6 +62,7 @@ export const MenuLateralNg = ({usuario, tipo, foto}) => {
                 <Route path="/ventas" component={AdminVentas}/>         
                 <Route path="/usuarios" component={AdminUsuarios}/>
                 <Route path="/productos" component={AdminProductos}/>
+                <Route path="/dashboard" component={DashBoard}/>
             </Switch>
         
 

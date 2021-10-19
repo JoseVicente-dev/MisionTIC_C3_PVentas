@@ -34,9 +34,7 @@ export const LoginComponent = () => {
             }else{
                 alert("Ud. no está creado en la base de datos, por favor solicite la creación de usuario")
             }
-            
-            
-        }{'no logueado'}
+        }{console.log('no logueado')}
 
     }
     

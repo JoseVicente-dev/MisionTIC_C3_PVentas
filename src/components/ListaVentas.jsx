@@ -102,6 +102,21 @@ export const ListaVentas = () => {
                     
                     </section>
 
+
+                    {/* Botones */}
+                    <div className="container text-center" >
+                        <button className="btn btn-primary bg-color-azul" id="btnAdicionarPrincipal" data-bs-toggle="modal"
+                        data-bs-target="#NuevaVenta">Adicionar</button>
+
+                        <button className="btn btn-primary bg-color-azul me-3 ms-3" id="btnModificarPrincial" data-bs-toggle="modal"
+                        data-bs-target="#ModificarVenta">Modificar</button>
+
+                        <button className="btn btn-danger bg-color-azul " id="btnEliminarPrincipal" data-bs-toggle="modal"
+                        data-bs-target="#EliminarVenta">Eliminar</button>
+                        </div>
+                    {/* Botones */}
+
+
                 </div>
           
         </>

@@ -32,7 +32,7 @@ export const MenuLateralNg = ({usuario, tipo, foto}) => {
             usuario="Usuario sin LogIn"
             foto= fotoUsuario
             tipo = "Sin Validar"
-            document.getElementById('menuNg').classList.remove('toggled')
+            // document.getElementById('menuNg').classList.remove('toggled')
         }, 1000); 
     }
     return (

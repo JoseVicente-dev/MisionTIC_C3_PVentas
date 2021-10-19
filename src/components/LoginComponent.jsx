@@ -5,7 +5,7 @@ import {useHistory } from 'react-router'
 
 import logoMercurio from '../images/logo_mercurio.png'
 import logoGmail from '../images/gmail.png'
-import { datosUsuario, logInUsuarioPopup } from '../config/firebase';
+import { consultarDocumentoWhere, datosUsuario, logInUsuarioPopup } from '../config/firebase';
 
 
 export const LoginComponent = () => {
@@ -19,9 +19,23 @@ export const LoginComponent = () => {
         const usuario= await logInUsuarioPopup()
 
         if(usuario != ''){
-            setTimeout(datosUsuario,1000)
-            history.push({ pathname: '/ventas'})
-            document.getElementById('menuNg').classList.remove('toggled')
+            //setTimeout(datosUsuario,1000)
+            //validar si el usuario existe en la bd
+            const respuesta = await consultarDocumentoWhere('ng_users', 'email', usuario)
+            let userRol = '', userEmail = ''
+            respuesta.forEach((user)=>{
+                userEmail = user.email
+                userRol= user.rol
+            })
+            //console.log(userEmail, userRol);
+            if(userEmail==usuario){
+                history.push({ pathname: '/ventas'})
+                document.getElementById('menuNg').classList.remove('toggled')
+            }else{
+                alert("Ud. no está creado en la base de datos, por favor solicite la creación de usuario")
+            }
+            
+            
         }{'no logueado'}
 
     }

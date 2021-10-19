@@ -216,7 +216,7 @@ const firebaseConfig = {
             /* console.log(user.id);
             console.log(user.email); */
 
-            /* return(user.id) */
+            return(user.email)
         }
         catch(e){
             throw new Error(e)

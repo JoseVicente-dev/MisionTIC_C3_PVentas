@@ -3,10 +3,8 @@ import { HeaderNg } from './HeaderNg';
 import { useHistory } from 'react-router';
 import { consultarDocumentoWhere, usuarioActivo } from './../config/firebase';
 
-
 import Highcharts from 'highcharts'
 import HighchartsReact from 'highcharts-react-official'
-
 
 const DashBoard = () => {
 
@@ -49,6 +47,7 @@ const DashBoard = () => {
 
 
     const arrayVendedorVenta = []
+    
     const seriesVendedorVenta = async ()=>{
         const listaTemporal = await consultarDocumentoWhere('ng_ventas','articulo', '')
         
@@ -137,8 +136,10 @@ const DashBoard = () => {
             }
           }
           const venta = {
-            vendedor, 
-            valor, 
+            /* name: vendedor, 
+            y: valor,  */
+            vendedor,
+            valor
           }
           ventasVendedor.push(venta)
         }
@@ -153,8 +154,9 @@ const DashBoard = () => {
          });
          console.log("ventas x Vendedor: ", ventasVendedor)
     }
-    //--------------------------------------------------------------------------------------------
 
+    //--------------------------------------------------------------------------------------------
+    
     const options = {
         chart: {
             type: 'line'
@@ -231,7 +233,7 @@ const DashBoard = () => {
               }
             }
           },
-          series: [{
+          series:  [{
             name: 'Productos',
             colorByPoint: true,
             data: [{
@@ -262,7 +264,7 @@ const DashBoard = () => {
               name: 'Other',
               y: 2.61
             }]
-          }]
+          }] 
       }
 
       const options2={

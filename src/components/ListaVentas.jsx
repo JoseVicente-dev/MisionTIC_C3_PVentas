@@ -49,7 +49,42 @@ export const ListaVentas = () => {
 
         eliminarDocumentoDatabase ('ng_ventas', idSeleccionado)
         setTimeout(cargarVentas,100)
+    }  
+    //<ADICIONAR PRODUCTO>
+    const handleClickAdicionar = async  () => {
+        console.log("prueba adicionar");
+        
+        const articuloVentas = document.getElementById('ArticuloNuevo');
+    const artiVentas = articuloVentas.options[articuloVentas.selectedIndex].text
+    const clienteVentas = document.getElementById('ClienteNuevo').value;
+    const ValorVentas = document.getElementById('ValorTotal').value;
+    const CantidadVentas = document.getElementById('CantidadNueva').value;
+    const fechasVenta = document.getElementById('FechaVentaNuevo').value;
+    const FechaPagoVentas = document.getElementById('FechaPagoNuevo').value;
+    const vendedor = document.getElementById('VendedorNuevo');
+    const vendeVenta = vendedor.options[vendedor.selectedIndex].text
+    const estadoPago = document.getElementById('EstadoNuevo').value;
+
+
+    const ventaAgregar = {
+        id: uuid.v4(),
+        articulo: artiVentas.replace(/^\w/, (c) => c.toUpperCase()),
+        cliente: clienteVentas.replace(/^\w/, (c) => c.toUpperCase()),
+        valor: ValorVentas,
+        fechaVenta: fechasVenta,
+        fechaPago: FechaPagoVentas,
+        vendedor: vendeVenta.replace(/^\w/, (c) => c.toUpperCase()),
+        estadoPago: estadoPago,
+        cantidad:CantidadVentas
     }
+
+        guardarDatabase('ng_ventas', ventaAgregar)
+        setTimeout(cargarVentas,100)
+
+    }
+    //</ADICIONAR PRODUCTO>
+
+    
 
     
     return (
@@ -200,7 +235,7 @@ export const ListaVentas = () => {
                                 </div>
                                 <div className="modal-footer">
                                     <button type="button" className="btn btn-primary bg-color-azul" id="btn_AgregarVenta"
-                                        data-bs-dismiss="modal">Agregar</button>
+                                        data-bs-dismiss="modal" onclick={handleClickAdicionar}>Agregar</button>
                                     <button type="button" className="btn btn-secondary" id="btnCancelarModalNuevaVenta"
                                         data-bs-dismiss="modal">Cancelar</button>
                                 </div>

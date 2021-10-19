@@ -65,11 +65,11 @@ let idSeleccionado // idDocumento que esta oculto en la tabla para modificar pos
     const handleClickModificarBd = async  () => {
         //console.log("Prueba")
         
-        const mclienteInput = document.getElementById("MinputEmail").value.replace(/^\w/, (c) => c.toUpperCase());
-        const mcantidadInput = document.getElementById("MinputRol").value;
-        const mestadoInput = document.getElementById("MinputEstado").value;
-        const mfechaVentaInput = document.getElementById("MinputEstado").value;
-        const mfechaPagoInput = document.getElementById("MinputEstado").value;
+        const mclienteInput = document.getElementById("ClienteBusqueda").value.replace(/^\w/, (c) => c.toUpperCase());
+        const mcantidadInput = document.getElementById("CantidadM").value;
+        const mestadoInput = document.getElementById("EstadoBusqueda").value;
+        const mfechaVentaInput = document.getElementById("FechaVentaBusqueda").value;
+        const mfechaPagoInput = document.getElementById("FechaPagoBusqueda").value;
         
 
         const ventaModificada= {
@@ -77,7 +77,7 @@ let idSeleccionado // idDocumento que esta oculto en la tabla para modificar pos
             cantidad:mcantidadInput,
             fechaVenta:mfechaVentaInput,
             fechaPago:mfechaPagoInput,
-            estado:mestadoInput
+            estado:mestadoInput,
         }
 
         actualizarDocumentoDatabase('ng_ventas', idSeleccionado, ventaModificada)
@@ -296,7 +296,7 @@ let idSeleccionado // idDocumento que esta oculto en la tabla para modificar pos
                                 <div className="modal-footer">
                                     <button type="button" className="btn btn-primary bg-color-azul" id="btnModificarModalModificar"
                                         data-bs-toggle="modal" data-bs-target="#AlertaModificacionVenta"
-                                        data-bs-dismiss="modal"onClick={handleClickModificarBd}>Modificar</button>
+                                        data-bs-dismiss="modal" onClick={handleClickModificarBd}>Modificar</button>
                                     <button type="button" className="btn btn-secondary" id="btnCancelarModalModificar"
                                         data-bs-dismiss="modal">Cancelar</button>
                                 </div>

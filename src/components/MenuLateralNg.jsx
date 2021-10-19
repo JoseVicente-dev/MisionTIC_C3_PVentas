@@ -1,24 +1,13 @@
 import React, { useEffect, useState} from 'react'
-
 import '../css/menu.css';
-
 import logoMercurio from '../images/logo_mercurio.png'
 import fotoUsuario from '../images/user2.png'
 import logoNg from '../images/logo2.png'
-
 import {BrowserRouter as Router, Switch, Route, NavLink } from "react-router-dom";
-
-import { AdminVentas } from './AdminVentas';
-import { AdminUsuarios } from './AdminUsuarios';
-import { AdminProductos } from './AdminProductos';
-import { FooterComponent } from './FooterComponent';
-import { LoginComponent } from './LoginComponent';
 import { logOutUsuario} from '../config/firebase';
 import { usuarioActivo, usuarioActivoPhoto, usuarioActivoRol} from './../config/firebase';                                       
-import DashBoard from './DashBoard';
 
 export const MenuLateralNg = ({usuario, tipo, foto}) => {
-
     const [menu, setMenu]= useState("")
     usuario=usuarioActivo
     foto=usuarioActivoPhoto
@@ -33,39 +22,21 @@ export const MenuLateralNg = ({usuario, tipo, foto}) => {
             document.getElementById('menuNg').classList.add('toggled')
         }
       }
-
     useEffect(()=>{
         document.getElementById('menuNg').classList.remove('toggled') 
     },[])
 
- 
     const handleClickLogOut= () =>{
-
         logOutUsuario()
-
         setTimeout(() => {
             usuario="Usuario sin LogIn"
             foto= fotoUsuario
             tipo = "Sin Validar"
-            document.getElementById('menuNg').classList.remove('toggled')
+            // document.getElementById('menuNg').classList.remove('toggled')
         }, 1000); 
-        
     }
-
     return (
         <>
-
-        <Router>
-            <Switch>
-                <Route path="/" exact component={LoginComponent}/>
-               {/*  <Route path="/menu"><h2> Ruta Menú</h2></Route> */}
-                <Route path="/ventas" component={AdminVentas}/>         
-                <Route path="/usuarios" component={AdminUsuarios}/>
-                <Route path="/productos" component={AdminProductos}/>
-                <Route path="/dashboard" component={DashBoard}/>
-            </Switch>
-        
-
             {/* <!-- menu-lateral Menú lateral--> */}
             <div className="page-wrapper mercurio-theme toggled " id="menuNg">
                 <button 
@@ -86,7 +57,6 @@ export const MenuLateralNg = ({usuario, tipo, foto}) => {
                                 <div id="close-menu-lateral">
                                     <a onClick={handleClickMenu}><i className="fas fa-times color-blanco"></i></a>
                                 </div>
-                            
                         </div>
                         {/* <!-- /encabezado menu --> */}
                         {/* <!-- Sección de usuario --> */}
@@ -149,16 +119,12 @@ export const MenuLateralNg = ({usuario, tipo, foto}) => {
                                 <i className="fa fa-power-off"></i>
                             </a>
                         </NavLink>
-                        
                     </div>
                     {/* <!-- /Footer menu --> */}
                 </nav>
-
-
             </div>
-        </Router>
-
-        <FooterComponent/>
+        
+   
 
         </>
     )

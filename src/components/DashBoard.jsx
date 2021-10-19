@@ -2,6 +2,8 @@ import React,{ useEffect} from 'react'
 import { HeaderNg } from './HeaderNg';
 import { useHistory } from 'react-router';
 import { consultarDocumentoWhere, usuarioActivo } from './../config/firebase';
+import { MenuLateralNg } from '../components/MenuLateralNg';
+import fotoUsuario from './../images/user2.png'
 
 import Highcharts from 'highcharts'
 import HighchartsReact from 'highcharts-react-official'
@@ -336,6 +338,7 @@ const DashBoard = () => {
     return (
         <>
            <HeaderNg titulo='Dashboard'/> 
+           <MenuLateralNg usuario='nombre de Usuario' tipo='Administrador_Prueba' foto={fotoUsuario}/>
            
            <div className="container">
                <div className="row">

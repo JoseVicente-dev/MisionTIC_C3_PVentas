@@ -35,7 +35,7 @@ export const ListaVentas = () => {
 
     return (
         <>
-            <Router>
+          
                 <div className="container text-center">
 
                     
@@ -109,7 +109,7 @@ export const ListaVentas = () => {
                     </section>
 
                 </div>
-            </Router>
+          
         </>
     )
 }

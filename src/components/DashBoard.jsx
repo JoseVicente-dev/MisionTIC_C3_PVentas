@@ -19,8 +19,7 @@ const DashBoard = () => {
     }
 
     useEffect(() => {
-        usuarioActivo == undefined  ?  sinAcceso() : seriesProductos()
-
+        usuarioActivo == undefined  ?  sinAcceso() : seriesProductos() && seriesVendedores() && seriesVendedorVenta()
     })
 
 
@@ -31,15 +30,128 @@ const DashBoard = () => {
     const seriesProductos = async ()=>{
         const listaTemporal = await consultarDocumentoWhere('ng_productos','descripcion', '')
         /* console.log(listaTemporal); */
-         
+        listaTemporal.forEach((producto)=>{
+            arrayProductos.push(producto.descripcion)
+        })
+        console.log ("Productos: ",arrayProductos) //Lista de prodcutos en consola.
+    }
+
+
+    const arrayVendedores = []
+    const seriesVendedores = async ()=>{
+        const listaTemporal = await consultarDocumentoWhere('ng_users','rol', '')//filtrar Vendedor
+        /* console.log(listaTemporal); */
+        listaTemporal.forEach((vendedor)=>{
+            arrayVendedores.push(vendedor.nombres)
+        })
+        console.log ("Vendedores: ",arrayVendedores) //Lista de vendedores en consola.
+    }
+
+
+    const arrayVendedorVenta = []
+    const seriesVendedorVenta = async ()=>{
+        const listaTemporal = await consultarDocumentoWhere('ng_ventas','articulo', '')
         
-        setTimeout(() => {
-            listaTemporal.forEach((producto)=>{
-                /* console.log(producto.descripcion); */
-                arrayProductos.push(producto.descripcion)
-            })
-            console.log (arrayProductos) //Lista de prodcutos en consola.
-        }, 2000);
+        /* console.log(listaTemporal); */
+        let k=0
+        listaTemporal.forEach((vendedorVenta)=>{
+            
+            const venta = {
+              vendedor:vendedorVenta.vendedor, 
+              articulo:vendedorVenta.articulo,
+              cantidad: vendedorVenta.cantidad, 
+              valor: vendedorVenta.valor
+            }
+            k=k+1
+            arrayVendedorVenta.push(venta)
+        })
+        //console.log (arrayVendedorVenta) //Lista de prodcutos en consola.
+
+        //sumatoria cantidades y valor por vendedor x articulo
+        let arrayVendedorVentaDetalle = []
+        for(let i=0; i<=k-1; i++){
+          let vendedor = arrayVendedorVenta[i].vendedor
+          let cantidad=0
+          let valor=0
+          let articulo=arrayVendedorVenta[i].articulo
+          for(let j=0; j<=k-1;j++){
+            if(arrayVendedorVenta[j].vendedor==vendedor && arrayVendedorVenta[j].articulo==articulo){
+              /* articulo=arrayVendedorVenta[j].articulo */
+              cantidad+=parseInt(arrayVendedorVenta[j].cantidad)
+              valor+=parseInt(arrayVendedorVenta[j].valor)
+            }
+          }
+          const venta = {
+            vendedor, 
+            articulo,
+            cantidad,
+            valor, 
+            vendedorArticulo:vendedor+articulo
+          }
+          arrayVendedorVentaDetalle.push(venta)
+        }
+        //console.log(arrayVendedorVentaDetalle)
+
+        //eliminar ducplicados
+        var hash = {};
+        arrayVendedorVentaDetalle = arrayVendedorVentaDetalle.filter(function(current) {
+          var exists = !hash[current.vendedorArticulo];
+          hash[current.vendedorArticulo] = true
+          return exists
+        });
+        //console.log(arrayVendedorVentaDetalle)
+
+        //vendedor y cantidad
+        const vendedorProductoCantidad=[]
+        arrayVendedorVentaDetalle.forEach((cantidad)=>{
+          const venta = {
+            vendedor: cantidad.vendedor, 
+            articulo: cantidad.articulo,
+            cantidad: cantidad.cantidad, 
+          }
+          vendedorProductoCantidad.push(venta)
+        })
+        console.log("Productos vendidos x vendedor x cantidad: ",vendedorProductoCantidad);
+
+        //vendededor y valor
+        const vendedorProductoValor=[]
+        arrayVendedorVentaDetalle.forEach((valor)=>{
+          const venta = {
+            vendedor: valor.vendedor, 
+            articulo: valor.articulo,
+            valor: valor.valor, 
+          }
+          vendedorProductoValor.push(venta)
+        })
+        console.log("Productos vendidos x vendedor x valor: ", vendedorProductoValor);
+
+
+        //ventas x vendedor
+        let ventasVendedor = []
+        for(let i=0; i<=k-1; i++){
+          let vendedor = arrayVendedorVenta[i].vendedor
+          let valor=0
+          for(let j=0; j<=k-1;j++){
+            if(arrayVendedorVenta[j].vendedor==vendedor){
+              valor+=parseInt(arrayVendedorVenta[j].valor)
+            }
+          }
+          const venta = {
+            vendedor, 
+            valor, 
+          }
+          ventasVendedor.push(venta)
+        }
+        //console.log("ventas x Vendedor: ", ventasVendedor)
+
+        //eliminar ducplicados
+         var hash = {};
+         ventasVendedor = ventasVendedor.filter(function(current) {
+           var exists = !hash[current.vendedor];
+           hash[current.vendedor] = true
+           return exists
+         });
+         console.log("ventas x Vendedor: ", ventasVendedor)
     }
     //--------------------------------------------------------------------------------------------
 

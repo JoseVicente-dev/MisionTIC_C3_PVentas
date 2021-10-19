@@ -62,6 +62,25 @@ let idSeleccionado // idDocumento que esta oculto en la tabla para modificar pos
 
     }
 
+    // const handleClickModificarBd = async  () => {
+    //     //console.log("Prueba")
+        
+    //     const memailInput = document.getElementById("MinputEmail").value;
+    //     const mrolInput = document.getElementById("MinputRol").value;
+    //     const mestadoInput = document.getElementById("MinputEstado").value;
+
+    //     const ventaModificada= {
+    //         email:memailInput,
+    //         rol:mrolInput,
+    //         estado:mestadoInput
+    //     }
+
+    //     actualizarDocumentoDatabase('ng_ventas', idSeleccionado, ventaModificada)
+    //     setTimeout(cargarUsuarios,100)
+        
+        
+    // }
+
     const handleClickEliminar =async () =>{
         //console.log("Prueba");
         let tablaVentas = document.getElementById("tabla_ventas");
@@ -133,7 +152,7 @@ let idSeleccionado // idDocumento que esta oculto en la tabla para modificar pos
                                                 <td>{venta.articulo}</td>
                                                 <td>{venta.cantidad}</td>
                                                 <td>{venta.valor}</td>
-                                                <td></td>
+                                                <td>{venta.valor}</td>
                                                 <td>{venta.fechaVenta}</td>
                                                 <td>{venta.vendedor}</td>
                                                 <td>{venta.estadoPago}</td>

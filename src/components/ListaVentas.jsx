@@ -116,6 +116,168 @@ export const ListaVentas = () => {
                         </div>
                     {/* Botones */}
 
+                    
+                    {/* <!--  Modal Nueva Venta --> */}
+                    <div className="modal fade" id="NuevaVenta" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+                        aria-labelledby="staticBackdropLabel1" aria-hidden="true">
+                        <div className="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                            <div className="modal-content">
+                                <div className="modal-header bg-color-azul">
+                                    <h5 className="modal-title color-h5" id="staticBackdropLabel1">Nueva venta</h5>
+                                    <button type="button" className="btn-close bg-color-cerrarX" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div className="modal-body">
+                                    <div className="container">
+                                        <div className="col">  
+                                            <select className="form-select modal-input-select-undisabled" id="ArticuloNuevo" >
+                                                <option hidden selected>Articulo</option>
+                                            </select>
+
+                                            <input type="text" className="form-control modal-input-select-undisabled" id="ClienteNuevo"
+                                                placeholder="Cliente" />
+                                            <input type="text" className="form-control modal-input-select-undisabled" id="ValorNuevo"
+                                                placeholder="Valor unitario" disabled />
+                                            
+                                            <label style={{marginLeft: "20px"}} id="cantDisp">Cantidad disponible en Kg: </label>    
+
+                                            <input type="number" className="form-control modal-input-select-undisabled" id="CantidadNueva"
+                                            placeholder="cantidad en Kg" />
+
+                                            <input type="text" className="form-control modal-input-select-undisabled" id="ValorTotal"
+                                            placeholder="Valor total" disabled />
+
+                                            <select className="form-select modal-input-select-undisabled" id="VendedorNuevo" >
+                                            </select>
+
+                                            <select className="form-select modal-input-select-undisabled" id="EstadoNuevo" >
+                                                <option value="Cancelada">Cancelada</option>
+                                                <option value="Pendiente">Pendiente</option>
+                                            </select>
+
+                                            <div className="col">
+                                            </div>
+
+                                            <div className="row" style={{margin: "10px 20px 10px 5px"}}>
+                                                <div className='input-group date col-sm' id='startDate' >
+                                                    <span className="input-group-addon input-group-text"><span className="fa fa-calendar"></span>
+                                                    </span>
+                                                    <input type='text' className="form-control modal-input-select-undisabled-fecha" name="startDate" id="FechaVentaNuevo"
+                                                        placeholder="Fecha Venta" 
+                                                        />
+                                                </div>
+                                                <div className='input-group date col-sm' id='pagoDate' >
+                                                    <span className="input-group-addon input-group-text"><span className="fa fa-calendar"></span>
+                                                    </span>
+                                                    <input type='text' className="form-control modal-input-select-undisabled-fecha" name="startDate" id="FechaPagoNuevo"
+                                                        placeholder="Fecha Pago" 
+                                                        />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="modal-footer">
+                                    <button type="button" className="btn btn-primary bg-color-azul" id="btn_AgregarVenta"
+                                        data-bs-dismiss="modal">Agregar</button>
+                                    <button type="button" className="btn btn-secondary" id="btnCancelarModalNuevaVenta"
+                                        data-bs-dismiss="modal">Cancelar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {/* <!--  /Modal Nueva Venta --> */}
+
+
+
+                   {/*  <!--  Modal Modificar Venta --> */}
+                    <div className="modal fade" id="ModificarVenta" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+                        aria-labelledby="staticBackdropLabel1" aria-hidden="true">
+                        <div className="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                            <div className="modal-content">
+                                <div className="modal-header bg-color-azul">
+                                    <h5 className="modal-title color-h5" id="NewVenta">Venta Seleccionada</h5>
+                                    <button type="button" className="btn-close bg-color-cerrarX" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div className="modal-body">
+                                    <div className="container">
+
+                                        <input type="text" className="form-control modal-input-select-undisabled" id="IdBusqueda"
+                                            placeholder="Id Venta" disabled></input>
+
+                                        <input type="text" className="form-control modal-input-select-undisabled" id="ArticuloBusqueda"
+                                            placeholder="Articulo" disabled ></input>
+                                        <input type="text" className="form-control modal-input-select-undisabled" id="ClienteBusqueda"
+                                            placeholder="Cliente" pattern="[A-Za-z]{3}"></input>
+                                        <input type="number" className="form-control modal-input-select-undisabled" id="ValorBusqueda"
+                                            placeholder="Valor unitario" disabled></input>
+                                        <input type="text" className="form-control modal-input-select-undisabled" id="CantidadM"
+                                        placeholder="Cantidad" ></input>                            
+                                        <input type="text" className="form-control modal-input-select-undisabled" id="ValorTotalM"
+                                        placeholder="Valor total" disabled></input>
+                                        <input type="text" className="form-control modal-input-select-undisabled" id="VendedorBusqueda"
+                                            placeholder="Vendedor" disabled></input>
+                                        <select className="form-select modal-input-select-undisabled" id="EstadoBusqueda">
+                                            <option value='1'>Cancelada</option>
+                                            <option value='2'>Pendiente</option>
+                                        </select>
+                                        <div className="row" style={{margin: "10px 20px 10px 5px"}}>
+                                            <div className='input-group date col-sm' id='startDate'>
+                                                <span className="input-group-addon input-group-text"><span className="fa fa-calendar"></span>
+                                                </span>
+                                                <input type='text' className="form-control modal-input-select-undisabled-fecha"
+                                                    name="startDate" id="FechaVentaBusqueda" placeholder="Fecha Venta" />
+                                            </div>
+                                            <div className='input-group date col-sm' id='pagoDate'>
+                                                <span className="input-group-addon input-group-text"><span className="fa fa-calendar"></span>
+                                                </span>
+                                                <input type='text' className="form-control modal-input-select-undisabled-fecha"
+                                                    name="startDate" id="FechaPagoBusqueda" placeholder="Fecha Pago" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="modal-footer">
+                                    <button type="button" className="btn btn-primary bg-color-azul" id="btnModificarModalModificar"
+                                        data-bs-toggle="modal" data-bs-target="#AlertaModificacionVenta"
+                                        data-bs-dismiss="modal">Modificar</button>
+                                    <button type="button" className="btn btn-secondary" id="btnCancelarModalModificar"
+                                        data-bs-dismiss="modal">Cancelar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {/* <!--  /Modal Modificar Venta --> */}
+
+                    {/* Modal Eliminar */}
+                    <div className="modal fade " id="EliminarVenta" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+                        aria-labelledby="staticBackdropLabel2" aria-hidden="true">
+                        <div className="modal-dialog modal-dialog-centered modal-dialog-scrollable ">
+                            <div className="modal-content ">
+                                <div className="modal-header" style={{backgroundColor: "#26327e"}}>
+                                    <h5 className="modal-title" id="staticBackdropLabel2" style={{color: "white"}}>Alerta Eliminar Producto
+                                    </h5>
+                                    <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                                        style={{backgroundColor: "#7a87bb"}}></button>
+                                </div>
+                                <div className="modal-body">
+                                    <div className="modal-body">
+                                        <p>Está seguro de Eliminar el Producto seleccionado, recuerde que esta acción no se puede
+                                            deshacer</p>
+                                    </div>
+                                </div>
+                                <div className="modal-footer">
+                                    <button type="button" className="btn btn-primary" data-bs-dismiss="modal"
+                                        style={{backgroundColor: "#26327e"}} id="btnEliminarModalEliminar">Eliminar</button>
+                                    <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {/* Modal Eliminar*/}
+
+
 
                 </div>
           

@@ -30,7 +30,6 @@ export const LoginComponent = () => {
             //console.log(userEmail, userRol);
             if(userEmail==usuario){
                 history.push({ pathname: '/ventas'})
-                document.getElementById('menuNg').classList.remove('toggled')
             }else{
                 alert("Ud. no está creado en la base de datos, por favor solicite la creación de usuario")
             }

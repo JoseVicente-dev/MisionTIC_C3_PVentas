@@ -1,7 +1,7 @@
 import React,{ useEffect, useState} from 'react'
 import { consultarDatabase, consultarDocumentoWhere} from '../config/firebase';
 import { BusquedaBd } from './BusquedaBd';
-import { usuarioActivo } from './../config/firebase';
+import { usuarioActivo, eliminarDocumentoDatabase } from './../config/firebase';
 import {useHistory } from 'react-router'
 
 
@@ -30,6 +30,26 @@ export const ListaVentas = () => {
     useEffect(() => {
         usuarioActivo == undefined  ?  sinAcceso() : cargarVentas() 
     },[counter])
+
+    let idSeleccionado // idDocumento que esta oculto en la tabla para modificar posteriormente
+
+    const handleClickEliminar =async () =>{
+        //console.log("Prueba");
+
+        let tablaVentas = document.getElementById("tabla_ventas");
+        let radios = tablaVentas.getElementsByTagName("input");
+        let filas = tablaVentas.getElementsByTagName("tr");
+        let totalFilas = radios.length;
+
+        for (let i = 0; i < totalFilas; i++) {
+            if (radios[i].checked) {
+                idSeleccionado=filas[i].cells[11].innerText//esta linea trae el idDocuemtno
+            }
+        }
+
+        eliminarDocumentoDatabase ('ng_ventas', idSeleccionado)
+        setTimeout(cargarVentas,100)
+    }
 
     
     return (
@@ -93,6 +113,7 @@ export const ListaVentas = () => {
                                                 <td>{venta.vendedor}</td>
                                                 <td>{venta.estadoPago}</td>
                                                 <td>{venta.fechaPago}</td>
+                                                <td hidden>{venta.idDocumento}</td> {/* idDocumento Oculto en la tabla */}
                                             </tr>
                                         ))
                                     }
@@ -269,7 +290,7 @@ export const ListaVentas = () => {
                                 </div>
                                 <div className="modal-footer">
                                     <button type="button" className="btn btn-primary" data-bs-dismiss="modal"
-                                        style={{backgroundColor: "#26327e"}} id="btnEliminarModalEliminar">Eliminar</button>
+                                        style={{backgroundColor: "#26327e"}} id="btnEliminarModalEliminar" onClick={handleClickEliminar}>Eliminar</button>
                                     <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                                 </div>
                             </div>

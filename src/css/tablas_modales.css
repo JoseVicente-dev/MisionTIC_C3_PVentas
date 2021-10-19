@@ -1,0 +1,58 @@
+.text-align-tabla{
+    text-align: center;
+}
+
+.bg-color-azul{
+    background-color: #26327e;
+}
+
+.bg-color-rojo{
+    background-color: #7e2626;
+}
+
+.bg-color-cerrarX{
+    background-color: #7a87bb;
+}
+
+.color-h5{
+    color:white;
+}
+
+.modal-input-select-undisabled{
+    margin: 10px; 
+    max-width: 90%; 
+    border-color: #7a87bb; 
+    margin-left: 15px;
+    background-color: #d8e5fe; 
+    text-align: center;
+}
+
+.modal-input-select-undisabled-fecha{
+    border-color: #7a87bb; 
+    background-color: #d8e5fe; 
+}
+
+.modal-input-select-disabled{
+    margin: 10px; 
+    max-width: 90%; 
+    border-color: #7a87bb; 
+    margin-left: 15px;
+    background-color: gainsboro; 
+    text-align: center;
+}
+
+.ocultar-elementos{
+    display:none
+}
+
+.tex-align{
+    text-align: end;
+}
+
+.text-center{
+    text-align: center;  
+}
+
+.toast_imagen{
+    height: 12px;
+}

@@ -1,7 +1,7 @@
 import React,{ useEffect, useState} from 'react'
 import { consultarDatabase, consultarDocumentoWhere} from '../config/firebase';
 import { BusquedaBd } from './BusquedaBd';
-import { usuarioActivo, eliminarDocumentoDatabase } from './../config/firebase';
+import { usuarioActivo, eliminarDocumentoDatabase, actualizarDocumentoDatabase } from './../config/firebase';
 import {useHistory } from 'react-router'
 
 export const ListaVentas = () => {
@@ -62,24 +62,29 @@ let idSeleccionado // idDocumento que esta oculto en la tabla para modificar pos
 
     }
 
-    // const handleClickModificarBd = async  () => {
-    //     //console.log("Prueba")
+    const handleClickModificarBd = async  () => {
+        //console.log("Prueba")
         
-    //     const memailInput = document.getElementById("MinputEmail").value;
-    //     const mrolInput = document.getElementById("MinputRol").value;
-    //     const mestadoInput = document.getElementById("MinputEstado").value;
+        const mclienteInput = document.getElementById("MinputEmail").value;
+        const mcantidadInput = document.getElementById("MinputRol").value;
+        const mestadoInput = document.getElementById("MinputEstado").value;
+        const mfechaVentaInput = document.getElementById("MinputEstado").value;
+        const mfechaPagoInput = document.getElementById("MinputEstado").value;
+        
 
-    //     const ventaModificada= {
-    //         email:memailInput,
-    //         rol:mrolInput,
-    //         estado:mestadoInput
-    //     }
+        const ventaModificada= {
+            cliente:mclienteInput,
+            cantidad:mcantidadInput,
+            fechaVenta:mfechaVentaInput,
+            fechaPago:mfechaPagoInput,
+            estado:mestadoInput
+        }
 
-    //     actualizarDocumentoDatabase('ng_ventas', idSeleccionado, ventaModificada)
-    //     setTimeout(cargarUsuarios,100)
+        actualizarDocumentoDatabase('ng_ventas', idSeleccionado, ventaModificada)
+        setTimeout(cargarVentas,100)
         
         
-    // }
+    }
 
     const handleClickEliminar =async () =>{
         //console.log("Prueba");

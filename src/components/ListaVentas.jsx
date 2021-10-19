@@ -1,44 +1,40 @@
 import React,{ useEffect, useState} from 'react'
-import { consultarDatabase} from '../config/firebase';
+import { consultarDatabase, consultarDocumentoWhere} from '../config/firebase';
 import { BusquedaBd } from './BusquedaBd';
-
-import { BrowserRouter as Router, Link } from "react-router-dom";
 import { usuarioActivo } from './../config/firebase';
-
 import {useHistory } from 'react-router'
 
 
 export const ListaVentas = () => {
     
     const [listaVentas, setListaVentas] = useState([])
+    const [counter, setCounter]=useState(0);
 
     /* console.log(usuarioActivo, "importado"); */
 
     const cargarVentas = async() =>{
-        const listaTemporal = await consultarDatabase('ng_ventas') //trae info database
+        //const listaTemporal = await consultarDatabase('ng_ventas') //trae info database
+        let terminoBusqueda = document.getElementById('busquedapor').value
+        let busqueda = document.getElementById("busqueda").value;
+        const listaTemporal = await consultarDocumentoWhere('ng_ventas',terminoBusqueda, busqueda)
+
         setListaVentas(listaTemporal)
     }
 
     const history = useHistory()
-
     const sinAcceso = ()=>{
         alert('Por favor realizar LogIn con Gmail')
         history.push('/')
     }
 
-
     useEffect(() => {
         usuarioActivo == undefined  ?  sinAcceso() : cargarVentas() 
-    },[])
+    },[counter])
 
     
-
     return (
         <>
-          
                 <div className="container text-center">
-
-                    
                     <div className="container">
                         <div className="row">
                             <div className="col-10">
@@ -48,7 +44,7 @@ export const ListaVentas = () => {
                                 <button type="button" 
                                     className="btn btn-primary" 
                                     id="buscarVenta"
-                                    /* onClick={() =>setCounter (counter +1) } */
+                                    onClick={() =>setCounter (counter +1) }
                                 >
                                     <i className="fas fa-search"></i>
                                 </button>

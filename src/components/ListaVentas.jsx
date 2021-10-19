@@ -75,7 +75,6 @@ export const ListaVentas = () => {
                                         listaVentas.map((venta, index)=>(
                                             <tr key={venta.id}>
                                                 <td>
-                                                {/* <Link to={`/ventas/${venta.idDocumento}`}> */}
                                                     <div className="form-check"> 
                                                         <input 
                                                             className="form-check-input" 
@@ -83,7 +82,6 @@ export const ListaVentas = () => {
                                                             name="flexRadioDefault"
                                                             id="seleccionVenta"/> 
                                                     </div>
-                                                {/* </Link> */}
                                                 </td>
                                                 <td scope="row">{index+1}</td>
                                                 <td>{venta.cliente}</td>

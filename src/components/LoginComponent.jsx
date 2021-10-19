@@ -22,7 +22,8 @@ export const LoginComponent = () => {
             setTimeout(datosUsuario,1000)
             history.push({ pathname: '/ventas'})
             document.getElementById('menuNg').classList.remove('toggled')
-        }{'no logueado'}
+        }
+        // {'no logueado'}
 
     }
     

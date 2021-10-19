@@ -2,19 +2,14 @@ import '../css/login.css';
 import '../css/style.css';
 
 import {useHistory } from 'react-router'
-
 import logoMercurio from '../images/logo_mercurio.png'
 import logoGmail from '../images/gmail.png'
 import { datosUsuario, logInUsuarioPopup } from '../config/firebase';
 
-
 export const LoginComponent = () => {
-
     const history = useHistory()
-
     const handleClickLogin= async  () => {
         /* console.log("Pueba de boton") */
-        
         //Realizar loginPopUPAUTH
         const usuario= await logInUsuarioPopup()
 
@@ -24,13 +19,10 @@ export const LoginComponent = () => {
             document.getElementById('menuNg').classList.remove('toggled')
         }
         // {'no logueado'}
-
     }
-    
     return (
         <>
             <div className="container abs-center" >
-
                 <div className="row rounded justify-content-med-center paddingcentro">
                     <div className="col">
                         <div className="row text-align-center align-items-center">
@@ -49,7 +41,6 @@ export const LoginComponent = () => {
                             <h6>Sistema de gestión de ventas</h6>
                         </div>
                         <br />
-
                         <div className="row">
                             <div className="col-9">
                                 <div className="mb-3">
@@ -67,16 +58,10 @@ export const LoginComponent = () => {
                                 alt="Logo Mercury"
                                 width="40px" height="40px" />
                             </div>
-
                         </div>
-
                     </div>
-
                 </div>
-
             </div>
-
         </>
     )
-
 }

@@ -25,7 +25,7 @@ export const ListaProductos = () => {
     const history = useHistory()
 
     const sinAcceso = ()=>{
-        alert('por favor loguear')
+        alert('Por favor realizar LogIn con Gmail')
         history.push('/')
     }
 

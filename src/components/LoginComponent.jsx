@@ -1,27 +1,31 @@
 import '../css/login.css';
 import '../css/style.css';
 
+import {useHistory } from 'react-router'
+
 import logoMercurio from '../images/logo_mercurio.png'
 import logoGmail from '../images/gmail.png'
+import { datosUsuario, logInUsuarioPopup } from '../config/firebase';
 
-import { FooterComponent } from './FooterComponent';
-import { crearUsuario, logInUsuario, logOutUsuario } from '../config/firebase';
 
 export const LoginComponent = () => {
 
+    const history = useHistory()
+
     const handleClickLogin= async  () => {
-        console.log("Pueba de boton")
+        /* console.log("Pueba de boton") */
         
+        //Realizar loginPopUPAUTH
+        const usuario= await logInUsuarioPopup()
 
-        //Crear Usuario en la autenticacion de firebase AUTH
-        //crearUsuario ('steven.tavera@gmail.com', '123456')
-        
-        //Realizar loginAUTH
-        const usuarioActivo = await logInUsuario ('steven.tavera@gmail.com', '123456')
-        console.log('Usuario Activo: ', usuarioActivo.email)
-        
-      }
+        if(usuario != ''){
+            setTimeout(datosUsuario,1000)
+            history.push({ pathname: '/ventas'})
+            document.getElementById('menuNg').classList.remove('toggled')
+        }{'no logueado'}
 
+    }
+    
     return (
         <>
             <div className="container abs-center" >
@@ -71,7 +75,6 @@ export const LoginComponent = () => {
 
             </div>
 
-            {/* <FooterComponent/> */}
         </>
     )
 

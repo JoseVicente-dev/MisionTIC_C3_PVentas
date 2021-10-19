@@ -1,29 +1,36 @@
 import React,{ useEffect, useState} from 'react'
-import { consultarDatabase } from '../config/firebase';
+import { consultarDatabase} from '../config/firebase';
 import { BusquedaBd } from './BusquedaBd';
 
+import { BrowserRouter as Router, Link } from "react-router-dom";
+import { usuarioActivo } from './../config/firebase';
 
-import {
-
-    BrowserRouter as Router,
-    Switch,
-    Route,
-    Link
-  } from "react-router-dom";
+import {useHistory } from 'react-router'
 
 
 export const ListaVentas = () => {
     
     const [listaVentas, setListaVentas] = useState([])
 
+    /* console.log(usuarioActivo, "importado"); */
+
     const cargarVentas = async() =>{
         const listaTemporal = await consultarDatabase('ng_ventas') //trae info database
         setListaVentas(listaTemporal)
     }
 
+    const history = useHistory()
+
+    const sinAcceso = ()=>{
+        alert('Por favor realizar LogIn con Gmail')
+        history.push('/')
+    }
+
+
     useEffect(() => {
-        cargarVentas()
+        usuarioActivo == undefined  ?  sinAcceso() : cargarVentas() 
     },[])
+
     
 
     return (

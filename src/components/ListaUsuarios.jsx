@@ -2,7 +2,9 @@ import React,{ useEffect, useState} from 'react'
 import {actualizarDocumentoDatabase, consultarDatabase, consultarDocumentoDatabase, guardarDatabase } from '../config/firebase';
 import {BusquedaBd } from './BusquedaBd';
 import { eliminarDocumentoDatabase, consultarDocumentoWhere } from './../config/firebase';
+import { usuarioActivo } from './../config/firebase';
 
+import {useHistory } from 'react-router'
 
 export const ListaUsuarios = () => {
 
@@ -21,10 +23,15 @@ export const ListaUsuarios = () => {
 
     }
 
+    const history = useHistory()
 
+    const sinAcceso = ()=>{
+        alert('Por favor realizar LogIn con Gmail')
+        history.push('/')
+    }
 
     useEffect( () => {
-        cargarUsuarios()
+        usuarioActivo == undefined  ?  sinAcceso() : cargarUsuarios()
     },[counter])
 
 

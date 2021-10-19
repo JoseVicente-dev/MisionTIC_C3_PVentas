@@ -1,7 +1,9 @@
 import {initializeApp} from 'firebase/app'
 import {getFirestore} from 'firebase/firestore'
-import {getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged, } from 'firebase/auth'
+import {getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged, signInWithPopup, GoogleAuthProvider} from 'firebase/auth'
 import {addDoc, collection, getDocs, query, getDoc, doc, updateDoc, deleteDoc, where} from 'firebase/firestore'//Métodos de interaccion BD
+
+import fotoUsuario from '../images/user2.png'
 
 
 const firebaseConfig = {
@@ -23,7 +25,9 @@ const firebaseConfig = {
   
 
   export let usuarioActivo
-
+  export let usuarioActivoEmail
+  export let usuarioActivoPhoto
+  export let usuarioActivoRol
 
   //CRUD => Create Read Update Delete
 
@@ -108,6 +112,24 @@ const firebaseConfig = {
     }
   }
 
+    //consultar por where
+    export const consultarTipoUsuario = async(email) =>{
+        try{
+    
+            const respuesta = await getDocs(query(collection(database, 'ng_users'), where('email', '==', email)))
+    
+            const coleccionDatos = respuesta.docs.map((documento)=>{
+                /* console.log(documento.data().rol) */
+                usuarioActivoRol= documento.data().rol  
+                
+            })
+            /* return usuarioActivoRol */
+        }
+        catch(e){
+            throw new Error(e)
+        }
+      }
+
 
 
   //Actualizaciòn de un documento en Base de datos
@@ -121,7 +143,6 @@ const firebaseConfig = {
     }
   }
 
-
    //Eliminar de un documento en Base de datos
    export const eliminarDocumentoDatabase = async(nombreColeccion, idDocumento) =>{
     try{
@@ -132,9 +153,6 @@ const firebaseConfig = {
         throw new Error(e)
     }
   }
-
-
-
 
   //Crear Usuarios con FireBase
   export const crearUsuario = async(email, password) =>{
@@ -159,7 +177,6 @@ const firebaseConfig = {
     }
   }
 
-
     //Login de Usuarios con FireBase auth
     export const logInUsuario = async(email, password) =>{
         try{
@@ -183,18 +200,28 @@ const firebaseConfig = {
         catch(e){
             throw new Error(e)
         }
-      }
+        }
 
 
-    //Login Pop UP google
-    /* export const logInUsuarioPopup = async() =>{
+    //Login PopUP google
+    export const logInUsuarioPopup = async() =>{
         try{
-            const respuesta = await firebase.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider())
+            const respuesta = await signInWithPopup(auth, new GoogleAuthProvider())
+
+            const user = {
+                id: respuesta.user.uid,
+                email: respuesta.user.email,
+            }
+
+            /* console.log(user.id);
+            console.log(user.email); */
+
+            /* return(user.id) */
         }
         catch(e){
             throw new Error(e)
         }
-      } */
+      }
 
 
     //LogOut de Usuarios con FireBase auth
@@ -202,6 +229,11 @@ const firebaseConfig = {
         try{
             const respuesta = await signOut(auth)
             /* console.log('Usuario LogOut exitoso'); */
+
+            usuarioActivo = undefined
+            usuarioActivoEmail = undefined
+            usuarioActivoPhoto = fotoUsuario
+            usuarioActivoRol = "Sin Validación"
             /* console.log(respuesta); */
         }
         catch(e){
@@ -219,10 +251,10 @@ const firebaseConfig = {
 
             //validacion de usuario, recordar undefined is falsy
             if(user){
-                console.log('activo: ', user)
-                return user
+                /* console.log('activo: ', user.uid) */
+                return user.uid
             }else{
-                console.log('no activo: ', user);
+                /* console.log('no activo: ', user); */
                 return undefined
             }
         }
@@ -233,12 +265,25 @@ const firebaseConfig = {
 
       //siempre estar buscando auth
       //Usuario Activo?
+
+      
+
       onAuthStateChanged(auth,(user)=>{
         if (user){
             /* console.log(user.email); */
             usuarioActivo = user.displayName
+            usuarioActivoEmail = user.email
+            usuarioActivoPhoto = user.photoURL
+            
+            consultarTipoUsuario(usuarioActivoEmail)
+            
+            /* usuarioActivo=user */
+            /* console.log(user) */
+            
         }else{
             /* console.log(user); */
             usuarioActivo = undefined
+            /* console.log(usuarioActivo) */
+            
         }
       })

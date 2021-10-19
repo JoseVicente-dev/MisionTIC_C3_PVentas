@@ -8,11 +8,11 @@ export const FooterComponent = () => {
     return (
         <>
 
-            <footer>
-                <nav className="navbar navbar-expand-lg navbar-light">
+            <footer >
+                <nav className="navbar navbar-expand-lg navbar-light pt-0" >
                     <div className="container-fluid">
-                        <div className="container">
-                            <div className="row">
+                        <div className="container pt-2 pb-1">
+                            <div className="row"  >
                                 <div    className="col-8" 
                                         style={{textAlign: "end"}}>
                                     <img 

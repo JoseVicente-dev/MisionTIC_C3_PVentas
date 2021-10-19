@@ -22,7 +22,7 @@ export const AppRouter = () => {
     return (
         <>
             <Router>
-                <HeaderNg/>
+              
             <Switch>
                 <Route path="/" exact component={LoginComponent}/>
                {/*  <Route path="/menu"><h2> Ruta Menú</h2></Route> */}

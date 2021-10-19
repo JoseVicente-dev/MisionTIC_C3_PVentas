@@ -65,7 +65,7 @@ let idSeleccionado // idDocumento que esta oculto en la tabla para modificar pos
     const handleClickModificarBd = async  () => {
         //console.log("Prueba")
         
-        const mclienteInput = document.getElementById("MinputEmail").value;
+        const mclienteInput = document.getElementById("MinputEmail").value.replace(/^\w/, (c) => c.toUpperCase());
         const mcantidadInput = document.getElementById("MinputRol").value;
         const mestadoInput = document.getElementById("MinputEstado").value;
         const mfechaVentaInput = document.getElementById("MinputEstado").value;
@@ -296,7 +296,7 @@ let idSeleccionado // idDocumento que esta oculto en la tabla para modificar pos
                                 <div className="modal-footer">
                                     <button type="button" className="btn btn-primary bg-color-azul" id="btnModificarModalModificar"
                                         data-bs-toggle="modal" data-bs-target="#AlertaModificacionVenta"
-                                        data-bs-dismiss="modal">Modificar</button>
+                                        data-bs-dismiss="modal"onClick={handleClickModificarBd}>Modificar</button>
                                     <button type="button" className="btn btn-secondary" id="btnCancelarModalModificar"
                                         data-bs-dismiss="modal">Cancelar</button>
                                 </div>

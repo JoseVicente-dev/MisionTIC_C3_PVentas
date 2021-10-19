@@ -139,7 +139,7 @@ export const ListaVentas = () => {
 
                     
                     {/* <!--  Modal Nueva Venta --> */}
-                    <div className="modal fade" id="NuevaVenta" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+                    <div className="modal fade" id="NuevaVenta" data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1"
                         aria-labelledby="staticBackdropLabel1" aria-hidden="true">
                         <div className="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                             <div className="modal-content">
@@ -152,7 +152,7 @@ export const ListaVentas = () => {
                                     <div className="container">
                                         <div className="col">  
                                             <select className="form-select modal-input-select-undisabled" id="ArticuloNuevo" >
-                                                <option hidden selected>Articulo</option>
+                                                <option hidden defaultValue>Articulo</option>
                                             </select>
 
                                             <input type="text" className="form-control modal-input-select-undisabled" id="ClienteNuevo"
@@ -212,7 +212,7 @@ export const ListaVentas = () => {
 
 
                    {/*  <!--  Modal Modificar Venta --> */}
-                    <div className="modal fade" id="ModificarVenta" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+                    <div className="modal fade" id="ModificarVenta" data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1"
                         aria-labelledby="staticBackdropLabel1" aria-hidden="true">
                         <div className="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                             <div className="modal-content">
@@ -240,8 +240,8 @@ export const ListaVentas = () => {
                                         <input type="text" className="form-control modal-input-select-undisabled" id="VendedorBusqueda"
                                             placeholder="Vendedor" disabled></input>
                                         <select className="form-select modal-input-select-undisabled" id="EstadoBusqueda">
-                                            <option value='1'>Cancelada</option>
-                                            <option value='2'>Pendiente</option>
+                                            <option value='Cancelada'>Cancelada</option>
+                                            <option value='Pendiente'>Pendiente</option>
                                         </select>
                                         <div className="row" style={{margin: "10px 20px 10px 5px"}}>
                                             <div className='input-group date col-sm' id='startDate'>
@@ -272,7 +272,7 @@ export const ListaVentas = () => {
                     {/* <!--  /Modal Modificar Venta --> */}
 
                     {/* Modal Eliminar */}
-                    <div className="modal fade " id="EliminarVenta" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+                    <div className="modal fade " id="EliminarVenta" data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1"
                         aria-labelledby="staticBackdropLabel2" aria-hidden="true">
                         <div className="modal-dialog modal-dialog-centered modal-dialog-scrollable ">
                             <div className="modal-content ">

@@ -1,7 +1,8 @@
 import React,{ useEffect, useState} from 'react'
 import { consultarDatabase, consultarDocumentoWhere} from '../config/firebase';
+import { uuid } from 'uuidv4'
 import { BusquedaBd } from './BusquedaBd';
-import { usuarioActivo, eliminarDocumentoDatabase, actualizarDocumentoDatabase } from './../config/firebase';
+import { usuarioActivo, eliminarDocumentoDatabase, actualizarDocumentoDatabase,guardarDatabase } from './../config/firebase';
 import {useHistory } from 'react-router'
 
 export const ListaVentas = () => {
@@ -102,6 +103,102 @@ let idSeleccionado // idDocumento que esta oculto en la tabla para modificar pos
         eliminarDocumentoDatabase ('ng_ventas', idSeleccionado)
         setTimeout(cargarVentas,100)
     }
+
+    //<ADICIONAR PRODUCTO>
+    const handleClickAdicionar = async () => {
+        console.log("prueba adicionar");
+        
+
+        const articuloVentas = document.getElementById('ArticuloNuevo');
+        const artiVentas = articuloVentas.options[articuloVentas.selectedIndex].text
+        const clienteVentas = document.getElementById('ClienteNuevo').value;
+        const ValorVentas = document.getElementById('ValorTotal').value;
+        const CantidadVentas = document.getElementById('CantidadNueva').value;
+        const fechasVenta = document.getElementById('FechaVentaNuevo').value;
+        const FechaPagoVentas = document.getElementById('FechaPagoNuevo').value;
+        const vendedor = document.getElementById('VendedorNuevo');
+        const vendeVenta = vendedor.options[vendedor.selectedIndex].text
+        const estadoPago = document.getElementById('EstadoNuevo').value;
+
+
+        const ventaAgregar = {
+            id: uuid.v4(),
+            articulo: artiVentas.replace(/^\w/, (c) => c.toUpperCase()),
+            cliente: clienteVentas.replace(/^\w/, (c) => c.toUpperCase()),
+            valor: ValorVentas,
+            fechaVenta: fechasVenta,
+            fechaPago: FechaPagoVentas,
+            vendedor: vendeVenta.replace(/^\w/, (c) => c.toUpperCase()),
+            estadoPago: estadoPago,
+            cantidad: CantidadVentas
+        }
+
+        guardarDatabase('ng_ventas', ventaAgregar)
+        setTimeout(cargarVentas, 100)
+
+    }
+    //</ADICIONAR PRODUCTO>
+
+    //<DROPDOWNS>
+    const handleClickAdicionarPrincipal=async ()=>{
+        //<renderizar dropdown articulos>
+        const selectArticulo = document.getElementById("ArticuloNuevo")
+
+        const respuestaProductos = await consultarDocumentoWhere('ng_productos','estado','Disponible')
+        console.log("Esta es la consulta a productos: ",respuestaProductos);
+        let productosBD = [];
+
+        
+        respuestaProductos.forEach((item) =>{
+            // console.log("este es la descripcion: ", item.descripcion )
+            productosBD.push(item.descripcion)
+        }
+        );
+
+        console.log("productosBD: ", productosBD)
+
+        let contA = 0
+        productosBD.forEach((t) => {
+            var option = document.createElement("option");
+            option.value = contA;
+            option.text = t;
+            selectArticulo.appendChild(option);
+            contA++
+        });
+
+        //</renderizar dropdown articulos>
+
+        //<renderizar dropdown vendedores>
+        const selectVendedor = document.getElementById("VendedorNuevo")
+    
+        const respuestaUsuarios = await consultarDocumentoWhere('ng_users','rol','Vendedor')
+        /* console.log(respuestausuarios); */
+        let usuariosBD = [];
+    
+        respuestaUsuarios.forEach((item) =>{
+            usuariosBD.push(item.nombres);
+        });
+    
+        let contV = 0
+        usuariosBD.forEach((t) => {
+            var option = document.createElement("option");
+            option.value = contV;
+            option.text = t;
+            selectVendedor.appendChild(option);
+            contV++
+    
+        });
+        //</renderizar dropdown vendedores>
+
+        //
+
+    }
+
+    
+
+
+    //</DROPDOWNS>
+
     return (
         <>
                 <div className="container text-center">
@@ -174,7 +271,7 @@ let idSeleccionado // idDocumento que esta oculto en la tabla para modificar pos
                     {/* Botones */}
                     <div className="container text-center" >
                         <button className="btn btn-primary bg-color-azul" id="btnAdicionarPrincipal" data-bs-toggle="modal"
-                        data-bs-target="#NuevaVenta">Adicionar</button>
+                        data-bs-target="#NuevaVenta" onClick={handleClickAdicionarPrincipal}>Adicionar</button>
 
                         <button className="btn btn-primary bg-color-azul me-3 ms-3" id="btnModificarPrincial" data-bs-toggle="modal"
                         data-bs-target="#ModificarVenta" onClick={handleClickModificar}>Modificar</button>

@@ -18,7 +18,7 @@ export const ListaProductos = () => {
         let busqueda = document.getElementById("busqueda").value;
 
         const listaTemporal = await consultarDocumentoWhere('ng_productos',terminoBusqueda, busqueda) 
-       
+        console.log("Esta es la lista de productos segun busqueda: ", listaTemporal)
         setListaProductos(listaTemporal)
     }
 

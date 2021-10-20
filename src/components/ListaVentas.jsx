@@ -297,7 +297,11 @@ export const ListaVentas = () => {
             select.appendChild(option);
 
         } else {
-
+            var select = document.getElementById("VendedorNuevo")
+            var option = document.createElement("option");
+            option.value = 0;
+            option.text = usuarioActivo;
+            select.appendChild(option);
             renderVendedores()
         }
         renderProductos()

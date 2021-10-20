@@ -8,8 +8,8 @@ import { useHistory } from 'react-router'
 export const ListaVentas = () => {
     const [listaVentas, setListaVentas] = useState([])
     const [counter, setCounter] = useState(0);
-    const [modalOnOFF, setModalOnOFF] = useState(false)
-
+    const [modalOnOFF, setModalOnOFF] = useState(false);
+    const [modalOnOFFModificar, setModalOnOFFModificar] = useState(false);
     /* console.log(usuarioActivo, "importado"); */
 
     const cargarVentas = async () => {
@@ -227,8 +227,9 @@ export const ListaVentas = () => {
 
 
     //<Obtener precio>
+   
     const obtenerPrecio = async () => {
-
+       
         const articuloVentas = document.getElementById('ArticuloNuevo');
         const artiVentas = articuloVentas.options[articuloVentas.selectedIndex].text
 
@@ -241,10 +242,30 @@ export const ListaVentas = () => {
             // console.log(t)
             if (t.descripcion === artiVentas) {
                 document.getElementById("ValorNuevo").value = t.valorUnitario;
-                document.getElementById("cantDisp").innerText = "Cantidad disponible: " + t.peso + "kg";
                 document.getElementById("cantDisp2").innerText = "Cantidad disponible: " + t.peso + "kg";
 
             }
+        });
+
+        
+       
+    }
+
+    const obtenerPrecioModificar = async () => {
+
+        
+        const Prueba =  document.getElementById('ArticuloBusqueda').value;
+
+
+
+        const respuestaProductosPrecio = await consultarDocumentoWhere('ng_productos', 'descripcion', Prueba)
+        // console.log("respuestaProductosPrecio", respuestaProductosPrecio);
+
+        respuestaProductosPrecio.forEach((t) => {
+            // console.log(t)
+            if (t.descripcion === Prueba) {
+                document.getElementById("cantDisp").innerText = "Cantidad disponible: " + t.peso + "kg";
+             }
         });
     }
 
@@ -380,6 +401,12 @@ export const ListaVentas = () => {
 
     }, [modalOnOFF])
 
+
+    useEffect(async () => {
+        handleClickModificar();     
+        obtenerPrecioModificar();
+    }, [modalOnOFFModificar])
+
     //</DROPDOWNS>
 
     return (
@@ -408,7 +435,7 @@ export const ListaVentas = () => {
                         data-bs-target="#NuevaVenta" onClick={() => { setModalOnOFF(!modalOnOFF) }} >Adicionar</button>
 
                     <button className="btn btn-primary bg-color-azul me-3 ms-3" id="btnModificarPrincial" data-bs-toggle="modal"
-                        data-bs-target="#ModificarVenta" onClick={handleClickModificar}>Modificar</button>
+                        data-bs-target="#ModificarVenta" onClick={() => { setModalOnOFFModificar(!modalOnOFFModificar) }}>Modificar</button>
 
                     <button className="btn btn-danger bg-color-azul " id="btnEliminarPrincipal" data-bs-toggle="modal"
                         data-bs-target="#EliminarVenta">Eliminar</button>

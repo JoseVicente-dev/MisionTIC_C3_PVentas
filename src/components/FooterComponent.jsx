@@ -9,7 +9,7 @@ export const FooterComponent = () => {
         <>
 
             <footer >
-                <nav className="navbar navbar-expand-lg navbar-light pt-0" >
+                <nav className="navbar navbar-expand-lg navbar-light pt-2" >
                     <div className="container-fluid">
                         <div className="container pt-2 pb-1">
                             <div className="row"  >

@@ -15,6 +15,7 @@ export const MenuLateralNg = ({usuario, tipo, foto}) => {
     tipo = usuarioActivoRol
 
     const history = useHistory()
+    console.log(history.location.pathname);
     
     const handleClickMenu= () => {
         if(menu=="toggled"){
@@ -28,6 +29,21 @@ export const MenuLateralNg = ({usuario, tipo, foto}) => {
       
     useEffect(()=>{
         document.getElementById('menuNg').classList.remove('toggled') 
+
+        if(history.location.pathname=='/ventas'){
+            document.getElementById('MV').classList.add('color-blanco')
+            document.getElementById('MVI').classList.add('color-azul')
+        }else if(history.location.pathname=='/productos'){
+            document.getElementById('MP').classList.add('color-blanco')
+            document.getElementById('MPI').classList.add('color-azul')
+        }else if(history.location.pathname=='/usuarios'){
+            document.getElementById('MU').classList.add('color-blanco')
+            document.getElementById('MUI').classList.add('color-azul')
+        }else {
+            document.getElementById('DB').classList.add('color-blanco')
+            document.getElementById('DBI').classList.add('color-azul')
+        }
+
     },[])
         
 
@@ -102,30 +118,30 @@ export const MenuLateralNg = ({usuario, tipo, foto}) => {
                                     <span>Opciones disponibles</span>
                                 </li>
                                 <li className="menu-lateral-dropdown">
-                                    <NavLink to="/dashboard" activeClassName="color-blanco">
-                                        <i className="fa fa-chart-pie"></i>
-                                        <span >Dashboard </span>
+                                    <NavLink to="/dashboard">
+                                        <i id='DBI' className="fa fa-chart-pie"></i>
+                                        <span id='DB'>Dashboard </span>
                                     </NavLink>
                                 </li>
                                 <li className="menu-lateral-dropdown">
-                                    <NavLink to='/ventas' activeClassName="color-blanco">
-                                        <i className="fa fa-shopping-cart"></i>
-                                        <span>Módulo de Ventas</span>
+                                    <NavLink to='/ventas' >
+                                        <i id='MVI' className="fa fa-shopping-cart"></i>
+                                        <span id='MV'>Módulo de Ventas</span>
                                     </NavLink>
                                 </li>
                                 <li className="menu-lateral-dropdown">
                                     {/* <NavLink to="/productos" activeClassName="color-blanco"> */}
-                                    <a onClick={validarRolProductos}>
-                                        <i className="fas fa-shopping-basket"></i>
-                                        <span>Productos</span>
+                                    <a onClick={validarRolProductos} >
+                                        <i id='MPI' className="fas fa-shopping-basket"></i>
+                                        <span id='MP'>Productos</span>
                                     </a>
                                     {/* </NavLink> */}
                                 </li>
                                 <li className="menu-lateral-dropdown" >
                                     {/* <NavLink to='/usuarios' activeClassName="color-blanco"> */}
                                     <a onClick={validarRolUsuarios}>
-                                        <i className="fas fa-users-cog"></i>
-                                        <span>Usuarios</span>
+                                        <i id='MUI' className="fas fa-users-cog"></i>
+                                        <span id='MU'>Usuarios</span>
                                     </a>
                                     {/* </NavLink> */}
                                 </li>

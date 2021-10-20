@@ -116,6 +116,7 @@ export const ListaVentas = () => {
         const articuloVentas = document.getElementById('ArticuloNuevo');
         const artiVentas = articuloVentas.options[articuloVentas.selectedIndex].text
         const clienteVentas = document.getElementById('ClienteNuevo').value;
+        const ValorUnitario = document.getElementById('ValorNuevo').value;
         const ValorVentas = document.getElementById('ValorTotal').value;
         const CantidadVentas = document.getElementById('CantidadNueva').value;
         const fechasVenta = document.getElementById('FechaVentaNuevo').value;
@@ -129,7 +130,8 @@ export const ListaVentas = () => {
             id: uuid(),
             articulo: artiVentas.replace(/^\w/, (c) => c.toUpperCase()),
             cliente: clienteVentas.replace(/^\w/, (c) => c.toUpperCase()),
-            valor: ValorVentas,
+            valor: ValorUnitario,
+            valorTotal: ValorVentas,
             fechaVenta: fechasVenta,
             fechaPago: FechaPagoVentas,
             vendedor: vendeVenta.replace(/^\w/, (c) => c.toUpperCase()),
@@ -399,7 +401,7 @@ export const ListaVentas = () => {
                                             <td>{venta.articulo}</td>
                                             <td>{venta.cantidad}</td>
                                             <td>{venta.valor}</td>
-                                            <td>{venta.valor}</td>
+                                            <td>{venta.valorTotal}</td>
                                             <td>{venta.fechaVenta}</td>
                                             <td>{venta.vendedor}</td>
                                             <td>{venta.estadoPago}</td>

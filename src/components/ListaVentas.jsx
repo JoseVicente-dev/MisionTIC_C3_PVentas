@@ -2,14 +2,14 @@ import React, { useEffect, useState } from 'react'
 import { consultarDatabase, consultarDocumentoWhere } from '../config/firebase';
 import { uuid } from 'uuidv4'
 import { BusquedaBd } from './BusquedaBd';
-import { usuarioActivo, eliminarDocumentoDatabase, actualizarDocumentoDatabase, guardarDatabase } from './../config/firebase';
+import { usuarioActivo, usuarioActivoEmail, eliminarDocumentoDatabase, actualizarDocumentoDatabase, guardarDatabase } from './../config/firebase';
 import { useHistory } from 'react-router'
 
 export const ListaVentas = () => {
     const [listaVentas, setListaVentas] = useState([])
     const [counter, setCounter] = useState(0);
     const [modalOnOFF, setModalOnOFF] = useState(false)
-    const [precioProducto, setPrecioProducto] = useState(false)
+
     /* console.log(usuarioActivo, "importado"); */
 
     const cargarVentas = async () => {
@@ -147,7 +147,7 @@ export const ListaVentas = () => {
 
         const selectArticulo = document.getElementById("ArticuloNuevo")
         const respuestaProductos = await consultarDocumentoWhere('ng_productos', 'estado', 'Disponible')
-        console.log("Esta es la consulta a productos: ", respuestaProductos)
+
 
         let contA = 0
         respuestaProductos.forEach((t) => {
@@ -187,15 +187,17 @@ export const ListaVentas = () => {
         const articuloVentas = document.getElementById('ArticuloNuevo');
         const artiVentas = articuloVentas.options[articuloVentas.selectedIndex].text
 
-        console.log(artiVentas, typeof (artiVentas))
+
 
         const respuestaProductosPrecio = await consultarDocumentoWhere('ng_productos', 'descripcion', artiVentas)
-        console.log("respuestaProductosPrecio", respuestaProductosPrecio);
+        // console.log("respuestaProductosPrecio", respuestaProductosPrecio);
 
         respuestaProductosPrecio.forEach((t) => {
-            console.log(t)
+            // console.log(t)
+            if (t.descripcion=== artiVentas){
             document.getElementById("ValorNuevo").value = t.valorUnitario;
             document.getElementById("cantDisp").innerText = "Cantidad disponible: " + t.peso + "kg";
+            }
         });
     }
 
@@ -209,65 +211,91 @@ export const ListaVentas = () => {
         const artiVentas = articuloVentas.options[articuloVentas.selectedIndex].text
 
         const respuestaProductosPrecio = await consultarDocumentoWhere('ng_productos', 'descripcion', artiVentas)
+        console.log("respuestaProductosPrecio ", respuestaProductosPrecio);
 
 
         //Validación de cantidad disponible
         respuestaProductosPrecio.forEach((t) => {
+            console.log("Cantidad disponible", t.peso)
+            if (t.descripcion === artiVentas) {
 
-            if (parseInt(t.peso, 10) >= parseInt(Kilos, 10)) {
-                document.getElementById("ValorTotal").value = valorTotal;
-            } else {
-                alert("no hay la cantidad requerida en bodega")
-                document.getElementById('CantidadNueva').value = ""
-                document.getElementById("ValorTotal").value = ""
+                if (parseInt(t.peso, 10) >= parseInt(Kilos, 10)) {
+                    document.getElementById("ValorTotal").value = valorTotal;
+                } else {
+                    alert("no hay la cantidad requerida en bodega")
+                    document.getElementById('CantidadNueva').value = ""
+                    document.getElementById("ValorTotal").value = ""
+                }
             }
         });
     }
 
     //</Obtener precio>
 
-    //<comparar usuarios>
-    // const compararRolUsuario = async() => {
-    //     const respuestausuarios = await consultarDocumentoWhere('ng_users', 'email', usuarioActivoEmail)       
-        
-    
-    //     respuestausuarios.forEach((t) => {
-    //         tipoUsuarioActual = t.rol
-    //     });
-    
-    //     if (tipoUsuarioActual == "Vendedor") {
-    //         document.getElementById('VendedorNuevo').disabled = true
-    //         /* document.getElementById('VendedorNuevo').text = usuarioActual */
-    
-    //         var select = document.getElementById("VendedorNuevo")
-    //         var option = document.createElement("option");
-    //         option.value = 0;
-    //         option.text = usuarioActual;
-    //         select.appendChild(option);
-    
-    //     } else {
-    
-    //         pintarVendedores()
-    //     }
-    //     pintarProductos()
-    //     /* console.log(vendedor) */
-    
-    
-    // }
+    // <comparar usuarios>
+    const compararRolUsuario = async () => {
+        const respuestausuarios = await consultarDocumentoWhere('ng_users', 'email', usuarioActivoEmail)
+        let tipoUsuarioActual
+
+        respuestausuarios.forEach((t) => {
+            tipoUsuarioActual = t.rol
+        });
+
+        if (tipoUsuarioActual == "Vendedor") {
+            document.getElementById('VendedorNuevo').disabled = true
+            /* document.getElementById('VendedorNuevo').text = usuarioActual */
+
+            var select = document.getElementById("VendedorNuevo")
+            var option = document.createElement("option");
+            option.value = 0;
+            option.text = usuarioActivo;
+            select.appendChild(option);
+
+        } else {
+
+            renderVendedores()
+        }
+        renderProductos()
+        /* console.log(vendedor) */
+
+
+    }
     //</comparar usuarios>
+
+    //<Limpiar selectores>
+
+    const limpiarSelectores = async () => {
+        const selectorArticulo = document.getElementById('ArticuloNuevo');
+        const selectorVendedor = document.getElementById("VendedorNuevo");
+        // let option = document.createElement("option")
+        // option.hidden=
+
+
+
+        while (selectorVendedor.firstChild) {
+            selectorVendedor.removeChild(selectorVendedor.lastChild)
+
+        }
+
+        while (selectorArticulo.firstChild) {
+            selectorArticulo.removeChild(selectorArticulo.lastChild)
+
+        }
+    }
+    //</Limpiar>
+
 
     //<DROPDOWNS>
     useEffect(async () => {
 
-        renderProductos()
-        renderVendedores()
+
+        compararRolUsuario()
         obtenerPrecio()
-        obtenerPrecioTotal()
-
-    }, [modalOnOFF, precioProducto])
+        limpiarSelectores()
 
 
 
+    }, [modalOnOFF])
 
     //</DROPDOWNS>
 
@@ -366,8 +394,8 @@ export const ListaVentas = () => {
                             <div className="modal-body">
                                 <div className="container">
                                     <div className="col">
-                                        <select className="form-select modal-input-select-undisabled" id="ArticuloNuevo" onChange={() => setPrecioProducto(!precioProducto)}>
-                                            <option hidden defaultValue>Articulo</option>
+                                        <select className="form-select modal-input-select-undisabled" id="ArticuloNuevo" onChange={obtenerPrecio}>
+                                            <option defaultValue>Articulo</option>
                                         </select>
                                         <input type="text" className="form-control modal-input-select-undisabled" id="ClienteNuevo"
                                             placeholder="Cliente" />
@@ -375,7 +403,7 @@ export const ListaVentas = () => {
                                             placeholder="Valor unitario" disabled />
                                         <label style={{ marginLeft: "20px" }} id="cantDisp">Cantidad disponible en Kg: </label>
                                         <input type="number" className="form-control modal-input-select-undisabled" id="CantidadNueva"
-                                            placeholder="cantidad en Kg" />
+                                            placeholder="cantidad en Kg" onChange={obtenerPrecioTotal} />
                                         <input type="text" className="form-control modal-input-select-undisabled" id="ValorTotal"
                                             placeholder="Valor total" disabled />
                                         <select className="form-select modal-input-select-undisabled" id="VendedorNuevo" >

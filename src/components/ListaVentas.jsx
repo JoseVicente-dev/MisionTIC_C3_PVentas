@@ -15,7 +15,7 @@ export const ListaVentas = () => {
     const cargarVentas = async () => {
         //const listaTemporal = await consultarDatabase('ng_ventas') //trae info database
         let terminoBusqueda = document.getElementById('busquedapor').value
-        let busqueda = document.getElementById("busqueda").value;
+        let busqueda = document.getElementById("busqueda").value.replace(/^\w/, (c) => c.toUpperCase());
         const listaTemporal = await consultarDocumentoWhere('ng_ventas', terminoBusqueda, busqueda)
         setListaVentas(listaTemporal)
     }

@@ -1,17 +1,20 @@
 import React, { useEffect, useState} from 'react'
+import {useHistory } from 'react-router'
 import '../css/menu.css';
 import logoMercurio from '../images/logo_mercurio.png'
 import fotoUsuario from '../images/user2.png'
 import logoNg from '../images/logo2.png'
 import {BrowserRouter as Router, Switch, Route, NavLink } from "react-router-dom";
-import { logOutUsuario} from '../config/firebase';
-import { usuarioActivo, usuarioActivoPhoto, usuarioActivoRol} from './../config/firebase';                                       
+import { logOutUsuario, usuarioActivoEmail} from '../config/firebase';
+import { usuarioActivo, usuarioActivoPhoto, usuarioActivoRol, datosUsuario, consultarTipoUsuario } from './../config/firebase';                                       
 
 export const MenuLateralNg = ({usuario, tipo, foto}) => {
     const [menu, setMenu]= useState("")
     usuario=usuarioActivo
     foto=usuarioActivoPhoto
     tipo = usuarioActivoRol
+
+    const history = useHistory()
     
     const handleClickMenu= () => {
         if(menu=="toggled"){
@@ -22,19 +25,36 @@ export const MenuLateralNg = ({usuario, tipo, foto}) => {
             document.getElementById('menuNg').classList.add('toggled')
         }
       }
+      
     useEffect(()=>{
         document.getElementById('menuNg').classList.remove('toggled') 
     },[])
+        
 
     const handleClickLogOut= () =>{
         logOutUsuario()
-        setTimeout(() => {
-            usuario="Usuario sin LogIn"
-            foto= fotoUsuario
-            tipo = "Sin Validar"
-            // document.getElementById('menuNg').classList.remove('toggled')
-        }, 1000); 
     }
+
+    const validarRolUsuarios= () => {
+        //console.log(usuarioActivoRol);
+        if (usuarioActivoRol=="Administrador"){
+            history.push('/usuarios')
+        }else{
+           alert("Ud no tiene los permisos para acceder a este módulo");
+        }
+    }
+
+    const validarRolProductos= () => {
+        //console.log(usuarioActivoRol);
+        if (usuarioActivoRol=="Administrador"){
+            history.push('/productos')
+        }else{
+           alert("Ud no tiene los permisos para acceder a este módulo");
+        }
+    }
+
+
+
     return (
         <>
             {/* <!-- menu-lateral Menú lateral--> */}
@@ -94,16 +114,20 @@ export const MenuLateralNg = ({usuario, tipo, foto}) => {
                                     </NavLink>
                                 </li>
                                 <li className="menu-lateral-dropdown">
-                                    <NavLink to="/productos" activeClassName="color-blanco">
+                                    {/* <NavLink to="/productos" activeClassName="color-blanco"> */}
+                                    <a onClick={validarRolProductos}>
                                         <i className="fas fa-shopping-basket"></i>
                                         <span>Productos</span>
-                                    </NavLink>
+                                    </a>
+                                    {/* </NavLink> */}
                                 </li>
                                 <li className="menu-lateral-dropdown" >
-                                    <NavLink to='/usuarios' activeClassName="color-blanco">
+                                    {/* <NavLink to='/usuarios' activeClassName="color-blanco"> */}
+                                    <a onClick={validarRolUsuarios}>
                                         <i className="fas fa-users-cog"></i>
                                         <span>Usuarios</span>
-                                    </NavLink>
+                                    </a>
+                                    {/* </NavLink> */}
                                 </li>
                             </ul>
                         </div>

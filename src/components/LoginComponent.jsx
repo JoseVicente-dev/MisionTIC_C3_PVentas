@@ -31,7 +31,7 @@ export const LoginComponent = () => {
             })
             //console.log(userEmail, userRol);
             if(userEmail==usuario && userEstado=="Autorizado"){
-                history.push({ pathname: '/ventas'})
+                history.push({ pathname: '/dashboard'})
             }else{
                 logOutUsuario()
                 alert("Ud. no está creado en la base de datos, o no está autorizado, por favor solicite la revisión de su perfil")

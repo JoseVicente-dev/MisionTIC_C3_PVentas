@@ -115,13 +115,11 @@ const firebaseConfig = {
     //consultar por where
     export const consultarTipoUsuario = async(email) =>{
         try{
-    
             const respuesta = await getDocs(query(collection(database, 'ng_users'), where('email', '==', email)))
     
             const coleccionDatos = respuesta.docs.map((documento)=>{
                 /* console.log(documento.data().rol) */
-                usuarioActivoRol= documento.data().rol  
-                
+                usuarioActivoRol= documento.data().rol      
             })
             /* return usuarioActivoRol */
         }
@@ -252,7 +250,7 @@ const firebaseConfig = {
             //validacion de usuario, recordar undefined is falsy
             if(user){
                 /* console.log('activo: ', user.uid) */
-                return user.uid
+                return user.email
             }else{
                 /* console.log('no activo: ', user); */
                 return undefined

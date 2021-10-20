@@ -110,7 +110,7 @@ export const ListaVentas = () => {
 
     //<ADICIONAR PRODUCTO>
     const handleClickAdicionar = async () => {
-        console.log("prueba adicionar");
+        // console.log("prueba adicionar");
 
 
         const articuloVentas = document.getElementById('ArticuloNuevo');
@@ -254,12 +254,12 @@ export const ListaVentas = () => {
         const artiVentas = articuloVentas.options[articuloVentas.selectedIndex].text
 
         const respuestaProductosPrecio = await consultarDocumentoWhere('ng_productos', 'descripcion', artiVentas)
-        console.log("respuestaProductosPrecio ", respuestaProductosPrecio);
+        // console.log("respuestaProductosPrecio ", respuestaProductosPrecio);
 
 
         //Validación de cantidad disponible
         respuestaProductosPrecio.forEach((t) => {
-            console.log("Cantidad disponible", t.peso)
+            // console.log("Cantidad disponible", t.peso)
             if (t.descripcion === artiVentas) {
 
                 if (parseInt(t.peso, 10) >= parseInt(Kilos, 10)) {

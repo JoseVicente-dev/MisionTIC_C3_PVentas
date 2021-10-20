@@ -168,7 +168,7 @@ const DashBoard = () => {
     chart: { type: 'line' },
     title: { text: 'Ventas x Producto' },
     subtitle: { text: 'Cuadro de ventas Productos x Kg x Vendedor' },
-    xAxis: { categories: { arrayProductos } },
+    xAxis: { categories: ['Cebada', 'Cacao', 'Frijol', 'Frijol Rojo', 'Quinua', 'Arroz'] },
     yAxis: { title: { text: 'Cantidad en Kg' } },
     plotOptions: { line: { dataLabels: { enabled: true }, enableMouseTracking: false } },
     series: [{ name: 'Steven Tavera', data: [7.0, 6.9, 9.5, 14.5, 18.4, 21.5] },
@@ -202,9 +202,9 @@ const DashBoard = () => {
     series: [{
       name: 'Productos',
       colorByPoint: true,
-      data: [{ prueba: 'producto 1', y: 61.41 }, { prueba: 'producto 2', y: 11.84 }, { prueba: 'producto 3', y: 10.85 },
-      { prueba: 'producto 4', y: 4.67 }, { prueba: 'producto 5', y: 4.18 }, { prueba: 'producto 6', y: 1.64 },
-      { prueba: 'producto 7', y: 1.6 }, { prueba: 'producto 8', y: 1.2 }, { prueba: 'Other', y: 2.61 }]
+      data: [{ name: 'Cebada', y: 61.41 }, { name: 'Cacao', y: 11.84 }, { name: 'Frijol', y: 10.85 },
+      { name: 'Frijol Rojo', y: 4.67 }, { name: 'Quinua', y: 4.18 }/*, { prueba: 'producto 6', y: 1.64 },
+      { prueba: 'producto 7', y: 1.6 }, { prueba: 'producto 8', y: 1.2 }, { prueba: 'Other', y: 2.61 } */]
       //ventasVendedor
     }]
   }
@@ -224,23 +224,29 @@ const DashBoard = () => {
         '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
       footerFormat: '</table>', shared: true, useHTML: true
     },
+
     plotOptions: { column: { pointPadding: 0.2, borderWidth: 0 } },
     series: [{
-      name: 'Vendedor 1',
+      name: 'Steven Tavera',
       data: [49.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4]
     },
     {
-      name: 'Vendedor 2',
+      name: 'José Vicente Velasco López',
       data: [83.6, 78.8, 98.5, 93.4, 106.0, 84.5, 105.0, 104.3, 91.2, 83.5, 106.6, 92.3]
     },
     {
-      name: 'Vendedor 3',
+      name: 'Gonzalo Sarmiento Castro',
       data: [48.9, 38.8, 39.3, 41.4, 47.0, 48.3, 59.0, 59.6, 52.4, 65.2, 59.3, 51.2]
     },
     {
-      name: 'Vendedor 4',
+      name: 'Samuel jimenez',
       data: [42.4, 33.2, 34.5, 39.7, 52.6, 75.5, 57.4, 60.4, 47.6, 39.1, 46.8, 51.1]
+    },
+    {
+      name: 'FerboHi',
+      data: [2.4, 63.2, 24.5, 49.7, 2.6, 70.5, 60.4, 20.4, 37.6, 19.1, 16.8, 1.1]
     }]
+
   }
 
   return (

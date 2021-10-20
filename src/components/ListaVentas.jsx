@@ -140,7 +140,7 @@ export const ListaVentas = () => {
     //</ADICIONAR PRODUCTO>
 
     //<DROPDOWNS>
-    const handleClickAdicionarPrincipal = async () => {
+    useEffect(async () => {
         //<renderizar dropdown articulos>
         const selectArticulo = document.getElementById("ArticuloNuevo")
 
@@ -196,7 +196,7 @@ export const ListaVentas = () => {
 
         //</Obtener precio>
 
-    }
+    },[])
 
 
 
@@ -275,7 +275,7 @@ export const ListaVentas = () => {
                 {/* Botones */}
                 <div className="container text-center" >
                     <button className="btn btn-primary bg-color-azul" id="btnAdicionarPrincipal" data-bs-toggle="modal"
-                        data-bs-target="#NuevaVenta" onClick={handleClickAdicionarPrincipal}>Adicionar</button>
+                        data-bs-target="#NuevaVenta" >Adicionar</button>
 
                     <button className="btn btn-primary bg-color-azul me-3 ms-3" id="btnModificarPrincial" data-bs-toggle="modal"
                         data-bs-target="#ModificarVenta" onClick={handleClickModificar}>Modificar</button>

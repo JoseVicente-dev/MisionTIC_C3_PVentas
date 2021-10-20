@@ -2,12 +2,14 @@ import React, { useEffect, useState } from 'react'
 import { consultarDatabase, consultarDocumentoWhere, usuarioActivoRol } from '../config/firebase';
 import { uuid } from 'uuidv4'
 import { BusquedaBd } from './BusquedaBd';
-import { usuarioActivo, eliminarDocumentoDatabase, actualizarDocumentoDatabase, guardarDatabase } from './../config/firebase';
+import { usuarioActivo, usuarioActivoEmail, eliminarDocumentoDatabase, actualizarDocumentoDatabase, guardarDatabase } from './../config/firebase';
 import { useHistory } from 'react-router'
 
 export const ListaVentas = () => {
     const [listaVentas, setListaVentas] = useState([])
     const [counter, setCounter] = useState(0);
+    const [modalOnOFF, setModalOnOFF] = useState(false)
+
     /* console.log(usuarioActivo, "importado"); */
 
     const cargarVentas = async () => {
@@ -124,7 +126,7 @@ export const ListaVentas = () => {
 
 
         const ventaAgregar = {
-            id: uuid.v4(),
+            id: uuid(),
             articulo: artiVentas.replace(/^\w/, (c) => c.toUpperCase()),
             cliente: clienteVentas.replace(/^\w/, (c) => c.toUpperCase()),
             valor: ValorVentas,
@@ -135,38 +137,80 @@ export const ListaVentas = () => {
             cantidad: CantidadVentas
         }
 
+        actualizarProducto()
         guardarDatabase('ng_ventas', ventaAgregar)
         setTimeout(cargarVentas, 100)
 
     }
     //</ADICIONAR PRODUCTO>
 
-    //<DROPDOWNS>
-    useEffect(async () => {
-        //<renderizar dropdown articulos>
-        const selectArticulo = document.getElementById("ArticuloNuevo")
+    //<ACTUALIZAR CANTIDAD DE PRODUCTOS>
+    const actualizarProducto = async () => {
 
+        const articuloVentas = document.getElementById('ArticuloNuevo');
+        const artiVentas = articuloVentas.options[articuloVentas.selectedIndex].text
+        const CantidadVentas = document.getElementById('CantidadNueva').value;
+        
+        /* console.log(articuloVentas); */
+        
+
+        const respuestaProductos = await consultarDocumentoWhere('ng_productos', 'descripcion', artiVentas)
+        let idmod
+        let pesoActualizar
+        let estadoaActualizar
+
+        respuestaProductos.forEach((t) => {
+                  
+
+            if (t.descripcion === artiVentas) {
+                idmod = t.idDocumento
+                pesoActualizar = t.peso - CantidadVentas
+                if (pesoActualizar == 0) {
+                    estadoaActualizar = "No disponible"
+                } else {
+                    estadoaActualizar = "Disponible"
+                }
+            }
+        });
+
+        const actualizarProducto = {
+            peso: pesoActualizar,            
+            estado: estadoaActualizar,
+        };
+
+        actualizarDocumentoDatabase('ng_productos', idmod, actualizarProducto)
+
+
+    }
+    //</ACTUALIZAR CANTIDAD DE PRODUCTOS>
+
+    //<renderizar dropdown articulos>    
+
+    const renderProductos = async () => {
+
+        const selectArticulo = document.getElementById("ArticuloNuevo")
         const respuestaProductos = await consultarDocumentoWhere('ng_productos', 'estado', 'Disponible')
-        console.log("Esta es la consulta a productos: ", respuestaProductos);
-         
+
 
         let contA = 0
         respuestaProductos.forEach((t) => {
-            var option = document.createElement("option");
-            option.value = contA;
-            option.text = t.descripcion;
-            selectArticulo.appendChild(option);
-            contA++
-        });
+            var option = document.createElement("option")
+            option.value = contA
+            option.text = t.descripcion
+            selectArticulo.appendChild(option)
+            contA = contA + 1
+        })
+    }
+    //</renderizar dropdown articulos>
 
-        //</renderizar dropdown articulos>
+    //<renderizar dropdown vendedores>
+    const renderVendedores = async () => {
 
-        //<renderizar dropdown vendedores>
         const selectVendedor = document.getElementById("VendedorNuevo")
 
         const respuestaUsuarios = await consultarDocumentoWhere('ng_users', 'rol', 'Vendedor')
         /* console.log(respuestausuarios); */
-        
+
         let contV = 0
         respuestaUsuarios.forEach((t) => {
             var option = document.createElement("option");
@@ -176,32 +220,127 @@ export const ListaVentas = () => {
             contV++
 
         });
-        //</renderizar dropdown vendedores>
+    }
+    //</renderizar dropdown vendedores>
 
-        //<Obtener precio>
+
+    //<Obtener precio>
+    const obtenerPrecio = async () => {
+
         const articuloVentas = document.getElementById('ArticuloNuevo');
         const artiVentas = articuloVentas.options[articuloVentas.selectedIndex].text
 
-        const respuestaProductosPrecio = await consultarDocumentoWhere('ng_productos','descripcion', artiVentas)
-        /* console.log(respuestausuarios); */
-        const listaProductosPrecio = [];
 
-        respuestaProductosPrecio.forEach((item) =>{
-            listaProductosPrecio.push(item.valorUnitario);
-        });
+
+        const respuestaProductosPrecio = await consultarDocumentoWhere('ng_productos', 'descripcion', artiVentas)
+        // console.log("respuestaProductosPrecio", respuestaProductosPrecio);
 
         respuestaProductosPrecio.forEach((t) => {
-            //console.log(t.valorUnitario)
-            document.getElementById("ValorNuevo").value = t.valorUnitario;
-            document.getElementById("cantDisp").innerHTML = "Cantidad disponible: " + t.peso + "kg";
+            // console.log(t)
+            if (t.descripcion === artiVentas) {
+                document.getElementById("ValorNuevo").value = t.valorUnitario;
+                document.getElementById("cantDisp").innerText = "Cantidad disponible: " + t.peso + "kg";
+            }
+        });
+    }
+
+    const obtenerPrecioTotal = async () => {
+
+        const ValorUnitario = document.getElementById('ValorNuevo').value;
+        const Kilos = document.getElementById('CantidadNueva').value;
+        const valorTotal = ValorUnitario * Kilos;
+
+        const articuloVentas = document.getElementById('ArticuloNuevo');
+        const artiVentas = articuloVentas.options[articuloVentas.selectedIndex].text
+
+        const respuestaProductosPrecio = await consultarDocumentoWhere('ng_productos', 'descripcion', artiVentas)
+        console.log("respuestaProductosPrecio ", respuestaProductosPrecio);
+
+
+        //Validación de cantidad disponible
+        respuestaProductosPrecio.forEach((t) => {
+            console.log("Cantidad disponible", t.peso)
+            if (t.descripcion === artiVentas) {
+
+                if (parseInt(t.peso, 10) >= parseInt(Kilos, 10)) {
+                    document.getElementById("ValorTotal").value = valorTotal;
+                } else {
+                    alert("no hay la cantidad requerida en bodega")
+                    document.getElementById('CantidadNueva').value = ""
+                    document.getElementById("ValorTotal").value = ""
+                }
+            }
+        });
+    }
+
+    //</Obtener precio>
+
+    // <comparar usuarios>
+    const compararRolUsuario = async () => {
+        const respuestausuarios = await consultarDocumentoWhere('ng_users', 'email', usuarioActivoEmail)
+        let tipoUsuarioActual
+
+        respuestausuarios.forEach((t) => {
+            tipoUsuarioActual = t.rol
         });
 
-        //</Obtener precio>
+        if (tipoUsuarioActual == "Vendedor") {
+            document.getElementById('VendedorNuevo').disabled = true
+            /* document.getElementById('VendedorNuevo').text = usuarioActual */
 
-    },[])
+            var select = document.getElementById("VendedorNuevo")
+            var option = document.createElement("option");
+            option.value = 0;
+            option.text = usuarioActivo;
+            select.appendChild(option);
+
+        } else {
+
+            renderVendedores()
+        }
+        renderProductos()
+        /* console.log(vendedor) */
+
+
+    }
+    //</comparar usuarios>
 
 
 
+    //<Limpiar selectores>
+
+    const limpiarSelectores = async () => {
+        const selectorArticulo = document.getElementById('ArticuloNuevo');
+        const selectorVendedor = document.getElementById("VendedorNuevo");
+        // let option = document.createElement("option")
+        // option.hidden=
+
+
+
+        while (selectorVendedor.firstChild) {
+            selectorVendedor.removeChild(selectorVendedor.lastChild)
+
+        }
+
+        while (selectorArticulo.firstChild) {
+            selectorArticulo.removeChild(selectorArticulo.lastChild)
+
+        }
+    }
+    //</Limpiar>
+
+
+    //<DROPDOWNS>
+    useEffect(async () => {
+
+
+        compararRolUsuario()
+        obtenerPrecio()
+        limpiarSelectores()
+
+
+
+    }, [modalOnOFF])
 
     //</DROPDOWNS>
 
@@ -277,7 +416,7 @@ export const ListaVentas = () => {
                 {/* Botones */}
                 <div className="container text-center" >
                     <button className="btn btn-primary bg-color-azul" id="btnAdicionarPrincipal" data-bs-toggle="modal"
-                        data-bs-target="#NuevaVenta" >Adicionar</button>
+                        data-bs-target="#NuevaVenta" onClick={() => { setModalOnOFF(!modalOnOFF) }} >Adicionar</button>
 
                     <button className="btn btn-primary bg-color-azul me-3 ms-3" id="btnModificarPrincial" data-bs-toggle="modal"
                         data-bs-target="#ModificarVenta" onClick={handleClickModificar}>Modificar</button>
@@ -300,8 +439,8 @@ export const ListaVentas = () => {
                             <div className="modal-body">
                                 <div className="container">
                                     <div className="col">
-                                        <select className="form-select modal-input-select-undisabled" id="ArticuloNuevo" >
-                                            <option hidden defaultValue>Articulo</option>
+                                        <select className="form-select modal-input-select-undisabled" id="ArticuloNuevo" onChange={obtenerPrecio}>
+                                            <option defaultValue>Articulo</option>
                                         </select>
                                         <input type="text" className="form-control modal-input-select-undisabled" id="ClienteNuevo"
                                             placeholder="Cliente" />
@@ -309,7 +448,7 @@ export const ListaVentas = () => {
                                             placeholder="Valor unitario" disabled />
                                         <label style={{ marginLeft: "20px" }} id="cantDisp">Cantidad disponible en Kg: </label>
                                         <input type="number" className="form-control modal-input-select-undisabled" id="CantidadNueva"
-                                            placeholder="cantidad en Kg" />
+                                            placeholder="cantidad en Kg" onChange={obtenerPrecioTotal} />
                                         <input type="text" className="form-control modal-input-select-undisabled" id="ValorTotal"
                                             placeholder="Valor total" disabled />
                                         <select className="form-select modal-input-select-undisabled" id="VendedorNuevo" >
@@ -341,7 +480,7 @@ export const ListaVentas = () => {
                             </div>
                             <div className="modal-footer">
                                 <button type="button" className="btn btn-primary bg-color-azul" id="btn_AgregarVenta"
-                                    data-bs-dismiss="modal">Agregar</button>
+                                    data-bs-dismiss="modal" onClick={handleClickAdicionar}>Agregar</button>
                                 <button type="button" className="btn btn-secondary" id="btnCancelarModalNuevaVenta"
                                     data-bs-dismiss="modal">Cancelar</button>
                             </div>

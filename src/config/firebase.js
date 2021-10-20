@@ -119,7 +119,8 @@ const firebaseConfig = {
     
             const coleccionDatos = respuesta.docs.map((documento)=>{
                 /* console.log(documento.data().rol) */
-                usuarioActivoRol= documento.data().rol      
+                usuarioActivoRol= documento.data().rol
+                usuarioActivo=documento.data().nombres     
             })
             /* return usuarioActivoRol */
         }

@@ -8,6 +8,8 @@ import { useHistory } from 'react-router'
 export const ListaVentas = () => {
     const [listaVentas, setListaVentas] = useState([])
     const [counter, setCounter] = useState(0);
+    const [modalOnOFF, setModalOnOFF] = useState(false)
+    const [precioProducto, setPrecioProducto] = useState(false)
     /* console.log(usuarioActivo, "importado"); */
 
     const cargarVentas = async () => {
@@ -122,7 +124,7 @@ export const ListaVentas = () => {
 
 
         const ventaAgregar = {
-            id: uuid.v4(),
+            id: uuid(),
             articulo: artiVentas.replace(/^\w/, (c) => c.toUpperCase()),
             cliente: clienteVentas.replace(/^\w/, (c) => c.toUpperCase()),
             valor: ValorVentas,
@@ -139,32 +141,33 @@ export const ListaVentas = () => {
     }
     //</ADICIONAR PRODUCTO>
 
-    //<DROPDOWNS>
-    useEffect(async () => {
-        //<renderizar dropdown articulos>
-        const selectArticulo = document.getElementById("ArticuloNuevo")
+    //<renderizar dropdown articulos>    
 
+    const renderProductos = async () => {
+
+        const selectArticulo = document.getElementById("ArticuloNuevo")
         const respuestaProductos = await consultarDocumentoWhere('ng_productos', 'estado', 'Disponible')
-        console.log("Esta es la consulta a productos: ", respuestaProductos);
-         
+        console.log("Esta es la consulta a productos: ", respuestaProductos)
 
         let contA = 0
         respuestaProductos.forEach((t) => {
-            var option = document.createElement("option");
-            option.value = contA;
-            option.text = t.descripcion;
-            selectArticulo.appendChild(option);
-            contA++
-        });
+            var option = document.createElement("option")
+            option.value = contA
+            option.text = t.descripcion
+            selectArticulo.appendChild(option)
+            contA = contA + 1
+        })
+    }
+    //</renderizar dropdown articulos>
 
-        //</renderizar dropdown articulos>
+    //<renderizar dropdown vendedores>
+    const renderVendedores = async () => {
 
-        //<renderizar dropdown vendedores>
         const selectVendedor = document.getElementById("VendedorNuevo")
 
         const respuestaUsuarios = await consultarDocumentoWhere('ng_users', 'rol', 'Vendedor')
         /* console.log(respuestausuarios); */
-        
+
         let contV = 0
         respuestaUsuarios.forEach((t) => {
             var option = document.createElement("option");
@@ -174,29 +177,94 @@ export const ListaVentas = () => {
             contV++
 
         });
-        //</renderizar dropdown vendedores>
+    }
+    //</renderizar dropdown vendedores>
 
-        //<Obtener precio>
+
+    //<Obtener precio>
+    const obtenerPrecio = async () => {
+
         const articuloVentas = document.getElementById('ArticuloNuevo');
         const artiVentas = articuloVentas.options[articuloVentas.selectedIndex].text
 
-        const respuestaProductosPrecio = await consultarDocumentoWhere('ng_productos','descripcion', artiVentas)
-        /* console.log(respuestausuarios); */
-        const listaProductosPrecio = [];
+        console.log(artiVentas, typeof (artiVentas))
 
-        respuestaProductosPrecio.forEach((item) =>{
-            listaProductosPrecio.push(item.valorUnitario);
-        });
+        const respuestaProductosPrecio = await consultarDocumentoWhere('ng_productos', 'descripcion', artiVentas)
+        console.log("respuestaProductosPrecio", respuestaProductosPrecio);
 
         respuestaProductosPrecio.forEach((t) => {
-            //console.log(t.valorUnitario)
+            console.log(t)
             document.getElementById("ValorNuevo").value = t.valorUnitario;
-            document.getElementById("cantDisp").innerHTML = "Cantidad disponible: " + t.peso + "kg";
+            document.getElementById("cantDisp").innerText = "Cantidad disponible: " + t.peso + "kg";
         });
+    }
 
-        //</Obtener precio>
+    const obtenerPrecioTotal = async () => {
 
-    },[])
+        const ValorUnitario = document.getElementById('ValorNuevo').value;
+        const Kilos = document.getElementById('CantidadNueva').value;
+        const valorTotal = ValorUnitario * Kilos;
+
+        const articuloVentas = document.getElementById('ArticuloNuevo');
+        const artiVentas = articuloVentas.options[articuloVentas.selectedIndex].text
+
+        const respuestaProductosPrecio = await consultarDocumentoWhere('ng_productos', 'descripcion', artiVentas)
+
+
+        //Validación de cantidad disponible
+        respuestaProductosPrecio.forEach((t) => {
+
+            if (parseInt(t.peso, 10) >= parseInt(Kilos, 10)) {
+                document.getElementById("ValorTotal").value = valorTotal;
+            } else {
+                alert("no hay la cantidad requerida en bodega")
+                document.getElementById('CantidadNueva').value = ""
+                document.getElementById("ValorTotal").value = ""
+            }
+        });
+    }
+
+    //</Obtener precio>
+
+    //<comparar usuarios>
+    // const compararRolUsuario = async() => {
+    //     const respuestausuarios = await consultarDocumentoWhere('ng_users', 'email', usuarioActivoEmail)       
+        
+    
+    //     respuestausuarios.forEach((t) => {
+    //         tipoUsuarioActual = t.rol
+    //     });
+    
+    //     if (tipoUsuarioActual == "Vendedor") {
+    //         document.getElementById('VendedorNuevo').disabled = true
+    //         /* document.getElementById('VendedorNuevo').text = usuarioActual */
+    
+    //         var select = document.getElementById("VendedorNuevo")
+    //         var option = document.createElement("option");
+    //         option.value = 0;
+    //         option.text = usuarioActual;
+    //         select.appendChild(option);
+    
+    //     } else {
+    
+    //         pintarVendedores()
+    //     }
+    //     pintarProductos()
+    //     /* console.log(vendedor) */
+    
+    
+    // }
+    //</comparar usuarios>
+
+    //<DROPDOWNS>
+    useEffect(async () => {
+
+        renderProductos()
+        renderVendedores()
+        obtenerPrecio()
+        obtenerPrecioTotal()
+
+    }, [modalOnOFF, precioProducto])
 
 
 
@@ -275,7 +343,7 @@ export const ListaVentas = () => {
                 {/* Botones */}
                 <div className="container text-center" >
                     <button className="btn btn-primary bg-color-azul" id="btnAdicionarPrincipal" data-bs-toggle="modal"
-                        data-bs-target="#NuevaVenta" >Adicionar</button>
+                        data-bs-target="#NuevaVenta" onClick={() => { setModalOnOFF(!modalOnOFF) }} >Adicionar</button>
 
                     <button className="btn btn-primary bg-color-azul me-3 ms-3" id="btnModificarPrincial" data-bs-toggle="modal"
                         data-bs-target="#ModificarVenta" onClick={handleClickModificar}>Modificar</button>
@@ -298,7 +366,7 @@ export const ListaVentas = () => {
                             <div className="modal-body">
                                 <div className="container">
                                     <div className="col">
-                                        <select className="form-select modal-input-select-undisabled" id="ArticuloNuevo" >
+                                        <select className="form-select modal-input-select-undisabled" id="ArticuloNuevo" onChange={() => setPrecioProducto(!precioProducto)}>
                                             <option hidden defaultValue>Articulo</option>
                                         </select>
                                         <input type="text" className="form-control modal-input-select-undisabled" id="ClienteNuevo"
@@ -339,7 +407,7 @@ export const ListaVentas = () => {
                             </div>
                             <div className="modal-footer">
                                 <button type="button" className="btn btn-primary bg-color-azul" id="btn_AgregarVenta"
-                                    data-bs-dismiss="modal">Agregar</button>
+                                    data-bs-dismiss="modal" onClick={handleClickAdicionar}>Agregar</button>
                                 <button type="button" className="btn btn-secondary" id="btnCancelarModalNuevaVenta"
                                     data-bs-dismiss="modal">Cancelar</button>
                             </div>

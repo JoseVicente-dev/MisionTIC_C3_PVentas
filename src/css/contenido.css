@@ -13,3 +13,14 @@
     height:100%;
     overflow-y: scroll;
 }
+
+.form-label{
+    margin-bottom: 0px;
+    background-color:#0a58ca;
+    font-size: 16px;
+    padding: 6px 20px;
+    border:1px;
+    border-radius: 4px;
+    
+
+}

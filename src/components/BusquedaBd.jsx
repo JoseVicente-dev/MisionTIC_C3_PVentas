@@ -69,7 +69,7 @@ export const BusquedaBd = ({estado}) => {
             <div className="row align-items-center ">
 
                 <div className="col-3" style={{textAlign: "end"},{color:"white"}}>
-                    <label className="form-label" htmlFor="form1">Buscar u Ordenar por:</label>
+                    <label className="form-label" htmlFor="form1">Buscar por:</label>
                 </div>
 
                 <div className="col-3">

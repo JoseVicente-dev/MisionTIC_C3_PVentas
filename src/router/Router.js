@@ -6,6 +6,7 @@ import { AdminProductos } from '../components/AdminProductos';
 import { FooterComponent } from '../components/FooterComponent';
 import { LoginComponent } from '../components/LoginComponent';
 import DashBoard  from '../components/DashBoard';
+import '../css/menu.css';
 
 
 export const AppRouter = () => {

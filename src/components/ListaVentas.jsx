@@ -135,11 +135,54 @@ export const ListaVentas = () => {
             cantidad: CantidadVentas
         }
 
+        actualizarProducto()
         guardarDatabase('ng_ventas', ventaAgregar)
         setTimeout(cargarVentas, 100)
 
     }
     //</ADICIONAR PRODUCTO>
+
+    //<ACTUALIZAR CANTIDAD DE PRODUCTOS>
+    const actualizarProducto = async () => {
+
+        const articuloVentas = document.getElementById('ArticuloNuevo');
+        const artiVentas = articuloVentas.options[articuloVentas.selectedIndex].text
+        const CantidadVentas = document.getElementById('CantidadNueva').value;
+        const ValorUnitario = document.getElementById('ValorNuevo').value;
+        /* console.log(articuloVentas); */
+        
+
+        const respuestaProductos = await consultarDocumentoWhere('ng_productos', 'descripcion', artiVentas)
+        let idmod
+        let pesoActualizar
+        let estadoaActualizar
+
+        respuestaProductos.forEach((t) => {
+                  
+
+            if (t.descripcion === artiVentas) {
+                idmod = t.idDocumento
+                pesoActualizar = t.peso - CantidadVentas
+                if (pesoActualizar == 0) {
+                    estadoaActualizar = "No disponible"
+                } else {
+                    estadoaActualizar = "Disponible"
+                }
+            }
+        });
+
+        const actualizarProducto = {
+            descripcion: artiVentas,
+            peso: pesoActualizar,
+            valorUnitario: ValorUnitario,
+            estado: estadoaActualizar,
+        };
+
+        actualizarDocumentoDatabase('ng_productos', idmod, actualizarProducto)
+
+
+    }
+    //</ACTUALIZAR CANTIDAD DE PRODUCTOS>
 
     //<renderizar dropdown articulos>    
 
@@ -194,9 +237,9 @@ export const ListaVentas = () => {
 
         respuestaProductosPrecio.forEach((t) => {
             // console.log(t)
-            if (t.descripcion=== artiVentas){
-            document.getElementById("ValorNuevo").value = t.valorUnitario;
-            document.getElementById("cantDisp").innerText = "Cantidad disponible: " + t.peso + "kg";
+            if (t.descripcion === artiVentas) {
+                document.getElementById("ValorNuevo").value = t.valorUnitario;
+                document.getElementById("cantDisp").innerText = "Cantidad disponible: " + t.peso + "kg";
             }
         });
     }
@@ -261,6 +304,8 @@ export const ListaVentas = () => {
 
     }
     //</comparar usuarios>
+
+
 
     //<Limpiar selectores>
 

@@ -349,8 +349,11 @@ export const ListaVentas = () => {
         const selectorVendedor = document.getElementById("VendedorNuevo");
         // let option = document.createElement("option")
         // option.hidden=
-
-
+        document.getElementById("ClienteNuevo").value='';
+        document.getElementById("CantidadNueva").value='';
+        document.getElementById("ValorTotal").value='';
+        document.getElementById("FechaVentaNuevo").value='';
+        document.getElementById("FechaPagoNuevo").value='';
 
         while (selectorVendedor.firstChild) {
             selectorVendedor.removeChild(selectorVendedor.lastChild)

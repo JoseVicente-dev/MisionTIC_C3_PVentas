@@ -1,7 +1,9 @@
 import {initializeApp} from 'firebase/app'
 import {getFirestore} from 'firebase/firestore'
-import {getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged, getg} from 'firebase/auth'
-import {addDoc, collection, getDocs, query, getDoc, doc, updateDoc, deleteDoc} from 'firebase/firestore'//Métodos de interaccion BD
+import {getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged, signInWithPopup, GoogleAuthProvider} from 'firebase/auth'
+import {addDoc, collection, getDocs, query, getDoc, doc, updateDoc, deleteDoc, where} from 'firebase/firestore'//Métodos de interaccion BD
+
+import fotoUsuario from '../images/user2.png'
 
 
 const firebaseConfig = {
@@ -23,7 +25,9 @@ const firebaseConfig = {
   
 
   export let usuarioActivo
-
+  export let usuarioActivoEmail
+  export let usuarioActivoPhoto
+  export let usuarioActivoRol
 
   //CRUD => Create Read Update Delete
 
@@ -76,13 +80,55 @@ const firebaseConfig = {
             idDocumento: respuesta.id,//id para actualizar
             ...respuesta.data()
         }
-        console.log(documentoTemporal);
+        /* console.log(documentoTemporal); */
         return documentoTemporal
     }
     catch(e){
         throw new Error(e)
     }
   }
+
+
+
+  //consultar por where
+  export const consultarDocumentoWhere = async(nombreColeccion, terminoBusqueda, busqueda) =>{
+    try{
+
+        const respuesta = await getDocs(query(collection(database, nombreColeccion), where(terminoBusqueda, '>=', busqueda), where(terminoBusqueda, '<=', busqueda+ '\uf8ff')))
+
+        const coleccionDatos = respuesta.docs.map((documento)=>{
+            //console.log(documento.data());
+            const documentoTemporal = {
+                idDocumento: documento.id,//id para actualizar
+                ...documento.data()
+            }
+            /* console.log(documentoTemporal); */
+            return documentoTemporal
+        })
+        return coleccionDatos     
+    }
+    catch(e){
+        throw new Error(e)
+    }
+  }
+
+    //consultar por where
+    export const consultarTipoUsuario = async(email) =>{
+        try{
+            const respuesta = await getDocs(query(collection(database, 'ng_users'), where('email', '==', email)))
+    
+            const coleccionDatos = respuesta.docs.map((documento)=>{
+                /* console.log(documento.data().rol) */
+                usuarioActivoRol= documento.data().rol
+                usuarioActivo=documento.data().nombres     
+            })
+            /* return usuarioActivoRol */
+        }
+        catch(e){
+            throw new Error(e)
+        }
+      }
+
 
 
   //Actualizaciòn de un documento en Base de datos
@@ -96,7 +142,6 @@ const firebaseConfig = {
     }
   }
 
-
    //Eliminar de un documento en Base de datos
    export const eliminarDocumentoDatabase = async(nombreColeccion, idDocumento) =>{
     try{
@@ -107,9 +152,6 @@ const firebaseConfig = {
         throw new Error(e)
     }
   }
-
-
-
 
   //Crear Usuarios con FireBase
   export const crearUsuario = async(email, password) =>{
@@ -134,7 +176,6 @@ const firebaseConfig = {
     }
   }
 
-
     //Login de Usuarios con FireBase auth
     export const logInUsuario = async(email, password) =>{
         try{
@@ -158,18 +199,28 @@ const firebaseConfig = {
         catch(e){
             throw new Error(e)
         }
-      }
+        }
 
 
-    //Login Pop UP google
-    /* export const logInUsuarioPopup = async() =>{
+    //Login PopUP google
+    export const logInUsuarioPopup = async() =>{
         try{
-            const respuesta = await firebase.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider())
+            const respuesta = await signInWithPopup(auth, new GoogleAuthProvider())
+
+            const user = {
+                id: respuesta.user.uid,
+                email: respuesta.user.email,
+            }
+
+            /* console.log(user.id);
+            console.log(user.email); */
+
+            return(user.email)
         }
         catch(e){
             throw new Error(e)
         }
-      } */
+      }
 
 
     //LogOut de Usuarios con FireBase auth
@@ -177,6 +228,11 @@ const firebaseConfig = {
         try{
             const respuesta = await signOut(auth)
             /* console.log('Usuario LogOut exitoso'); */
+
+            usuarioActivo = undefined
+            usuarioActivoEmail = undefined
+            usuarioActivoPhoto = fotoUsuario
+            usuarioActivoRol = "Sin Validación"
             /* console.log(respuesta); */
         }
         catch(e){
@@ -194,10 +250,10 @@ const firebaseConfig = {
 
             //validacion de usuario, recordar undefined is falsy
             if(user){
-                console.log('activo: ', user)
-                return user
+                /* console.log('activo: ', user.uid) */
+                return user.email
             }else{
-                console.log('no activo: ', user);
+                /* console.log('no activo: ', user); */
                 return undefined
             }
         }
@@ -208,12 +264,25 @@ const firebaseConfig = {
 
       //siempre estar buscando auth
       //Usuario Activo?
+
+      
+
       onAuthStateChanged(auth,(user)=>{
         if (user){
             /* console.log(user.email); */
             usuarioActivo = user.displayName
+            usuarioActivoEmail = user.email
+            usuarioActivoPhoto = user.photoURL
+            
+            consultarTipoUsuario(usuarioActivoEmail)
+            
+            /* usuarioActivo=user */
+            /* console.log(user) */
+            
         }else{
             /* console.log(user); */
             usuarioActivo = undefined
+            /* console.log(usuarioActivo) */
+            
         }
       })

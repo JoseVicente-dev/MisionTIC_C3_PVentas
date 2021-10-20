@@ -178,7 +178,7 @@
     animation: swing ease-in-out 0.5s 1 alternate;
   }
   
-  .menu-lateral-wrapper .menu-lateral-menu .menu-lateral-dropdown > a:after {
+  /* .menu-lateral-wrapper .menu-lateral-menu .menu-lateral-dropdown > a:after {
     font-family: "Font Awesome 5 Free";
     font-weight: 900;
     content: "\f105";
@@ -194,7 +194,7 @@
     position: absolute;
     right: 15px;
     top: 14px;
-  }
+  } */
   
   .menu-lateral-wrapper .menu-lateral-menu .menu-lateral-dropdown .menu-lateral-submenu ul {
     padding: 5px 0;

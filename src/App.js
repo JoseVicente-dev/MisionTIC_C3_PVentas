@@ -1,20 +1,11 @@
-import { LoginComponent } from './components/LoginComponent';
-import { FooterComponent } from './components/FooterComponent';
-import { HeaderNg } from './components/HeaderNg';
-import { MenuLateralNg } from './components/MenuLateralNg.jsx';
+import { AppRouter } from './router/Router.js';
 
 function App() {
 
   return (
     <div className="App">
 
-      <HeaderNg/>
-      
-      <MenuLateralNg/>
-
-      <LoginComponent/>
-
-      <FooterComponent/>
+      <AppRouter/>
 
     </div>
   );

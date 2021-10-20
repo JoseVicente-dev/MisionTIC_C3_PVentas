@@ -1,22 +1,47 @@
 import '../css/login.css';
 import '../css/style.css';
 
+import {useHistory } from 'react-router'
+
 import logoMercurio from '../images/logo_mercurio.png'
 import logoGmail from '../images/gmail.png'
-import { logInUsuario, logInUsuarioPopup } from '../config/firebase';
+import { consultarDocumentoWhere, logInUsuarioPopup, logOutUsuario} from '../config/firebase';
+
+
 
 export const LoginComponent = () => {
 
+    const history = useHistory()
+
     const handleClickLogin= async  () => {
-        console.log("Pueba de boton")
+        /* console.log("Pueba de boton") */
         
-        //Realizar loginAUTH
-        /* await logInUsuario ('steven.tavera@gmail.com', '123456') */
+        //Realizar loginPopUPAUTH
+        const usuario= await logInUsuarioPopup()
 
-        /* logInUsuarioPopup() */
-        
-      }
+        if(usuario != ''){
+            //validar si el usuario existe en la bd
+            const respuesta = await consultarDocumentoWhere('ng_users', 'email', usuario)
+            let userRol = '', userEmail = '', userEstado
+            
+            respuesta.forEach((user)=>{
+                userEmail = user.email
+                userRol= user.rol
+                userEstado = user.estado
+            })
+            //console.log(userEmail, userRol);
+            if(userEmail==usuario && userEstado=="Autorizado"){
+                history.push({ pathname: '/dashboard'})
+            }else{
+                logOutUsuario()
+                alert("Ud. no está creado en la base de datos, o no está autorizado, por favor solicite la revisión de su perfil")
+            }
+        }else{
+            console.log('no logueado')
+        }
 
+    }
+    
     return (
         <>
             <div className="container abs-center" >
@@ -63,7 +88,9 @@ export const LoginComponent = () => {
                     </div>
 
                 </div>
+
             </div>
+
         </>
     )
 

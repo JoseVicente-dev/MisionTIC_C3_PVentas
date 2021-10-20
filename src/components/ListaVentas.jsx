@@ -152,9 +152,9 @@ export const ListaVentas = () => {
         const articuloVentas = document.getElementById('ArticuloNuevo');
         const artiVentas = articuloVentas.options[articuloVentas.selectedIndex].text
         const CantidadVentas = document.getElementById('CantidadNueva').value;
-        
+
         /* console.log(articuloVentas); */
-        
+
 
         const respuestaProductos = await consultarDocumentoWhere('ng_productos', 'descripcion', artiVentas)
         let idmod
@@ -162,7 +162,7 @@ export const ListaVentas = () => {
         let estadoaActualizar
 
         respuestaProductos.forEach((t) => {
-                  
+
 
             if (t.descripcion === artiVentas) {
                 idmod = t.idDocumento
@@ -176,7 +176,7 @@ export const ListaVentas = () => {
         });
 
         const actualizarProducto = {
-            peso: pesoActualizar,            
+            peso: pesoActualizar,
             estado: estadoaActualizar,
         };
 
@@ -398,6 +398,21 @@ export const ListaVentas = () => {
                         </div>
                     </div>
                 </div>
+
+                {/* Botones */}
+                <div className="container text-center" >
+                    <button className="btn btn-primary bg-color-azul" id="btnAdicionarPrincipal" data-bs-toggle="modal"
+                        data-bs-target="#NuevaVenta" onClick={() => { setModalOnOFF(!modalOnOFF) }} >Adicionar</button>
+
+                    <button className="btn btn-primary bg-color-azul me-3 ms-3" id="btnModificarPrincial" data-bs-toggle="modal"
+                        data-bs-target="#ModificarVenta" onClick={handleClickModificar}>Modificar</button>
+
+                    <button className="btn btn-danger bg-color-azul " id="btnEliminarPrincipal" data-bs-toggle="modal"
+                        data-bs-target="#EliminarVenta">Eliminar</button>
+                </div>
+                {/* Botones */}
+
+
                 <section className="main">
                     <div className="container-fluid table-responsive abs-center-table">
                         <table className="table table-hover table-striped" >
@@ -448,18 +463,7 @@ export const ListaVentas = () => {
                     </div>
                 </section>
 
-                {/* Botones */}
-                <div className="container text-center" >
-                    <button className="btn btn-primary bg-color-azul" id="btnAdicionarPrincipal" data-bs-toggle="modal"
-                        data-bs-target="#NuevaVenta" onClick={() => { setModalOnOFF(!modalOnOFF) }} >Adicionar</button>
 
-                    <button className="btn btn-primary bg-color-azul me-3 ms-3" id="btnModificarPrincial" data-bs-toggle="modal"
-                        data-bs-target="#ModificarVenta" onClick={handleClickModificar}>Modificar</button>
-
-                    <button className="btn btn-danger bg-color-azul " id="btnEliminarPrincipal" data-bs-toggle="modal"
-                        data-bs-target="#EliminarVenta">Eliminar</button>
-                </div>
-                {/* Botones */}
 
                 {/* <!--  Modal Nueva Venta --> */}
                 <div className="modal fade" id="NuevaVenta" data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1"
@@ -544,7 +548,7 @@ export const ListaVentas = () => {
                                         placeholder="Cliente" pattern="[A-Za-z]{3}"></input>
                                     <input type="number" className="form-control modal-input-select-undisabled" id="ValorBusqueda"
                                         placeholder="Valor unitario" disabled></input>
-                                        <label style={{ marginLeft: "20px" }} id="cantDisp">Cantidad disponible en Kg: </label>
+                                    <label style={{ marginLeft: "20px" }} id="cantDisp">Cantidad disponible en Kg: </label>
                                     <input type="number" className="form-control modal-input-select-undisabled" id="CantidadM"
                                         placeholder="Cantidad" onChange={obtenerPrecioTotalModificado}></input>
                                     <input type="text" className="form-control modal-input-select-undisabled" id="ValorTotalM"

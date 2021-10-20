@@ -1,4 +1,6 @@
-
+.container{
+    padding:10px 0px
+}
 
 .contenedorFlex{
     display: flex;

@@ -148,7 +148,7 @@ export const ListaVentas = () => {
         const articuloVentas = document.getElementById('ArticuloNuevo');
         const artiVentas = articuloVentas.options[articuloVentas.selectedIndex].text
         const CantidadVentas = document.getElementById('CantidadNueva').value;
-        const ValorUnitario = document.getElementById('ValorNuevo').value;
+        
         /* console.log(articuloVentas); */
         
 
@@ -172,9 +172,7 @@ export const ListaVentas = () => {
         });
 
         const actualizarProducto = {
-            descripcion: artiVentas,
-            peso: pesoActualizar,
-            valorUnitario: ValorUnitario,
+            peso: pesoActualizar,            
             estado: estadoaActualizar,
         };
 

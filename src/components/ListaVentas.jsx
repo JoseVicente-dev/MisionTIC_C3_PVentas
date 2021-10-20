@@ -1,15 +1,12 @@
 import React,{ useEffect, useState} from 'react'
 import { consultarDatabase, consultarDocumentoWhere} from '../config/firebase';
 import { BusquedaBd } from './BusquedaBd';
-import { usuarioActivo, eliminarDocumentoDatabase } from './../config/firebase';
+import { usuarioActivo, eliminarDocumentoDatabase, actualizarDocumentoDatabase } from './../config/firebase';
 import {useHistory } from 'react-router'
 
-
 export const ListaVentas = () => {
-    
     const [listaVentas, setListaVentas] = useState([])
     const [counter, setCounter]=useState(0);
-
     /* console.log(usuarioActivo, "importado"); */
 
     const cargarVentas = async() =>{
@@ -17,7 +14,6 @@ export const ListaVentas = () => {
         let terminoBusqueda = document.getElementById('busquedapor').value
         let busqueda = document.getElementById("busqueda").value;
         const listaTemporal = await consultarDocumentoWhere('ng_ventas',terminoBusqueda, busqueda)
-
         setListaVentas(listaTemporal)
     }
 
@@ -31,11 +27,67 @@ export const ListaVentas = () => {
         usuarioActivo == undefined  ?  sinAcceso() : cargarVentas() 
     },[counter])
 
-    let idSeleccionado // idDocumento que esta oculto en la tabla para modificar posteriormente
+
+// modificar una venta
+let idSeleccionado // idDocumento que esta oculto en la tabla para modificar posteriormente
+
+    const handleClickModificar = async  () => {
+        /* console.log("Prueba") */
+
+        let tablaVentas = document.getElementById("tabla_ventas");
+        let radios = tablaVentas.getElementsByTagName("input");
+        let filas = tablaVentas.getElementsByTagName("tr");
+        let totalFilas = radios.length;
+
+        for (let i = 0; i < totalFilas; i++) {
+
+            if (radios[i].checked) {
+
+                document.getElementById("IdBusqueda").value = filas[i].cells[1].innerText
+                document.getElementById("ArticuloBusqueda").value = filas[i].cells[3].innerText
+                document.getElementById("ClienteBusqueda").value = filas[i].cells[2].innerText
+                document.getElementById("ValorBusqueda").value = filas[i].cells[5].innerText
+                document.getElementById("CantidadM").value = filas[i].cells[4].innerText
+                document.getElementById("ValorTotalM").value = filas[i].cells[6].innerText
+                document.getElementById("VendedorBusqueda").value = filas[i].cells[8].innerText
+                document.getElementById("EstadoBusqueda").value = filas[i].cells[9].innerText
+                document.getElementById("FechaVentaBusqueda").value = filas[i].cells[7].innerText
+                document.getElementById("FechaPagoBusqueda").value = filas[i].cells[10].innerText
+
+                idSeleccionado=filas[i].cells[11].innerText//esta linea trae el idDocuemtno oculta
+            }
+        }
+
+       /*  console.log(idSeleccionado) */
+
+    }
+
+    const handleClickModificarBd = async  () => {
+        //console.log("Prueba")
+        
+        const mclienteInput = document.getElementById("ClienteBusqueda").value.replace(/^\w/, (c) => c.toUpperCase());
+        const mcantidadInput = document.getElementById("CantidadM").value;
+        const mestadoInput = document.getElementById("EstadoBusqueda").value;
+        const mfechaVentaInput = document.getElementById("FechaVentaBusqueda").value;
+        const mfechaPagoInput = document.getElementById("FechaPagoBusqueda").value;
+        
+
+        const ventaModificada= {
+            cliente:mclienteInput,
+            cantidad:mcantidadInput,
+            fechaVenta:mfechaVentaInput,
+            fechaPago:mfechaPagoInput,
+            estado:mestadoInput,
+        }
+
+        actualizarDocumentoDatabase('ng_ventas', idSeleccionado, ventaModificada)
+        setTimeout(cargarVentas,100)
+        
+        
+    }
 
     const handleClickEliminar =async () =>{
         //console.log("Prueba");
-
         let tablaVentas = document.getElementById("tabla_ventas");
         let radios = tablaVentas.getElementsByTagName("input");
         let filas = tablaVentas.getElementsByTagName("tr");
@@ -50,8 +102,6 @@ export const ListaVentas = () => {
         eliminarDocumentoDatabase ('ng_ventas', idSeleccionado)
         setTimeout(cargarVentas,100)
     }
-
-    
     return (
         <>
                 <div className="container text-center">
@@ -89,7 +139,6 @@ export const ListaVentas = () => {
                                         <th scope="col">Fecha de Pago</th>
                                     </tr>
                                 </thead>
-
                                 <tbody style={{textAlign: "center"}} id="tabla_ventas">
                                     {
                                         listaVentas.map((venta, index)=>(
@@ -108,7 +157,7 @@ export const ListaVentas = () => {
                                                 <td>{venta.articulo}</td>
                                                 <td>{venta.cantidad}</td>
                                                 <td>{venta.valor}</td>
-                                                <td></td>
+                                                <td>{venta.valor}</td>
                                                 <td>{venta.fechaVenta}</td>
                                                 <td>{venta.vendedor}</td>
                                                 <td>{venta.estadoPago}</td>
@@ -120,9 +169,7 @@ export const ListaVentas = () => {
                                 </tbody>
                             </table>
                         </div>
-                    
                     </section>
-
 
                     {/* Botones */}
                     <div className="container text-center" >
@@ -130,13 +177,12 @@ export const ListaVentas = () => {
                         data-bs-target="#NuevaVenta">Adicionar</button>
 
                         <button className="btn btn-primary bg-color-azul me-3 ms-3" id="btnModificarPrincial" data-bs-toggle="modal"
-                        data-bs-target="#ModificarVenta">Modificar</button>
+                        data-bs-target="#ModificarVenta" onClick={handleClickModificar}>Modificar</button>
 
                         <button className="btn btn-danger bg-color-azul " id="btnEliminarPrincipal" data-bs-toggle="modal"
                         data-bs-target="#EliminarVenta">Eliminar</button>
                         </div>
                     {/* Botones */}
-
                     
                     {/* <!--  Modal Nueva Venta --> */}
                     <div className="modal fade" id="NuevaVenta" data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1"
@@ -154,31 +200,23 @@ export const ListaVentas = () => {
                                             <select className="form-select modal-input-select-undisabled" id="ArticuloNuevo" >
                                                 <option hidden defaultValue>Articulo</option>
                                             </select>
-
                                             <input type="text" className="form-control modal-input-select-undisabled" id="ClienteNuevo"
                                                 placeholder="Cliente" />
                                             <input type="text" className="form-control modal-input-select-undisabled" id="ValorNuevo"
                                                 placeholder="Valor unitario" disabled />
-                                            
                                             <label style={{marginLeft: "20px"}} id="cantDisp">Cantidad disponible en Kg: </label>    
-
                                             <input type="number" className="form-control modal-input-select-undisabled" id="CantidadNueva"
                                             placeholder="cantidad en Kg" />
-
                                             <input type="text" className="form-control modal-input-select-undisabled" id="ValorTotal"
                                             placeholder="Valor total" disabled />
-
                                             <select className="form-select modal-input-select-undisabled" id="VendedorNuevo" >
                                             </select>
-
                                             <select className="form-select modal-input-select-undisabled" id="EstadoNuevo" >
                                                 <option value="Cancelada">Cancelada</option>
                                                 <option value="Pendiente">Pendiente</option>
                                             </select>
-
                                             <div className="col">
                                             </div>
-
                                             <div className="row" style={{margin: "10px 20px 10px 5px"}}>
                                                 <div className='input-group date col-sm' id='startDate' >
                                                     <span className="input-group-addon input-group-text"><span className="fa fa-calendar"></span>
@@ -209,8 +247,6 @@ export const ListaVentas = () => {
                     </div>
                     {/* <!--  /Modal Nueva Venta --> */}
 
-
-
                    {/*  <!--  Modal Modificar Venta --> */}
                     <div className="modal fade" id="ModificarVenta" data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1"
                         aria-labelledby="staticBackdropLabel1" aria-hidden="true">
@@ -223,10 +259,8 @@ export const ListaVentas = () => {
                                 </div>
                                 <div className="modal-body">
                                     <div className="container">
-
                                         <input type="text" className="form-control modal-input-select-undisabled" id="IdBusqueda"
                                             placeholder="Id Venta" disabled></input>
-
                                         <input type="text" className="form-control modal-input-select-undisabled" id="ArticuloBusqueda"
                                             placeholder="Articulo" disabled ></input>
                                         <input type="text" className="form-control modal-input-select-undisabled" id="ClienteBusqueda"
@@ -262,7 +296,7 @@ export const ListaVentas = () => {
                                 <div className="modal-footer">
                                     <button type="button" className="btn btn-primary bg-color-azul" id="btnModificarModalModificar"
                                         data-bs-toggle="modal" data-bs-target="#AlertaModificacionVenta"
-                                        data-bs-dismiss="modal">Modificar</button>
+                                        data-bs-dismiss="modal" onClick={handleClickModificarBd}>Modificar</button>
                                     <button type="button" className="btn btn-secondary" id="btnCancelarModalModificar"
                                         data-bs-dismiss="modal">Cancelar</button>
                                 </div>
@@ -297,11 +331,7 @@ export const ListaVentas = () => {
                         </div>
                     </div>
                     {/* Modal Eliminar*/}
-
-
-
                 </div>
-          
         </>
     )
 }

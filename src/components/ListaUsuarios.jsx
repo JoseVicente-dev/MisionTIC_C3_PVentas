@@ -18,7 +18,7 @@ export const ListaUsuarios = () => {
          setListaUsuarios(listaTemporal) */
 
         let terminoBusqueda = document.getElementById('busquedapor').value
-        let busqueda = document.getElementById("busqueda").value;
+        let busqueda = document.getElementById("busqueda").value.replace(/^\w/, (c) => c.toUpperCase());
 
         const listaTemporal = await consultarDocumentoWhere('ng_users', terminoBusqueda, busqueda)
         setListaUsuarios(listaTemporal)

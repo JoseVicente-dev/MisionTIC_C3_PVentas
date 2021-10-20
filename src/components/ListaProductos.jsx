@@ -15,7 +15,7 @@ export const ListaProductos = () => {
     const cargarProductos = async () => {
         /*  const listaTemporal = await consultarDatabase('ng_productos') //trae info database */
         let terminoBusqueda = document.getElementById('busquedapor').value
-        let busqueda = document.getElementById("busqueda").value;
+        let busqueda = document.getElementById("busqueda").value.replace(/^\w/, (c) => c.toUpperCase());
 
         const listaTemporal = await consultarDocumentoWhere('ng_productos', terminoBusqueda, busqueda)
         console.log("Esta es la lista de productos segun busqueda: ", listaTemporal)

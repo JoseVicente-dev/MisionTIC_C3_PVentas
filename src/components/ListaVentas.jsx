@@ -139,10 +139,10 @@ let idSeleccionado // idDocumento que esta oculto en la tabla para modificar pos
     }
     //</ADICIONAR PRODUCTO>
 
-    //<DROPDOWN ARTICULO NUEVO>
+    //<DROPDOWNS>
     const handleClickAdicionarPrincipal=async ()=>{
-
-        let select = document.getElementById("ArticuloNuevo")
+        //<renderizar dropdown articulos>
+        const selectArticulo = document.getElementById("ArticuloNuevo")
 
         const respuestaProductos = await consultarDocumentoWhere('ng_productos','estado','Disponible')
         console.log("Esta es la consulta a productos: ",respuestaProductos);
@@ -157,19 +157,47 @@ let idSeleccionado // idDocumento que esta oculto en la tabla para modificar pos
 
         console.log("productosBD: ", productosBD)
 
-        let contadorV = 0
+        let contA = 0
         productosBD.forEach((t) => {
             var option = document.createElement("option");
-            option.value = contadorV;
+            option.value = contA;
             option.text = t;
-            select.appendChild(option);
-            contadorV = contadorV + 1
+            selectArticulo.appendChild(option);
+            contA++
         });
+
+        //</renderizar dropdown articulos>
+
+        //<renderizar dropdown vendedores>
+        const selectVendedor = document.getElementById("VendedorNuevo")
+    
+        const respuestaUsuarios = await consultarDocumentoWhere('ng_users','rol','Vendedor')
+        /* console.log(respuestausuarios); */
+        let usuariosBD = [];
+    
+        respuestaUsuarios.forEach((item) =>{
+            usuariosBD.push(item.nombres);
+        });
+    
+        let contV = 0
+        usuariosBD.forEach((t) => {
+            var option = document.createElement("option");
+            option.value = contV;
+            option.text = t;
+            selectVendedor.appendChild(option);
+            contV++
+    
+        });
+        //</renderizar dropdown vendedores>
+
+        //
 
     }
 
+    
 
-    //</DROPDOWN>
+
+    //</DROPDOWNS>
 
     return (
         <>

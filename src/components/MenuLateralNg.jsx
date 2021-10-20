@@ -15,7 +15,6 @@ export const MenuLateralNg = ({usuario, tipo, foto}) => {
     tipo = usuarioActivoRol
 
     const history = useHistory()
-    console.log(history.location.pathname);
     
     const handleClickMenu= () => {
         if(menu=="toggled"){

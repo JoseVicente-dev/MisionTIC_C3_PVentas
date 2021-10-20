@@ -20,7 +20,7 @@ export const AppRouter = () => {
                     <Route path="/productos" component={AdminProductos}/>
                     <Route path="/dashboard" component={DashBoard}/>
                 </Switch>
-            <FooterComponent/>
+            
             </Router>
         </>
     )

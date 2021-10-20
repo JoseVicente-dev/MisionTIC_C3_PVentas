@@ -1,4 +1,4 @@
-import React,{ useEffect} from 'react'
+import React,{ useEffect, useState} from 'react'
 import { HeaderNg } from './HeaderNg';
 import { useHistory } from 'react-router';
 import { consultarDocumentoWhere, usuarioActivo } from './../config/firebase';
@@ -10,6 +10,10 @@ import HighchartsReact from 'highcharts-react-official'
 
 const DashBoard = () => {
 
+    const arrayVendedorVenta = []
+    const arrayProductos = []
+    const [ventasVendedor, setVentasVendedor] = useState([]) 
+    const [counter, setCounter]=useState(0);
 
     const history = useHistory()
 
@@ -19,14 +23,14 @@ const DashBoard = () => {
     }
 
     useEffect(() => {
-        usuarioActivo == undefined  ?  sinAcceso() : seriesProductos() && seriesVendedores() && seriesVendedorVenta()
-    },[])
+        usuarioActivo == undefined  ?  sinAcceso() : seriesVendedorVenta() && seriesProductos() && seriesVendedores()
+    },[counter])
 
 
     //--------------------------------------------------------------------------------------------
     //Para empezar a implementar series en los graficos--
     //--------------------------------------------------------------------------------------------
-    const arrayProductos = []
+    
     const seriesProductos = async ()=>{
         const listaTemporal = await consultarDocumentoWhere('ng_productos','descripcion', '')
         /* console.log(listaTemporal); */
@@ -35,7 +39,6 @@ const DashBoard = () => {
         })
         console.log ("Productos: ",arrayProductos) //Lista de prodcutos en consola.
     }
-
 
     const arrayVendedores = []
     const seriesVendedores = async ()=>{
@@ -47,8 +50,6 @@ const DashBoard = () => {
         console.log ("Vendedores: ",arrayVendedores) //Lista de vendedores en consola.
     }
 
-
-    const arrayVendedorVenta = []
     
     const seriesVendedorVenta = async ()=>{
         const listaTemporal = await consultarDocumentoWhere('ng_ventas','articulo', '')
@@ -128,7 +129,7 @@ const DashBoard = () => {
 
 
         //ventas x vendedor
-        let ventasVendedor = []
+        let ventasVendedorTemp = []
         for(let i=0; i<=k-1; i++){
           let vendedor = arrayVendedorVenta[i].vendedor
           let valor=0
@@ -143,35 +144,37 @@ const DashBoard = () => {
             vendedor,
             valor
           }
-          ventasVendedor.push(venta)
+          
+          ventasVendedorTemp.push(venta)
         }
         //console.log("ventas x Vendedor: ", ventasVendedor)
 
         //eliminar ducplicados
          var hash = {};
-         ventasVendedor = ventasVendedor.filter(function(current) {
+         ventasVendedorTemp = ventasVendedorTemp.filter(function(current) {
            var exists = !hash[current.vendedor];
            hash[current.vendedor] = true
            return exists
          });
-         console.log("ventas x Vendedor: ", ventasVendedor)
+         //console.log("ventas x Vendedor: ", ventasVendedorTemp)
+         setVentasVendedor(ventasVendedorTemp)
     }
-
+    //console.log("160: ", ventasVendedor)
     //--------------------------------------------------------------------------------------------
     
+
     const options = {
                       chart: {type: 'line'},
-                      title: {text: 'Ventas Mensuales'},
-                      subtitle: { text: 'Cuadro de ventas Mensuales x Kg x Vendedor'},
-                      xAxis: {categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']},
+                      title: {text: 'Ventas x Producto'},
+                      subtitle: { text: 'Cuadro de ventas Productos x Kg x Vendedor'},
+                      xAxis: {categories: {arrayProductos}},
                       yAxis: {title: {text: 'Cantidad en Kg'}},
                       plotOptions: {line: {dataLabels: {enabled: true},enableMouseTracking: false}},
-                      series: [{name: 'Vendedor 1',
-                                data: [7.0, 6.9, 9.5, 14.5, 18.4, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6]}, 
-                                {name: 'Vendedor 2',
-                                data: [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]}, 
-                                {name: 'Vendedor 3',
-                                data: [2.9, 5.2, 7.7, 9.5, 1.9, 2.2, 7.0, 6.6, 1.2, 1.3, 10.6, 5.8]}
+                      series: [{name: 'Steven Tavera', data: [7.0, 6.9, 9.5, 14.5, 18.4, 21.5]}, 
+                                {name: 'José Vicente Velasco López', data: [3.9, 4.2, 5.7, 8.5, 11.9, 15.2]}, 
+                                {name: 'Gonzalo Sarmiento Castro', data: [2.9, 5.2, 7.7, 9.5, 1.9, 2.2]},
+                                {name: 'Samuel jimenez', data: [0, 2, 8, 10, 1, 6]},
+                                {name: 'FerboHi', data: [12.9, 2.2, 1.7, 9.5, 1.1, 2.9]}
                               ]
                     }
 
@@ -190,12 +193,13 @@ const DashBoard = () => {
                                 format: '<b>{point.name}</b>: {point.percentage:.1f} %'}}},
                           series:  [{ name: 'Productos',
                                       colorByPoint: true,
-                                      data: [{name: 'producto 1', y: 61.41}, {name: 'producto 2', y: 11.84}, {name: 'producto 3', y: 10.85 }, 
-                                            {name: 'producto 4', y: 4.67}, {name: 'producto 5', y: 4.18}, {name: 'producto 6', y: 1.64}, 
-                                            {name: 'producto 7', y: 1.6}, {name: 'producto 8',y: 1.2}, {name: 'Other',y: 2.61}]
+                                      data: [{prueba: 'producto 1', y: 61.41}, {prueba: 'producto 2', y: 11.84}, {prueba: 'producto 3', y: 10.85 }, 
+                                            {prueba: 'producto 4', y: 4.67}, {prueba: 'producto 5', y: 4.18}, {prueba: 'producto 6', y: 1.64}, 
+                                            {prueba: 'producto 7', y: 1.6}, {prueba: 'producto 8',y: 1.2}, {prueba: 'Other',y: 2.61}]
+                                            //ventasVendedor
                                     }] 
                         }
-
+      console.log(ventasVendedor)
       const options2={
                         chart: {type: 'column'},
                         title: {text: 'Comparativo de ventas'},
@@ -238,7 +242,10 @@ const DashBoard = () => {
                </div>
            </div>
 
-           <br/><br/><br/>
+           <button onClick={()=>setCounter (counter +1)}>Prueba</button>
+           <br/><br/><br/><br/><br/><br/>
+
+           
            
         </>
     )

@@ -242,6 +242,8 @@ export const ListaVentas = () => {
             if (t.descripcion === artiVentas) {
                 document.getElementById("ValorNuevo").value = t.valorUnitario;
                 document.getElementById("cantDisp").innerText = "Cantidad disponible: " + t.peso + "kg";
+                document.getElementById("cantDisp2").innerText = "Cantidad disponible: " + t.peso + "kg";
+
             }
         });
     }
@@ -274,7 +276,34 @@ export const ListaVentas = () => {
             }
         });
     }
+    const obtenerPrecioTotalModificado = async () => {
 
+        const ValorUnitarioM = document.getElementById('ValorBusqueda').value;
+        const KilosM = document.getElementById('CantidadM').value;
+        const valorTotalM = ValorUnitarioM * KilosM;
+
+        const articuloVentasM = document.getElementById('ArticuloBusqueda');
+        const artiVentasM = articuloVentasM.value
+
+        const respuestaProductosPrecioM = await consultarDocumentoWhere('ng_productos', 'descripcion', artiVentasM)
+        // console.log("respuestaProductosPrecio ", respuestaProductosPrecio);
+
+
+        //Validación de cantidad disponible
+        respuestaProductosPrecioM.forEach((t) => {
+            // console.log("Cantidad disponible", t.peso)
+            if (t.descripcion === artiVentasM) {
+
+                if (parseInt(t.peso, 10) >= parseInt(KilosM, 10)) {
+                    document.getElementById("ValorTotalM").value = valorTotalM;
+                } else {
+                    alert("no hay la cantidad requerida en bodega")
+                    document.getElementById('CantidadM').value = ""
+                    document.getElementById("ValorTotalM").value = ""
+                }
+            }
+        });
+    }
     //</Obtener precio>
 
     // <comparar usuarios>
@@ -452,7 +481,7 @@ export const ListaVentas = () => {
                                             placeholder="Cliente" />
                                         <input type="text" className="form-control modal-input-select-undisabled" id="ValorNuevo"
                                             placeholder="Valor unitario" disabled />
-                                        <label style={{ marginLeft: "20px" }} id="cantDisp">Cantidad disponible en Kg: </label>
+                                        <label style={{ marginLeft: "20px" }} id="cantDisp2">Cantidad disponible en Kg: </label>
                                         <input type="number" className="form-control modal-input-select-undisabled" id="CantidadNueva"
                                             placeholder="cantidad en Kg" onChange={obtenerPrecioTotal} />
                                         <input type="text" className="form-control modal-input-select-undisabled" id="ValorTotal"
@@ -515,8 +544,9 @@ export const ListaVentas = () => {
                                         placeholder="Cliente" pattern="[A-Za-z]{3}"></input>
                                     <input type="number" className="form-control modal-input-select-undisabled" id="ValorBusqueda"
                                         placeholder="Valor unitario" disabled></input>
-                                    <input type="text" className="form-control modal-input-select-undisabled" id="CantidadM"
-                                        placeholder="Cantidad" ></input>
+                                        <label style={{ marginLeft: "20px" }} id="cantDisp">Cantidad disponible en Kg: </label>
+                                    <input type="number" className="form-control modal-input-select-undisabled" id="CantidadM"
+                                        placeholder="Cantidad" onChange={obtenerPrecioTotalModificado}></input>
                                     <input type="text" className="form-control modal-input-select-undisabled" id="ValorTotalM"
                                         placeholder="Valor total" disabled></input>
                                     <input type="text" className="form-control modal-input-select-undisabled" id="VendedorBusqueda"

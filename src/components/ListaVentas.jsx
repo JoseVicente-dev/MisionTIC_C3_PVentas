@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { consultarDatabase, consultarDocumentoWhere } from '../config/firebase';
+import { consultarDatabase, consultarDocumentoWhere, usuarioActivoRol } from '../config/firebase';
 import { uuid } from 'uuidv4'
 import { BusquedaBd } from './BusquedaBd';
 import { usuarioActivo, eliminarDocumentoDatabase, actualizarDocumentoDatabase, guardarDatabase } from './../config/firebase';
@@ -25,8 +25,10 @@ export const ListaVentas = () => {
     }
 
     useEffect(() => {
-        usuarioActivo == undefined ? sinAcceso() : cargarVentas()
+        usuarioActivo == undefined ? sinAcceso() : cargarVentas();
     }, [counter])
+
+
 
 
     // modificar una venta

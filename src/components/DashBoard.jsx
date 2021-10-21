@@ -268,7 +268,7 @@ const DashBoard = () => {
             </div>
           </div>
 
-          <button onClick={() => setCounter(counter + 1)}>Prueba</button>
+          {/* <button onClick={() => setCounter(counter + 1)}>Prueba</button> */}
           <br /><br /><br /><br /><br /><br />
         </main>
         <FooterComponent />

@@ -28,6 +28,9 @@ const DashBoard = () => {
   }, [counter])
 
 
+
+
+
   //--------------------------------------------------------------------------------------------
   //Para empezar a implementar series en los graficos--
   //--------------------------------------------------------------------------------------------
@@ -157,7 +160,7 @@ const DashBoard = () => {
       hash[current.vendedor] = true
       return exists
     });
-    //console.log("ventas x Vendedor: ", ventasVendedorTemp)
+    console.log("ventas x Vendedor: ", ventasVendedorTemp)
     setVentasVendedor(ventasVendedorTemp)
   }
   //console.log("160: ", ventasVendedor)
@@ -168,7 +171,7 @@ const DashBoard = () => {
     chart: { type: 'line' },
     title: { text: 'Ventas x Producto' },
     subtitle: { text: 'Cuadro de ventas Productos x Kg x Vendedor' },
-    xAxis: { categories: ['Cebada', 'Cacao', 'Frijol', 'Frijol Rojo', 'Quinua', 'Arroz'] },
+    xAxis: { categories: ['Cebada', 'Cacao', 'Frijol', 'Frijol Rojo', 'Quinua', 'Arroz']},/* ['Cebada', 'Cacao', 'Frijol', 'Frijol Rojo', 'Quinua', 'Arroz'] */
     yAxis: { title: { text: 'Cantidad en Kg' } },
     plotOptions: { line: { dataLabels: { enabled: true }, enableMouseTracking: false } },
     series: [{ name: 'Steven Tavera', data: [7.0, 6.9, 9.5, 14.5, 18.4, 21.5] },
@@ -209,6 +212,9 @@ const DashBoard = () => {
     }]
   }
   console.log(ventasVendedor)
+
+
+
   const options2 = {
     chart: { type: 'column' },
     title: { text: 'Comparativo de ventas' },

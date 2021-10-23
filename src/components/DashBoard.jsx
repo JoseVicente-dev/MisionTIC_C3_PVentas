@@ -11,57 +11,59 @@ import '../css/contenido.css';
 
 const DashBoard = () => {
 
-  const arrayVendedorVenta = []
-  const arrayProductos = []
-  const [ventasVendedor, setVentasVendedor] = useState([])
-  const [counter, setCounter] = useState(0);
+  //let arrayProductos = []
+  
+  const [arrayProductos, setArrayProductos] = useState([])
+  const [arrayVendedores, setArrayVendedores] = useState([])
+  const [arrayVendedorVenta, setArrayVendedorVenta] = useState([])
+  const [arrayVendedorVentaDetalle, setArrayVendedorVentaDetalle] = useState([])
+  const [arrayVendedorProductoCantidad, setArrayVendedorProductoCantidad] = useState([])
+  const [arrayVendedorProductoValor, setArrayVendedorProductoValor] = useState([])
+  const [arrayVentaVendedores, setArrayVentaVendedores] = useState([])
+  const [arrayVentaProductos, setArrayVentaProductos] = useState([])
 
   const history = useHistory()
 
-  const sinAcceso = () => {
-    alert('Por favor realizar LogIn con Gmail')
-    history.push('/')
-  }
-
   useEffect(() => {
-    usuarioActivo == undefined ? sinAcceso() : seriesVendedorVenta() && seriesProductos() && seriesVendedores()
-  }, [counter])
-
-
-
-
+    usuarioActivo == undefined ? history.push('/') : seriesVendedorVenta() && seriesProductos() && seriesVendedores()
+  }, [])
 
   //--------------------------------------------------------------------------------------------
   //Para empezar a implementar series en los graficos--
   //--------------------------------------------------------------------------------------------
-
+  
+  //--------------------------------------------------------------------------------------------
   const seriesProductos = async () => {
     const listaTemporal = await consultarDocumentoWhere('ng_productos', 'descripcion', '')
-    /* console.log(listaTemporal); */
+    const respuesta = []
     listaTemporal.forEach((producto) => {
-      arrayProductos.push(producto.descripcion)
+      respuesta.push(producto.descripcion)
     })
-    console.log("Productos: ", arrayProductos) //Lista de prodcutos en consola.
+    setArrayProductos(respuesta)
+    console.log("Productos: ", respuesta ) //Lista de prodcutos en consola.
+    //console.log(arrayProductos);
   }
+  //----------------------------------------------------------------------------------------------
 
-  const arrayVendedores = []
+  //----------------------------------------------------------------------------------------------
   const seriesVendedores = async () => {
     const listaTemporal = await consultarDocumentoWhere('ng_users', 'rol', '')//filtrar Vendedor
-    /* console.log(listaTemporal); */
+    const respuesta = []
     listaTemporal.forEach((vendedor) => {
-      arrayVendedores.push(vendedor.nombres)
+      respuesta.push(vendedor.nombres)
     })
-    console.log("Vendedores: ", arrayVendedores) //Lista de vendedores en consola.
+    setArrayVendedores(respuesta)
+    console.log("Vendedores: ", respuesta ) //Lista de vendedores en consola.
+    //console.log(arrayVendedores);
   }
+  //-----------------------------------------------------------------------------------------------
 
-
+  //-----------------------------------------------------------------------------------------------
   const seriesVendedorVenta = async () => {
     const listaTemporal = await consultarDocumentoWhere('ng_ventas', 'articulo', '')
-
-    /* console.log(listaTemporal); */
     let k = 0
+    const respuesta = []
     listaTemporal.forEach((vendedorVenta) => {
-
       const venta = {
         vendedor: vendedorVenta.vendedor,
         articulo: vendedorVenta.articulo,
@@ -69,118 +71,176 @@ const DashBoard = () => {
         valor: vendedorVenta.valor
       }
       k = k + 1
-      arrayVendedorVenta.push(venta)
+      respuesta.push(venta)
+      setArrayVendedorVenta(respuesta)
     })
-    //console.log (arrayVendedorVenta) //Lista de prodcutos en consola.
+    
+    console.log(respuesta);
+    //console.log (arrayVendedorVenta) 
+  
+  //-----------------------------------------------------------------------------------------------
 
+  //-----------------------------------------------------------------------------------------------
     //sumatoria cantidades y valor por vendedor x articulo
-    let arrayVendedorVentaDetalle = []
+    let respuesta2=[]
     for (let i = 0; i <= k - 1; i++) {
-      let vendedor = arrayVendedorVenta[i].vendedor
+      let vendedor = respuesta[i].vendedor
       let cantidad = 0
       let valor = 0
-      let articulo = arrayVendedorVenta[i].articulo
+      let articulo = respuesta[i].articulo
       for (let j = 0; j <= k - 1; j++) {
-        if (arrayVendedorVenta[j].vendedor == vendedor && arrayVendedorVenta[j].articulo == articulo) {
-          /* articulo=arrayVendedorVenta[j].articulo */
-          cantidad += parseInt(arrayVendedorVenta[j].cantidad)
-          valor += parseInt(arrayVendedorVenta[j].valor)
+        if (respuesta[j].vendedor == vendedor && respuesta[j].articulo == articulo) {
+          cantidad += parseInt(respuesta[j].cantidad)
+          valor += parseInt(respuesta[j].valor)
         }
       }
-      const venta = {
-        vendedor,
-        articulo,
-        cantidad,
-        valor,
-        vendedorArticulo: vendedor + articulo
-      }
-      arrayVendedorVentaDetalle.push(venta)
+      const venta = {vendedor, articulo, cantidad, valor, vendedorArticulo: vendedor + articulo }
+      respuesta2.push(venta)
     }
-    //console.log(arrayVendedorVentaDetalle)
-
+    
     //eliminar ducplicados
     var hash = {};
-    arrayVendedorVentaDetalle = arrayVendedorVentaDetalle.filter(function (current) {
+    respuesta2 = respuesta2.filter(function (current) {
       var exists = !hash[current.vendedorArticulo];
       hash[current.vendedorArticulo] = true
       return exists
     });
-    //console.log(arrayVendedorVentaDetalle)
+    setArrayVendedorVentaDetalle(respuesta2)
 
+    console.log("valor por vendedor x articulo", respuesta2);
+    //console.log (arrayVendedorVentaDetalle) 
+    //-------------------------------------------------------------------------------------------------
+
+    //-------------------------------------------------------------------------------------------------
     //vendedor y cantidad
-    const vendedorProductoCantidad = []
-    arrayVendedorVentaDetalle.forEach((cantidad) => {
+    let respuesta3=[]
+    respuesta2.forEach((cantidad) => {
       const venta = {
         vendedor: cantidad.vendedor,
         articulo: cantidad.articulo,
         cantidad: cantidad.cantidad,
       }
-      vendedorProductoCantidad.push(venta)
+      respuesta3.push(venta)
     })
-    console.log("Productos vendidos x vendedor x cantidad: ", vendedorProductoCantidad);
+    setArrayVendedorProductoCantidad(respuesta3)
+    
+    console.log("Productos vendidos x vendedor x cantidad: ", respuesta3);
+    //console.log(arrayVendedorProductoCantidad);
+    //------------------------------------------------------------------------------------------------------
 
+    //------------------------------------------------------------------------------------------------------
     //vendededor y valor
-    const vendedorProductoValor = []
-    arrayVendedorVentaDetalle.forEach((valor) => {
+    let respuesta4=[]
+    respuesta2.forEach((valor) => {
       const venta = {
         vendedor: valor.vendedor,
         articulo: valor.articulo,
         valor: valor.valor,
       }
-      vendedorProductoValor.push(venta)
+      respuesta4.push(venta)
     })
-    console.log("Productos vendidos x vendedor x valor: ", vendedorProductoValor);
+    setArrayVendedorProductoValor(respuesta4)
+    
+    console.log("Productos vendidos x vendedor x valor: ",respuesta3 );
+    //console.log(arrayVendedorProductoValor);
+    //--------------------------------------------------------------------------------------------------------
 
-
+    //--------------------------------------------------------------------------------------------------------
     //ventas x vendedor
-    let ventasVendedorTemp = []
+    let respuesta5=[]
     for (let i = 0; i <= k - 1; i++) {
-      let vendedor = arrayVendedorVenta[i].vendedor
-      let valor = 0
+        let vendedor = respuesta[i].vendedor
+        let valor = 0
       for (let j = 0; j <= k - 1; j++) {
-        if (arrayVendedorVenta[j].vendedor == vendedor) {
-          valor += parseInt(arrayVendedorVenta[j].valor)
+        if (respuesta[j].vendedor == vendedor) {
+          valor += parseInt(respuesta[j].valor)
         }
       }
       const venta = {
-        /* name: vendedor, 
-        y: valor,  */
-        vendedor,
-        valor
+        name: vendedor,
+        y: parseInt(valor)
       }
-
-      ventasVendedorTemp.push(venta)
+      respuesta5.push(venta) 
     }
-    //console.log("ventas x Vendedor: ", ventasVendedor)
-
+    
     //eliminar ducplicados
     var hash = {};
-    ventasVendedorTemp = ventasVendedorTemp.filter(function (current) {
-      var exists = !hash[current.vendedor];
-      hash[current.vendedor] = true
+    respuesta5 = respuesta5.filter(function (current) {
+      var exists = !hash[current.name];
+      hash[current.name] = true
       return exists
     });
-    console.log("ventas x Vendedor: ", ventasVendedorTemp)
-    setVentasVendedor(ventasVendedorTemp)
+    setArrayVentaVendedores(respuesta5)
+    console.log("ventas x Vendedor: ", respuesta5)
+    //console.log("ventas x Vendedor: ", arrayVentaVendedores)
+
+     //--------------------------------------------------------------------------------------------------------
+
+    //--------------------------------------------------------------------------------------------------------
+    //ventas x producto
+    let respuesta6=[]
+    for (let i = 0; i <= k - 1; i++) {
+        let articulo = respuesta[i].articulo
+        let valorP = 0
+      for (let j = 0; j <= k - 1; j++) {
+        if (respuesta[j].articulo == articulo) {
+          valorP += parseInt(respuesta[j].valor)
+        }
+      }
+      const venta = {
+        name: articulo,
+        y: parseInt(valorP)
+      }
+      respuesta6.push(venta) 
+    }
+    
+    //eliminar ducplicados
+    var hash = {};
+    respuesta6 = respuesta6.filter(function (current) {
+      var exists = !hash[current.name];
+      hash[current.name] = true
+      return exists
+    });
+    setArrayVentaProductos(respuesta6)
+    console.log("ventas x Producto: ", respuesta6)
+    //console.log("ventas x Vendedor: ", arrayVentaVendedores)
+
   }
-  //console.log("160: ", ventasVendedor)
   //--------------------------------------------------------------------------------------------
 
-
   const options = {
-    chart: { type: 'line' },
-    title: { text: 'Ventas x Producto' },
-    subtitle: { text: 'Cuadro de ventas Productos x Kg x Vendedor' },
-    xAxis: { categories: ['Cebada', 'Cacao', 'Frijol', 'Frijol Rojo', 'Quinua', 'Arroz']},/* ['Cebada', 'Cacao', 'Frijol', 'Frijol Rojo', 'Quinua', 'Arroz'] */
-    yAxis: { title: { text: 'Cantidad en Kg' } },
-    plotOptions: { line: { dataLabels: { enabled: true }, enableMouseTracking: false } },
-    series: [{ name: 'Steven Tavera', data: [7.0, 6.9, 9.5, 14.5, 18.4, 21.5] },
-    { name: 'José Vicente Velasco López', data: [3.9, 4.2, 5.7, 8.5, 11.9, 15.2] },
-    { name: 'Gonzalo Sarmiento Castro', data: [2.9, 5.2, 7.7, 9.5, 1.9, 2.2] },
-    { name: 'Samuel jimenez', data: [0, 2, 8, 10, 1, 6] },
-    { name: 'FerboHi', data: [12.9, 2.2, 1.7, 9.5, 1.1, 2.9] }
+    chart: {type: 'column'},
+    title: {text: 'Ventas x Producto'},
+    subtitle: {text: 'Total en $$'},
+    accessibility: {announceNewData: {enabled: true}},
+    xAxis: { type: 'category'},
+    yAxis: {title: {text: '$'}},
+    legend: {enabled: false},
+    plotOptions: {
+      series: {
+        borderWidth: 0,
+        dataLabels: {
+          enabled: true
+          
+        }
+      }
+    },
+  
+    tooltip: {
+      headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
+      pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>${point.y}</b>'
+    },
+  
+    series: [
+      {name: "Artículo",
+        colorByPoint: true,
+        data: arrayVentaProductos
+      }
     ]
-  }
+        
+      
+    }
+  
 
   const options1 = {
     chart: {
@@ -189,9 +249,9 @@ const DashBoard = () => {
       plotShadow: false,
       type: 'pie'
     },
-    title: { text: 'Top de productos más vendidos' },
-    subtitle: { text: 'Productos medidos en $$' },
-    tooltip: { pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>' },
+    title: { text: 'Ventas x vendedor' },
+    subtitle: { text: 'Total de ventas $$' },
+    tooltip: { pointFormat: '{series.name}: <b>${point.y}</b>' },
     accessibility: { point: { valueSuffix: '%' } },
     yAxis: { title: { text: '' } },
     plotOptions: {
@@ -203,24 +263,19 @@ const DashBoard = () => {
       }
     },
     series: [{
-      name: 'Productos',
+      name: 'Vendedores',
       colorByPoint: true,
-      data: [{ name: 'Cebada', y: 61.41 }, { name: 'Cacao', y: 11.84 }, { name: 'Frijol', y: 10.85 },
-      { name: 'Frijol Rojo', y: 4.67 }, { name: 'Quinua', y: 4.18 }/*, { prueba: 'producto 6', y: 1.64 },
-      { prueba: 'producto 7', y: 1.6 }, { prueba: 'producto 8', y: 1.2 }, { prueba: 'Other', y: 2.61 } */]
-      //ventasVendedor
+      data: arrayVentaVendedores
     }]
   }
-  console.log(ventasVendedor)
-
-
+  
 
   const options2 = {
     chart: { type: 'column' },
     title: { text: 'Comparativo de ventas' },
-    subtitle: { text: 'Vendedores Activos' },
+    subtitle: { text: 'productos x vendedor' },
     xAxis: {
-      categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+      categories: arrayProductos,
       crosshair: true
     },
     yAxis: { min: 0, title: { text: 'Ventas Brutas mensuales' } },
@@ -233,31 +288,32 @@ const DashBoard = () => {
 
     plotOptions: { column: { pointPadding: 0.2, borderWidth: 0 } },
     series: [{
-      name: 'Steven Tavera',
-      data: [49.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4]
-    },
-    {
-      name: 'José Vicente Velasco López',
-      data: [83.6, 78.8, 98.5, 93.4, 106.0, 84.5, 105.0, 104.3, 91.2, 83.5, 106.6, 92.3]
-    },
-    {
-      name: 'Gonzalo Sarmiento Castro',
-      data: [48.9, 38.8, 39.3, 41.4, 47.0, 48.3, 59.0, 59.6, 52.4, 65.2, 59.3, 51.2]
-    },
-    {
-      name: 'Samuel jimenez',
-      data: [42.4, 33.2, 34.5, 39.7, 52.6, 75.5, 57.4, 60.4, 47.6, 39.1, 46.8, 51.1]
-    },
-    {
-      name: 'FerboHi',
-      data: [2.4, 63.2, 24.5, 49.7, 2.6, 70.5, 60.4, 20.4, 37.6, 19.1, 16.8, 1.1]
-    }]
+              name: 'Steven Tavera',
+              data: [49.9, 71.5, 106.4, 129.2, 144.0]
+              },
+              {
+              name: 'José Vicente Velasco López',
+              data: [83.6, 78.8, 98.5, 93.4, 106.0]
+              },
+              {
+              name: 'Gonzalo Sarmiento Castro',
+              data: [48.9, 38.8, 39.3, 41.4, 47.0]
+              },
+              {
+              name: 'Samuel jimenez',
+              data: [42.4, 33.2, 34.5, 39.7, 52.6]
+              },
+              {
+              name: 'FerboHi',
+              data: [2.4, 63.2, 24.5, 49.7, 2.6]
+            }]
 
   }
 
+
   return (
     <>
-      <div className="contenedorFlex">
+       <div className="contenedorFlex">
         <HeaderNg titulo='Dashboard' />
         <main>
           <div className="container">
@@ -273,13 +329,12 @@ const DashBoard = () => {
               <div><HighchartsReact highcharts={Highcharts} options={options2} /></div>
             </div>
           </div>
-
-          {/* <button onClick={() => setCounter(counter + 1)}>Prueba</button> */}
           <br /><br /><br /><br /><br /><br />
         </main>
         <FooterComponent />
       </div>
       <MenuLateralNg usuario='nombre de Usuario' tipo='Administrador_Prueba' foto={fotoUsuario} />
+
 
 
 
